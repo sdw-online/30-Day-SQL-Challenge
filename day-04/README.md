@@ -1,6 +1,6 @@
 # Day 4 - Aggregate Functions & GROUP BY
 
-[Watch the video](COMING_SOON) | [← Day 3: ORDER BY, LIMIT & LIKE](../day-03/) | [Day 5: INSERT, UPDATE & DELETE →](../day-05/)
+[Watch the video](COMING_SOON) | [← Day 3: ORDER BY & LIMIT](../day-03/) | [Day 5: INSERT, UPDATE & DELETE →](../day-05/)
 
 ---
 
@@ -151,4 +151,4 @@ Using the `sales_transactions` table above, answer these questions:
 
 ---
 
-[← Day 3: ORDER BY, LIMIT & LIKE](../day-03/) | [Day 5: INSERT, UPDATE & DELETE →](../day-05/)
+[← Day 3: ORDER BY & LIMIT](../day-03/) | [Day 5: INSERT, UPDATE & DELETE →](../day-05/)

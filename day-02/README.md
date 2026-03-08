@@ -1,6 +1,6 @@
 # Day 2 - SELECT & WHERE
 
-[Watch the video](COMING_SOON) | [← Day 1: Introduction to SQL & Databases](../day-01/) | [Day 3: ORDER BY, LIMIT & LIKE →](../day-03/)
+[Watch the video](https://www.youtube.com/watch?v=-0uVBtXCZ_s) | [← Day 1: Introduction to SQL & Databases](../day-01/) | [Day 3: ORDER BY & LIMIT →](../day-03/)
 
 ---
 
@@ -163,4 +163,4 @@ Using the `loan_applications` table, answer the questions below.
 
 ---
 
-[← Day 1: Introduction to SQL & Databases](../day-01/) | [Day 3: ORDER BY, LIMIT & LIKE →](../day-03/)
+[← Day 1: Introduction to SQL & Databases](../day-01/) | [Day 3: ORDER BY & LIMIT →](../day-03/)

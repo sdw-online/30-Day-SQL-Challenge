@@ -75,8 +75,8 @@ Fork this repo and check off each day as you complete it!
 | Day | Topic | Video | Completed |
 |-----|-------|-------|-----------|
 | 01 | Introduction to SQL & Databases | [Watch](https://www.youtube.com/watch?v=mFIMPhiO-N0) | ☐ |
-| 02 | SELECT & WHERE | [Coming soon] | ☐ |
-| 03 | ORDER BY, LIMIT & LIKE | [Coming soon] | ☐ |
+| 02 | SELECT & WHERE | [Watch](https://www.youtube.com/watch?v=-0uVBtXCZ_s) | ☐ |
+| 03 | ORDER BY & LIMIT | [Watch](https://www.youtube.com/watch?v=s86nI9dPZqY) | ☐ |
 | 04 | Aggregate Functions & GROUP BY | [Coming soon] | ☐ |
 | 05 | INSERT, UPDATE & DELETE | [Coming soon] | ☐ |
 | 06 | PRIMARY KEY, FOREIGN KEY & Constraints | [Coming soon] | ☐ |

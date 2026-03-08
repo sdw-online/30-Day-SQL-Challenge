@@ -1,6 +1,6 @@
-# Day 3 - ORDER BY, LIMIT & LIKE
+# Day 3 - ORDER BY & LIMIT
 
-[Watch the video](COMING_SOON) | [← Day 2: SELECT & WHERE](../day-02/) | [Day 4: Aggregate Functions & GROUP BY →](../day-04/)
+[Watch the video](https://www.youtube.com/watch?v=s86nI9dPZqY) | [← Day 2: SELECT & WHERE](../day-02/) | [Day 4: Aggregate Functions & GROUP BY →](../day-04/)
 
 ---
 
