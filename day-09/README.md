@@ -21,6 +21,10 @@
 - Nesting functions together to build real data transformations
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-8
 - pgAdmin open and connected to your `sql_challenge` database
 - Comfortable with SELECT, WHERE, GROUP BY, NULL handling

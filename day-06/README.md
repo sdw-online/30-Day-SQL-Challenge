@@ -20,6 +20,10 @@
 - CASCADE, SET NULL, and RESTRICT - controlling what happens when referenced data changes
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-5
 - pgAdmin open and connected to your `sql_challenge` database
 - Comfortable with SELECT, WHERE, ORDER BY, aggregates, GROUP BY, INSERT, UPDATE, DELETE

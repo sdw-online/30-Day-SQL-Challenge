@@ -19,6 +19,10 @@
 - How to add safety limits and detect cycles to prevent infinite recursion
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-18
 - Day 13 knowledge is essential - you should be comfortable with the `WITH ... AS` syntax, multiple CTEs, and chaining CTEs
 - Comfortable with UNION ALL (Day 17)

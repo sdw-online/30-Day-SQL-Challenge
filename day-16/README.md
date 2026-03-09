@@ -19,6 +19,10 @@
 - The `<` trick for producing unique pairs without duplicates
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-15
 - Comfortable with INNER, LEFT, RIGHT, and FULL OUTER JOINs (Day 15)
 

@@ -18,6 +18,10 @@
 - How to calculate conversion timing, revenue analysis, and produce board-ready recommendations with SQL
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 15-20 (JOINs Part 1 & 2, UNION/UNION ALL, normalisation, recursive CTEs, star schema)
 - Comfortable with LEFT JOIN, anti-join patterns, CTEs, and aggregate functions
 

@@ -19,6 +19,10 @@
 - How surrogate keys, summary tables, and date dimensions make analytical queries fast and reliable
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-19
 - Day 18 (normalisation) is essential - today builds directly on that foundation
 - Comfortable with JOINs (Days 15-16), CTEs (Day 13), and aggregation (Days 5-6)

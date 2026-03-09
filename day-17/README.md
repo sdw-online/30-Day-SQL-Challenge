@@ -19,6 +19,10 @@
 - How to use source tagging, INTERSECT, and EXCEPT for real-world data merging
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-16
 - Comfortable with JOINs (Days 15-16) and CTEs (Day 13)
 

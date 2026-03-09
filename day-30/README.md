@@ -19,6 +19,10 @@
 - Self-documenting infrastructure with materialised views and column comments
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-29 - this capstone uses concepts from every single day
 - PostgreSQL 15 or later recommended (`SELECT version();` to check)
 

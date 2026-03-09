@@ -20,6 +20,10 @@
 - How to manage functions with DROP, CREATE OR REPLACE, and overloading
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Day 26
 - PostgreSQL 15 or later recommended (`SELECT version();` to check)
 

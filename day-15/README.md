@@ -22,6 +22,10 @@
 - How to join three or more tables and choose the right JOIN type at each step
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-14
 - Comfortable with SELECT, WHERE, GROUP BY, aggregate functions, NULL handling, string/date functions, CASE WHEN, subqueries, temp tables, and CTEs
 

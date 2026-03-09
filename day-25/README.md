@@ -19,6 +19,10 @@
 - When to use CTEs, views, materialised views, and tables
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-24
 - Complete Day 20 (star schema / dimensional modelling) - materialised views often sit on top of star schemas
 - PostgreSQL version **15 or later** recommended (run `SELECT version();` to check)

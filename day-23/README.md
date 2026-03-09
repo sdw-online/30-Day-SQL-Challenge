@@ -19,6 +19,10 @@
 - How FIRST_VALUE and LAST_VALUE anchor comparisons to fixed reference points
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Day 22 (comfortable with ROW_NUMBER, RANK, DENSE_RANK, NTILE, PARTITION BY, OVER clause)
 - **Day 22's tables must still be in your database** (`departments`, `employees`, `quarterly_sales`) - Day 23 reuses them and adds new tables on top
 

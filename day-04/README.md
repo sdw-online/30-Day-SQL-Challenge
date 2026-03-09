@@ -20,6 +20,10 @@
 - How SQL execution order works (FROM, WHERE, GROUP BY, HAVING, SELECT, ORDER BY, LIMIT)
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Day 3 (comfortable with ORDER BY, LIMIT, DISTINCT, LIKE, IN, and BETWEEN)
 
 ## Dataset

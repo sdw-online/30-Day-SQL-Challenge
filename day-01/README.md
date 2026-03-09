@@ -20,7 +20,13 @@
 - How to set up PostgreSQL and pgAdmin on your machine
 
 ## Prerequisites
-- None - this is Day 1!
+
+New to SQL? Start here:
+
+1. **Install PostgreSQL + pgAdmin** — [watch this setup guide](https://youtu.be/g8GwhsVPaOg) (step-by-step)
+2. **Create a database** called `sql_challenge` in pgAdmin (shown in the video above)
+
+No other prerequisites — this is Day 1!
 
 ## Dataset
 

@@ -21,6 +21,10 @@
 - TO_CHAR and TO_DATE - formatting dates for reports and parsing date strings
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-9
 - pgAdmin open and connected to your `sql_challenge` database
 - Comfortable with SELECT, WHERE, GROUP BY, NULL handling, string and numeric functions

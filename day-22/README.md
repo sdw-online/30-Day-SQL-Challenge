@@ -19,6 +19,10 @@
 - How PARTITION BY creates independent ranking windows within groups
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-21
 - Comfortable with SELECT, WHERE, GROUP BY, JOINs, subqueries, and CTEs
 

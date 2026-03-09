@@ -20,6 +20,10 @@
 - How to handle NULL values with IS NULL
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete [Day 1](../day-01/) (PostgreSQL and pgAdmin installed, `sql_challenge` database created)
 
 ## Dataset

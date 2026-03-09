@@ -20,6 +20,10 @@
 - Naming conventions that make your CTEs self-documenting
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-12
 - Comfortable with SELECT, WHERE, GROUP BY, JOINs, NULL handling, string/date functions, CASE WHEN, subqueries, and temp tables
 

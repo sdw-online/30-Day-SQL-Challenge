@@ -19,6 +19,10 @@
 - When and why experienced engineers deliberately denormalise for read performance
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-17
 - Comfortable with JOINs (Days 15-16) and UNION (Day 17)
 

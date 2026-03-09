@@ -19,6 +19,10 @@
 - How to build an executive summary with aggregated performance metrics
 
 ## Prerequisites
+
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
+
 - Complete Days 1-6
 - pgAdmin open and connected to your `sql_challenge` database
 - Comfortable with SELECT, WHERE, ORDER BY, LIMIT, GROUP BY, HAVING, INSERT, UPDATE, DELETE, and constraints
