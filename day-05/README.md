@@ -1,6 +1,6 @@
 # Day 5 - INSERT, UPDATE & DELETE
 
-[Watch the video](COMING_SOON) | [← Day 4: Aggregate Functions & GROUP BY](../day-04/) | [Day 6: Primary Keys, Foreign Keys & Constraints →](../day-06/)
+[Watch the video](https://www.youtube.com/watch?v=NJ4ujmOZt60) | [← Day 4: Aggregate Functions & GROUP BY](../day-04/) | [Day 6: Primary Keys, Foreign Keys & Constraints →](../day-06/)
 
 ---
 

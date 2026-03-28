@@ -78,7 +78,7 @@ Fork this repo and check off each day as you complete it!
 | 02 | SELECT & WHERE | [Watch](https://www.youtube.com/watch?v=-0uVBtXCZ_s) | ☐ |
 | 03 | ORDER BY & LIMIT | [Watch](https://www.youtube.com/watch?v=s86nI9dPZqY) | ☐ |
 | 04 | Aggregate Functions & GROUP BY | [Coming soon] | ☐ |
-| 05 | INSERT, UPDATE & DELETE | [Coming soon] | ☐ |
+| 05 | INSERT, UPDATE & DELETE | [Watch](https://www.youtube.com/watch?v=NJ4ujmOZt60) | ☐ |
 | 06 | PRIMARY KEY, FOREIGN KEY & Constraints | [Coming soon] | ☐ |
 | 07 | **Project:** Freight & Logistics Performance Report | [Coming soon] | ☐ |
 | 08 | NULL Handling | [Coming soon] | ☐ |
