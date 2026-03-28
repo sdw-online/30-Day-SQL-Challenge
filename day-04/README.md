@@ -1,6 +1,6 @@
 # Day 4 - Aggregate Functions & GROUP BY
 
-[Watch the video](COMING_SOON) | [← Day 3: ORDER BY & LIMIT](../day-03/) | [Day 5: INSERT, UPDATE & DELETE →](../day-05/)
+[Watch the video](https://www.youtube.com/watch?v=7IWrvTIrIkg) | [← Day 3: ORDER BY & LIMIT](../day-03/) | [Day 5: INSERT, UPDATE & DELETE →](../day-05/)
 
 ---
 
