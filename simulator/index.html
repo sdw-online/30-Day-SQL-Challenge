@@ -1,0 +1,2451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Interactive Simulator - 30 Day SQL Challenge</title>
+<meta name="description" content="Practice SQL interactively with 30 days of challenges. Free, in-browser, no setup required.">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   SECTION 1: CSS Variables & Reset
+   ============================================================ */
+:root {
+  --bg-void: #0a0a0f;
+  --bg-panel: #12121a;
+  --bg-editor: #1a1a2e;
+  --bg-sidebar: #0f0f17;
+  --bg-card: #16162a;
+  --border: #2a2a3e;
+  --border-active: #f43f5e;
+  --primary: #f43f5e;
+  --primary-dim: rgba(244, 63, 94, 0.15);
+  --primary-glow: rgba(244, 63, 94, 0.3);
+  --accent-green: #10b981;
+  --accent-blue: #3b82f6;
+  --accent-amber: #f59e0b;
+  --accent-purple: #8b5cf6;
+  --accent-teal: #14b8a6;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --success: #10b981;
+  --error: #ef4444;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --font-mono: 'JetBrains Mono', monospace;
+  --font-sans: 'Inter', -apple-system, sans-serif;
+  --sidebar-width: 280px;
+  --header-height: 52px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-void);
+  color: var(--text-primary);
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+/* ============================================================
+   SECTION 2: Shared Components
+   ============================================================ */
+.btn {
+  padding: 7px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg-editor);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+}
+.btn:hover { border-color: var(--primary); color: var(--primary); }
+.btn:active { transform: scale(0.97); }
+
+.btn-primary { background: var(--primary); border-color: var(--primary); color: white; font-weight: 600; }
+.btn-primary:hover { background: #e11d48; color: white; }
+
+.btn-sm { padding: 4px 10px; font-size: 11px; }
+
+.badge {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+}
+.badge-easy { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+.badge-medium { background: rgba(245, 158, 11, 0.15); color: var(--accent-amber); }
+.badge-hard { background: rgba(244, 63, 94, 0.15); color: var(--primary); }
+.badge-starter { background: rgba(59, 130, 246, 0.15); color: var(--accent-blue); }
+.badge-core { background: rgba(139, 92, 246, 0.15); color: var(--accent-purple); }
+.badge-stretch { background: rgba(244, 63, 94, 0.15); color: var(--primary); }
+.badge-project { background: rgba(20, 184, 166, 0.15); color: var(--accent-teal); }
+.badge-concept { background: rgba(148, 163, 184, 0.1); color: var(--text-muted); }
+
+/* ============================================================
+   SECTION 3: Header
+   ============================================================ */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  height: var(--header-height);
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 20;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--primary), var(--accent-purple));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 800; color: white;
+  font-family: var(--font-mono);
+}
+
+.header-title {
+  font-size: 14px; font-weight: 700; letter-spacing: -0.3px;
+}
+.header-title span { color: var(--primary); }
+
+.header-progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 300px;
+  margin: 0 24px;
+}
+
+.progress-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent-purple));
+  border-radius: 3px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+.progress-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.db-status {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 11px; color: var(--text-secondary);
+  padding: 4px 10px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  border-radius: 16px;
+}
+
+.db-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent-green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+/* ============================================================
+   SECTION 4: Main Layout
+   ============================================================ */
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ============================================================
+   SECTION 5: Sidebar
+   ============================================================ */
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.sidebar-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebar-tab {
+  flex: 1;
+  padding: 9px 4px;
+  text-align: center;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+}
+.sidebar-tab:hover { color: var(--text-secondary); }
+.sidebar-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+.sidebar-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px;
+}
+
+/* Day navigator */
+.week-group { margin-bottom: 12px; }
+
+.week-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  padding: 4px 8px;
+  margin-bottom: 2px;
+}
+
+.day-item {
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.12s;
+  position: relative;
+}
+.day-item:hover { background: rgba(244, 63, 94, 0.06); color: var(--text-primary); }
+.day-item.active { background: var(--primary-dim); color: var(--primary); }
+
+.day-num {
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  min-width: 20px;
+}
+.day-item.active .day-num { color: var(--primary); }
+
+.day-title-text {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-progress-ring {
+  width: 18px; height: 18px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.day-progress-ring svg {
+  width: 18px; height: 18px;
+  transform: rotate(-90deg);
+}
+
+.day-progress-ring .ring-bg {
+  stroke: var(--border);
+  fill: none;
+  stroke-width: 2;
+}
+
+.day-progress-ring .ring-fill {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.4s ease;
+}
+
+.day-check {
+  color: var(--accent-green);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+/* Schema explorer */
+.schema-table {
+  margin-bottom: 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.schema-header {
+  padding: 7px 10px;
+  background: var(--bg-editor);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  color: var(--accent-teal);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.schema-header .row-ct {
+  font-size: 10px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+.schema-cols { padding: 2px 0; display: none; }
+.schema-cols.open { display: block; }
+
+.schema-col {
+  padding: 3px 10px;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+}
+.schema-col .col-type { color: var(--accent-amber); font-size: 10px; }
+.schema-col .col-pk { color: var(--primary); font-weight: 700; }
+
+/* History */
+.history-item {
+  padding: 7px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 3px;
+  transition: background 0.12s;
+}
+.history-item:hover { background: rgba(244, 63, 94, 0.06); }
+
+.history-query {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-meta {
+  font-size: 10px;
+  color: var(--text-muted);
+  margin-top: 1px;
+}
+
+/* ============================================================
+   SECTION 6: Workspace
+   ============================================================ */
+.workspace {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* ---- Day Header ---- */
+.day-header {
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.day-header-info { flex: 1; min-width: 0; }
+
+.day-header-nav {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.day-header h2 {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.day-header h2 .day-label { color: var(--primary); }
+
+.day-header-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.day-header-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.day-header-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+.day-header-links a:hover { border-color: var(--primary); color: var(--primary); }
+
+/* ---- Video Embed ---- */
+.video-section {
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--border);
+  display: none;
+}
+.video-section.visible { display: block; }
+
+.video-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 24px;
+}
+
+.video-iframe-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--bg-editor);
+}
+
+.video-iframe-wrap iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+.video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.04), rgba(139, 92, 246, 0.04));
+}
+
+.video-placeholder .vp-icon {
+  font-size: 36px;
+  opacity: 0.3;
+  margin-bottom: 8px;
+}
+.video-placeholder .vp-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+.video-placeholder .vp-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.video-placeholder a { color: var(--primary); text-decoration: none; }
+.video-placeholder a:hover { text-decoration: underline; }
+
+/* ---- Challenge Panel ---- */
+.challenge-panel {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, rgba(244, 63, 94, 0.03), rgba(139, 92, 246, 0.03));
+}
+
+.challenge-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.challenge-counter {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.challenge-badges {
+  display: flex;
+  gap: 6px;
+}
+
+.challenge-title-text {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.challenge-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.challenge-hint {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 8px 12px;
+  background: rgba(245, 158, 11, 0.06);
+  border-left: 2px solid var(--accent-amber);
+  border-radius: 0 4px 4px 0;
+  margin-bottom: 8px;
+  display: none;
+}
+.challenge-hint.visible { display: block; }
+
+.challenge-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+/* ---- Quick Insert ---- */
+.quick-insert {
+  display: flex;
+  gap: 5px;
+  padding: 6px 24px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.quick-chip {
+  font-size: 11px;
+  font-family: var(--font-mono);
+  padding: 3px 8px;
+  background: var(--bg-editor);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+.quick-chip:hover { border-color: var(--primary); color: var(--primary); background: rgba(244, 63, 94, 0.06); }
+
+/* ---- Editor ---- */
+.editor-container {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border);
+  height: 200px;
+  min-height: 100px;
+  max-height: 500px;
+}
+
+.editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.editor-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+}
+
+.editor-shortcuts {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.editor-shortcuts kbd {
+  background: var(--bg-editor);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 1px 4px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.editor-wrap { flex: 1; position: relative; overflow: hidden; }
+
+#sql-editor {
+  width: 100%; height: 100%;
+  background: var(--bg-editor);
+  color: var(--text-primary);
+  border: none; outline: none; resize: none;
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  tab-size: 2;
+}
+#sql-editor::placeholder { color: var(--text-muted); }
+
+.resize-handle {
+  height: 4px;
+  background: var(--border);
+  cursor: ns-resize;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.resize-handle:hover { background: var(--primary); }
+
+/* ---- Run Button Bar ---- */
+.run-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+/* ---- Results ---- */
+.results-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--bg-void);
+}
+
+.results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px;
+  background: var(--bg-panel);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.results-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.result-status {
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+.result-status.success { background: rgba(16, 185, 129, 0.15); color: var(--accent-green); }
+.result-status.error { background: rgba(239, 68, 68, 0.15); color: var(--error); }
+
+.exec-time {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.results-body {
+  flex: 1;
+  overflow: auto;
+  padding: 0;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-muted);
+  gap: 8px;
+  padding: 40px;
+  text-align: center;
+}
+.empty-state .es-icon { font-size: 40px; opacity: 0.2; }
+.empty-state .es-text { font-size: 13px; }
+.empty-state .es-hint { font-size: 11px; }
+
+/* Results table */
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+.result-table th {
+  position: sticky; top: 0;
+  background: var(--bg-panel);
+  padding: 8px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: var(--accent-teal);
+  border-bottom: 2px solid var(--border);
+  font-family: var(--font-mono);
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.result-table td {
+  padding: 6px 14px;
+  border-bottom: 1px solid rgba(42, 42, 62, 0.4);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.result-table tr:hover td { background: rgba(244, 63, 94, 0.03); }
+.result-table td.null-val { color: var(--text-muted); font-style: italic; }
+.result-table td.num-val { color: var(--accent-blue); text-align: right; }
+
+.row-count-footer {
+  padding: 6px 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border);
+  background: var(--bg-panel);
+  font-family: var(--font-mono);
+  flex-shrink: 0;
+  display: none;
+}
+
+/* Error display */
+.error-display {
+  padding: 16px 20px;
+  color: var(--error);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  background: rgba(239, 68, 68, 0.04);
+  border-left: 3px solid var(--error);
+  margin: 12px;
+  border-radius: 0 6px 6px 0;
+}
+
+.message-display {
+  padding: 16px 20px;
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 1.6;
+  background: rgba(16, 185, 129, 0.04);
+  border-left: 3px solid var(--accent-green);
+  margin: 12px;
+  border-radius: 0 6px 6px 0;
+}
+
+/* Validation feedback */
+.validation-feedback {
+  margin: 0 12px 12px;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  display: none;
+}
+.validation-feedback.pass {
+  display: block;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+}
+.validation-feedback.fail {
+  display: block;
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.validation-feedback h4 {
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+.validation-feedback.pass h4 { color: var(--accent-green); }
+.validation-feedback.fail h4 { color: var(--error); }
+.validation-feedback p {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* ============================================================
+   SECTION 7: Landing / Home View
+   ============================================================ */
+.home-view {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px 32px;
+  display: none;
+}
+.home-view.visible { display: block; }
+
+.home-hero {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.home-hero h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+.home-hero h1 span { color: var(--primary); }
+
+.home-hero p {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.home-stats {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin: 32px 0;
+}
+
+.home-stat {
+  text-align: center;
+}
+
+.home-stat .num {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+  color: var(--primary);
+}
+
+.home-stat .label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+
+.home-weeks {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.home-week-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.home-week-card:hover { border-color: var(--primary); transform: translateY(-2px); }
+
+.home-week-card h3 {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.home-week-card .week-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.home-week-card .week-days {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.home-day-dot {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: var(--bg-editor);
+  border: 2px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.home-day-dot:hover { border-color: var(--primary); color: var(--primary); }
+.home-day-dot.completed { border-color: var(--accent-green); color: var(--accent-green); background: rgba(16,185,129,0.1); }
+.home-day-dot.partial { border-color: var(--accent-amber); color: var(--accent-amber); }
+
+/* ============================================================
+   SECTION 8: Progress Dashboard
+   ============================================================ */
+.progress-view {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+  display: none;
+}
+.progress-view.visible { display: block; }
+
+.progress-header {
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.progress-header h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+
+.progress-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  text-align: center;
+}
+
+.progress-card .pc-num {
+  font-size: 32px;
+  font-weight: 800;
+  font-family: var(--font-mono);
+}
+.progress-card .pc-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.streak-display {
+  text-align: center;
+  margin: 24px 0;
+}
+
+.streak-num {
+  font-size: 48px;
+  font-weight: 900;
+  font-family: var(--font-mono);
+  color: var(--accent-amber);
+}
+
+.streak-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.progress-day-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
+  gap: 6px;
+  max-width: 500px;
+  margin: 24px auto;
+}
+
+.progress-export-area {
+  text-align: center;
+  margin-top: 32px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* ============================================================
+   SECTION 9: Modals
+   ============================================================ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.visible { display: flex; }
+
+.modal-box {
+  background: var(--bg-panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  max-width: 480px;
+  width: 90%;
+}
+
+.modal-box h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+#import-file-input { display: none; }
+
+/* ============================================================
+   SECTION 10: Loading Overlay
+   ============================================================ */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-void);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  gap: 16px;
+  transition: opacity 0.4s;
+}
+.loading-overlay.hidden { opacity: 0; pointer-events: none; }
+
+.loading-spinner {
+  width: 36px; height: 36px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-text { font-size: 14px; color: var(--text-secondary); }
+
+/* ============================================================
+   SECTION 11: SQLite Note Banner
+   ============================================================ */
+.sqlite-note {
+  padding: 8px 24px;
+  background: rgba(245, 158, 11, 0.06);
+  border-bottom: 1px solid rgba(245, 158, 11, 0.1);
+  font-size: 11px;
+  color: var(--accent-amber);
+  flex-shrink: 0;
+  display: none;
+}
+.sqlite-note.visible { display: block; }
+
+/* ============================================================
+   SECTION 12: Responsive
+   ============================================================ */
+@media (max-width: 900px) {
+  .sidebar { width: 220px; }
+  .header-progress { display: none; }
+}
+
+@media (max-width: 700px) {
+  .sidebar { display: none; }
+  .day-header { padding: 12px 16px; }
+  .challenge-panel { padding: 10px 16px; }
+  .quick-insert { padding: 6px 16px; }
+  .home-hero h1 { font-size: 22px; }
+  .home-stats { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Loading overlay -->
+<div class="loading-overlay" id="loading">
+  <div class="loading-spinner"></div>
+  <div class="loading-text">Initialising PostgreSQL engine...</div>
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-left">
+    <div class="logo">S</div>
+    <div class="header-title"><span>SQL</span> Challenge Simulator</div>
+  </div>
+  <div class="header-progress">
+    <div class="progress-bar-wrap"><div class="progress-bar-fill" id="header-progress-bar"></div></div>
+    <span class="progress-label" id="header-progress-label">0%</span>
+  </div>
+  <div class="header-right">
+    <div class="db-status"><span class="db-dot"></span><span>PostgreSQL</span></div>
+    <button class="btn btn-sm" onclick="navigate('progress')">Progress</button>
+    <button class="btn btn-sm" onclick="navigate('')">Home</button>
+  </div>
+</header>
+
+<!-- Main layout -->
+<div class="main">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-tabs">
+      <div class="sidebar-tab active" data-tab="days" onclick="switchSidebarTab('days')">Days</div>
+      <div class="sidebar-tab" data-tab="schema" onclick="switchSidebarTab('schema')">Schema</div>
+      <div class="sidebar-tab" data-tab="history" onclick="switchSidebarTab('history')">History</div>
+    </div>
+    <div class="sidebar-content" id="sidebar-content"></div>
+  </aside>
+
+  <!-- Workspace -->
+  <div class="workspace">
+
+    <!-- Home view -->
+    <div class="home-view" id="home-view"></div>
+
+    <!-- Progress view -->
+    <div class="progress-view" id="progress-view"></div>
+
+    <!-- Day view (editor workspace) -->
+    <div id="day-view" style="display:none;flex:1;flex-direction:column;overflow:hidden;">
+
+      <!-- Day header -->
+      <div class="day-header" id="day-header"></div>
+
+      <!-- Video section -->
+      <div class="video-section" id="video-section"></div>
+
+      <!-- PostgreSQL compatibility note -->
+      <div class="sqlite-note" id="pg-note"></div>
+
+      <!-- Challenge panel -->
+      <div class="challenge-panel" id="challenge-panel"></div>
+
+      <!-- Quick insert -->
+      <div class="quick-insert" id="quick-insert"></div>
+
+      <!-- Editor -->
+      <div class="editor-container" id="editor-container">
+        <div class="editor-toolbar">
+          <span class="editor-label">SQL Editor</span>
+          <span class="editor-shortcuts"><kbd>Ctrl</kbd>+<kbd>Enter</kbd> run &middot; <kbd>Ctrl</kbd>+<kbd>L</kbd> clear</span>
+        </div>
+        <div class="editor-wrap">
+          <textarea id="sql-editor" spellcheck="false" placeholder="-- Write your SQL here..."></textarea>
+        </div>
+        <div class="resize-handle" id="resize-handle"></div>
+      </div>
+
+      <!-- Run bar -->
+      <div class="run-bar">
+        <button class="btn btn-primary" onclick="executeSQL()">Run Query</button>
+        <button class="btn btn-sm" onclick="resetCurrentDay()">Reset Tables</button>
+      </div>
+
+      <!-- Results -->
+      <div class="results-container">
+        <div class="results-toolbar">
+          <span class="results-label">
+            Results
+            <span class="result-status" id="result-status" style="display:none"></span>
+          </span>
+          <span class="exec-time" id="exec-time"></span>
+        </div>
+        <div class="results-body" id="results-body">
+          <div class="empty-state">
+            <div class="es-icon">&#9654;</div>
+            <div class="es-text">Run a query to see results</div>
+            <div class="es-hint">Press Ctrl+Enter or pick a challenge above</div>
+          </div>
+        </div>
+        <div class="row-count-footer" id="row-count"></div>
+      </div>
+
+      <!-- Validation feedback -->
+      <div class="validation-feedback" id="validation-feedback"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Import modal -->
+<div class="modal-overlay" id="import-modal">
+  <div class="modal-box">
+    <h3>Import Progress</h3>
+    <p>Select a previously exported JSON file to restore your progress. This will overwrite your current progress.</p>
+    <input type="file" id="import-file-input" accept=".json">
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('import-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="document.getElementById('import-file-input').click()">Choose File</button>
+    </div>
+  </div>
+</div>
+
+<!-- Reset confirm modal -->
+<div class="modal-overlay" id="reset-modal">
+  <div class="modal-box">
+    <h3>Reset Tables</h3>
+    <p>This will restore all tables for the current day to their original state. Any data you inserted, updated, or deleted will be lost.</p>
+    <div class="modal-actions">
+      <button class="btn" onclick="closeModal('reset-modal')">Cancel</button>
+      <button class="btn btn-primary" onclick="confirmResetDay()">Reset</button>
+    </div>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script src="course-data.js"></script>
+<script type="module">
+// ============================================================
+// MODULE 1: State Management
+// ============================================================
+
+const STATE = {
+  currentDay: null,
+  currentChallenge: 0,
+  db: null,
+  dayLoaded: null,
+  sidebarTab: 'days',
+  queryHistory: [],
+  progress: null,
+  videoCollapsed: false
+};
+
+const PROGRESS_KEY = 'sql-challenge-progress';
+
+function getDefaultProgress() {
+  return {
+    version: 1,
+    challenges: {},
+    streak: {
+      currentStreak: 0,
+      longestStreak: 0,
+      lastActivityDate: null,
+      activeDays: []
+    },
+    preferences: { lastDay: null, sidebarTab: 'days', editorHeight: 200 }
+  };
+}
+
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem(PROGRESS_KEY);
+    if (raw) {
+      const parsed = JSON.parse(raw);
+      if (parsed.version === 1) {
+        STATE.progress = parsed;
+        return;
+      }
+    }
+  } catch(e) {}
+  STATE.progress = getDefaultProgress();
+}
+
+function saveProgress() {
+  try {
+    localStorage.setItem(PROGRESS_KEY, JSON.stringify(STATE.progress));
+  } catch(e) {}
+}
+
+function getChallengeStatus(challengeId) {
+  return STATE.progress.challenges[challengeId] || null;
+}
+
+function getDayCompletion(dayNum) {
+  const dayData = getDayData(dayNum);
+  if (!dayData) return { completed: 0, total: 0, pct: 0 };
+  const total = dayData.challenges.length;
+  let completed = 0;
+  dayData.challenges.forEach(ch => {
+    const s = getChallengeStatus(ch.id);
+    if (s && s.completed) completed++;
+  });
+  return { completed, total, pct: total > 0 ? Math.round((completed / total) * 100) : 0 };
+}
+
+function getOverallCompletion() {
+  if (!window.COURSE_DATA) return { completed: 0, total: 0, pct: 0, daysStarted: 0, daysComplete: 0 };
+  let total = 0, completed = 0, daysStarted = 0, daysComplete = 0;
+  window.COURSE_DATA.days.forEach(d => {
+    const dc = getDayCompletion(d.day);
+    total += dc.total;
+    completed += dc.completed;
+    if (dc.completed > 0) daysStarted++;
+    if (dc.completed === dc.total && dc.total > 0) daysComplete++;
+  });
+  return { completed, total, pct: total > 0 ? Math.round((completed / total) * 100) : 0, daysStarted, daysComplete };
+}
+
+function getDayData(dayNum) {
+  if (!window.COURSE_DATA) return null;
+  return window.COURSE_DATA.days.find(d => d.day === dayNum) || null;
+}
+
+function getWeeks() {
+  if (!window.COURSE_DATA) return [];
+  const weeks = {};
+  window.COURSE_DATA.days.forEach(d => {
+    const key = d.week;
+    if (!weeks[key]) weeks[key] = { num: key, label: d.weekLabel, days: [] };
+    weeks[key].days.push(d);
+  });
+  return Object.values(weeks).sort((a, b) => a.num - b.num);
+}
+
+// ============================================================
+// MODULE 2: Database Lifecycle
+// ============================================================
+
+async function initDB() {
+  const { PGlite } = await import('https://cdn.jsdelivr.net/npm/@electric-sql/pglite@0.4.4/dist/index.js');
+  STATE.db = new PGlite();
+  await STATE.db.waitReady;
+}
+
+async function loadDayTables(dayNum) {
+  const dayData = getDayData(dayNum);
+  if (!dayData || !dayData.seedSQL) return;
+
+  // Drop all existing tables in public schema
+  try {
+    const res = await STATE.db.query("SELECT tablename FROM pg_tables WHERE schemaname = 'public'");
+    for (const row of res.rows) {
+      await STATE.db.exec(`DROP TABLE IF EXISTS "${row.tablename}" CASCADE`);
+    }
+  } catch(e) {}
+
+  // Seed new tables
+  await STATE.db.exec(dayData.seedSQL);
+  STATE.dayLoaded = dayNum;
+}
+
+function resetCurrentDay() {
+  openModal('reset-modal');
+}
+
+async function confirmResetDay() {
+  closeModal('reset-modal');
+  if (STATE.currentDay) {
+    await loadDayTables(STATE.currentDay);
+    showMessage('Tables reset to original state.');
+    await renderSchemaTab();
+  }
+}
+
+async function executeSQL() {
+  const editor = document.getElementById('sql-editor');
+  const sql = editor.value.trim();
+  if (!sql) return;
+
+  const start = performance.now();
+  const resultsBody = document.getElementById('results-body');
+  const statusEl = document.getElementById('result-status');
+  const timeEl = document.getElementById('exec-time');
+  const rowCountEl = document.getElementById('row-count');
+  const validationEl = document.getElementById('validation-feedback');
+  validationEl.className = 'validation-feedback';
+
+  try {
+    const results = await STATE.db.exec(sql);
+    const elapsed = (performance.now() - start).toFixed(1);
+
+    // PGlite exec returns array of {rows, fields, affectedRows}
+    const lastResult = results.length > 0 ? results[results.length - 1] : null;
+    const rowCount = lastResult?.rows?.length || 0;
+
+    STATE.queryHistory.unshift({ sql, time: new Date().toLocaleTimeString(), rows: rowCount });
+    if (STATE.queryHistory.length > 50) STATE.queryHistory.pop();
+
+    statusEl.style.display = 'inline';
+    statusEl.className = 'result-status success';
+    statusEl.textContent = 'OK';
+    timeEl.textContent = elapsed + 'ms';
+
+    if (!lastResult || !lastResult.fields || lastResult.fields.length === 0) {
+      resultsBody.innerHTML = '<div class="message-display">Query executed successfully. No rows returned.</div>';
+      rowCountEl.style.display = 'none';
+
+      // For mutations, validate even without results
+      if (STATE.currentDay) {
+        const dayData = getDayData(STATE.currentDay);
+        const challenge = dayData?.challenges?.[STATE.currentChallenge];
+        if (challenge) await validateAndRecord(challenge, null, sql);
+      }
+    } else {
+      renderResultsTable(lastResult);
+      rowCountEl.style.display = 'block';
+      rowCountEl.textContent = `${rowCount} row${rowCount !== 1 ? 's' : ''} returned`;
+
+      // Validate challenge
+      if (STATE.currentDay) {
+        const dayData = getDayData(STATE.currentDay);
+        const challenge = dayData?.challenges?.[STATE.currentChallenge];
+        if (challenge) await validateAndRecord(challenge, lastResult, sql);
+      }
+    }
+
+    ANALYTICS.queryRun(STATE.currentDay, sql, true);
+
+  } catch(e) {
+    const elapsed = (performance.now() - start).toFixed(1);
+    statusEl.style.display = 'inline';
+    statusEl.className = 'result-status error';
+    statusEl.textContent = 'Error';
+    timeEl.textContent = elapsed + 'ms';
+    resultsBody.innerHTML = `<div class="error-display">${escapeHtml(e.message)}</div>`;
+    rowCountEl.style.display = 'none';
+
+    STATE.queryHistory.unshift({ sql, time: new Date().toLocaleTimeString(), error: true });
+
+    // Record failed attempt
+    if (STATE.currentDay) {
+      const dayData = getDayData(STATE.currentDay);
+      const challenge = dayData?.challenges?.[STATE.currentChallenge];
+      if (challenge) recordAttempt(challenge.id, false);
+    }
+
+    ANALYTICS.queryRun(STATE.currentDay, sql, false, e.message);
+  }
+}
+
+function renderResultsTable(res) {
+  const resultsBody = document.getElementById('results-body');
+  const fields = res.fields;
+  const rows = res.rows;
+
+  let html = '<table class="result-table"><thead><tr>';
+  fields.forEach(f => { html += `<th>${escapeHtml(f.name)}</th>`; });
+  html += '</tr></thead><tbody>';
+  rows.forEach(row => {
+    html += '<tr>';
+    fields.forEach(f => {
+      const val = row[f.name];
+      if (val === null || val === undefined) html += '<td class="null-val">NULL</td>';
+      else if (typeof val === 'number') html += `<td class="num-val">${val}</td>`;
+      else html += `<td>${escapeHtml(String(val))}</td>`;
+    });
+    html += '</tr>';
+  });
+  html += '</tbody></table>';
+  resultsBody.innerHTML = html;
+}
+
+function showMessage(msg) {
+  document.getElementById('results-body').innerHTML = `<div class="message-display">${escapeHtml(msg)}</div>`;
+  document.getElementById('row-count').style.display = 'none';
+}
+
+// ============================================================
+// MODULE 3: Validation Engine
+// ============================================================
+
+function resultsToObjects(res) {
+  if (!res || !res.rows) return [];
+  return res.rows;  // PGlite already returns rows as objects
+}
+
+async function validateChallenge(challenge, res, sql) {
+  const v = challenge.validation;
+  if (!v) return true;
+  const rows = resultsToObjects(res);
+
+  switch (v.type) {
+    case 'row_count':
+      return rows.length === v.expected;
+
+    case 'columns_match': {
+      if (!res || !res.fields) return false;
+      const cols = res.fields.map(f => f.name.toLowerCase());
+      const match = v.expectedColumns.every(c => cols.includes(c.toLowerCase()));
+      if (!match) return false;
+      if (v.expectedRowCount != null && rows.length !== v.expectedRowCount) return false;
+      return true;
+    }
+
+    case 'all_match':
+      if (rows.length === 0) return false;
+      return rows.every(r => {
+        const val = r[v.column];
+        switch (v.operator) {
+          case '===': case '==': return val == v.value;
+          case '!==': case '!=': return val != v.value;
+          case '>': return val > v.value;
+          case '<': return val < v.value;
+          case '>=': return val >= v.value;
+          case '<=': return val <= v.value;
+          default: return val == v.value;
+        }
+      });
+
+    case 'no_nulls':
+      return rows.length > 0 && rows.every(r => r[v.column] !== null && r[v.column] !== undefined);
+
+    case 'ordered': {
+      if (rows.length < 2) return true;
+      for (let i = 1; i < rows.length; i++) {
+        const a = rows[i - 1][v.column];
+        const b = rows[i][v.column];
+        if (v.direction === 'desc' && a < b) return false;
+        if (v.direction === 'asc' && a > b) return false;
+      }
+      return true;
+    }
+
+    case 'values_match':
+      if (!v.checks || rows.length === 0) return false;
+      return v.checks.every(check => {
+        const colVals = rows.map(r => r[check.column]);
+        return check.values.every(expected => colVals.includes(expected));
+      });
+
+    case 'mutation': {
+      try {
+        const checkRes = await STATE.db.exec(v.checkSQL);
+        if (!checkRes.length) return false;
+        return await validateChallenge({ validation: v.validation }, checkRes[checkRes.length - 1], sql);
+      } catch(e) { return false; }
+    }
+
+    case 'custom': {
+      try {
+        return new Function('rows', 'db', `return ${v.fn}`)(rows, STATE.db);
+      } catch(e) { return false; }
+    }
+
+    default:
+      return true;
+  }
+}
+
+async function validateAndRecord(challenge, res, sql) {
+  const validationEl = document.getElementById('validation-feedback');
+  try {
+    const passed = await validateChallenge(challenge, res, sql);
+    if (passed) {
+      validationEl.className = 'validation-feedback pass';
+      validationEl.innerHTML = `<h4>Correct!</h4><p>Well done. ${getEncouragement()}</p>`;
+      recordAttempt(challenge.id, true);
+      ANALYTICS.challengeResult(STATE.currentDay, STATE.currentChallenge, challenge.id, true, sql);
+    } else {
+      validationEl.className = 'validation-feedback fail';
+      validationEl.innerHTML = `<h4>Not quite</h4><p>Your query ran but the results don't match what's expected. Check the requirements and try again.</p>`;
+      recordAttempt(challenge.id, false);
+      ANALYTICS.challengeResult(STATE.currentDay, STATE.currentChallenge, challenge.id, false, sql);
+    }
+  } catch(e) {
+    // Validation error - silently skip
+  }
+}
+
+function getEncouragement() {
+  const msgs = [
+    'Try the next challenge!',
+    'You are building real SQL skills.',
+    'Keep going - consistency beats intensity.',
+    'Another one down!',
+    'SQL muscle memory is forming.',
+    'Onwards!'
+  ];
+  return msgs[Math.floor(Math.random() * msgs.length)];
+}
+
+// ============================================================
+// MODULE 4: Progress Tracking
+// ============================================================
+
+function recordAttempt(challengeId, passed) {
+  if (!STATE.progress.challenges[challengeId]) {
+    STATE.progress.challenges[challengeId] = {
+      completed: false, completedAt: null, attempts: 0, usedHint: false, usedSolution: false
+    };
+  }
+  const entry = STATE.progress.challenges[challengeId];
+  entry.attempts++;
+  if (passed && !entry.completed) {
+    entry.completed = true;
+    entry.completedAt = new Date().toISOString();
+    updateStreak();
+  }
+  saveProgress();
+  updateHeaderProgress();
+  renderDaysTab();
+}
+
+function recordHint(challengeId) {
+  if (!STATE.progress.challenges[challengeId]) {
+    STATE.progress.challenges[challengeId] = {
+      completed: false, completedAt: null, attempts: 0, usedHint: false, usedSolution: false
+    };
+  }
+  STATE.progress.challenges[challengeId].usedHint = true;
+  saveProgress();
+}
+
+function recordSolution(challengeId) {
+  if (!STATE.progress.challenges[challengeId]) {
+    STATE.progress.challenges[challengeId] = {
+      completed: false, completedAt: null, attempts: 0, usedHint: false, usedSolution: false
+    };
+  }
+  STATE.progress.challenges[challengeId].usedSolution = true;
+  saveProgress();
+}
+
+function updateStreak() {
+  const today = new Date().toISOString().split('T')[0];
+  const streak = STATE.progress.streak;
+  if (!streak.activeDays.includes(today)) {
+    streak.activeDays.push(today);
+  }
+  streak.lastActivityDate = today;
+
+  // Calculate current streak
+  const sorted = [...streak.activeDays].sort().reverse();
+  let count = 0;
+  let expected = new Date(today + 'T12:00:00Z');
+  for (const day of sorted) {
+    const dayStr = expected.toISOString().split('T')[0];
+    if (day === dayStr) {
+      count++;
+      expected.setDate(expected.getDate() - 1);
+    } else if (day < dayStr) {
+      break;
+    }
+  }
+  streak.currentStreak = count;
+  streak.longestStreak = Math.max(streak.longestStreak, count);
+  saveProgress();
+}
+
+function exportProgress() {
+  STATE.progress.exportedAt = new Date().toISOString();
+  saveProgress();
+  const data = JSON.stringify(STATE.progress, null, 2);
+  const blob = new Blob([data], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `sql-challenge-progress-${new Date().toISOString().split('T')[0]}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+
+function importProgress() {
+  openModal('import-modal');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('import-file-input').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const imported = JSON.parse(ev.target.result);
+        if (imported.version === 1) {
+          STATE.progress = imported;
+          saveProgress();
+          closeModal('import-modal');
+          renderAll();
+          showMessage('Progress imported successfully.');
+        } else {
+          alert('Unrecognised progress file format.');
+        }
+      } catch(err) {
+        alert('Invalid JSON file.');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
+});
+
+// ============================================================
+// MODULE 5: Navigation & Routing
+// ============================================================
+
+function navigate(route) {
+  location.hash = route ? `#${route}` : '';
+}
+
+async function handleRoute() {
+  const hash = location.hash.slice(1);
+  const params = new URLSearchParams(hash.replace(/^([^?&=]+)/, 'view=$1'));
+
+  // Hide all views
+  document.getElementById('home-view').classList.remove('visible');
+  document.getElementById('progress-view').classList.remove('visible');
+  document.getElementById('day-view').style.display = 'none';
+
+  if (!hash || hash === '') {
+    // Home
+    renderHomeView();
+    document.getElementById('home-view').classList.add('visible');
+    STATE.currentDay = null;
+
+  } else if (hash === 'progress') {
+    renderProgressView();
+    document.getElementById('progress-view').classList.add('visible');
+    STATE.currentDay = null;
+
+  } else if (hash.startsWith('day=')) {
+    const dayMatch = hash.match(/day=(\d+)/);
+    const challengeMatch = hash.match(/challenge=(\d+)/);
+    if (dayMatch) {
+      const dayNum = parseInt(dayMatch[1]);
+      const challengeIdx = challengeMatch ? parseInt(challengeMatch[1]) - 1 : 0;
+      await openDay(dayNum, challengeIdx);
+    }
+  }
+}
+
+async function openDay(dayNum, challengeIdx = 0) {
+  const dayData = getDayData(dayNum);
+  if (!dayData) return;
+
+  STATE.currentDay = dayNum;
+  STATE.currentChallenge = Math.min(challengeIdx, dayData.challenges.length - 1);
+  STATE.progress.preferences.lastDay = dayNum;
+  saveProgress();
+
+  // Load tables if needed
+  if (STATE.dayLoaded !== dayNum) {
+    await loadDayTables(dayNum);
+  }
+
+  // Show day view
+  document.getElementById('home-view').classList.remove('visible');
+  document.getElementById('progress-view').classList.remove('visible');
+  const dayView = document.getElementById('day-view');
+  dayView.style.display = 'flex';
+
+  renderDayHeader(dayData);
+  renderVideoSection(dayData);
+  renderPgNote(dayData);
+  renderChallengePanel(dayData);
+  renderQuickInsert(dayData);
+  await renderSchemaTab();
+  renderDaysTab();
+
+  // Clear editor and results
+  document.getElementById('sql-editor').value = '';
+  document.getElementById('sql-editor').placeholder = dayData.challenges.length > 0
+    ? `-- ${dayData.challenges[STATE.currentChallenge].description}\n-- Write your SQL here...`
+    : `-- Day ${dayNum}: ${dayData.title}\n-- Explore the tables using the Schema tab`;
+  document.getElementById('results-body').innerHTML = '<div class="empty-state"><div class="es-icon">&#9654;</div><div class="es-text">Run a query to see results</div><div class="es-hint">Press Ctrl+Enter or pick a challenge above</div></div>';
+  document.getElementById('row-count').style.display = 'none';
+  document.getElementById('result-status').style.display = 'none';
+  document.getElementById('exec-time').textContent = '';
+  document.getElementById('validation-feedback').className = 'validation-feedback';
+
+  ANALYTICS.daySelected(dayNum);
+}
+
+window.addEventListener('hashchange', handleRoute);
+
+// ============================================================
+// MODULE 6: UI Rendering
+// ============================================================
+
+function renderAll() {
+  updateHeaderProgress();
+  handleRoute();
+  renderDaysTab();
+}
+
+function updateHeaderProgress() {
+  const overall = getOverallCompletion();
+  document.getElementById('header-progress-bar').style.width = overall.pct + '%';
+  document.getElementById('header-progress-label').textContent =
+    `${overall.completed}/${overall.total}`;
+}
+
+// ---- Sidebar ----
+
+function switchSidebarTab(tab) {
+  STATE.sidebarTab = tab;
+  document.querySelectorAll('.sidebar-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.sidebar-tab[data-tab="${tab}"]`).classList.add('active');
+
+  if (tab === 'days') renderDaysTab();
+  else if (tab === 'schema') { renderSchemaTab(); }
+  else if (tab === 'history') renderHistoryTab();
+}
+
+function renderDaysTab() {
+  const container = document.getElementById('sidebar-content');
+  if (STATE.sidebarTab !== 'days') return;
+
+  const weeks = getWeeks();
+  let html = '';
+  weeks.forEach(w => {
+    html += `<div class="week-group"><div class="week-label">Week ${w.num}: ${w.label}</div>`;
+    w.days.forEach(d => {
+      const active = STATE.currentDay === d.day;
+      const dc = getDayCompletion(d.day);
+      let indicator = '';
+      if (dc.total > 0 && dc.completed === dc.total) {
+        indicator = '<span class="day-check">&#10003;</span>';
+      } else if (dc.completed > 0) {
+        const pct = dc.pct;
+        const r = 7;
+        const circ = 2 * Math.PI * r;
+        const offset = circ - (circ * pct / 100);
+        indicator = `<span class="day-progress-ring"><svg viewBox="0 0 18 18"><circle class="ring-bg" cx="9" cy="9" r="${r}"/><circle class="ring-fill" cx="9" cy="9" r="${r}" stroke="${pct > 50 ? 'var(--accent-green)' : 'var(--accent-amber)'}" stroke-dasharray="${circ}" stroke-dashoffset="${offset}"/></svg></span>`;
+      }
+
+      html += `<div class="day-item ${active ? 'active' : ''}" onclick="navigate('day=${d.day}')">
+        <span class="day-num">${String(d.day).padStart(2, '0')}</span>
+        <span class="day-title-text">${escapeHtml(d.title)}</span>
+        ${indicator}
+      </div>`;
+    });
+    html += '</div>';
+  });
+  container.innerHTML = html;
+}
+
+async function renderSchemaTab() {
+  const container = document.getElementById('sidebar-content');
+  if (STATE.sidebarTab !== 'schema') return;
+
+  if (!STATE.db || !STATE.dayLoaded) {
+    container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:12px;">Select a day to see its tables</div>';
+    return;
+  }
+
+  try {
+    const tablesRes = await STATE.db.query("SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename");
+    if (!tablesRes.rows.length) {
+      container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:12px;">No tables loaded</div>';
+      return;
+    }
+
+    let html = '';
+    for (const tbl of tablesRes.rows) {
+      const tableName = tbl.tablename;
+      const colsRes = await STATE.db.query(
+        "SELECT column_name, data_type, is_nullable, column_default FROM information_schema.columns WHERE table_schema = 'public' AND table_name = $1 ORDER BY ordinal_position",
+        [tableName]
+      );
+      const pkRes = await STATE.db.query(
+        "SELECT a.attname FROM pg_index i JOIN pg_attribute a ON a.attrelid = i.indrelid AND a.attnum = ANY(i.indkey) WHERE i.indrelid = $1::regclass AND i.indisprimary",
+        [tableName]
+      );
+      const pkCols = new Set(pkRes.rows.map(r => r.attname));
+      const countRes = await STATE.db.query(`SELECT COUNT(*)::int as c FROM "${tableName}"`);
+      const rowCount = countRes.rows[0]?.c || 0;
+
+      html += `<div class="schema-table">
+        <div class="schema-header" onclick="this.nextElementSibling.classList.toggle('open')">
+          <span>${tableName}</span>
+          <span class="row-ct">${rowCount} rows</span>
+        </div>
+        <div class="schema-cols">`;
+      colsRes.rows.forEach(col => {
+        const isPk = pkCols.has(col.column_name);
+        html += `<div class="schema-col">
+          <span>${isPk ? '<span class="col-pk">PK</span> ' : ''}${col.column_name}</span>
+          <span class="col-type">${col.data_type}</span>
+        </div>`;
+      });
+      html += '</div></div>';
+    }
+    container.innerHTML = html;
+  } catch(e) {
+    container.innerHTML = `<div style="padding:20px;color:var(--error);font-size:12px;">${escapeHtml(e.message)}</div>`;
+  }
+}
+
+function renderHistoryTab() {
+  const container = document.getElementById('sidebar-content');
+  if (STATE.queryHistory.length === 0) {
+    container.innerHTML = '<div style="padding:20px;text-align:center;color:var(--text-muted);font-size:12px;">No queries yet</div>';
+    return;
+  }
+  let html = '';
+  STATE.queryHistory.forEach((item, i) => {
+    html += `<div class="history-item" onclick="loadHistoryItem(${i})">
+      <div class="history-query">${escapeHtml(item.sql.substring(0, 80))}</div>
+      <div class="history-meta">${item.time} ${item.error ? '- error' : `- ${item.rows} rows`}</div>
+    </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function loadHistoryItem(idx) {
+  document.getElementById('sql-editor').value = STATE.queryHistory[idx].sql;
+  document.getElementById('sql-editor').focus();
+}
+
+// ---- Day View Components ----
+
+function renderDayHeader(dayData) {
+  const el = document.getElementById('day-header');
+  const prevDay = dayData.day > 1 ? dayData.day - 1 : null;
+  const nextDay = dayData.day < 30 ? dayData.day + 1 : null;
+  const meta = window.COURSE_DATA?.meta || {};
+  const repoUrl = meta.repoUrl || '#';
+
+  el.innerHTML = `
+    <div class="day-header-info">
+      <div class="day-header-nav">
+        ${prevDay ? `<button class="btn btn-sm" onclick="navigate('day=${prevDay}')">&#8592; Day ${prevDay}</button>` : ''}
+        ${nextDay ? `<button class="btn btn-sm" onclick="navigate('day=${nextDay}')">Day ${nextDay} &#8594;</button>` : ''}
+      </div>
+      <h2><span class="day-label">Day ${dayData.day}</span> - ${escapeHtml(dayData.title)}</h2>
+      <div class="day-header-meta">
+        <span class="badge badge-${dayData.type}">${dayData.type}</span>
+        <span>Week ${dayData.week}</span>
+        <span>${getDayCompletion(dayData.day).completed}/${getDayCompletion(dayData.day).total} challenges</span>
+      </div>
+    </div>
+    <div class="day-header-links">
+      <a href="${repoUrl}/tree/main/${dayData.githubPath}" target="_blank" rel="noopener">GitHub</a>
+      ${dayData.youtubeId ? `<a href="https://www.youtube.com/watch?v=${dayData.youtubeId}" target="_blank" rel="noopener">YouTube</a>` : ''}
+    </div>
+  `;
+}
+
+function renderVideoSection(dayData) {
+  const el = document.getElementById('video-section');
+  el.classList.add('visible');
+  const isFileProtocol = location.protocol === 'file:';
+
+  if (dayData.youtubeId) {
+    const watchUrl = `https://www.youtube.com/watch?v=${dayData.youtubeId}`;
+    const thumbUrl = `https://img.youtube.com/vi/${dayData.youtubeId}/maxresdefault.jpg`;
+    const embedUrl = `https://www.youtube.com/embed/${dayData.youtubeId}`;
+
+    // Try iframe first, with error fallback to thumbnail
+    el.innerHTML = `<div class="video-container">
+      <div class="video-iframe-wrap" id="video-wrap-${dayData.day}">
+        <iframe src="${embedUrl}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"
+          onerror="window._videoFallback(${dayData.day})"
+          onload="this.contentWindow ? null : window._videoFallback(${dayData.day})"></iframe>
+        <a href="${watchUrl}" target="_blank" rel="noopener" class="video-thumb-fallback" id="video-fallback-${dayData.day}" style="display:none;position:absolute;inset:0;text-decoration:none;">
+          <img src="${thumbUrl}" alt="Watch on YouTube" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,0.35);">
+            <div style="width:68px;height:48px;background:rgba(255,0,0,0.85);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:24px;color:white;">&#9654;</div>
+          </div>
+        </a>
+      </div>
+    </div>`;
+
+    // Detect embed failure (file:// protocol or blocked video)
+    if (isFileProtocol) {
+      setTimeout(() => window._videoFallback(dayData.day), 100);
+    }
+  } else {
+    const channelUrl = window.COURSE_DATA?.meta?.channelUrl || '#';
+    el.innerHTML = `<div class="video-placeholder">
+      <div class="vp-icon">&#9655;</div>
+      <div class="vp-text">Video coming soon</div>
+      <div class="vp-sub"><a href="${channelUrl}" target="_blank" rel="noopener">Subscribe to Stephen | Data</a> to get notified when it drops</div>
+    </div>`;
+  }
+}
+
+function renderPgNote(dayData) {
+  const el = document.getElementById('pg-note');
+  if (dayData.pgNotes) {
+    el.textContent = dayData.pgNotes;
+    el.classList.add('visible');
+  } else {
+    el.classList.remove('visible');
+  }
+}
+
+function renderChallengePanel(dayData) {
+  const el = document.getElementById('challenge-panel');
+  if (!dayData.challenges || dayData.challenges.length === 0) {
+    el.innerHTML = '<div style="font-size:13px;color:var(--text-muted);">No challenges for this day - explore the tables freely!</div>';
+    return;
+  }
+
+  const ch = dayData.challenges[STATE.currentChallenge];
+  if (!ch) return;
+
+  const dc = getDayCompletion(dayData.day);
+  const status = getChallengeStatus(ch.id);
+  const isCompleted = status?.completed;
+
+  el.innerHTML = `
+    <div class="challenge-top">
+      <span class="challenge-counter">Challenge ${STATE.currentChallenge + 1} of ${dayData.challenges.length} ${isCompleted ? '&#10003;' : ''}</span>
+      <div class="challenge-badges">
+        <span class="badge badge-${ch.tier}">${ch.tier}</span>
+        <span class="badge badge-${ch.difficulty}">${ch.difficulty}</span>
+      </div>
+    </div>
+    <div class="challenge-title-text">${escapeHtml(ch.title)}</div>
+    <div class="challenge-desc">${escapeHtml(ch.description)}</div>
+    <div class="challenge-hint" id="current-hint">${escapeHtml(ch.hint || '')}</div>
+    <div class="challenge-actions">
+      <button class="btn btn-sm" onclick="toggleHint()">Hint</button>
+      <button class="btn btn-sm" onclick="revealSolution()">Solution</button>
+      <span style="flex:1"></span>
+      ${STATE.currentChallenge > 0 ? `<button class="btn btn-sm" onclick="prevChallenge()">&#8592; Prev</button>` : ''}
+      ${STATE.currentChallenge < dayData.challenges.length - 1 ? `<button class="btn btn-sm" onclick="nextChallenge()">Next &#8594;</button>` : ''}
+    </div>
+  `;
+}
+
+function renderQuickInsert(dayData) {
+  const el = document.getElementById('quick-insert');
+  const chips = dayData.quickInsert || ['SELECT *', 'WHERE', 'ORDER BY', 'LIMIT'];
+  el.innerHTML = chips.map(c =>
+    `<span class="quick-chip" onclick="insertSnippet('${c} ')">${c}</span>`
+  ).join('');
+}
+
+// ---- Challenge Navigation ----
+
+async function nextChallenge() {
+  const dayData = getDayData(STATE.currentDay);
+  if (!dayData) return;
+  if (STATE.currentChallenge < dayData.challenges.length - 1) {
+    STATE.currentChallenge++;
+    renderChallengePanel(dayData);
+    document.getElementById('sql-editor').value = '';
+    document.getElementById('sql-editor').placeholder = `-- ${dayData.challenges[STATE.currentChallenge].description}`;
+    document.getElementById('validation-feedback').className = 'validation-feedback';
+    if (dayData.challenges[STATE.currentChallenge].resetBefore) await loadDayTables(STATE.currentDay);
+    document.getElementById('sql-editor').focus();
+  }
+}
+
+function prevChallenge() {
+  if (STATE.currentChallenge > 0) {
+    STATE.currentChallenge--;
+    const dayData = getDayData(STATE.currentDay);
+    renderChallengePanel(dayData);
+    document.getElementById('sql-editor').value = '';
+    document.getElementById('sql-editor').placeholder = `-- ${dayData.challenges[STATE.currentChallenge].description}`;
+    document.getElementById('validation-feedback').className = 'validation-feedback';
+    document.getElementById('sql-editor').focus();
+  }
+}
+
+function toggleHint() {
+  const hintEl = document.getElementById('current-hint');
+  hintEl.classList.toggle('visible');
+  if (hintEl.classList.contains('visible') && STATE.currentDay) {
+    const dayData = getDayData(STATE.currentDay);
+    const ch = dayData?.challenges?.[STATE.currentChallenge];
+    if (ch) {
+      recordHint(ch.id);
+      ANALYTICS.hintUsed(STATE.currentDay, STATE.currentChallenge, ch.id);
+    }
+  }
+}
+
+function revealSolution() {
+  const dayData = getDayData(STATE.currentDay);
+  const ch = dayData?.challenges?.[STATE.currentChallenge];
+  if (ch) {
+    document.getElementById('sql-editor').value = ch.solution;
+    recordSolution(ch.id);
+    ANALYTICS.solutionRevealed(STATE.currentDay, STATE.currentChallenge, ch.id);
+  }
+}
+
+// ---- Home View ----
+
+function renderHomeView() {
+  const el = document.getElementById('home-view');
+  const overall = getOverallCompletion();
+  const meta = window.COURSE_DATA?.meta || {};
+  const weeks = getWeeks();
+
+  let weeksHtml = '';
+  weeks.forEach(w => {
+    let dotsHtml = '';
+    w.days.forEach(d => {
+      const dc = getDayCompletion(d.day);
+      let dotClass = '';
+      if (dc.total > 0 && dc.completed === dc.total) dotClass = 'completed';
+      else if (dc.completed > 0) dotClass = 'partial';
+      dotsHtml += `<div class="home-day-dot ${dotClass}" onclick="navigate('day=${d.day}')" title="Day ${d.day}: ${escapeHtml(d.title)}">${d.day}</div>`;
+    });
+    weeksHtml += `<div class="home-week-card" onclick="navigate('day=${w.days[0].day}')">
+      <h3>Week ${w.num}</h3>
+      <div class="week-sub">${w.label}</div>
+      <div class="week-days">${dotsHtml}</div>
+    </div>`;
+  });
+
+  el.innerHTML = `
+    <div class="home-hero">
+      <h1>30 Day <span>SQL</span> Challenge</h1>
+      <p>Practice SQL interactively - right in your browser. No setup, no installs, no friction. Pick a day and start writing queries.</p>
+    </div>
+    <div class="home-stats">
+      <div class="home-stat">
+        <div class="num">${overall.completed}</div>
+        <div class="label">Challenges Done</div>
+      </div>
+      <div class="home-stat">
+        <div class="num">${overall.daysStarted}</div>
+        <div class="label">Days Started</div>
+      </div>
+      <div class="home-stat">
+        <div class="num">${STATE.progress.streak.currentStreak}</div>
+        <div class="label">Day Streak</div>
+      </div>
+    </div>
+    <div class="home-weeks">${weeksHtml}</div>
+    <div style="text-align:center;margin-top:32px;">
+      <a href="${meta.channelUrl || '#'}" target="_blank" rel="noopener" style="color:var(--primary);text-decoration:none;font-size:13px;">Watch on YouTube: Stephen | Data</a>
+      <span style="color:var(--text-muted);margin:0 8px;">|</span>
+      <a href="${meta.repoUrl || '#'}" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:none;font-size:13px;">View Code on GitHub</a>
+      <span style="color:var(--text-muted);margin:0 8px;">|</span>
+      <a href="${meta.newsletterUrl || '#'}" target="_blank" rel="noopener" style="color:var(--text-secondary);text-decoration:none;font-size:13px;">The Data Brief Newsletter</a>
+    </div>
+  `;
+}
+
+// ---- Progress View ----
+
+function renderProgressView() {
+  const el = document.getElementById('progress-view');
+  const overall = getOverallCompletion();
+  const streak = STATE.progress.streak;
+
+  let dayGridHtml = '';
+  if (window.COURSE_DATA) {
+    window.COURSE_DATA.days.forEach(d => {
+      const dc = getDayCompletion(d.day);
+      let dotClass = '';
+      if (dc.total > 0 && dc.completed === dc.total) dotClass = 'completed';
+      else if (dc.completed > 0) dotClass = 'partial';
+      dayGridHtml += `<div class="home-day-dot ${dotClass}" onclick="navigate('day=${d.day}')" title="Day ${d.day}: ${dc.completed}/${dc.total}">${d.day}</div>`;
+    });
+  }
+
+  // Tier breakdown
+  let starterDone = 0, starterTotal = 0, coreDone = 0, coreTotal = 0, stretchDone = 0, stretchTotal = 0;
+  if (window.COURSE_DATA) {
+    window.COURSE_DATA.days.forEach(d => {
+      d.challenges.forEach(ch => {
+        const done = getChallengeStatus(ch.id)?.completed ? 1 : 0;
+        if (ch.tier === 'starter') { starterTotal++; starterDone += done; }
+        else if (ch.tier === 'core') { coreTotal++; coreDone += done; }
+        else if (ch.tier === 'stretch') { stretchTotal++; stretchDone += done; }
+      });
+    });
+  }
+
+  el.innerHTML = `
+    <div class="progress-header">
+      <h2>Your Progress</h2>
+      <p style="color:var(--text-secondary);font-size:13px;">Keep practising - every query builds mastery.</p>
+    </div>
+    <div class="progress-grid">
+      <div class="progress-card">
+        <div class="pc-num" style="color:var(--primary);">${overall.pct}%</div>
+        <div class="pc-label">Overall Completion</div>
+      </div>
+      <div class="progress-card">
+        <div class="pc-num" style="color:var(--accent-green);">${overall.completed}</div>
+        <div class="pc-label">Challenges Completed</div>
+      </div>
+      <div class="progress-card">
+        <div class="pc-num" style="color:var(--accent-blue);">${overall.daysComplete}</div>
+        <div class="pc-label">Days Fully Complete</div>
+      </div>
+    </div>
+    <div class="streak-display">
+      <div class="streak-num">${streak.currentStreak}</div>
+      <div class="streak-label">Current Streak ${streak.longestStreak > streak.currentStreak ? `(Best: ${streak.longestStreak})` : streak.currentStreak > 0 ? '- Personal best!' : ''}</div>
+    </div>
+    <div class="progress-day-grid">${dayGridHtml}</div>
+    <div class="progress-grid" style="margin-top:24px;">
+      <div class="progress-card">
+        <div class="pc-num" style="color:var(--accent-blue);font-size:24px;">${starterDone}/${starterTotal}</div>
+        <div class="pc-label">Starter</div>
+      </div>
+      <div class="progress-card">
+        <div class="pc-num" style="color:var(--accent-purple);font-size:24px;">${coreDone}/${coreTotal}</div>
+        <div class="pc-label">Core</div>
+      </div>
+      <div class="progress-card">
+        <div class="pc-num" style="color:var(--primary);font-size:24px;">${stretchDone}/${stretchTotal}</div>
+        <div class="pc-label">Stretch</div>
+      </div>
+    </div>
+    <div class="progress-export-area">
+      <button class="btn" onclick="exportProgress()">Export Progress</button>
+      <button class="btn" onclick="importProgress()">Import Progress</button>
+    </div>
+  `;
+}
+
+// ============================================================
+// MODULE 7: Analytics (anonymous telemetry)
+// ============================================================
+
+const ANALYTICS = (() => {
+  // Supabase config - replace with your project details
+  const SUPABASE_URL = '';  // e.g., 'https://xyz.supabase.co'
+  const SUPABASE_ANON_KEY = '';  // safe to expose - RLS restricts to INSERT only
+  const ENABLED = SUPABASE_URL && SUPABASE_ANON_KEY;
+  const SESSION_ID = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+  const DEVICE = window.innerWidth < 768 ? 'mobile' : window.innerWidth < 1024 ? 'tablet' : 'desktop';
+
+  function send(eventType, data = {}) {
+    if (!ENABLED) return;
+    const payload = {
+      event_type: eventType,
+      session_id: SESSION_ID,
+      device_type: DEVICE,
+      ...data,
+      created_at: new Date().toISOString()
+    };
+    fetch(`${SUPABASE_URL}/rest/v1/simulator_events`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    }).catch(() => {});
+  }
+
+  return {
+    sessionStart: () => send('session_start'),
+    daySelected: (dayNum) => send('day_selected', { day_number: dayNum }),
+    queryRun: (dayNum, sql, success, errorMsg) => send('query_run', {
+      day_number: dayNum,
+      sql_query: (sql || '').substring(0, 500),
+      passed: success,
+      error_message: (errorMsg || '').substring(0, 300)
+    }),
+    challengeResult: (dayNum, idx, challengeId, passed, sql) => send('challenge_attempt', {
+      day_number: dayNum,
+      challenge_id: challengeId,
+      challenge_index: idx,
+      passed,
+      sql_query: (sql || '').substring(0, 500)
+    }),
+    hintUsed: (dayNum, idx, challengeId) => send('hint_used', { day_number: dayNum, challenge_id: challengeId, challenge_index: idx }),
+    solutionRevealed: (dayNum, idx, challengeId) => send('solution_revealed', { day_number: dayNum, challenge_id: challengeId, challenge_index: idx })
+  };
+})();
+
+// ============================================================
+// MODULE 8: Utilities
+// ============================================================
+
+// Video embed fallback - shows YouTube-styled thumbnail when iframe fails
+window._videoFallback = function(dayNum) {
+  const wrap = document.getElementById('video-wrap-' + dayNum);
+  const fallback = document.getElementById('video-fallback-' + dayNum);
+  if (wrap && fallback) {
+    const iframe = wrap.querySelector('iframe');
+    if (iframe) iframe.style.display = 'none';
+    fallback.style.display = 'block';
+  }
+};
+
+function escapeHtml(str) {
+  const div = document.createElement('div');
+  div.textContent = str;
+  return div.innerHTML;
+}
+
+function insertSnippet(text) {
+  const editor = document.getElementById('sql-editor');
+  const pos = editor.selectionStart;
+  editor.value = editor.value.substring(0, pos) + text + editor.value.substring(pos);
+  editor.focus();
+  editor.selectionStart = editor.selectionEnd = pos + text.length;
+}
+
+function openModal(id) {
+  document.getElementById(id).classList.add('visible');
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove('visible');
+}
+
+// Keyboard shortcuts
+function setupKeyboard() {
+  document.getElementById('sql-editor').addEventListener('keydown', (e) => {
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+      e.preventDefault();
+      executeSQL();
+    }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+      e.preventDefault();
+      e.target.value = '';
+    }
+    if (e.key === 'Tab') {
+      e.preventDefault();
+      const start = e.target.selectionStart;
+      e.target.value = e.target.value.substring(0, start) + '  ' + e.target.value.substring(e.target.selectionEnd);
+      e.target.selectionStart = e.target.selectionEnd = start + 2;
+    }
+  });
+
+  // Global shortcuts
+  document.addEventListener('keydown', (e) => {
+    if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight' && STATE.currentDay) nextChallenge();
+    if (e.key === 'ArrowLeft' && STATE.currentDay) prevChallenge();
+  });
+}
+
+// Resize handle
+function setupResize() {
+  const handle = document.getElementById('resize-handle');
+  const container = document.getElementById('editor-container');
+  if (!handle || !container) return;
+  let startY, startH;
+
+  handle.addEventListener('mousedown', (e) => {
+    startY = e.clientY;
+    startH = container.offsetHeight;
+    const onDrag = (ev) => {
+      container.style.height = Math.max(100, Math.min(500, startH + (ev.clientY - startY))) + 'px';
+    };
+    const stopDrag = () => {
+      document.removeEventListener('mousemove', onDrag);
+      document.removeEventListener('mouseup', stopDrag);
+    };
+    document.addEventListener('mousemove', onDrag);
+    document.addEventListener('mouseup', stopDrag);
+    e.preventDefault();
+  });
+}
+
+// Close modals on overlay click
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('modal-overlay')) {
+    e.target.classList.remove('visible');
+  }
+});
+
+// ============================================================
+// Expose functions to window for onclick handlers (module scope)
+// ============================================================
+
+Object.assign(window, {
+  navigate, switchSidebarTab, executeSQL, resetCurrentDay, confirmResetDay,
+  closeModal, toggleHint, revealSolution, nextChallenge, prevChallenge,
+  insertSnippet, loadHistoryItem, exportProgress, importProgress
+});
+
+// ============================================================
+// BOOT
+// ============================================================
+
+async function init() {
+  try {
+    loadProgress();
+    await initDB();
+    document.getElementById('loading').classList.add('hidden');
+    setupKeyboard();
+    setupResize();
+    ANALYTICS.sessionStart();
+
+    // Route or go home
+    if (location.hash) {
+      await handleRoute();
+    } else if (STATE.progress.preferences.lastDay) {
+      navigate('day=' + STATE.progress.preferences.lastDay);
+    } else {
+      renderAll();
+    }
+
+    updateHeaderProgress();
+    renderDaysTab();
+  } catch(e) {
+    document.querySelector('.loading-text').textContent = 'Failed to load: ' + e.message;
+    console.error(e);
+  }
+}
+
+init();
+</script>
+</body>
+</html>
