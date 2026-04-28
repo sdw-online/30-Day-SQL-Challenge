@@ -1,6 +1,6 @@
 # Day 6 - PRIMARY KEY, FOREIGN KEY & Constraints
 
-[Watch the video](COMING_SOON) | [← Day 5: INSERT, UPDATE & DELETE](../day-05/) | [Day 7: Project - Freight & Logistics Performance Report →](../day-07/)
+[Watch the video](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | [← Day 5: INSERT, UPDATE & DELETE](../day-05/) | [Day 7: Project - Freight & Logistics Performance Report →](../day-07/)
 
 ---
 
