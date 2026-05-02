@@ -1,6 +1,6 @@
 # Day 7 - Project: Freight & Logistics Performance Report
 
-[Watch the video](COMING_SOON) | [← Day 6: PRIMARY KEY, FOREIGN KEY & Constraints](../day-06/) | [Day 8: NULL Handling →](../day-08/)
+[Watch the video](https://youtu.be/fiBYAziNtGI) | [← Day 6: PRIMARY KEY, FOREIGN KEY & Constraints](../day-06/) | [Day 8: NULL Handling →](../day-08/)
 
 ---
 
