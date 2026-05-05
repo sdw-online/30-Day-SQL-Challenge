@@ -1,6 +1,6 @@
 # Day 8 - NULL Handling
 
-[Watch the video](COMING_SOON) | [← Day 7: Project - Freight & Logistics Performance Report](../day-07/) | [Day 9: String & Numeric Functions →](../day-09/)
+[Watch the video](https://www.youtube.com/watch?v=0nH464EoZ9w) | [← Day 7: Project - Freight & Logistics Performance Report](../day-07/) | [Day 9: String & Numeric Functions →](../day-09/)
 
 ---
 

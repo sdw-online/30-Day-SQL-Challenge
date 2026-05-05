@@ -81,7 +81,7 @@ Fork this repo and check off each day as you complete it!
 | 05 | INSERT, UPDATE & DELETE | [Watch](https://www.youtube.com/watch?v=NJ4ujmOZt60) | ☐ |
 | 06 | PRIMARY KEY, FOREIGN KEY & Constraints | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | ☐ |
 | 07 | **Project:** Freight & Logistics Performance Report | [Watch](https://youtu.be/fiBYAziNtGI) | ☐ |
-| 08 | NULL Handling | [Coming soon] | ☐ |
+| 08 | NULL Handling | [Watch](https://www.youtube.com/watch?v=0nH464EoZ9w) | ☐ |
 | 09 | String & Numeric Functions | [Coming soon] | ☐ |
 | 10 | Date Functions & CAST | [Coming soon] | ☐ |
 | 11 | CASE WHEN | [Coming soon] | ☐ |
