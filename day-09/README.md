@@ -1,6 +1,6 @@
 # Day 9 - String & Numeric Functions
 
-[Watch the video](COMING_SOON) | [← Day 8: NULL Handling](../day-08/) | [Day 10: Date Functions & CAST →](../day-10/)
+[Watch the video](https://www.youtube.com/watch?v=h6J7AajBD6w) | [← Day 8: NULL Handling](../day-08/) | [Day 10: Date Functions & CAST →](../day-10/)
 
 ---
 
