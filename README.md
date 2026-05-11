@@ -83,7 +83,7 @@ Fork this repo and check off each day as you complete it!
 | 07 | **Project:** Freight & Logistics Performance Report | [Watch](https://youtu.be/fiBYAziNtGI) | ☐ |
 | 08 | NULL Handling | [Watch](https://www.youtube.com/watch?v=0nH464EoZ9w) | ☐ |
 | 09 | String & Numeric Functions | [Watch](https://www.youtube.com/watch?v=h6J7AajBD6w) | ☐ |
-| 10 | Date Functions & CAST | [Coming soon] | ☐ |
+| 10 | Date Functions & CAST | [Watch](https://youtu.be/Iturx2kgs1A) | ☐ |
 | 11 | CASE WHEN | [Coming soon] | ☐ |
 | 12 | Subqueries & Temp Tables | [Coming soon] | ☐ |
 | 13 | CTEs (Part 1) | [Coming soon] | ☐ |

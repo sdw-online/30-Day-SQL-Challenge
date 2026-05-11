@@ -1,6 +1,6 @@
 # Day 10 - Date Functions & CAST
 
-[Watch the video](COMING_SOON) | [← Day 9: String & Numeric Functions](../day-09/) | [Day 11: CASE WHEN →](../day-11/)
+[Watch the video](https://youtu.be/Iturx2kgs1A) | [← Day 9: String & Numeric Functions](../day-09/) | [Day 11: CASE WHEN →](../day-11/)
 
 ---
 
