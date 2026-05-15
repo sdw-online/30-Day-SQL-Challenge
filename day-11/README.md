@@ -1,6 +1,6 @@
 # Day 11 - CASE WHEN
 
-[Watch the video](COMING_SOON) | [← Day 10: Date Functions & CAST](../day-10/) | [Day 12: Subqueries & Temp Tables →](../day-12/)
+[Watch the video](https://youtu.be/eZ5iTTsKGkI) | [← Day 10: Date Functions & CAST](../day-10/) | [Day 12: Subqueries & Temp Tables →](../day-12/)
 
 ---
 
