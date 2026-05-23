@@ -1,6 +1,6 @@
 # Day 13 - CTEs (Part 1)
 
-[Watch the video](COMING_SOON) | [← Day 12: Subqueries & Temp Tables](../day-12/) | [Day 14: Project: IoT Sensor Data Pipeline →](../day-14/)
+[Watch the video](https://youtu.be/IijQJAfqcJc) | [← Day 12: Subqueries & Temp Tables](../day-12/) | [Day 14: Project: IoT Sensor Data Pipeline →](../day-14/)
 
 ---
 

@@ -85,8 +85,8 @@ Fork this repo and check off each day as you complete it!
 | 09 | String & Numeric Functions | [Watch](https://www.youtube.com/watch?v=h6J7AajBD6w) | ☐ |
 | 10 | Date Functions & CAST | [Watch](https://youtu.be/Iturx2kgs1A) | ☐ |
 | 11 | CASE WHEN | [Watch](https://youtu.be/eZ5iTTsKGkI) | ☐ |
-| 12 | Subqueries & Temp Tables | [Coming soon] | ☐ |
-| 13 | CTEs (Part 1) | [Coming soon] | ☐ |
+| 12 | Subqueries & Temp Tables | [Watch](https://youtu.be/SOt5jUrzKOU) | ☐ |
+| 13 | CTEs (Part 1) | [Watch](https://youtu.be/IijQJAfqcJc) | ☐ |
 | 14 | **Project:** IoT Sensor Data Pipeline | [Coming soon] | ☐ |
 | 15 | JOINs Part 1: INNER, LEFT, RIGHT & FULL OUTER | [Coming soon] | ☐ |
 | 16 | JOINs Part 2: CROSS JOIN & Self Joins | [Coming soon] | ☐ |

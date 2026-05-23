@@ -1,6 +1,6 @@
 # Day 12 - Subqueries & Temp Tables
 
-[Watch the video](COMING_SOON) | [← Day 11: CASE WHEN](../day-11/) | [Day 13: CTEs (Part 1) →](../day-13/)
+[Watch the video](https://youtu.be/SOt5jUrzKOU) | [← Day 11: CASE WHEN](../day-11/) | [Day 13: CTEs (Part 1) →](../day-13/)
 
 ---
 
