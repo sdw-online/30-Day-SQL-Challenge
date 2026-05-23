@@ -1,5 +1,4 @@
--- Day 11: CASE WHEN - Exercise Script (Insurance Claims)
--- Run this in pgAdmin to create the exercise table
+-- Day 11: CASE WHEN - Exercise Script
 
 DROP TABLE IF EXISTS insurance_claims;
 

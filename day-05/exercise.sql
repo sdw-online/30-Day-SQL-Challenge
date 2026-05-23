@@ -1,78 +1,11 @@
--- Day 05: INSERT, UPDATE & DELETE - Setup Script
+-- Day 05: INSERT, UPDATE & DELETE - Exercise Script
 
 -- ============================================
--- DAY 5 DEMO TABLES: Recipes & Apartments
+-- products
 -- ============================================
--- Drop demo tables if they already exist (safe to re-run)
-DROP TABLE IF EXISTS parcels;
-DROP TABLE IF EXISTS apartments;
-DROP TABLE IF EXISTS recipes;
-
--- Create the recipes table (3 columns - used for INSERT demos)
-CREATE TABLE recipes (
-    recipe_id   SERIAL PRIMARY KEY,
-    name        VARCHAR(100)    NOT NULL,
-    cuisine     VARCHAR(50)     NOT NULL
-);
-
--- Insert 5 recipes
-INSERT INTO recipes (name, cuisine)
-VALUES
-    ('Jollof Rice',        'Nigerian'),
-    ('Chicken Stir Fry',   'Chinese'),
-    ('Fish and Chips',     'British'),
-    ('Tacos',              'Mexican'),
-    ('Fried Rice',         'Chinese');
-
--- Create the apartments table (5 columns - used for UPDATE, DELETE, TRUNCATE, DROP demos)
-CREATE TABLE apartments (
-    apartment_id    SERIAL PRIMARY KEY,
-    building        VARCHAR(100)    NOT NULL,
-    floor           INTEGER         NOT NULL,
-    rent_monthly    NUMERIC(8, 2)   NOT NULL,
-    is_occupied     BOOLEAN         NOT NULL DEFAULT FALSE
-);
-
--- Insert 5 apartments
-INSERT INTO apartments (building, floor, rent_monthly, is_occupied)
-VALUES
-    ('Maple Court',    3,  1200.00, TRUE),
-    ('Maple Court',    7,  1450.00, TRUE),
-    ('Riverside One',  1,  950.00,  FALSE),
-    ('Riverside One',  12, 1800.00, TRUE),
-    ('The Willows',    2,  1100.00, FALSE);
-
--- Create the parcels table (5 columns - used for DELETE, TRUNCATE, DROP demos)
-CREATE TABLE parcels (
-    parcel_id   SERIAL PRIMARY KEY,
-    recipient   VARCHAR(100)    NOT NULL,
-    destination VARCHAR(100)    NOT NULL,
-    weight_kg   NUMERIC(5, 2)   NOT NULL,
-    status      VARCHAR(20)     NOT NULL DEFAULT 'Delivered'
-);
-
--- Insert 10 parcels (80% simple English names, 20% international)
-INSERT INTO parcels (recipient, destination, weight_kg, status)
-VALUES
-    ('Emma Clarke',    'Paris, France',         2.5, 'Delivered'),
-    ('Tom Harris',     'Tokyo, Japan',          1.2, 'Returned'),
-    ('Sam Turner',     'Nairobi, Kenya',        3.8, 'Delivered'),
-    ('Yuki Sato',      'London, UK',            0.9, 'Returned'),
-    ('Lucy Webb',      'Ottawa, Canada',        1.5, 'Delivered'),
-    ('Jack Stone',     'Berlin, Germany',       2.1, 'Delivered'),
-    ('Carlos Rivera',  'Seoul, South Korea',    4.2, 'Returned'),
-    ('Beth Morgan',    'Cairo, Egypt',          1.8, 'Delivered'),
-    ('Dan Cooper',     'Canberra, Australia',   3.0, 'Delivered'),
-    ('Amy Reed',       'Brasilia, Brazil',      0.7, 'Returned');
-
--- ============================================
--- DAY 5 EXERCISE: CloudMetrics Products
--- ============================================
--- Drop table if it already exists (safe to re-run)
 DROP TABLE IF EXISTS support_tickets;
 DROP TABLE IF EXISTS products;
 
--- Create the products table
 CREATE TABLE products (
     product_id      SERIAL PRIMARY KEY,
     product_name    VARCHAR(100)    NOT NULL,
@@ -84,7 +17,6 @@ CREATE TABLE products (
     region          VARCHAR(50)     NOT NULL DEFAULT 'Global'
 );
 
--- Insert 30 products
 INSERT INTO products (product_name, category, price_monthly, is_active, launch_date, max_users, region)
 VALUES
     ('Starter Dashboard',       'Core Plan',    29.00,   TRUE,   '2024-01-15',   5,      'Global'),
@@ -119,9 +51,8 @@ VALUES
     ('Traffic Source Tracker',  'Analytics',    35.00,   TRUE,   '2025-01-20',   25,     'Global');
 
 -- ============================================
--- DAY 5 EXERCISE: Support Tickets
+-- support_tickets (250 rows)
 -- ============================================
--- Create the support_tickets table
 CREATE TABLE support_tickets (
     ticket_id       SERIAL PRIMARY KEY,
     customer_name   VARCHAR(100)    NOT NULL,
@@ -134,10 +65,7 @@ CREATE TABLE support_tickets (
     product_name    VARCHAR(100)    NOT NULL
 );
 
--- Insert 250 support tickets
--- ================================================
 -- BLOCK 1: Open tickets, assigned to agents (60 rows)
--- ================================================
 INSERT INTO support_tickets (customer_name, customer_email, subject, priority, status, assigned_to, created_date, product_name)
 VALUES
     -- Nkechi Eze (15 tickets)
@@ -174,7 +102,7 @@ VALUES
     ('Cillian Walsh',       'cillian@walshdesign.co.uk',        'Cohort grouping incorrect',        'High',     'Open',     'Jaime Ruiz',       '2025-04-02',   'Cohort Analyser'),
     ('Amaka Eze',           'amaka@ezeproperties.co.uk',        'Health score not calculating',     'Medium',   'Open',     'Jaime Ruiz',       '2025-04-05',   'Customer Health Score'),
 
-    -- Lena Bergstrom (15 tickets) - includes Tomoko Hayashi at row 40
+    -- Lena Bergstrom (15 tickets)
     ('Henrik Johansson',    'henrik@johanssontech.com',         'Invoice not matching usage',       'High',     'Open',     'Lena Bergstrom',   '2025-03-02',   'Enterprise Dashboard'),
     ('Nneka Obi',           'nneka@obimarketing.co.uk',         'Real-time alert delay',            'Medium',   'Open',     'Lena Bergstrom',   '2025-03-04',   'Real-Time Alerts'),
     ('Caoimhe Brennan',     'caoimhe@brennanlegal.co.uk',       'Slow page load',                   'Low',      'Open',     'Lena Bergstrom',   '2025-03-06',   'Starter Dashboard'),
@@ -206,13 +134,11 @@ VALUES
     ('Chidi Emenike',       'chidi@emenikefinance.co.uk',       'Custom domain not working',        'Low',      'Open',     'Dimitri Kallas',   '2025-03-27',   'White-Label Branding'),
     ('Nerys Griffiths',     'nerys@griffithshr.co.uk',          'Engagement metrics wrong',         'High',     'Open',     'Dimitri Kallas',   '2025-03-30',   'Social Media Dashboard'),
     ('Ayodeji Fasanya',     'ayodeji@fasanyatech.com',          'Retention chart wrong',            'Medium',   'Open',     'Dimitri Kallas',   '2025-04-03',   'Cohort Analyser'),
-    ('Bethan Rees',         'bethan@reescreative.co.uk',        'Drop-off rate incorrect',          'High',     'Open',     'Dimitri Kallas',   '2025-04-06',   'Form Analytics'),
+    ('Bethan Rees',         'bethan@reescreative.co.uk',        'Drop-off rate incorrect',          'High',     'Open',     'Dimitri Kallas',   '2025-04-06',   'Form Analytics');
 
--- ================================================
 -- BLOCK 2: Open tickets, unassigned (45 rows)
--- Priority: 14 High, 21 Medium, 10 Low
--- ================================================
-
+INSERT INTO support_tickets (customer_name, customer_email, subject, priority, status, assigned_to, created_date, product_name)
+VALUES
     -- High priority (14 tickets)
     ('Obiageli Nwachukwu',  'obiageli@nwachukwulaw.co.uk',      'Heatmap data missing',             'High',     'Open',     NULL,   '2025-03-02',   'Heatmap Tracker'),
     ('Padraig Connolly',    'padraig@connollybuilders.co.uk',   'Dashboard not loading',            'High',     'Open',     NULL,   '2025-03-05',   'Starter Dashboard'),
@@ -262,12 +188,11 @@ VALUES
     ('Uchenna Maduka',      'uchenna@madukalogistics.co.uk',    'Data feed disconnected',           'Low',      'Open',     NULL,   '2025-04-06',   'Churn Predictor'),
     ('Carys Llewellyn',     'carys@llewellynpartners.co.uk',    'Slack notification failed',        'Low',      'Open',     NULL,   '2025-04-09',   'Integration Hub'),
     ('Uzoma Obiora',        'uzoma@obioraconsulting.com',       'Logic branching broken',           'Low',      'Open',     NULL,   '2025-04-12',   'Survey Builder'),
-    ('Anja Vestergaard',    'anja@vestergaardmedia.eu',         'Checklist not loading',            'Low',      'Open',     NULL,   '2025-04-15',   'User Onboarding Flow'),
+    ('Anja Vestergaard',    'anja@vestergaardmedia.eu',         'Checklist not loading',            'Low',      'Open',     NULL,   '2025-04-15',   'User Onboarding Flow');
 
--- ================================================
 -- BLOCK 3: In Progress tickets (60 rows)
--- ================================================
-
+INSERT INTO support_tickets (customer_name, customer_email, subject, priority, status, assigned_to, created_date, product_name)
+VALUES
     -- Nkechi Eze (15 In Progress)
     ('Damilare Akinola',    'damilare@akinoladigital.com',      'Monitoring gap detected',          'High',     'In Progress',  'Nkechi Eze',       '2025-03-01',   'Downtime Detector'),
     ('Eleri Hopkins',       'eleri@hopkinsmedia.co.uk',         'Form version mismatch',            'Medium',   'In Progress',  'Nkechi Eze',       '2025-03-03',   'Form Analytics'),
@@ -334,12 +259,11 @@ VALUES
     ('Astri Johannessen',   'astri@johannessendesign.eu',       'HubSpot connection lost',          'High',     'In Progress',  'Dimitri Kallas',   '2025-04-05',   'Integration Hub'),
     ('Ugonna Aneke',        'ugonna@anekeventures.co.uk',       'Cohort grouping incorrect',        'Low',      'In Progress',  'Dimitri Kallas',   '2025-04-08',   'Cohort Analyser'),
     ('Lowri Jenkins',       'lowri@jenkinslaw.co.uk',           'Onboarding steps skipped',         'Medium',   'In Progress',  'Dimitri Kallas',   '2025-04-11',   'User Onboarding Flow'),
-    ('Ekene Okoye',         'ekene@okoyepartners.com',          'Campaign grouping broken',         'High',     'In Progress',  'Dimitri Kallas',   '2025-04-15',   'Traffic Source Tracker'),
+    ('Ekene Okoye',         'ekene@okoyepartners.com',          'Campaign grouping broken',         'High',     'In Progress',  'Dimitri Kallas',   '2025-04-15',   'Traffic Source Tracker');
 
--- ================================================
 -- BLOCK 4: Resolved tickets (60 rows)
--- ================================================
-
+INSERT INTO support_tickets (customer_name, customer_email, subject, priority, status, assigned_to, created_date, product_name)
+VALUES
     -- Nkechi Eze (15 Resolved)
     ('Ifunanya Igbokwe',    'ifunanya@igbokweconsulting.co.uk', 'Cannot export PDF reports',        'Medium',   'Resolved',     'Nkechi Eze',       '2025-03-01',   'Custom Reports'),
     ('Bryn Meredith',       'bryn@meredithdesign.co.uk',        'Heatmap data missing',             'High',     'Resolved',     'Nkechi Eze',       '2025-03-03',   'Heatmap Tracker'),
@@ -406,14 +330,12 @@ VALUES
     ('Sindre Aas',          'sindre@aassystems.eu',             'Model not updating',               'Medium',   'Resolved',     'Dimitri Kallas',   '2025-04-05',   'Churn Predictor'),
     ('Nneka Okafor',        'nneka@okaforanalytics.co.uk',      'Log aggregation broken',           'Low',      'Resolved',     'Dimitri Kallas',   '2025-04-08',   'Data Pipeline Monitor'),
     ('Hefina Rhys',         'hefina@rhysmedia.co.uk',           'Thank-you page error',             'High',     'Resolved',     'Dimitri Kallas',   '2025-04-11',   'Survey Builder'),
-    ('Chiamaka Eze',        'chiamaka@ezeventures.co.uk',       'Campaign grouping broken',         'Medium',   'Resolved',     'Dimitri Kallas',   '2025-04-15',   'Traffic Source Tracker'),
+    ('Chiamaka Eze',        'chiamaka@ezeventures.co.uk',       'Campaign grouping broken',         'Medium',   'Resolved',     'Dimitri Kallas',   '2025-04-15',   'Traffic Source Tracker');
 
--- ================================================
 -- BLOCK 5: Cancelled tickets (25 rows)
--- Includes Elise Moreau and Rashid Hamed
--- ================================================
-
-    -- Assigned Cancelled (10 tickets - spread across agents)
+INSERT INTO support_tickets (customer_name, customer_email, subject, priority, status, assigned_to, created_date, product_name)
+VALUES
+    -- Assigned Cancelled (10 tickets)
     ('Eberechi Udofia',     'eberechi@udofiamedia.co.uk',       'Legacy tracker data export',       'Low',      'Cancelled',    'Nkechi Eze',       '2025-03-03',   'Legacy Tracker'),
     ('Cadwgan Parry',       'cadwgan@parrysolutions.co.uk',     'Legacy report not exporting',      'Low',      'Cancelled',    'Nkechi Eze',       '2025-03-08',   'Legacy Reports'),
     ('Kolawole Adegoke',    'kolawole@adegokecapital.com',      'Session replay not recording',     'High',     'Cancelled',    'Nkechi Eze',       '2025-03-15',   'Session Replay'),
@@ -443,17 +365,10 @@ VALUES
     ('Ogochukwu Eze',       'ogochukwu@ezeassociates.co.uk',   'Stack trace truncated',            'High',     'Cancelled',    NULL,               '2025-04-10',   'Error Log Analyser');
 
 -- ============================================
--- DAY 5 EXERCISE: Staging & Legacy Tables
--- (For TRUNCATE and DROP exercises)
+-- staging_daily_metrics
 -- ============================================
-
--- Drop staging/legacy tables if they already exist (safe to re-run)
 DROP TABLE IF EXISTS staging_daily_metrics;
-DROP TABLE IF EXISTS staging_user_sessions;
-DROP TABLE IF EXISTS legacy_ticket_categories;
-DROP TABLE IF EXISTS legacy_pricing_v1;
 
--- Staging table: daily website metrics (loaded nightly, needs wiping before each load)
 CREATE TABLE staging_daily_metrics (
     metric_id       SERIAL PRIMARY KEY,
     metric_date     DATE            NOT NULL,
@@ -473,7 +388,11 @@ VALUES
     ('2025-03-22',  8900, 5800, 52.10, 145),
     ('2025-03-23',  9200, 6100, 50.40, 152);
 
--- Staging table: user sessions (loaded nightly, needs wiping before each load)
+-- ============================================
+-- staging_user_sessions
+-- ============================================
+DROP TABLE IF EXISTS staging_user_sessions;
+
 CREATE TABLE staging_user_sessions (
     session_id      SERIAL PRIMARY KEY,
     user_email      VARCHAR(150)    NOT NULL,
@@ -492,7 +411,11 @@ VALUES
     ('eric@webdev.com',     '2025-03-23 14:30:00', NULL,                  1,  'Mobile'),
     ('faye@startup.io',     '2025-03-23 15:45:00', '2025-03-23 16:02:00', 7,  'Desktop');
 
--- Legacy table: old ticket categories (replaced by current tagging system)
+-- ============================================
+-- legacy_ticket_categories
+-- ============================================
+DROP TABLE IF EXISTS legacy_ticket_categories;
+
 CREATE TABLE legacy_ticket_categories (
     category_id     SERIAL PRIMARY KEY,
     category_name   VARCHAR(100)    NOT NULL,
@@ -509,7 +432,11 @@ VALUES
     ('Account Access',  'Login issues and password resets',          '2022-06-01', FALSE),
     ('General Enquiry', 'Miscellaneous customer questions',          '2022-06-01', FALSE);
 
--- Legacy table: old pricing model (replaced by current products table)
+-- ============================================
+-- legacy_pricing_v1
+-- ============================================
+DROP TABLE IF EXISTS legacy_pricing_v1;
+
 CREATE TABLE legacy_pricing_v1 (
     pricing_id      SERIAL PRIMARY KEY,
     tier_name       VARCHAR(50)     NOT NULL,

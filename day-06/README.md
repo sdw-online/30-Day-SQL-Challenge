@@ -1,6 +1,6 @@
 # Day 6 - PRIMARY KEY, FOREIGN KEY & Constraints
 
-[Watch the video](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | [← Day 5: INSERT, UPDATE & DELETE](../day-05/) | [Day 7: Project - Freight & Logistics Performance Report →](../day-07/)
+[Watch the video](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | [← Day 5: INSERT, UPDATE & DELETE](../day-05/) | [Day 7: Project: Freight & Logistics →](../day-07/)
 
 ---
 
@@ -30,153 +30,139 @@
 
 ## Dataset
 
-Today you are building a **multi-table schema** for an online music streaming platform called **TuneVault**. This is a UK-based service with subscribers, artists, albums, tracks, and playlists.
+Today you are building a **multi-table schema** for a gym called **FitBase**. The gym has trainers, members, classes, and bookings.
 
-Run this SQL in pgAdmin to create today's tables.
+Run the SQL below in pgAdmin to create today's tables.
 
 <details>
 <summary>Click to expand dataset SQL</summary>
 
 ```sql
+-- ============================================
+-- DAY 6 SETUP: FitBase Gym Schema
+-- ============================================
+-- Multi-table schema with constraints for learning
+-- PRIMARY KEY, FOREIGN KEY, UNIQUE, NOT NULL, CHECK, DEFAULT
+
 -- Clean up any existing tables (reverse dependency order)
-DROP TABLE IF EXISTS playlist_tracks;
-DROP TABLE IF EXISTS playlists;
-DROP TABLE IF EXISTS streams;
-DROP TABLE IF EXISTS tracks;
-DROP TABLE IF EXISTS albums;
-DROP TABLE IF EXISTS artists;
-DROP TABLE IF EXISTS subscribers;
+DROP TABLE IF EXISTS bookings;
+DROP TABLE IF EXISTS classes;
+DROP TABLE IF EXISTS members;
+DROP TABLE IF EXISTS trainers;
 
--- TABLE 1: subscribers
-CREATE TABLE subscribers (
-    subscriber_id   SERIAL          PRIMARY KEY,
-    first_name      VARCHAR(50)     NOT NULL,
-    last_name       VARCHAR(50)     NOT NULL,
-    email           VARCHAR(150)    NOT NULL UNIQUE,
-    plan            VARCHAR(20)     NOT NULL DEFAULT 'free'
-                                    CHECK (plan IN ('free', 'premium', 'family')),
-    signup_date     DATE            NOT NULL DEFAULT CURRENT_DATE,
-    is_active       BOOLEAN         NOT NULL DEFAULT TRUE,
-    country         VARCHAR(50)     NOT NULL DEFAULT 'United Kingdom'
+-- Also clean up exercise tables from previous runs
+DROP TABLE IF EXISTS novapay_transactions;
+DROP TABLE IF EXISTS novapay_merchants;
+DROP TABLE IF EXISTS novapay_employees;
+
+-- ============================================
+-- TABLE 1: trainers
+-- ============================================
+-- Demonstrates: PRIMARY KEY, NOT NULL, SERIAL
+
+CREATE TABLE trainers (
+    trainer_id   SERIAL       PRIMARY KEY,
+    name         VARCHAR(100) NOT NULL,
+    speciality   VARCHAR(30)  NOT NULL
 );
 
--- TABLE 2: artists
-CREATE TABLE artists (
-    artist_id       SERIAL          PRIMARY KEY,
-    artist_name     VARCHAR(100)    NOT NULL UNIQUE,
-    genre           VARCHAR(50)     NOT NULL,
-    country         VARCHAR(50)     NOT NULL,
-    formed_year     INTEGER         CHECK (formed_year >= 1900 AND formed_year <= 2025),
-    is_verified     BOOLEAN         NOT NULL DEFAULT FALSE
+INSERT INTO trainers (name, speciality)
+VALUES
+    ('Ryan Cooper',   'Strength'),
+    ('Priya Sharma',  'Yoga'),
+    ('Kofi Mensah',   'HIIT');
+
+-- ============================================
+-- TABLE 2: members
+-- ============================================
+-- Demonstrates: PRIMARY KEY, NOT NULL, UNIQUE, CHECK, DEFAULT, nullable column (phone)
+
+CREATE TABLE members (
+    member_id       SERIAL       PRIMARY KEY,
+    name            VARCHAR(100) NOT NULL,
+    email           VARCHAR(150) NOT NULL UNIQUE,
+    phone           VARCHAR(20),
+    membership_type VARCHAR(20)  NOT NULL DEFAULT 'standard'
+                    CHECK (membership_type IN ('student', 'standard', 'premium'))
 );
 
--- TABLE 3: albums
-CREATE TABLE albums (
-    album_id        SERIAL          PRIMARY KEY,
-    album_title     VARCHAR(200)    NOT NULL,
-    artist_id       INTEGER         NOT NULL
-                                    REFERENCES artists(artist_id)
-                                    ON DELETE CASCADE,
-    release_date    DATE            NOT NULL,
-    total_tracks    INTEGER         NOT NULL CHECK (total_tracks > 0),
-    UNIQUE (artist_id, album_title)
+INSERT INTO members (name, email, membership_type)
+VALUES
+    ('Sophie Ward',   'sophie@mail.com',  'premium'),
+    ('Mei Lin',       'mei@mail.com',     'standard'),
+    ('Dan Foster',    'dan@mail.com',     'standard'),
+    ('Aisha Obi',     'aisha@mail.com',   'premium'),
+    ('Liam Brooks',   'liam@mail.com',    'student');
+
+-- ============================================
+-- TABLE 3: classes
+-- ============================================
+-- Demonstrates: PRIMARY KEY, FOREIGN KEY, NOT NULL, CHECK (BETWEEN and IN)
+
+CREATE TABLE classes (
+    class_id    SERIAL       PRIMARY KEY,
+    class_name  VARCHAR(100) NOT NULL,
+    trainer_id  INTEGER      NOT NULL
+                REFERENCES trainers(trainer_id),
+    capacity    INTEGER      NOT NULL CHECK (capacity BETWEEN 5 AND 30),
+    difficulty  VARCHAR(20)  NOT NULL
+                CHECK (difficulty IN ('beginner', 'intermediate', 'advanced'))
 );
 
--- TABLE 4: tracks
-CREATE TABLE tracks (
-    track_id        SERIAL          PRIMARY KEY,
-    track_title     VARCHAR(200)    NOT NULL,
-    album_id        INTEGER         NOT NULL
-                                    REFERENCES albums(album_id)
-                                    ON DELETE CASCADE,
-    track_number    INTEGER         NOT NULL CHECK (track_number > 0),
-    duration_secs   INTEGER         NOT NULL CHECK (duration_secs > 0 AND duration_secs < 7200),
-    is_explicit     BOOLEAN         NOT NULL DEFAULT FALSE
+INSERT INTO classes (class_name, trainer_id, capacity, difficulty)
+VALUES
+    ('Morning HIIT',   3, 20, 'advanced'),
+    ('Power Yoga',     2, 15, 'intermediate'),
+    ('Barbell Basics', 1, 12, 'beginner'),
+    ('Evening Spin',   3, 25, 'intermediate');
+
+-- ============================================
+-- TABLE 4: bookings (composite primary key)
+-- ============================================
+-- Demonstrates: Composite PRIMARY KEY, FOREIGN KEY, DEFAULT (timestamp)
+-- NOTE: This table is created WITHOUT CASCADE initially.
+-- The teleprompter drops and recreates it WITH CASCADE later in section 8.
+
+CREATE TABLE bookings (
+    member_id   INTEGER   NOT NULL
+                REFERENCES members(member_id),
+    class_id    INTEGER   NOT NULL
+                REFERENCES classes(class_id),
+    booked_at   TIMESTAMP NOT NULL DEFAULT NOW(),
+    PRIMARY KEY (member_id, class_id)
 );
 
--- TABLE 5: streams
-CREATE TABLE streams (
-    stream_id       SERIAL          PRIMARY KEY,
-    subscriber_id   INTEGER
-                    REFERENCES subscribers(subscriber_id)
-                    ON DELETE SET NULL,
-    track_id        INTEGER         NOT NULL
-                    REFERENCES tracks(track_id)
-                    ON DELETE CASCADE,
-    streamed_at     TIMESTAMP       NOT NULL DEFAULT NOW(),
-    duration_secs   INTEGER         NOT NULL CHECK (duration_secs >= 0)
-);
-
--- TABLE 6: playlists
-CREATE TABLE playlists (
-    playlist_id     SERIAL          PRIMARY KEY,
-    playlist_name   VARCHAR(100)    NOT NULL,
-    subscriber_id   INTEGER         NOT NULL
-                    REFERENCES subscribers(subscriber_id)
-                    ON DELETE CASCADE,
-    created_at      TIMESTAMP       NOT NULL DEFAULT NOW(),
-    is_public       BOOLEAN         NOT NULL DEFAULT TRUE
-);
-
--- TABLE 7: playlist_tracks (junction table)
-CREATE TABLE playlist_tracks (
-    playlist_id     INTEGER         NOT NULL
-                    REFERENCES playlists(playlist_id)
-                    ON DELETE CASCADE,
-    track_id        INTEGER         NOT NULL
-                    REFERENCES tracks(track_id)
-                    ON DELETE CASCADE,
-    added_at        TIMESTAMP       NOT NULL DEFAULT NOW(),
-    position        INTEGER         NOT NULL CHECK (position > 0),
-    PRIMARY KEY (playlist_id, track_id)
-);
+INSERT INTO bookings (member_id, class_id)
+VALUES
+    (1, 1),
+    (1, 3),
+    (2, 2),
+    (4, 1),
+    (3, 4);
 ```
 
 </details>
 
-### Generate Sample Data
-
-This dataset uses Python with `psycopg2` and `faker` to generate realistic data across all seven tables. Install the dependencies:
-
-```bash
-pip install psycopg2-binary faker
-```
-
-Save the data generation script from the setup guide as `day_06_seed.py`, update your PostgreSQL credentials, and run it with `python day_06_seed.py`.
-
-The script populates:
-- **subscribers** (25 rows)
-- **artists** (10 rows)
-- **albums** (~20 rows)
-- **tracks** (~60 rows)
-- **streams** (200 rows)
-- **playlists** (15 rows)
-- **playlist_tracks** (~45 rows)
-
 ### Verify Your Setup
 
 ```sql
-SELECT COUNT(*) FROM subscribers;
--- Expected: 25
-
-SELECT COUNT(*) FROM artists;
--- Expected: 10
-
-SELECT COUNT(*) FROM albums;
--- Expected: ~20 (varies based on random generation)
-
-SELECT COUNT(*) FROM tracks;
--- Expected: ~60 (varies based on random generation)
-
-SELECT COUNT(*) FROM streams;
--- Expected: 200
-
-SELECT COUNT(*) FROM playlists;
--- Expected: 15
-
-SELECT COUNT(*) FROM playlist_tracks;
--- Expected: ~45 (varies based on random generation)
+SELECT 'trainers' AS table_name, COUNT(*) AS rows FROM trainers
+UNION ALL
+SELECT 'members', COUNT(*) FROM members
+UNION ALL
+SELECT 'classes', COUNT(*) FROM classes
+UNION ALL
+SELECT 'bookings', COUNT(*) FROM bookings;
 ```
+
+Expected output:
+
+| table_name | rows |
+|------------|------|
+| trainers   | 3    |
+| members    | 5    |
+| classes    | 4    |
+| bookings   | 5    |
 
 ## Exercises
 
@@ -188,13 +174,13 @@ The Head of Engineering has asked you to redesign the schema with proper constra
 
 Using the concepts from today's lesson, complete these tasks:
 
-### 🟢 Warm-Up
+### Warm-Up
 
 **Q1:** Create a `novapay_merchants` table with: `merchant_id` as an auto-incrementing primary key, `merchant_name` (required, max 100 characters), `contact_email` (required and unique), `category` (must be one of 'retail', 'hospitality', 'saas', or 'marketplace'), `monthly_volume_limit` (must be greater than zero), `onboarded_date` (defaults to today), and `is_active` (defaults to TRUE).
 
 **Q2:** Insert two valid merchants into your `novapay_merchants` table - one with category 'retail' and one with category 'saas'. Then SELECT all rows to confirm they were inserted correctly.
 
-### 🟡 Practice
+### Practice
 
 **Q3:** Create a `novapay_transactions` table with a foreign key linking to merchants, a CHECK constraint ensuring the amount is greater than zero, currency restricted to 'GBP', 'EUR', or 'USD', status restricted to 'pending', 'completed', 'failed', or 'refunded', and ON DELETE CASCADE.
 
@@ -206,7 +192,7 @@ Using the concepts from today's lesson, complete these tasks:
 - Insert a transaction with a negative amount
 - Insert a transaction referencing a non-existent merchant (merchant_id 999)
 
-### 🔴 Challenge
+### Challenge
 
 **Q6:** Delete a merchant that has transactions and verify that the CASCADE action automatically removes all their associated transactions. Count the transactions before and after the delete to prove it worked.
 
@@ -221,4 +207,4 @@ Using the concepts from today's lesson, complete these tasks:
 
 ---
 
-[← Day 5: INSERT, UPDATE & DELETE](../day-05/) | [Day 7: Project - Freight & Logistics Performance Report →](../day-07/)
+[← Day 5: INSERT, UPDATE & DELETE](../day-05/) | [Day 7: Project: Freight & Logistics →](../day-07/)

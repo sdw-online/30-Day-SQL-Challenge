@@ -87,7 +87,7 @@ Fork this repo and check off each day as you complete it!
 | 11 | CASE WHEN | [Watch](https://youtu.be/eZ5iTTsKGkI) | ☐ |
 | 12 | Subqueries & Temp Tables | [Watch](https://youtu.be/SOt5jUrzKOU) | ☐ |
 | 13 | CTEs (Part 1) | [Watch](https://youtu.be/IijQJAfqcJc) | ☐ |
-| 14 | **Project:** IoT Sensor Data Pipeline | [Coming soon] | ☐ |
+| 14 | **Project:** Fleet Intelligence Pipeline | [Coming soon] | ☐ |
 | 15 | JOINs Part 1: INNER, LEFT, RIGHT & FULL OUTER | [Coming soon] | ☐ |
 | 16 | JOINs Part 2: CROSS JOIN & Self Joins | [Coming soon] | ☐ |
 | 17 | UNION & UNION ALL | [Coming soon] | ☐ |

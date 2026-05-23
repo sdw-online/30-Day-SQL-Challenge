@@ -1,41 +1,54 @@
--- Day 09: String & Numeric Functions - Exercise Script
--- Run this in pgAdmin to create today's exercise table
+-- ============================================
+-- DAY 9 EXERCISE: City Road Maintenance Audit
+-- ============================================
+-- 25 road repair records from 4 council districts
+-- Deliberately messy: inconsistent casing, leading/
+-- trailing spaces, excessive decimal places.
 
--- Messy product catalogue data for the exercise
-DROP TABLE IF EXISTS raw_products;
+DROP TABLE IF EXISTS raw_road_repairs;
 
-CREATE TABLE raw_products (
-    product_id      SERIAL PRIMARY KEY,
-    product_name    VARCHAR(200)    NOT NULL,
-    category        VARCHAR(80)     NOT NULL,
-    supplier_name   VARCHAR(150)    NOT NULL,
-    sku             VARCHAR(50)     NOT NULL,
-    unit_price      NUMERIC(10, 2)  NOT NULL,
-    cost_price      NUMERIC(10, 2)  NOT NULL,
-    weight_grams    NUMERIC(10, 2),
-    description     VARCHAR(500),
-    warehouse_code  VARCHAR(30)     NOT NULL
+CREATE TABLE raw_road_repairs (
+    repair_id        SERIAL PRIMARY KEY,
+    road_name        VARCHAR(100),
+    district         VARCHAR(50),
+    repair_type      VARCHAR(50),
+    contractor_name  VARCHAR(100),
+    contractor_email VARCHAR(100),
+    repair_ref       VARCHAR(30),
+    estimated_cost   NUMERIC(10,2),
+    actual_cost      NUMERIC(10,2),
+    length_metres    NUMERIC(8,2),
+    completion_pct   NUMERIC(5,2)
 );
 
-INSERT INTO raw_products (product_name, category, supplier_name, sku, unit_price, cost_price, weight_grams, description, warehouse_code)
+INSERT INTO raw_road_repairs
+    (road_name, district, repair_type, contractor_name, contractor_email, repair_ref, estimated_cost, actual_cost, length_metres, completion_pct)
 VALUES
-    ('  wireless bluetooth HEADPHONES  ',   'ELECTRONICS',      '  TechFlow Solutions  ',       'EL-WBH-2025-001',     79.99,      42.567,     285.50,     'Premium wireless headphones with NOISE CANCELLATION and 30hr battery',     'WH-LON-EAST-01'),
-    ('organic GREEN TEA bags',              'Groceries',        'Highland Harvest Ltd',         'GR-OGT-2025-015',     4.99,       2.134,      125.00,     '  100 BAGS of organic green tea from Scottish highlands  ',                'WH-EDI-NORTH-02'),
-    ('COTTON bed SHEET set',                '  home & living',  'CozyNest Home  ',              'HM-CBS-2025-042',     54.99,      28.753,     1850.75,    'King size cotton sheet set - 400 THREAD COUNT',                           'WH-MAN-WEST-01'),
-    ('running SHOES pro  ',                 'FASHION',          'UrbanStride UK',               'FA-RSP-2025-008',     129.99,     67.891,     680.00,     'Professional running shoes with GEL CUSHIONING technology',               'WH-LON-EAST-01'),
-    ('  STAINLESS steel water BOTTLE',      'Home & Living',    '  EcoWare Direct',             'HM-SSW-2025-033',     24.99,      11.456,     450.25,     'Double-walled insulated bottle - keeps drinks HOT 12hrs COLD 24hrs',      'WH-BRI-SOUTH-01'),
-    ('vitamin D3 SUPPLEMENTS',              'groceries  ',      'NatureWell Health  ',          'GR-VD3-2025-022',     12.99,      5.678,      200.00,     '365 tablets - one a day VITAMIN D3 supplement  ',                         'WH-EDI-NORTH-02'),
-    ('LAPTOP stand ADJUSTABLE',             'Electronics',      'TechFlow Solutions',           'EL-LSA-2025-019',     39.99,      18.234,     1200.50,    '  Ergonomic aluminium laptop stand - ADJUSTABLE HEIGHT  ',                'WH-LON-EAST-01'),
-    ('  merino WOOL socks  ',               'fashion',          'Highland Harvest Ltd  ',       'FA-MWS-2025-031',     18.99,      8.912,      95.00,      'Pack of 3 merino wool hiking socks - BREATHABLE and warm',                'WH-MAN-WEST-01'),
-    ('ceramic PLANT pot set',               'HOME & LIVING',    'CozyNest Home',                'HM-CPP-2025-055',     32.99,      15.678,     2400.00,    'Set of 3 ceramic plant pots with DRAINAGE HOLES',                        'WH-BRI-SOUTH-01'),
-    ('  USB-C charging CABLE  ',            'electronics',      '  TechFlow Solutions',         'EL-UCC-2025-027',     9.99,       3.456,      45.75,      'Fast charging USB-C cable - 2 METRES braided nylon',                     'WH-LON-EAST-01'),
-    ('ORGANIC honey JAR',                   'Groceries',        'Highland Harvest Ltd',         'GR-OHJ-2025-009',     8.99,       4.123,      500.00,     'Raw organic Scottish WILDFLOWER honey - 340g jar',                       'WH-EDI-NORTH-02'),
-    ('yoga MAT premium  ',                  '  Fashion  ',      'UrbanStride UK  ',             'FA-YMP-2025-044',     44.99,      22.567,     1800.00,    '  Extra thick 6mm YOGA mat with carrying strap  ',                       'WH-MAN-WEST-01'),
-    ('smart LED bulb SET',                  'ELECTRONICS',      'TechFlow Solutions',           'EL-SLB-2025-036',     29.99,      14.891,     320.00,     'Pack of 4 WiFi-enabled LED bulbs - 16 MILLION colours',                  'WH-LON-EAST-01'),
-    ('  bamboo CHOPPING board',             'home & living',    'EcoWare Direct',               'HM-BCB-2025-061',     19.99,      9.234,      750.50,     'Sustainable bamboo chopping board - ANTIBACTERIAL surface',               'WH-BRI-SOUTH-01'),
-    ('PROTEIN powder VANILLA',              'groceries',        '  NatureWell Health',          'GR-PPV-2025-018',     34.99,      16.789,     1000.00,    'Plant-based vanilla protein powder - 30 SERVINGS per tub  ',              'WH-EDI-NORTH-02'),
-    ('  CANVAS backpack  ',                 'Fashion',          'UrbanStride UK',               'FA-CBP-2025-052',     64.99,      31.456,     550.00,     'Waxed canvas backpack with LAPTOP COMPARTMENT',                          'WH-MAN-WEST-01'),
-    ('portable BLUETOOTH speaker  ',        'Electronics',      'TechFlow Solutions  ',         'EL-PBS-2025-041',     49.99,      24.123,     410.25,     '  Waterproof portable speaker - 20hr BATTERY life  ',                    'WH-LON-EAST-01'),
-    ('CHAMOMILE tea INFUSION',              '  Groceries',      'Highland Harvest Ltd',         'GR-CTI-2025-028',     6.99,       2.891,      80.00,      'Caffeine-free chamomile tea - 50 INDIVIDUALLY wrapped bags',             'WH-EDI-NORTH-02'),
-    ('  ergonomic DESK chair',              'Home & Living',    'CozyNest Home  ',              'HM-EDC-2025-070',     299.99,     152.345,    15000.00,   'Fully adjustable ergonomic office chair with LUMBAR SUPPORT',            'WH-LON-EAST-01'),
-    ('TRAIL running SHORTS',                'fashion  ',        '  UrbanStride UK  ',           'FA-TRS-2025-059',     34.99,      16.234,     180.00,     'Lightweight trail running shorts with MOISTURE WICKING fabric',           'WH-MAN-WEST-01');
+    (' Kings Road',        ' North',   'pothole',       'ROADFIX LTD',        'INFO@ROADFIX.CO.UK',        'RD-LON-A-0042', 4567.891234, 4812.3456,   120.50, 100.00),
+    ('Victoria Lane',      'SOUTH',    'RESURFACING',   '  Asphalt Solutions', 'sales@asphaltsolutions.com', 'RD-LON-B-0117', 12890.45678, 13200.789,  340.75, 85.50),
+    ('  Oxford Street  ',  'north',    ' Drainage ',    'cityPave',            'JOBS@CITYPAVE.COM',         'RD-LON-A-0203', 8920.123456, 8750.4567,   95.20,  100.00),
+    ('BRIDGE ROAD',        'EAST',     'signage',       'ROADFIX LTD',        'INFO@ROADFIX.CO.UK',        'RD-BRI-B-0088', 2340.567891, 2340.567891, 45.00,  100.00),
+    (' Church Lane',       'West',     'barrier',       'Metro Highways',      'contact@metrohighways.com', 'RD-MAN-A-0155', 6780.234561, 7100.891234, 88.30,  72.00),
+    ('high street',        ' South ',  'pothole',       '  Asphalt Solutions', 'SALES@ASPHALTSOLUTIONS.COM','RD-LON-A-0301', 3450.789012, 3200.456789, 65.40,  100.00),
+    ('  Park Avenue',      'NORTH',    'POTHOLE',       'cityPave',            'jobs@citypave.com',         'RD-LON-B-0044', 5670.345678, 5890.123456, 110.00, 90.00),
+    ('Mill Lane',          'east',     'resurfacing',   'TarMac Pro',          'hello@TARMACPRO.COM',       'RD-EDI-A-0076', 15430.67891, 16200.34567, 420.50, 60.00),
+    (' Station Road  ',    'West',     'drainage',      'ROADFIX LTD',        'info@roadfix.co.uk',        'RD-MAN-B-0091', 9870.456123, 10100.78912, 150.75, 45.00),
+    ('QUEENS DRIVE',       'North',    ' Signage',      'Metro Highways',      'CONTACT@METROHIGHWAYS.COM', 'RD-LON-M-0012', 1890.234567, 1890.234567, 30.00,  100.00),
+    ('Elm Grove',          'SOUTH',    'barrier',       '  Asphalt Solutions', 'sales@asphaltsolutions.com', 'RD-BRI-A-0134', 7650.891234, 8100.567891, 200.25, 80.00),
+    (' Regent Street',     ' East',    'pothole',       'cityPave',            'Jobs@CityPave.com',         'RD-LON-A-0188', 4120.678912, 3980.345678, 75.60,  100.00),
+    ('manor road',         'west',     'RESURFACING',   'TarMac Pro',          'Hello@TarMacPro.com',       'RD-MAN-A-0220', 11200.34567, 11800.89123, 310.00, 55.00),
+    ('  Priory Lane  ',    'NORTH',    'drainage',      'ROADFIX LTD',        'INFO@ROADFIX.CO.UK',        'RD-EDI-B-0033', 6540.123789, 6540.123789, 105.80, 100.00),
+    ('Castle Street',      ' south',   'signage',       'Metro Highways',      'contact@metrohighways.com', 'RD-LON-B-0256', 2100.456789, 2250.891234, 40.20,  95.00),
+    ('BROOK LANE',         'East',     'pothole',       '  Asphalt Solutions', 'SALES@ASPHALTSOLUTIONS.COM','RD-BRI-M-0007', 3890.567123, 4100.234567, 82.50,  100.00),
+    (' Waterloo Road',     'WEST',     ' Barrier ',     'cityPave',            'jobs@CITYPAVE.COM',         'RD-LON-A-0315', 8450.891234, 9200.456789, 175.30, 35.00),
+    ('king edward avenue', 'north',    'resurfacing',   'TarMac Pro',          'hello@tarmacpro.com',       'RD-MAN-B-0148', 14300.23456, 13900.78912, 385.60, 70.00),
+    ('Harbour Way',        'EAST',     'drainage',      'ROADFIX LTD',        'Info@RoadFix.co.uk',        'RD-BRI-A-0199', 7890.345612, 8200.123456, 130.40, 50.00),
+    ('  Albert Road',      ' West ',   'POTHOLE',       'Metro Highways',      'Contact@MetroHighways.com', 'RD-EDI-A-0061', 5230.678901, 5230.678901, 98.70,  100.00),
+    ('Pembroke Terrace',   'south',    'signage',       '  Asphalt Solutions', 'sales@asphaltsolutions.com', 'RD-LON-B-0278', 1750.234567, 1900.891234, 35.50,  88.00),
+    (' Grafton Street',    'NORTH',    'barrier',       'cityPave',            'JOBS@CITYPAVE.COM',         'RD-LON-A-0332', 9100.456789, 9600.345678, 160.90, 25.00),
+    ('NELSON WAY',         'East',     'resurfacing',   'TarMac Pro',          'Hello@TARMACPRO.COM',       'RD-BRI-B-0165', 13670.89123, 14100.56789, 365.20, 40.00),
+    ('Gladstone Crescent', ' west',    ' Drainage',     'ROADFIX LTD',        'info@roadfix.co.uk',        'RD-MAN-M-0004', 8200.345678, 7900.123456, 115.60, 100.00),
+    ('  Windsor Avenue ',  'SOUTH',    'pothole',       'Metro Highways',      'CONTACT@METROHIGHWAYS.COM', 'RD-EDI-B-0052', 4890.678912, 5100.234567, 90.80,  65.00);
+
+-- Verify: Expected 25 rows
+SELECT COUNT(*) AS total_repairs FROM raw_road_repairs;

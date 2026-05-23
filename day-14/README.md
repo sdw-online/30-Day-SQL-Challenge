@@ -1,4 +1,4 @@
-# Day 14 - Project: IoT Sensor Data Pipeline
+# Day 14 - Project: Fleet Intelligence Pipeline
 
 [Watch the video](COMING_SOON) | [← Day 13: CTEs (Part 1)](../day-13/) | [Day 15: JOINs Part 1 →](../day-15/)
 

@@ -1,10 +1,12 @@
--- Day 09: String & Numeric Functions - Setup Script
--- Run this in pgAdmin to create today's tables
+-- ============================================
+-- DAY 9 SETUP: Messy customer data for cleaning
+-- ============================================
+-- This creates a realistic dataset from a UK
+-- e-commerce company with data quality issues
+-- that need string and numeric functions to fix
 
--- Drop table if it already exists (safe to re-run)
 DROP TABLE IF EXISTS raw_customers;
 
--- Deliberately messy customer data from a UK e-commerce company
 CREATE TABLE raw_customers (
     customer_id     SERIAL PRIMARY KEY,
     first_name      VARCHAR(100)    NOT NULL,
@@ -20,16 +22,15 @@ CREATE TABLE raw_customers (
     notes           VARCHAR(300)
 );
 
--- 25 customers with intentional data quality issues:
--- leading/trailing spaces, inconsistent casing, mixed email formats,
--- product codes needing substring extraction, unformatted numbers
+-- INSERT: 25 customers with intentional data quality issues
+
 INSERT INTO raw_customers (first_name, last_name, email, phone, city, country, signup_date, total_spent, discount_pct, product_code, notes)
 VALUES
     ('  amara',     'OKAFOR',       'Amara.Okafor@GMAIL.COM',       '+44 7700 900123',  '  london  ',       'united kingdom',   '2025-01-15',   1249.99,    12.50,  'UK-ELEC-2025-0441',    'VIP customer - handle with care'),
     ('CALLUM',      '  reid',       'CALLUM.REID@OUTLOOK.COM',      '07700 900456',     'EDINBURGH',        'UNITED KINGDOM',   '2025-02-03',   87.45,      NULL,   'UK-HOME-2025-0112',    'first time buyer'),
     ('priya',       'Sharma',       'priya.sharma@Yahoo.co.uk',     '+447700900789',    'London',           'United Kingdom',   '2025-01-22',   3450.00,    7.75,   'UK-FASH-2025-0287',    '  RETURNS FREQUENTLY  '),
     ('  FINN  ',    'gallagher',    'finn.gallagher@gmail.com',     '0161 496 0000',    'manchester  ',     'united kingdom',   '2024-11-10',   562.30,     15.00,  'UK-ELEC-2025-0398',    'Loyal customer since 2024'),
-    ('Isla',        'CAMPBELL',     'isla.campbell@Hotmail.COM',     '+44 131 496 0001', '  Edinburgh',      'United Kingdom',   '2025-03-01',   2105.75,    10.00,  'UK-HOME-2025-0445',    NULL),
+    ('Isla',        'CAMPBELL',     'isla.campbell@Hotmail.COM',    '+44 131 496 0001', '  Edinburgh',      'United Kingdom',   '2025-03-01',   2105.75,    10.00,  'UK-HOME-2025-0445',    NULL),
     ('ravi  ',      'PATEL',        'RAVI.PATEL@COMPANY.CO.UK',     '07911 123456',     'london',           'UNITED KINGDOM',   '2025-01-08',   945.60,     5.25,   'UK-FASH-2025-0190',    'corporate account'),
     ('SIENNA',      'brooks',       'Sienna.Brooks@gmail.com',      '+44 117 496 0002', 'Bristol',          'united kingdom',   '2025-04-12',   178.90,     NULL,   'UK-GROC-2025-0567',    'NEW CUSTOMER - NEEDS WELCOME EMAIL'),
     ('  idris',     'MENSAH  ',     'idris.mensah@YAHOO.COM',       '07700 900321',     'LONDON  ',         'United Kingdom',   '2024-12-05',   4782.15,    20.00,  'UK-ELEC-2025-0502',    'premium member'),
@@ -50,3 +51,6 @@ VALUES
     ('Yuki',        'tanaka  ',     'yuki.tanaka@gmail.com',        '+81 3 1234 5678',  'Tokyo',            'japan',            '2025-03-05',   7890.00,    22.00,  'JP-ELEC-2025-0008',    'Wholesale account - large orders'),
     ('  SAGE',      'mwangi',       'SAGE.MWANGI@company.co.uk',    '+254 20 271 0000', 'Nairobi',          'kenya',            '2025-02-10',   345.60,     NULL,   'KE-GROC-2025-0003',    '  new international customer  '),
     ('PHOENIX',     '  oduya  ',    'phoenix.oduya@Hotmail.COM',    '07700 900333',     '  London',         'united kingdom',   '2025-04-15',   2678.45,    16.50,  'UK-ELEC-2025-0521',    'referred by Idris Mensah');
+
+-- Verify: Expected 25 rows
+SELECT COUNT(*) AS total_customers FROM raw_customers;

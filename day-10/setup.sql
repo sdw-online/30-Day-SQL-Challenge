@@ -1,100 +1,65 @@
--- Day 10: Date Functions & CAST - Setup Script
--- Run this in pgAdmin to create today's tables
+-- ============================================
+-- DAY 10 SETUP: Hotel booking data
+-- ============================================
+-- This creates a realistic dataset with:
+--   - Guest DOBs spanning decades for AGE() calculations
+--   - Booking dates spread across 2024-2026
+--   - Check-in/check-out dates for duration calculations
+--   - Some guests still checked in (check_out IS NULL)
+--   - Loyalty member dates (some NULL for non-members)
+--   - Mix of room types for grouping
 
--- Drop tables if they already exist (safe to re-run)
-DROP TABLE IF EXISTS contract_invoices;
-DROP TABLE IF EXISTS employee_contracts;
+DROP TABLE IF EXISTS hotel_bookings;
 
--- TABLE 1: employee_contracts
-CREATE TABLE employee_contracts (
-    contract_id         SERIAL PRIMARY KEY,
-    employee_name       VARCHAR(100)    NOT NULL,
-    date_of_birth       DATE            NOT NULL,
-    department          VARCHAR(60)     NOT NULL,
-    job_title           VARCHAR(100)    NOT NULL,
-    client_company      VARCHAR(100)    NOT NULL,
-    contract_start      DATE            NOT NULL,
-    contract_end        DATE,
-    annual_salary       NUMERIC(10, 2)  NOT NULL,
-    daily_rate          NUMERIC(8, 2),
-    last_review_date    DATE,
-    notes               VARCHAR(300)
+CREATE TABLE hotel_bookings (
+    booking_id          SERIAL PRIMARY KEY,
+    guest_name          VARCHAR(100)    NOT NULL,
+    guest_dob           DATE            NOT NULL,
+    booking_date        DATE            NOT NULL,
+    check_in            DATE            NOT NULL,
+    check_out           DATE,
+    room_type           VARCHAR(30)     NOT NULL,
+    nightly_rate        NUMERIC(8, 2)   NOT NULL,
+    loyalty_member_since DATE
 );
 
--- TABLE 2: contract_invoices
-CREATE TABLE contract_invoices (
-    invoice_id          SERIAL PRIMARY KEY,
-    contract_id         INTEGER         NOT NULL REFERENCES employee_contracts(contract_id),
-    invoice_date        DATE            NOT NULL,
-    amount_billed       NUMERIC(10, 2)  NOT NULL,
-    amount_paid         NUMERIC(10, 2),
-    payment_date        DATE,
-    due_date            DATE            NOT NULL,
-    currency            VARCHAR(3)      NOT NULL DEFAULT 'GBP'
-);
+-- ============================================
+-- INSERT: 30 hotel bookings with varied date patterns
+-- ============================================
 
--- 25 employee contracts with varied date patterns
-INSERT INTO employee_contracts
-    (employee_name, date_of_birth, department, job_title, client_company,
-     contract_start, contract_end, annual_salary, daily_rate, last_review_date, notes)
+INSERT INTO hotel_bookings
+    (guest_name, guest_dob, booking_date, check_in, check_out, room_type, nightly_rate, loyalty_member_since)
 VALUES
-    ('Amara Okafor',     '1990-03-15', 'Engineering',    'Data Engineer',          'Barclays',          '2024-01-15', '2025-06-30', 72000.00, 380.00, '2025-01-10', 'Extended twice'),
-    ('Callum Reid',      '1985-11-22', 'Engineering',    'Backend Developer',      'Revolut',           '2024-06-01', NULL,         68000.00, 350.00, '2025-03-15', 'Permanent placement'),
-    ('Priya Sharma',     '1992-07-08', 'Analytics',      'Senior Data Analyst',    'Deliveroo',         '2025-01-06', '2025-12-31', 58000.00, NULL,   '2025-04-01', NULL),
-    ('Finn Gallagher',   '1988-01-30', 'Engineering',    'DevOps Engineer',        'Monzo',             '2024-09-01', '2025-03-31', 75000.00, 400.00, '2025-02-20', 'Contract completed on time'),
-    ('Isla Campbell',    '1995-12-05', 'Analytics',      'BI Analyst',             'Tesco',             '2025-02-17', NULL,         52000.00, NULL,   NULL,         'New hire -- no review yet'),
-    ('Ravi Patel',       '1983-04-18', 'Engineering',    'Platform Engineer',      'Sky',               '2023-11-01', '2024-10-31', 80000.00, 420.00, '2024-08-15', 'Moved to permanent role at Sky'),
-    ('Sienna Brooks',    '1997-08-25', 'Marketing',      'Growth Analyst',         'ASOS',              '2025-03-01', '2025-08-31', 48000.00, NULL,   NULL,         'First contract role'),
-    ('Idris Mensah',     '1991-06-12', 'Engineering',    'Senior Data Engineer',   'Barclays',          '2024-03-01', '2025-02-28', 85000.00, 450.00, '2024-12-01', 'Completed -- rehire likely'),
-    ('Freya Nilsson',    '1993-09-03', 'Analytics',      'Analytics Engineer',     'Spotify',           '2025-04-01', NULL,         70000.00, 370.00, '2025-04-15', 'Remote from Stockholm'),
-    ('Euan MacLeod',     '1986-02-14', 'Finance',        'Finance Analyst',        'Standard Life',     '2024-07-15', '2025-07-14', 55000.00, NULL,   '2025-01-20', NULL),
-    ('Nia Williams',     '1994-10-20', 'Engineering',    'Full Stack Developer',   'Monzo',             '2025-01-13', NULL,         65000.00, 340.00, '2025-04-10', 'Strong performer'),
-    ('Kwame Asante',     '1989-05-07', 'Analytics',      'Product Analyst',        'Deliveroo',         '2024-04-01', '2024-12-31', 56000.00, NULL,   '2024-10-15', 'Contract ended -- client budget cut'),
-    ('Mei Zhang',        '1996-01-28', 'Engineering',    'ML Engineer',            'Revolut',           '2025-02-03', NULL,         78000.00, 410.00, NULL,         'New hire -- probation period'),
-    ('Jamal Hassan',     '1987-07-19', 'Marketing',      'Marketing Analyst',      'ASOS',              '2024-08-12', '2025-02-11', 46000.00, NULL,   '2024-11-30', 'Completed six-month contract'),
-    ('Safiya Abdi',      '1990-11-01', 'Finance',        'Senior Finance Analyst', 'Barclays',          '2024-10-01', NULL,         62000.00, 330.00, '2025-03-01', 'Permanent conversion pending'),
-    ('Arjun Nair',       '1984-03-25', 'Engineering',    'Lead Data Engineer',     'Sky',               '2025-01-20', '2026-01-19', 92000.00, 480.00, '2025-04-20', 'Twelve-month fixed term'),
-    ('Quinn Taylor',     '1998-06-15', 'Analytics',      'Junior Data Analyst',    'Tesco',             '2025-03-10', NULL,         42000.00, NULL,   NULL,         'Graduate programme placement'),
-    ('Wei Chen',         '1991-12-09', 'Engineering',    'Cloud Engineer',         'Sky',               '2024-05-01', '2025-04-30', 74000.00, 390.00, '2025-01-05', NULL),
-    ('Mateo Rivera',     '1993-02-20', 'Marketing',      'Content Analyst',        'ASOS',              '2025-04-14', NULL,         44000.00, NULL,   NULL,         'New hire -- first week'),
-    ('River Jordan',     '1999-04-01', 'Analytics',      'Data Analyst',           'Deliveroo',         '2025-01-27', '2025-07-26', 47000.00, NULL,   '2025-04-25', 'Six-month placement'),
-    ('Aisha Yusuf',      '1992-08-30', 'Finance',        'Risk Analyst',           'Standard Life',     '2024-12-02', NULL,         58000.00, 310.00, '2025-03-20', 'Extended from original 6-month'),
-    ('Liam Fletcher',    '1986-10-11', 'Engineering',    'Site Reliability Eng',   'Monzo',             '2024-02-01', '2025-01-31', 82000.00, 430.00, '2024-11-15', 'Completed -- excellent feedback'),
-    ('Yuki Tanaka',      '1994-05-17', 'Engineering',    'Data Engineer',          'Spotify',           '2025-03-17', NULL,         71000.00, 375.00, NULL,         'Remote from Tokyo'),
-    ('Sage Mwangi',      '1988-09-08', 'Analytics',      'Senior BI Analyst',      'Tesco',             '2024-11-04', '2025-05-03', 60000.00, 320.00, '2025-02-10', 'Six-month fixed term'),
-    ('Phoenix Oduya',    '1995-07-22', 'Engineering',    'Software Engineer',      'Revolut',           '2025-02-10', NULL,         67000.00, 355.00, '2025-04-08', 'Joined mid-sprint');
+    ('Lucy Barrett',       '1983-06-14', '2024-03-10', '2024-03-20', '2024-03-24', 'Deluxe',   145.00, '2021-01-15'),
+    ('Joel Harding',       '1975-11-02', '2024-05-18', '2024-06-01', '2024-06-05', 'Standard',  89.00, NULL),
+    ('Phoebe Saunders',    '1990-08-25', '2024-07-22', '2024-08-10', '2024-08-14', 'Suite',    275.00, '2019-06-01'),
+    ('Sam Whitfield',      '1968-02-17', '2024-09-05', '2024-09-15', '2024-09-18', 'Standard',  89.00, '2020-03-22'),
+    ('Rosie Crawford',     '2001-04-30', '2024-10-12', '2024-10-20', '2024-10-23', 'Deluxe',   145.00, NULL),
+    ('Jack Thornton',      '1955-12-08', '2024-11-01', '2024-11-10', '2024-11-15', 'Suite',    275.00, '2016-09-10'),
+    ('Clara Preston',      '1997-01-19', '2024-12-03', '2024-12-20', '2024-12-27', 'Standard',  89.00, NULL),
+    ('Ade Ogunbiyi',       '1986-09-06', '2025-01-08', '2025-01-15', '2025-01-19', 'Deluxe',   155.00, '2022-07-14'),
+    ('Mia Donovan',        '1972-03-21', '2025-01-20', '2025-02-01', '2025-02-04', 'Standard',  95.00, '2018-11-30'),
+    ('Niall Corrigan',     '2005-07-13', '2025-02-05', '2025-02-14', '2025-02-17', 'Deluxe',   155.00, NULL),
+    ('Kate Lawson',        '1960-10-27', '2025-02-18', '2025-03-01', '2025-03-06', 'Suite',    290.00, '2017-04-05'),
+    ('Kieran Frost',       '1993-05-04', '2025-03-02', '2025-03-10', '2025-03-13', 'Standard',  95.00, NULL),
+    ('Hannah Cole',        '1980-12-16', '2025-03-15', '2025-03-25', '2025-03-29', 'Deluxe',   155.00, '2023-01-20'),
+    ('Oscar Briggs',       '1965-08-09', '2025-04-01', '2025-04-10', '2025-04-14', 'Suite',    290.00, '2015-08-18'),
+    ('Ella Marsh',         '1998-02-22', '2025-04-08', '2025-04-15', NULL,          'Standard',  95.00, NULL),
+    ('David Perry',        '1957-06-03', '2025-04-10', '2025-04-16', NULL,          'Deluxe',   155.00, '2014-02-28'),
+    ('Chidinma Eze',       '1991-11-14', '2025-04-12', '2025-04-18', NULL,          'Suite',    290.00, '2024-06-01'),
+    ('Fraser Mitchell',    '2003-09-28', '2025-05-01', '2025-05-10', '2025-05-13', 'Standard',  95.00, NULL),
+    ('Natsuki Yamamoto',   '1978-04-15', '2025-05-14', '2025-05-22', '2025-05-26', 'Deluxe',   160.00, '2020-10-12'),
+    ('Gemma Elliot',       '1988-01-07', '2025-06-02', '2025-06-10', '2025-06-14', 'Standard', 100.00, '2023-09-05'),
+    ('Leo Chambers',       '1970-07-19', '2025-06-18', '2025-06-25', '2025-06-29', 'Suite',    310.00, NULL),
+    ('Sade Adjei',         '1995-10-31', '2025-07-05', '2025-07-12', '2025-07-16', 'Deluxe',   160.00, '2022-03-17'),
+    ('Connor Walsh',       '1962-03-24', '2025-08-01', '2025-08-10', NULL,          'Standard', 100.00, '2019-12-01'),
+    ('Priti Desai',        '2000-05-20', '2025-08-15', '2025-08-22', NULL,          'Suite',    310.00, NULL),
+    ('Alfie Turner',       '1985-12-02', '2025-09-01', '2025-09-08', NULL,          'Deluxe',   160.00, '2021-05-10'),
+    ('Tessa Holt',         '1987-05-22', '2026-01-10', '2026-01-18', '2026-01-22', 'Deluxe',   165.00, '2023-04-15'),
+    ('Ruben Castillo',     '1994-08-14', '2026-02-05', '2026-02-14', '2026-02-18', 'Standard', 105.00, NULL),
+    ('Dina Osman',         '1976-03-09', '2026-03-12', '2026-03-20', '2026-03-25', 'Suite',    320.00, '2020-11-01'),
+    ('Archie Webb',        '2001-11-30', '2026-04-08', '2026-04-14', NULL,          'Deluxe',   165.00, NULL),
+    ('Nina Eriksson',      '1983-01-17', '2026-04-15', '2026-04-18', NULL,          'Standard', 105.00, '2022-08-20');
 
--- 30 invoices with varied payment patterns
-INSERT INTO contract_invoices
-    (contract_id, invoice_date, amount_billed, amount_paid, payment_date, due_date, currency)
-VALUES
-    (1,  '2024-02-01', 6000.00, 6000.00, '2024-02-20', '2024-02-28', 'GBP'),
-    (1,  '2024-03-01', 6000.00, 6000.00, '2024-03-18', '2024-03-28', 'GBP'),
-    (1,  '2024-04-01', 6000.00, 6000.00, '2024-04-25', '2024-04-28', 'GBP'),
-    (2,  '2024-07-01', 5666.67, 5666.67, '2024-07-22', '2024-07-28', 'GBP'),
-    (2,  '2024-08-01', 5666.67, 5666.67, '2024-08-15', '2024-08-28', 'GBP'),
-    (2,  '2025-01-01', 5666.67, 5666.67, '2025-01-25', '2025-01-28', 'GBP'),
-    (3,  '2025-02-01', 4833.33, 4833.33, '2025-02-18', '2025-02-28', 'GBP'),
-    (3,  '2025-03-01', 4833.33, 4833.33, '2025-03-20', '2025-03-28', 'GBP'),
-    (3,  '2025-04-01', 4833.33, NULL,     NULL,         '2025-04-28', 'GBP'),
-    (4,  '2024-10-01', 6250.00, 6250.00, '2024-10-28', '2024-10-28', 'GBP'),
-    (4,  '2024-11-01', 6250.00, 6250.00, '2024-11-30', '2024-11-28', 'GBP'),
-    (4,  '2025-01-01', 6250.00, 6250.00, '2025-01-28', '2025-01-28', 'GBP'),
-    (6,  '2024-01-01', 6666.67, 6666.67, '2024-01-20', '2024-01-28', 'GBP'),
-    (6,  '2024-06-01', 6666.67, 6666.67, '2024-06-28', '2024-06-28', 'GBP'),
-    (8,  '2024-04-01', 7083.33, 7083.33, '2024-04-22', '2024-04-28', 'GBP'),
-    (8,  '2024-05-01', 7083.33, 7083.33, '2024-05-18', '2024-05-28', 'GBP'),
-    (8,  '2024-12-01', 7083.33, 7083.33, '2024-12-30', '2024-12-28', 'GBP'),
-    (9,  '2025-05-01', 5833.33, NULL,     NULL,         '2025-05-28', 'SEK'),
-    (10, '2024-08-01', 4583.33, 4583.33, '2024-08-25', '2024-08-28', 'GBP'),
-    (10, '2025-01-01', 4583.33, 4583.33, '2025-01-28', '2025-01-28', 'GBP'),
-    (12, '2024-05-01', 4666.67, 4666.67, '2024-05-20', '2024-05-28', 'GBP'),
-    (12, '2024-09-01', 4666.67, 4666.67, '2024-09-15', '2024-09-28', 'GBP'),
-    (15, '2024-11-01', 5166.67, 5166.67, '2024-11-25', '2024-11-28', 'GBP'),
-    (15, '2025-02-01', 5166.67, 5166.67, '2025-02-20', '2025-02-28', 'GBP'),
-    (16, '2025-02-01', 7666.67, 7666.67, '2025-02-25', '2025-02-28', 'GBP'),
-    (16, '2025-03-01', 7666.67, NULL,     NULL,         '2025-03-28', 'GBP'),
-    (18, '2024-06-01', 6166.67, 6166.67, '2024-06-20', '2024-06-28', 'GBP'),
-    (18, '2025-01-01', 6166.67, 6166.67, '2025-01-30', '2025-01-28', 'GBP'),
-    (22, '2024-03-01', 6833.33, 6833.33, '2024-03-28', '2024-03-28', 'GBP'),
-    (22, '2025-01-01', 6833.33, 6833.33, '2025-01-15', '2025-01-28', 'GBP');
+-- Verify: Expected 30 rows
+SELECT COUNT(*) AS total_bookings FROM hotel_bookings;

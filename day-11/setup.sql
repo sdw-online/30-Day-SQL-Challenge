@@ -1,5 +1,6 @@
--- Day 11: CASE WHEN - Setup Script
--- Run this in pgAdmin to create today's tables
+-- ============================================
+-- DAY 11 SETUP: meal_plans table for CASE WHEN
+-- ============================================
 
 DROP TABLE IF EXISTS meal_plans;
 
@@ -62,3 +63,6 @@ VALUES
     ('Koji',     'build_muscle',   30, 78.1, 2950, 'pescatarian',  'very_active'),
     ('Suki',     'digestion',      42, 63.3, NULL, 'vegan',        'active'),
     ('Trent',    'flexibility',    35, 75.5, 2000, NULL,           'active');
+
+-- Verify: Expected 45 rows
+SELECT COUNT(*) AS total_plans FROM meal_plans;
