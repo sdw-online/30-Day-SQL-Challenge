@@ -49,9 +49,9 @@ function conceptCard({ day, title, diff, learn }) {
   const dd = String(day).padStart(2, '0');
   const diffColor = diff === 'Beginner' ? '#22c55e' : diff === 'Intermediate' ? '#f59e0b' : '#ef4444';
   const bullets = learn.map((item, i) => {
-    const y = 112 + i * 22;
-    return `  <circle cx="528" cy="${y}" r="3" fill="#ef4444"/>
-  <text x="540" y="${y + 4}" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">${escXml(item)}</text>`;
+    const y = 100 + i * 24;
+    return `  <circle cx="48" cy="${y}" r="3" fill="#ef4444"/>
+  <text x="60" y="${y + 4}" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">${escXml(item)}</text>`;
   }).join('\n');
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" fill="none">
@@ -66,13 +66,17 @@ function conceptCard({ day, title, diff, learn }) {
   <rect x="1" y="1" width="798" height="198" rx="12" fill="none" stroke="#dc2626" stroke-width="1.5" opacity="0.35" filter="url(#glow)"/>
   <circle cx="720" cy="16" r="2" fill="#dc2626" opacity="0.2"/><circle cx="740" cy="16" r="2" fill="#dc2626" opacity="0.25"/><circle cx="760" cy="16" r="2" fill="#dc2626" opacity="0.3"/><circle cx="780" cy="16" r="2" fill="#dc2626" opacity="0.35"/>
   <circle cx="740" cy="36" r="2" fill="#dc2626" opacity="0.15"/><circle cx="760" cy="36" r="2" fill="#dc2626" opacity="0.2"/><circle cx="780" cy="36" r="2" fill="#dc2626" opacity="0.25"/>
+  <!-- Day badge -->
   <rect x="24" y="20" width="56" height="28" rx="6" fill="#dc2626"/>
   <text x="52" y="39" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">DAY ${dd}</text>
+  <!-- Title -->
   <text x="92" y="40" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">${escXml(title)}</text>
-  <text x="520" y="86" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#c4a0a6">What you'll learn:</text>
+  <!-- Difficulty pill - away from corner dots -->
+  <rect x="620" y="20" width="90" height="24" rx="12" fill="${diffColor}" opacity="0.2"/>
+  <text x="665" y="37" font-family="Segoe UI, system-ui, sans-serif" font-size="11" font-weight="600" fill="${diffColor}" text-anchor="middle">${diff}</text>
+  <!-- Bullet list - left aligned under title -->
+  <text x="40" y="76" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#c4a0a6">What you'll learn:</text>
 ${bullets}
-  <rect x="700" y="20" width="80" height="24" rx="12" fill="${diffColor}" opacity="0.2"/>
-  <text x="740" y="37" font-family="Segoe UI, system-ui, sans-serif" font-size="11" font-weight="600" fill="${diffColor}" text-anchor="middle">${diff}</text>
 </svg>`;
 }
 
