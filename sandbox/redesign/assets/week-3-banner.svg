@@ -18,7 +18,7 @@
   <circle cx="720" cy="96" r="2" fill="#dc2626" opacity="0.06"/><circle cx="740" cy="96" r="2" fill="#dc2626" opacity="0.1"/><circle cx="760" cy="96" r="2" fill="#dc2626" opacity="0.14"/><circle cx="780" cy="96" r="2" fill="#dc2626" opacity="0.18"/>
   <rect x="24" y="24" width="72" height="72" rx="10" fill="#dc2626"/>
   <text x="60" y="55" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="600" fill="#fca5a5" text-anchor="middle">WEEK</text>
-  <text x="60" y="80" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle">2</text>
-  <text x="118" y="52" font-family="Segoe UI, system-ui, sans-serif" font-size="26" font-weight="700" fill="#ffffff">Data Quality &amp; Transformation</text>
-  <text x="118" y="80" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#c4a0a6">Days 8-14  |  NULLs, String/Numeric/Date Functions, CASE WHEN, Subqueries, CTEs, Project</text>
+  <text x="60" y="80" font-family="Segoe UI, system-ui, sans-serif" font-size="30" font-weight="800" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="118" y="52" font-family="Segoe UI, system-ui, sans-serif" font-size="26" font-weight="700" fill="#ffffff">JOINs &amp; Relational Data</text>
+  <text x="118" y="80" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#c4a0a6">Days 15-21  |  INNER/LEFT/RIGHT/FULL OUTER/CROSS/Self JOINs, UNION, Normalisation, Recursive CTEs, Star Schema, Project</text>
 </svg>

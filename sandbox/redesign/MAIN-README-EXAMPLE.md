@@ -62,9 +62,7 @@ Each day gives you:
 | 13 | CTEs (Part 1) | [Watch](https://youtu.be/IijQJAfqcJc) | Intermediate |
 | 14 | **Project:** Fleet Intelligence Pipeline | Coming soon | Intermediate |
 
-### Week 3: JOINs & Relational Data
-
-Connect tables and think relationally - the skill that separates beginners from job-ready candidates.
+<img src="assets/week-3-banner.svg" width="800" alt="Week 3: JOINs & Relational Data">
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
@@ -76,9 +74,7 @@ Connect tables and think relationally - the skill that separates beginners from 
 | 20 | Data Modelling (Star Schema) | Coming soon | Advanced |
 | 21 | **Project:** SaaS Trial-to-Paid Conversion | Coming soon | Advanced |
 
-### Week 4: Advanced Analytics & Performance
-
-Write production-grade SQL - window functions, slowly changing dimensions, views, metadata, indexing, and a full capstone.
+<img src="assets/week-4-banner.svg" width="800" alt="Week 4: Advanced Analytics & Performance">
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
