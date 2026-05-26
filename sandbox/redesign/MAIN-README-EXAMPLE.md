@@ -38,9 +38,7 @@ Each day gives you:
 
 ## Curriculum
 
-### Week 1: SQL Fundamentals
-
-Build your foundation - querying, filtering, sorting, aggregating, and modifying data.
+<img src="assets/week-1-banner.svg" width="800" alt="Week 1: SQL Fundamentals">
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
@@ -52,9 +50,7 @@ Build your foundation - querying, filtering, sorting, aggregating, and modifying
 | 06 | Primary & Foreign Keys | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | Beginner |
 | 07 | **Project:** Freight & Logistics Report | [Watch](https://youtu.be/fiBYAziNtGI) | Beginner |
 
-### Week 2: Data Quality & Transformation
-
-Handle messy data like a professional - NULLs, functions, conditional logic, and reusable query patterns.
+<img src="assets/week-2-banner.svg" width="800" alt="Week 2: Data Quality & Transformation">
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|

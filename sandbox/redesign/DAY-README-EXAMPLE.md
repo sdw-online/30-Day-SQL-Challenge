@@ -1,9 +1,9 @@
 <p align="center">
-  <img src="../../assets/social-proof/sql-challenge-cover.jpg" width="600" alt="30 Day SQL Challenge">
+  <img src="assets/day-12-subqueries.svg" width="800" alt="Day 12 - Subqueries & Temp Tables">
 </p>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=mFIMPhiO-N0&list=PLACEHOLDER"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
+  <a href="https://youtu.be/SOt5jUrzKOU"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
   <img src="https://img.shields.io/badge/Day-12_of_30-blue" alt="Day 12">
   <img src="https://img.shields.io/badge/Week-2-purple" alt="Week 2">
   <img src="https://img.shields.io/badge/Difficulty-Intermediate-orange" alt="Intermediate">

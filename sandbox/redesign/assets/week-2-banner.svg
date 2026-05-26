@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" fill="none">
+  <defs>
+    <linearGradient id="w2" x1="0" y1="0" x2="800" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent2" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#a78bfa"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="120" rx="12" fill="url(#w2)"/>
+  <rect x="0" y="0" width="6" height="120" rx="3" fill="url(#accent2)"/>
+  <text x="32" y="44" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#a78bfa" letter-spacing="2">WEEK 2</text>
+  <text x="32" y="76" font-family="Segoe UI, system-ui, sans-serif" font-size="26" font-weight="700" fill="#ffffff">Data Quality &amp; Transformation</text>
+  <text x="32" y="100" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#94a3b8">Days 8-14  |  NULLs, String/Numeric/Date Functions, CASE WHEN, Subqueries, CTEs, Project</text>
+  <text x="660" y="75" font-family="Courier New, monospace" font-size="48" fill="#a78bfa" opacity="0.15">CASE</text>
+</svg>

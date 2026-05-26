@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" fill="none">
+  <defs>
+    <linearGradient id="w1" x1="0" y1="0" x2="800" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#16213e"/>
+    </linearGradient>
+    <linearGradient id="accent1" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="120" rx="12" fill="url(#w1)"/>
+  <rect x="0" y="0" width="6" height="120" rx="3" fill="url(#accent1)"/>
+  <text x="32" y="44" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#4ade80" letter-spacing="2">WEEK 1</text>
+  <text x="32" y="76" font-family="Segoe UI, system-ui, sans-serif" font-size="26" font-weight="700" fill="#ffffff">SQL Fundamentals</text>
+  <text x="32" y="100" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#94a3b8">Days 1-7  |  SELECT, WHERE, ORDER BY, GROUP BY, INSERT/UPDATE/DELETE, Keys, Project</text>
+  <!-- Decorative SQL symbols -->
+  <text x="680" y="75" font-family="Courier New, monospace" font-size="48" fill="#4ade80" opacity="0.15">SELECT</text>
+</svg>
