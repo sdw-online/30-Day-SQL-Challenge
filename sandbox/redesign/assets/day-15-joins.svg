@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" fill="none">
   <defs>
     <linearGradient id="bg15" x1="0" y1="0" x2="800" y2="200" gradientUnits="userSpaceOnUse">
-      <stop offset="0%" stop-color="#0f172a"/>
-      <stop offset="100%" stop-color="#1e293b"/>
+      <stop offset="0%" stop-color="#1a0a0e"/>
+      <stop offset="100%" stop-color="#2a1015"/>
     </linearGradient>
   </defs>
 
@@ -10,7 +10,7 @@
   <rect width="800" height="200" rx="12" fill="url(#bg15)"/>
 
   <!-- Day badge -->
-  <rect x="24" y="20" width="56" height="28" rx="6" fill="#8b5cf6"/>
+  <rect x="24" y="20" width="56" height="28" rx="6" fill="#be123c"/>
   <text x="52" y="39" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">DAY 15</text>
 
   <!-- Title -->
@@ -18,38 +18,38 @@
 
   <!-- Venn diagrams for each JOIN type -->
   <!-- INNER JOIN -->
-  <circle cx="120" cy="130" r="35" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
-  <circle cx="150" cy="130" r="35" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.6"/>
-  <ellipse cx="135" cy="130" rx="14" ry="28" fill="#4ade80" opacity="0.3"/>
-  <text x="135" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">INNER</text>
+  <circle cx="120" cy="130" r="35" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+  <circle cx="150" cy="130" r="35" fill="none" stroke="#fb923c" stroke-width="2" opacity="0.5"/>
+  <ellipse cx="135" cy="130" rx="14" ry="28" fill="#dc2626" opacity="0.3"/>
+  <text x="135" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#c4a0a6" text-anchor="middle">INNER</text>
 
   <!-- LEFT JOIN -->
-  <circle cx="270" cy="130" r="35" fill="#3b82f6" opacity="0.25"/>
-  <circle cx="300" cy="130" r="35" fill="none" stroke="#f59e0b" stroke-width="2" opacity="0.6"/>
-  <text x="285" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">LEFT</text>
+  <circle cx="270" cy="130" r="35" fill="#ef4444" opacity="0.2"/>
+  <circle cx="300" cy="130" r="35" fill="none" stroke="#fb923c" stroke-width="2" opacity="0.5"/>
+  <text x="285" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#c4a0a6" text-anchor="middle">LEFT</text>
 
   <!-- RIGHT JOIN -->
-  <circle cx="420" cy="130" r="35" fill="none" stroke="#3b82f6" stroke-width="2" opacity="0.6"/>
-  <circle cx="450" cy="130" r="35" fill="#f59e0b" opacity="0.25"/>
-  <text x="435" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">RIGHT</text>
+  <circle cx="420" cy="130" r="35" fill="none" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+  <circle cx="450" cy="130" r="35" fill="#fb923c" opacity="0.2"/>
+  <text x="435" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#c4a0a6" text-anchor="middle">RIGHT</text>
 
   <!-- FULL OUTER -->
-  <circle cx="570" cy="130" r="35" fill="#3b82f6" opacity="0.25"/>
-  <circle cx="600" cy="130" r="35" fill="#f59e0b" opacity="0.25"/>
-  <text x="585" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#94a3b8" text-anchor="middle">FULL OUTER</text>
+  <circle cx="570" cy="130" r="35" fill="#ef4444" opacity="0.2"/>
+  <circle cx="600" cy="130" r="35" fill="#fb923c" opacity="0.2"/>
+  <text x="585" y="180" font-family="Segoe UI, system-ui, sans-serif" font-size="10" fill="#c4a0a6" text-anchor="middle">FULL OUTER</text>
 
   <!-- Right side: concept list -->
-  <text x="660" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#94a3b8">You'll learn:</text>
-  <circle cx="668" cy="118" r="3" fill="#4ade80"/>
-  <text x="680" y="122" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0">JOIN syntax</text>
-  <circle cx="668" cy="138" r="3" fill="#4ade80"/>
-  <text x="680" y="142" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0">4 JOIN types</text>
-  <circle cx="668" cy="158" r="3" fill="#4ade80"/>
-  <text x="680" y="162" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0">Anti-joins</text>
-  <circle cx="668" cy="178" r="3" fill="#4ade80"/>
-  <text x="680" y="182" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#e2e8f0">Multi-table</text>
+  <text x="660" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#c4a0a6">You'll learn:</text>
+  <circle cx="668" cy="118" r="3" fill="#ef4444"/>
+  <text x="680" y="122" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#fce4ec">JOIN syntax</text>
+  <circle cx="668" cy="138" r="3" fill="#ef4444"/>
+  <text x="680" y="142" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#fce4ec">4 JOIN types</text>
+  <circle cx="668" cy="158" r="3" fill="#ef4444"/>
+  <text x="680" y="162" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#fce4ec">Anti-joins</text>
+  <circle cx="668" cy="178" r="3" fill="#ef4444"/>
+  <text x="680" y="182" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#fce4ec">Multi-table</text>
 
   <!-- Difficulty -->
-  <rect x="700" y="20" width="80" height="24" rx="12" fill="#8b5cf6" opacity="0.2"/>
-  <text x="740" y="37" font-family="Segoe UI, system-ui, sans-serif" font-size="11" font-weight="600" fill="#a78bfa" text-anchor="middle">Intermediate</text>
+  <rect x="700" y="20" width="80" height="24" rx="12" fill="#be123c" opacity="0.2"/>
+  <text x="740" y="37" font-family="Segoe UI, system-ui, sans-serif" font-size="11" font-weight="600" fill="#f43f5e" text-anchor="middle">Intermediate</text>
 </svg>
