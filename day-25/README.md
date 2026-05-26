@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-25-views.svg" width="800" alt="Day 25 - Views & Materialised Views">
+  <a href="../day-25/"><img src="../assets/banners/day-25-views.svg" width="800" alt="Day 25 - Views & Materialised Views"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - The difference between regular views (always fresh) and materialised views (pre-computed, instant reads)
 - How to refresh materialised views - including CONCURRENTLY to avoid blocking readers
 - When to use CTEs, views, materialised views, and tables
-
----
-
-## Key Concepts
-
-- **Views save queries by name** - CREATE VIEW stores the query definition so the whole team shares one source of truth; every read returns fresh results
 
 ---
 

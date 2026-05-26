@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-05-insert-update-delete.svg" width="800" alt="Day 5 - INSERT, UPDATE & DELETE">
+  <a href="https://www.youtube.com/watch?v=NJ4ujmOZt60"><img src="../assets/banners/day-05-insert-update-delete.svg" width="800" alt="Day 5 - INSERT, UPDATE & DELETE"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **INSERT:** Adds new rows to a table - always list column names explicitly so your queries survive table structure changes
 
 ---
 

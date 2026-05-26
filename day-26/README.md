@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-26-information-schema.svg" width="800" alt="Day 26 - Information Schema & Metadata">
+  <a href="../day-26/"><img src="../assets/banners/day-26-information-schema.svg" width="800" alt="Day 26 - Information Schema & Metadata"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - How to list all tables, inspect columns, and map foreign key relationships with SQL
 - How to use pg_catalog to find indexes, table owners, and column comments
 - How to auto-generate a complete data dictionary from database metadata
-
----
-
-## Key Concepts
-
-- **information_schema:** The SQL-standard metadata views that work across PostgreSQL, MySQL, SQL Server, and Snowflake - your portable metadata toolkit
 
 ---
 

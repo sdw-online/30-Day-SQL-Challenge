@@ -23,7 +23,7 @@ for (let i = 1; i <= 13; i++) {
   // Get old README from git
   let oldContent;
   try {
-    oldContent = execSync(`git show HEAD~1:${dayDir}/README.md`, { cwd: ROOT, encoding: 'utf8' });
+    oldContent = execSync(`git show 0fc1ff8~1:${dayDir}/README.md`, { cwd: ROOT, encoding: 'utf8' });
   } catch (e) {
     console.log(`${dayDir}: no old README found, skipping`);
     continue;
@@ -46,11 +46,9 @@ for (let i = 1; i <= 13; i++) {
   const readmePath = path.join(ROOT, dayDir, 'README.md');
   let current = fs.readFileSync(readmePath, 'utf8');
 
-  // Check if exercises already exist
-  if (current.includes('## Exercises')) {
-    console.log(`${dayDir}: already has exercises, skipping`);
-    continue;
-  }
+  // Remove existing exercises/concepts sections if present (will re-add from old)
+  current = current.replace(/## Exercises[\s\S]*?(?=## Where To Next\?)/, '');
+  current = current.replace(/## Key Concepts[\s\S]*?(?=## Where To Next\?|## Exercises)/, '');
 
   // Find insertion point: after Quick Setup section (before ## Where To Next?)
   const insertBefore = '## Where To Next?';

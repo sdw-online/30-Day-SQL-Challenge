@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-02-select-where.svg" width="800" alt="Day 2 - SELECT & WHERE">
+  <a href="https://www.youtube.com/watch?v=-0uVBtXCZ_s"><img src="../assets/banners/day-02-select-where.svg" width="800" alt="Day 2 - SELECT & WHERE"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **SELECT:** Pulls data from a table - use `SELECT *` for exploring, specific columns for production queries
 
 ---
 

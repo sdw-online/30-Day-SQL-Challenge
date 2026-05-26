@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-09-string-numeric.svg" width="800" alt="Day 9 - String & Numeric Functions">
+  <a href="https://www.youtube.com/watch?v=h6J7AajBD6w"><img src="../assets/banners/day-09-string-numeric.svg" width="800" alt="Day 9 - String & Numeric Functions"></a>
 </p>
 
 <p align="center">
@@ -44,12 +44,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **TRIM / LTRIM / RTRIM:** Remove leading and trailing whitespace - essential first step in any data cleaning pipeline
 
 ---
 

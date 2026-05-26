@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-01-intro-to-sql.svg" width="800" alt="Day 1 - Introduction to SQL & Databases">
+  <a href="https://www.youtube.com/watch?v=mFIMPhiO-N0"><img src="../assets/banners/day-01-intro-to-sql.svg" width="800" alt="Day 1 - Introduction to SQL & Databases"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **SQL (Structured Query Language):** The language used to communicate with databases - every data role uses it daily
 
 ---
 

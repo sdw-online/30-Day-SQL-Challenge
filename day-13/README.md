@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-13-ctes.svg" width="800" alt="Day 13 - CTEs (Part 1)">
+  <a href="https://youtu.be/IijQJAfqcJc"><img src="../assets/banners/day-13-ctes.svg" width="800" alt="Day 13 - CTEs (Part 1)"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **WITH keyword:** Defines named temporary result sets at the top of a query, referenced like tables below
 
 ---
 

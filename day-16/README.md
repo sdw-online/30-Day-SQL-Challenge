@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-16-cross-self-join.svg" width="800" alt="Day 16 - CROSS JOIN & Self Joins">
+  <a href="../day-16/"><img src="../assets/banners/day-16-cross-self-join.svg" width="800" alt="Day 16 - CROSS JOIN & Self Joins"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - How self joins let you join a table to itself to query hierarchies, compare rows, and find colleague pairs
 - How non-equi joins match values to ranges using BETWEEN instead of equals
 - The `<` trick for producing unique pairs without duplicates
-
----
-
-## Key Concepts
-
-- **CROSS JOIN:** Pairs every row from one table with every row from another - no ON clause, no matching condition. Useful for building calendar tables, test matrices, and workforce planning grids
 
 ---
 

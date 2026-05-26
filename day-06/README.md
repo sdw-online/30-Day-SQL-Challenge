@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-06-keys-constraints.svg" width="800" alt="Day 6 - Primary & Foreign Keys">
+  <a href="https://www.youtube.com/watch?v=1AdFU8Vdq-0"><img src="../assets/banners/day-06-keys-constraints.svg" width="800" alt="Day 6 - Primary & Foreign Keys"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **PRIMARY KEY**: Uniquely identifies every row - no duplicates, no NULLs, and SERIAL handles auto-incrementing
 
 ---
 

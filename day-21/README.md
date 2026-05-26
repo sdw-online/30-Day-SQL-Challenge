@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-21-project-saas.svg" width="800" alt="Day 21 - Project: SaaS Trial-to-Paid Conversion">
+  <a href="../day-21/"><img src="../assets/banners/day-21-project-saas.svg" width="800" alt="Day 21 - Project: SaaS Trial-to-Paid Conversion"></a>
 </p>
 
 <p align="center">
@@ -19,12 +19,6 @@
 - How to build a complete SaaS conversion funnel analysis using JOINs, anti-joins, UNION ALL, and CTEs
 - How to segment users by engagement level and correlate engagement with conversion rates
 - How to calculate conversion timing, revenue analysis, and produce board-ready recommendations with SQL
-
----
-
-## Key Concepts
-
-- **Funnel analysis with LEFT JOINs** - preserving drop-offs that INNER JOIN would hide
 
 ---
 

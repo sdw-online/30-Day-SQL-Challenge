@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge">
+  <a href="https://www.youtube.com/@sdw-online"><img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge"></a>
 </p>
 
 <p align="center">
@@ -84,7 +84,7 @@ Not everyone is starting from scratch - and that's fine. This challenge is desig
 
 <br>
 
-<img src="assets/banners/week-1-banner.svg" width="800" alt="Week 1: SQL Fundamentals">
+<a href="day-01/"><img src="assets/banners/week-1-banner.svg" width="800" alt="Week 1: SQL Fundamentals"></a>
 
 <br>
 
@@ -100,7 +100,7 @@ Not everyone is starting from scratch - and that's fine. This challenge is desig
 
 <br>
 
-<img src="assets/banners/week-2-banner.svg" width="800" alt="Week 2: Data Quality & Transformation">
+<a href="day-08/"><img src="assets/banners/week-2-banner.svg" width="800" alt="Week 2: Data Quality & Transformation"></a>
 
 <br>
 
@@ -116,7 +116,7 @@ Not everyone is starting from scratch - and that's fine. This challenge is desig
 
 <br>
 
-<img src="assets/banners/week-3-banner.svg" width="800" alt="Week 3: JOINs & Relational Data">
+<a href="day-15/"><img src="assets/banners/week-3-banner.svg" width="800" alt="Week 3: JOINs & Relational Data"></a>
 
 <br>
 
@@ -132,7 +132,7 @@ Not everyone is starting from scratch - and that's fine. This challenge is desig
 
 <br>
 
-<img src="assets/banners/week-4-banner.svg" width="800" alt="Week 4: Advanced Analytics & Performance">
+<a href="day-22/"><img src="assets/banners/week-4-banner.svg" width="800" alt="Week 4: Advanced Analytics & Performance"></a>
 
 <br>
 

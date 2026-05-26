@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-12-subqueries.svg" width="800" alt="Day 12 - Subqueries & Temp Tables">
+  <a href="https://youtu.be/SOt5jUrzKOU"><img src="../assets/banners/day-12-subqueries.svg" width="800" alt="Day 12 - Subqueries & Temp Tables"></a>
 </p>
 
 <p align="center">
@@ -44,12 +44,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **Subqueries in WHERE:** Use a subquery as a dynamic threshold instead of hardcoding values
 
 ---
 

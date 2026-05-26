@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-11-case-when.svg" width="800" alt="Day 11 - CASE WHEN">
+  <a href="https://youtu.be/eZ5iTTsKGkI"><img src="../assets/banners/day-11-case-when.svg" width="800" alt="Day 11 - CASE WHEN"></a>
 </p>
 
 <p align="center">
@@ -44,12 +44,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **Simple CASE:** Matches a single column against a list of values - cleaner than multiple OR conditions
 
 ---
 

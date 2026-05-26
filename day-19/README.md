@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-19-recursive-ctes.svg" width="800" alt="Day 19 - Recursive CTEs">
+  <a href="../day-19/"><img src="../assets/banners/day-19-recursive-ctes.svg" width="800" alt="Day 19 - Recursive CTEs"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - The two-part structure: anchor member (starting rows) and recursive member (next level)
 - How to traverse org charts, category trees, folder hierarchies, and bill of materials
 - How to add safety limits and detect cycles to prevent infinite recursion
-
----
-
-## Key Concepts
-
-- **Recursive CTE structure:** An anchor member (starting rows) connected to a recursive member (next level) by UNION ALL - the recursive member references the CTE's own name
 
 ---
 

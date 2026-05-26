@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-17-union.svg" width="800" alt="Day 17 - UNION & UNION ALL">
+  <a href="../day-17/"><img src="../assets/banners/day-17-union.svg" width="800" alt="Day 17 - UNION & UNION ALL"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - How UNION ALL stacks rows and keeps everything - and why it should be your default
 - The strict column rules that both queries must follow
 - How to use source tagging, INTERSECT, and EXCEPT for real-world data merging
-
----
-
-## Key Concepts
-
-- **UNION:** Stacks rows from multiple queries and removes exact duplicates - use when you need a clean, deduplicated list
 
 ---
 

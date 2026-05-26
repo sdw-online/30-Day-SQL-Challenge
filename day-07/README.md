@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-07-project-freight.svg" width="800" alt="Day 7 - Project: Freight & Logistics Report">
+  <a href="https://youtu.be/fiBYAziNtGI"><img src="../assets/banners/day-07-project-freight.svg" width="800" alt="Day 7 - Project: Freight & Logistics Report"></a>
 </p>
 
 <p align="center">
@@ -42,12 +42,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **Explore first, clean second, analyse third**: The standard workflow for any real data project
 
 ---
 

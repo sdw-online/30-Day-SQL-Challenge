@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-20-star-schema.svg" width="800" alt="Day 20 - Data Modelling (Star Schema)">
+  <a href="../day-20/"><img src="../assets/banners/day-20-star-schema.svg" width="800" alt="Day 20 - Data Modelling (Star Schema)"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - The difference between fact tables (measurable events) and dimension tables (descriptive context)
 - Why grain is the most critical design decision in any data model
 - How surrogate keys, summary tables, and date dimensions make analytical queries fast and reliable
-
----
-
-## Key Concepts
-
-- **Star schema:** A fact table in the centre surrounded by dimension tables - designed for fast, simple analytical queries with minimal joins
 
 ---
 

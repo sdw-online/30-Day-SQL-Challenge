@@ -126,8 +126,9 @@ function generateReadme(d, existingContent) {
 
   let md = '';
 
-  // Concept card
-  md += `<p align="center">\n  <img src="../assets/banners/day-${dd}-${d.slug}.svg" width="800" alt="Day ${d.day} - ${d.topic}">\n</p>\n\n`;
+  // Concept card (clickable - links to video or day folder)
+  const cardLink = d.video !== 'COMING_SOON' ? d.video : `../day-${dd}/`;
+  md += `<p align="center">\n  <a href="${cardLink}"><img src="../assets/banners/day-${dd}-${d.slug}.svg" width="800" alt="Day ${d.day} - ${d.topic}"></a>\n</p>\n\n`;
 
   // Badges
   md += `<p align="center">\n`;

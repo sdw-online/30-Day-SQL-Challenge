@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-29-pro-tips.svg" width="800" alt="Day 29 - PostgreSQL Pro Tips">
+  <a href="../day-29/"><img src="../assets/banners/day-29-pro-tips.svg" width="800" alt="Day 29 - PostgreSQL Pro Tips"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - DISTINCT ON for first-row-per-group problems without window functions
 - FILTER for conditional aggregation without CASE WHEN
 - RETURNING, generate_series(), LATERAL joins, string_agg(), TABLESAMPLE, dollar-quoting, EXCLUDED, and partial indexes
-
----
-
-## Key Concepts
-
-- **DISTINCT ON:** Replaces ROW_NUMBER subqueries for first-row-per-group problems - cleaner and often faster
 
 ---
 

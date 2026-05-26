@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-22-window-functions-1.svg" width="800" alt="Day 22 - Window Functions Part 1">
+  <a href="../day-22/"><img src="../assets/banners/day-22-window-functions-1.svg" width="800" alt="Day 22 - Window Functions Part 1"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - The difference between ROW_NUMBER, RANK, and DENSE_RANK - and when to use each one
 - How NTILE splits rows into equal buckets (quartiles, deciles, percentiles)
 - How PARTITION BY creates independent ranking windows within groups
-
----
-
-## Key Concepts
-
-- **Window functions vs GROUP BY** - window functions add summary columns alongside detail rows without collapsing them
 
 ---
 

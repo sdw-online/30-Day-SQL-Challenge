@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-14-project-fleet.svg" width="800" alt="Day 14 - Project: Fleet Intelligence Pipeline">
+  <a href="../day-14/"><img src="../assets/banners/day-14-project-fleet.svg" width="800" alt="Day 14 - Project: Fleet Intelligence Pipeline"></a>
 </p>
 
 <p align="center">
@@ -22,12 +22,6 @@
 - How to standardise inconsistent timestamps using INTERVAL
 - How to combine temp tables and chained CTEs in a single pipeline
 - How to build a table-driven alerting system
-
----
-
-## Key Concepts
-
-- **Explore before you build:** Always check for NULLs, anomalies, and inconsistencies before writing transformations
 
 ---
 

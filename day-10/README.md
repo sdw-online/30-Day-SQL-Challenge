@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-10-date-functions.svg" width="800" alt="Day 10 - Date Functions & CAST">
+  <a href="https://youtu.be/Iturx2kgs1A"><img src="../assets/banners/day-10-date-functions.svg" width="800" alt="Day 10 - Date Functions & CAST"></a>
 </p>
 
 <p align="center">
@@ -45,12 +45,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **AGE():** Calculates a human-readable interval between two dates - ideal for age and duration reporting
 
 ---
 

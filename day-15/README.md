@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-15-joins.svg" width="800" alt="Day 15 - JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER">
+  <a href="../day-15/"><img src="../assets/banners/day-15-joins.svg" width="800" alt="Day 15 - JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER"></a>
 </p>
 
 <p align="center">
@@ -23,12 +23,6 @@
 - FULL OUTER JOIN - returns all rows from both tables, NULLs on either side
 - The anti-join pattern (LEFT JOIN + WHERE IS NULL) for finding missing relationships
 - How to join three or more tables and choose the right JOIN type at each step
-
----
-
-## Key Concepts
-
-- **Normalisation:** Splitting data across tables so each fact is stored once - JOINs bring them back together
 
 ---
 

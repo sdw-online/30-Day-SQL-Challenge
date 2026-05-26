@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-18-normalisation.svg" width="800" alt="Day 18 - Normalisation & Denormalisation">
+  <a href="../day-18/"><img src="../assets/banners/day-18-normalisation.svg" width="800" alt="Day 18 - Normalisation & Denormalisation"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - The three normal forms (1NF, 2NF, 3NF) and how to apply them step by step
 - How to split a messy flat table into focused, normalised tables
 - When and why experienced engineers deliberately denormalise for read performance
-
----
-
-## Key Concepts
-
-- **Normalisation:** A set of rules for organising data so each fact is stored exactly once, eliminating update, insertion, and deletion anomalies
 
 ---
 

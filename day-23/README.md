@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-23-window-functions-2.svg" width="800" alt="Day 23 - Window Functions Part 2">
+  <a href="../day-23/"><img src="../assets/banners/day-23-window-functions-2.svg" width="800" alt="Day 23 - Window Functions Part 2"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - How frame clauses (ROWS BETWEEN) power moving averages that smooth out noise
 - How LAG and LEAD let you compare each row to its previous or next row for period-over-period analysis
 - How FIRST_VALUE and LAST_VALUE anchor comparisons to fixed reference points
-
----
-
-## Key Concepts
-
-- **Running totals** - SUM() OVER with ORDER BY creates cumulative sums; PARTITION BY resets the total for each group
 
 ---
 

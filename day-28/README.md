@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-28-explain-indexing.svg" width="800" alt="Day 28 - EXPLAIN & Indexing">
+  <a href="../day-28/"><img src="../assets/banners/day-28-explain-indexing.svg" width="800" alt="Day 28 - EXPLAIN & Indexing"></a>
 </p>
 
 <p align="center">
@@ -21,12 +21,6 @@
 - How to create B-tree, hash, GIN, and composite indexes
 - Anti-patterns that silently break index usage (functions on columns, type mismatches, SELECT *, leading wildcards)
 - When NOT to create indexes and why foreign key columns should always be indexed
-
----
-
-## Key Concepts
-
-- **EXPLAIN vs EXPLAIN ANALYSE:** EXPLAIN shows the estimated plan; EXPLAIN ANALYSE actually runs the query and shows real execution times alongside the estimates
 
 ---
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-03-order-by-limit.svg" width="800" alt="Day 3 - ORDER BY & LIMIT">
+  <a href="https://www.youtube.com/watch?v=s86nI9dPZqY"><img src="../assets/banners/day-03-order-by-limit.svg" width="800" alt="Day 3 - ORDER BY & LIMIT"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **ORDER BY:** Sorts results - ASC (low to high, A to Z, oldest first) is the default; DESC reverses it
 
 ---
 

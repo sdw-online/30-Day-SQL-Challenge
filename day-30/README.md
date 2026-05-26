@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-30-capstone.svg" width="800" alt="Day 30 - Capstone: FinTech Lending Analytics">
+  <a href="../day-30/"><img src="../assets/banners/day-30-capstone.svg" width="800" alt="Day 30 - Capstone: FinTech Lending Analytics"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - Schema design with star schema thinking, data pipelines with CTEs and MERGE, business logic with UDFs
 - Borrower segmentation with window functions, performance tuning with EXPLAIN ANALYSE and indexes
 - Self-documenting infrastructure with materialised views and column comments
-
----
-
-## Key Concepts
-
-- **Star schema design:** Fact tables (loans, repayments) surrounded by dimension tables (applicants, risk_scores) - the foundation for analytical queries
 
 ---
 

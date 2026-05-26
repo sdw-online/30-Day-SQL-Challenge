@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-04-group-by.svg" width="800" alt="Day 4 - Aggregate Functions & GROUP BY">
+  <a href="https://www.youtube.com/watch?v=7IWrvTIrIkg"><img src="../assets/banners/day-04-group-by.svg" width="800" alt="Day 4 - Aggregate Functions & GROUP BY"></a>
 </p>
 
 <p align="center">
@@ -43,12 +43,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **COUNT(*):** Counts all rows including NULLs - use this when you want a row total
 
 ---
 

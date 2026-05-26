@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-08-null-handling.svg" width="800" alt="Day 8 - NULL Handling">
+  <a href="https://www.youtube.com/watch?v=0nH464EoZ9w"><img src="../assets/banners/day-08-null-handling.svg" width="800" alt="Day 8 - NULL Handling"></a>
 </p>
 
 <p align="center">
@@ -44,12 +44,6 @@ SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
-
----
-
-## Key Concepts
-
-- **NULL means unknown:** It is not zero, not an empty string - it is the complete absence of a value
 
 ---
 

@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="../assets/banners/day-24-scd-merge.svg" width="800" alt="Day 24 - SCD Types & MERGE">
+  <a href="../day-24/"><img src="../assets/banners/day-24-scd-merge.svg" width="800" alt="Day 24 - SCD Types & MERGE"></a>
 </p>
 
 <p align="center">
@@ -20,12 +20,6 @@
 - How to implement SCD Type 2 with effective dates, end dates, and a current flag
 - How to use MERGE for insert-or-update operations in a single statement
 - How to use INSERT ... ON CONFLICT for PostgreSQL-native upserts
-
----
-
-## Key Concepts
-
-- **SCD Type 0** - retain the original value forever (e.g., signup date); never overwrite
 
 ---
 
