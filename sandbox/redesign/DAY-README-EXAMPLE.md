@@ -120,6 +120,14 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 
 ---
 
+## Where To Next?
+
+<p align="center">
+  <img src="../assets/banners/day-12-where-next.svg" width="900" alt="Where To Next?">
+</p>
+
+---
+
 <p align="center">
   <a href="../day-11/">&#9664; Day 11: CASE WHEN</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-13/">Day 13: CTEs (Part 1) &#9654;</a>
 </p>

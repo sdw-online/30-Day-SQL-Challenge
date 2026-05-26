@@ -36,9 +36,37 @@ Each day gives you:
 
 ---
 
+## Why This Challenge?
+
+<p align="center">
+  <img src="assets/banners/why-this-challenge.svg" width="800" alt="Why This Challenge">
+</p>
+
+<br>
+
+## "But can't AI write SQL for me?"
+
+<p align="center">
+  <img src="assets/banners/sql-in-the-ai-era.svg" width="800" alt="SQL in the AI Era">
+</p>
+
+---
+
+## Where Should I Start?
+
+<p align="center">
+  <img src="assets/banners/decision-tree-start.svg" width="800" alt="Where Should I Start?">
+</p>
+
+---
+
 ## Curriculum
 
-<img src="assets/week-1-banner.svg" width="800" alt="Week 1: SQL Fundamentals">
+<br>
+
+<img src="assets/banners/week-1-banner.svg" width="800" alt="Week 1: SQL Fundamentals">
+
+<br>
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
@@ -50,7 +78,11 @@ Each day gives you:
 | 06 | Primary & Foreign Keys | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | Beginner |
 | 07 | **Project:** Freight & Logistics Report | [Watch](https://youtu.be/fiBYAziNtGI) | Beginner |
 
-<img src="assets/week-2-banner.svg" width="800" alt="Week 2: Data Quality & Transformation">
+<br>
+
+<img src="assets/banners/week-2-banner.svg" width="800" alt="Week 2: Data Quality & Transformation">
+
+<br>
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
@@ -62,7 +94,11 @@ Each day gives you:
 | 13 | CTEs (Part 1) | [Watch](https://youtu.be/IijQJAfqcJc) | Intermediate |
 | 14 | **Project:** Fleet Intelligence Pipeline | Coming soon | Intermediate |
 
-<img src="assets/week-3-banner.svg" width="800" alt="Week 3: JOINs & Relational Data">
+<br>
+
+<img src="assets/banners/week-3-banner.svg" width="800" alt="Week 3: JOINs & Relational Data">
+
+<br>
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
@@ -74,7 +110,11 @@ Each day gives you:
 | 20 | Data Modelling (Star Schema) | Coming soon | Advanced |
 | 21 | **Project:** SaaS Trial-to-Paid Conversion | Coming soon | Advanced |
 
-<img src="assets/week-4-banner.svg" width="800" alt="Week 4: Advanced Analytics & Performance">
+<br>
+
+<img src="assets/banners/week-4-banner.svg" width="800" alt="Week 4: Advanced Analytics & Performance">
+
+<br>
 
 | Day | Topic | Video | Difficulty |
 |:---:|-------|:-----:|:----------:|
@@ -113,11 +153,11 @@ CREATE DATABASE sql_challenge;
 ## What People Are Saying
 
 <p align="center">
-  <img src="assets/social-proof/lizadeka-day30-complete.jpg" width="350" alt="Completed all 30 days">
+  <img src="assets/social-proof/lizadeka-day30-complete.jpg" width="350" alt="Completed all 30 days">&nbsp;&nbsp;
   <img src="assets/social-proof/philip-best-channel.jpg" width="350" alt="Best SQL channel">
 </p>
 <p align="center">
-  <img src="assets/social-proof/biggoucho-day1.jpg" width="350" alt="Starting day 1">
+  <img src="assets/social-proof/biggoucho-day1.jpg" width="350" alt="Starting day 1">&nbsp;&nbsp;
   <img src="assets/social-proof/travelagent-day10.jpg" width="350" alt="Day 10 progress">
 </p>
 
