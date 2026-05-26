@@ -2,12 +2,6 @@
   <img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge">
 </p>
 
-<h1 align="center">30 Day SQL Challenge</h1>
-
-<p align="center">
-  <strong>30 days. 30 lessons. From zero to SQL confident.</strong>
-</p>
-
 <p align="center">
   <a href="https://www.youtube.com/@sdw-online"><img src="https://img.shields.io/badge/YouTube-Stephen_|_Data-red?logo=youtube" alt="YouTube"></a>
   <img src="https://img.shields.io/badge/PostgreSQL-15+-blue?logo=postgresql" alt="PostgreSQL">
