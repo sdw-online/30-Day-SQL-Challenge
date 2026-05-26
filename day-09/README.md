@@ -53,6 +53,40 @@ SELECT COUNT(*) FROM your_table;
 
 ---
 
+## Exercises
+
+You are a data analyst supporting a city council infrastructure team. The data manager has flagged that the road repair records imported from four district offices are inconsistent and cannot be used for reporting until cleaned.
+
+Using the `raw_road_repairs` table, complete the tasks below.
+
+### Task 1: Audit Spacing Issues
+
+Write a query to identify records where `road_name` or `district` have leading or trailing spaces. Compare `LENGTH(road_name)` against `LENGTH(TRIM(road_name))` to surface any rows where extra whitespace is present.
+
+### Task 2: Clean Text with TRIM and INITCAP
+
+Write a query that returns a cleaned version of the data. Use TRIM to remove extra whitespace from `road_name`, `district`, and `repair_type`. Use INITCAP to standardise the casing on `road_name` and UPPER for `district`. Show the repair_ref alongside the cleaned columns.
+
+### Task 3: Calculate Cost Variance with ROUND
+
+For each repair, calculate the cost variance between `actual_cost` and `estimated_cost`. Use ROUND to display the variance to 2 decimal places. Add a second column showing the variance as a percentage of estimated cost, also rounded to 2 decimal places. Show repair_ref, road_name (trimmed), and both variance columns.
+
+### Task 4: Extract Location Codes with SUBSTRING
+
+The `repair_ref` column contains structured codes in the format `RD-XXX-Y-NNNN`. Extract the city code (characters 4-6, e.g. `LON`, `BRI`, `MAN`, `EDI`) using SUBSTRING. Show repair_ref, the extracted city code as `city_code`, and the trimmed road_name.
+
+### Solutions
+
+Finished? Check your answers: [`solutions.sql`](solutions.sql)
+
+---
+
+## Key Concepts
+
+- **TRIM / LTRIM / RTRIM:** Remove leading and trailing whitespace - essential first step in any data cleaning pipeline
+
+---
+
 ## Where To Next?
 
 <p align="center">

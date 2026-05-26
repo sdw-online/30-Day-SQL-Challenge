@@ -53,6 +53,40 @@ SELECT COUNT(*) FROM your_table;
 
 ---
 
+## Exercises
+
+You work at a regional education authority. The Head of School Performance needs a benchmarking report that compares student scores against school and national averages.
+
+Using the `school_results` table, complete the tasks below.
+
+### Task 1: Above-Average Students
+
+Use a subquery to find all students who scored above the overall average score. Show the student name, school, subject, and score, sorted by score descending.
+
+### Task 2: School Average vs Student Score
+
+Use a correlated subquery in SELECT to show each student's score alongside their school's average score. Add a column showing the difference between the student's score and their school average. Sort by school name, then score descending.
+
+### Task 3: Underperforming Schools
+
+Use a derived table (subquery in FROM) to find schools whose average score is below the national average. Show the school name and average score.
+
+### Task 4: Temp Table Report
+
+Create a temp table that stores each school's average score, student count, and highest score. Then query the temp table to produce a summary report, adding a performance rating: "Strong" for averages above 80, "Average" for 60+, and "Needs Support" for below 60.
+
+### Solutions
+
+Finished? Check your answers: [`solutions.sql`](solutions.sql)
+
+---
+
+## Key Concepts
+
+- **Subqueries in WHERE:** Use a subquery as a dynamic threshold instead of hardcoding values
+
+---
+
 ## Where To Next?
 
 <p align="center">

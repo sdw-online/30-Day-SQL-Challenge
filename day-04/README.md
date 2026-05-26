@@ -52,6 +52,75 @@ SELECT COUNT(*) FROM your_table;
 
 ---
 
+## Exercises
+
+You're a junior data analyst at an auditing firm. It's the year-end review period and your manager, Priya, drops a message on Teams: "Before the client meeting tomorrow, I need a quick breakdown of the transaction data. Can you pull together some headline numbers?"
+
+Using the `client_transactions` table, complete these tasks:
+
+### Warm-Up
+
+**Q1:** Priya wants a single-row summary to kick off the report. Write a query that shows: the total number of transactions, the total revenue across all transactions, the average transaction value (rounded to 2 decimal places), and the smallest and largest single transaction.
+
+<details>
+<summary>Hint</summary>
+
+Use COUNT(*), SUM(amount), ROUND(AVG(amount), 2), MIN(amount), and MAX(amount) in a single SELECT with no GROUP BY.
+
+</details>
+
+**Q2:** Priya asks: "How many unique clients and unique sales reps are in the data?" Write a single query that returns both counts.
+
+<details>
+<summary>Hint</summary>
+
+Use COUNT(DISTINCT client_name) and COUNT(DISTINCT sales_rep) together in one SELECT.
+
+</details>
+
+### Practice
+
+**Q3:** Priya needs a department-level revenue breakdown. Write a query that shows each department, the number of transactions in it, and the total revenue for that department. Sort by total revenue descending so the highest-earning department appears first.
+
+<details>
+<summary>Hint</summary>
+
+GROUP BY department. Use COUNT(*) for transaction count and SUM(amount) for revenue. ORDER BY the SUM descending.
+
+</details>
+
+**Q4:** Priya now wants to see how each sales rep is performing. Write a query that shows each sales rep, their department, the number of transactions they handled, and their total revenue. Filter to show only sales reps whose total revenue exceeds $300,000. Sort by total revenue descending.
+
+<details>
+<summary>Hint</summary>
+
+GROUP BY sales_rep, department. Use HAVING SUM(amount) > 300000 to filter after aggregation - you cannot use WHERE for this because the filter applies to a grouped total, not individual rows.
+
+</details>
+
+### Challenge
+
+**Q5:** Priya wants to flag any departments where cash transactions account for more than $75,000 in total. Write a query that shows the department, the total cash revenue (where payment_method = 'Cash'), and the number of cash transactions - but only for departments that exceed the $75,000 threshold.
+
+<details>
+<summary>Hint</summary>
+
+Filter to Cash rows first using WHERE payment_method = 'Cash', then GROUP BY department, then use HAVING SUM(amount) > 75000.
+
+</details>
+
+### Solutions
+
+Finished? Check your answers: [`solutions.sql`](solutions.sql)
+
+---
+
+## Key Concepts
+
+- **COUNT(*):** Counts all rows including NULLs - use this when you want a row total
+
+---
+
 ## Where To Next?
 
 <p align="center">
