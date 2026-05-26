@@ -29,10 +29,10 @@ Fork this repo  -->  Watch the video  -->  Run the SQL  -->  Solve the exercises
 ```
 
 Each day gives you:
-- A **video lesson** explaining the concept with real examples
-- A **dataset** (SQL you run in pgAdmin to create your tables)
-- **Exercises** with a real-world scenario to practise what you learnt
-- **Solutions** to check your work
+- A **video lesson** that walks you through the concept with real examples
+- A **dataset** you set up yourself in pgAdmin - you're building tables, not just reading about them
+- **Exercises** that put you in a real role solving a real problem with what you just learnt
+- **Solutions** so you can check your work and see how you did
 
 ---
 
@@ -42,11 +42,11 @@ Each day gives you:
   <img src="assets/banners/why-this-challenge.svg" width="800" alt="Why This Challenge">
 </p>
 
-**Daily practice beats binge learning.** 30 minutes a day, every day, builds permanent skill. A weekend bootcamp gives you exposure. This challenge gives you fluency. By Day 30 you won't just recognise SQL - you'll think in it.
+**You don't get good at SQL by watching someone else write it.** You get good by writing it yourself, every day, with data you can actually see and query. That's what this challenge is built around - not theory, not slides, just you and a database.
 
-**Every dataset is real.** No fake `employees` table with 5 rows. You'll query grocery purchases, school exam results, logistics shipments, SaaS metrics, and lending portfolios - the kind of data you'll actually see in a job.
+**30 minutes a day beats a weekend bootcamp.** It's tempting to binge-watch a 12-hour course on a Saturday and call it done. But that's exposure, not skill. When you write SQL every single day for 30 days, it stops being something you "learnt once" and becomes something you just know. The consistency is the point.
 
-**The exercises are modelled on real work.** Each day puts you in a role - data analyst at an education authority, analytics engineer at a logistics company, senior engineer at a fintech. You're not just learning syntax, you're learning how to solve business problems with data.
+**Every exercise puts you in a real job.** You're not answering textbook questions here. You're a data analyst at a regional education authority. You're an analytics engineer at a logistics company. You're debugging a fintech lending pipeline. The scenarios are modelled on real work - logistics, healthcare, finance, infrastructure - so when you do land that role, nothing feels unfamiliar.
 
 ---
 
@@ -56,13 +56,13 @@ Each day gives you:
   <img src="assets/banners/sql-in-the-ai-era.svg" width="800" alt="SQL in the AI Era">
 </p>
 
-AI can generate SQL. It can't guarantee the SQL is correct, performant, or answering the right question. And when it's wrong - which it regularly is - you need to spot the mistake, understand why it happened, and fix it. That requires SQL fluency.
+Sure, AI can generate SQL. But here's what it can't do: guarantee the output is correct, performant, or even answering the right question. And when it gets it wrong - which it regularly does - someone needs to spot the mistake, understand why it happened, and fix it. That someone needs SQL fluency.
 
-But there's a deeper reason to learn SQL properly:
+But honestly, the AI argument misses the bigger picture. SQL isn't just a language you type into a database. It's a way of thinking:
 
-- **SQL teaches you to decompose problems.** Every complex query starts as a vague question. You learn to break it into smaller, solvable pieces - filter this, group that, join these, aggregate those. That's not a SQL skill. That's a thinking skill.
-- **SQL teaches you to be precise.** Databases don't guess what you mean. You learn to specify exactly what you want, handle edge cases, and think about what could go wrong. That precision transfers to everything.
-- **SQL gives you direct access to truth.** When someone says "revenue is up 20%", you can check. When a dashboard looks wrong, you can query the source. SQL removes the middleman between you and the data.
+- **It teaches you to decompose problems.** Every complex query starts as a vague question like "which schools are underperforming?" You learn to break that down - what does underperforming mean? Compared to what? Over what time period? SQL forces you to be specific, and that skill transfers to everything you do with data.
+- **It teaches you to be precise.** A database won't guess what you meant. If your logic is wrong, your results are wrong - silently. You learn to think about edge cases, NULLs, duplicates, and assumptions. That kind of rigour makes you a better analyst, engineer, and thinker.
+- **It gives you direct access to the truth.** When someone says "revenue is up 20%", you can check. When a dashboard looks wrong, you can query the source yourself. SQL removes the middleman between you and the data - and that's powerful in any role.
 
 AI makes SQL faster to write. This challenge makes you someone who knows what to write - and when AI gets it wrong.
 
@@ -70,9 +70,19 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 
 ## Where Should I Start?
 
+Not everyone is starting from scratch - and that's fine. This challenge is designed so you can jump in wherever makes sense for you.
+
 <p align="center">
   <img src="assets/banners/decision-tree-start.svg" width="800" alt="Where Should I Start?">
 </p>
+
+**Never written SQL before?** Start at **Day 1**. You'll install PostgreSQL, set up your first database, and write your first query. No prerequisites, no assumptions - just follow along.
+
+**Know the basics but it's been a while?** Jump to **Day 8**. Week 2 covers the stuff most people forget first - NULL handling, string functions, CASE WHEN. It's a great refresher that fills in the gaps.
+
+**Comfortable with queries but never learnt JOINs properly?** Start at **Day 15**. This is where most people in data jobs realise they've been winging it. We cover all the JOIN types with clear visual explanations.
+
+**Already use SQL at work and want the advanced stuff?** Go straight to **Day 22**. Window functions, MERGE statements, query optimisation, and a full capstone project. This is production-grade SQL.
 
 ---
 
@@ -84,15 +94,15 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 
 <br>
 
-| Day | Topic | Video | Difficulty |
-|:---:|-------|:-----:|:----------:|
-| 01 | Introduction to SQL & Databases | [Watch](https://www.youtube.com/watch?v=mFIMPhiO-N0) | Beginner |
-| 02 | SELECT & WHERE | [Watch](https://www.youtube.com/watch?v=-0uVBtXCZ_s) | Beginner |
-| 03 | ORDER BY & LIMIT | [Watch](https://www.youtube.com/watch?v=s86nI9dPZqY) | Beginner |
-| 04 | Aggregate Functions & GROUP BY | [Watch](https://www.youtube.com/watch?v=7IWrvTIrIkg) | Beginner |
-| 05 | INSERT, UPDATE & DELETE | [Watch](https://www.youtube.com/watch?v=NJ4ujmOZt60) | Beginner |
-| 06 | Primary & Foreign Keys | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) | Beginner |
-| 07 | **Project:** Freight & Logistics Report | [Watch](https://youtu.be/fiBYAziNtGI) | Beginner |
+| Day | Topic | What You'll Do | Video |
+|:---:|-------|----------------|:-----:|
+| 01 | Introduction to SQL & Databases | Set up PostgreSQL, create your first database, and run your first query | [Watch](https://www.youtube.com/watch?v=mFIMPhiO-N0) |
+| 02 | SELECT & WHERE | Pull specific data from a table and filter rows using conditions | [Watch](https://www.youtube.com/watch?v=-0uVBtXCZ_s) |
+| 03 | ORDER BY & LIMIT | Sort your results and control how many rows come back | [Watch](https://www.youtube.com/watch?v=s86nI9dPZqY) |
+| 04 | Aggregate Functions & GROUP BY | Count, sum, and average your data - then group it to find patterns | [Watch](https://www.youtube.com/watch?v=7IWrvTIrIkg) |
+| 05 | INSERT, UPDATE & DELETE | Add new rows, change existing ones, and remove what you don't need | [Watch](https://www.youtube.com/watch?v=NJ4ujmOZt60) |
+| 06 | Primary & Foreign Keys | Understand how tables relate to each other and why constraints matter | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) |
+| 07 | **Project:** Freight & Logistics Report | Put it all together - build a performance report from real shipping data | [Watch](https://youtu.be/fiBYAziNtGI) |
 
 <br>
 
@@ -100,15 +110,15 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 
 <br>
 
-| Day | Topic | Video | Difficulty |
-|:---:|-------|:-----:|:----------:|
-| 08 | NULL Handling | [Watch](https://www.youtube.com/watch?v=0nH464EoZ9w) | Intermediate |
-| 09 | String & Numeric Functions | [Watch](https://www.youtube.com/watch?v=h6J7AajBD6w) | Intermediate |
-| 10 | Date Functions & CAST | [Watch](https://youtu.be/Iturx2kgs1A) | Intermediate |
-| 11 | CASE WHEN | [Watch](https://youtu.be/eZ5iTTsKGkI) | Intermediate |
-| 12 | Subqueries & Temp Tables | [Watch](https://youtu.be/SOt5jUrzKOU) | Intermediate |
-| 13 | CTEs (Part 1) | [Watch](https://youtu.be/IijQJAfqcJc) | Intermediate |
-| 14 | **Project:** Fleet Intelligence Pipeline | Coming soon | Intermediate |
+| Day | Topic | What You'll Do | Video |
+|:---:|-------|----------------|:-----:|
+| 08 | NULL Handling | Deal with missing data without breaking your queries | [Watch](https://www.youtube.com/watch?v=0nH464EoZ9w) |
+| 09 | String & Numeric Functions | Clean messy text, extract parts of strings, and round numbers properly | [Watch](https://www.youtube.com/watch?v=h6J7AajBD6w) |
+| 10 | Date Functions & CAST | Work with dates, calculate time differences, and convert between types | [Watch](https://youtu.be/Iturx2kgs1A) |
+| 11 | CASE WHEN | Add conditional logic to your queries - like if/else but inside SQL | [Watch](https://youtu.be/eZ5iTTsKGkI) |
+| 12 | Subqueries & Temp Tables | Nest queries inside each other and store intermediate results for reuse | [Watch](https://youtu.be/SOt5jUrzKOU) |
+| 13 | CTEs (Part 1) | Write cleaner, more readable queries using Common Table Expressions | [Watch](https://youtu.be/IijQJAfqcJc) |
+| 14 | **Project:** Fleet Intelligence Pipeline | Build a multi-step data pipeline using everything from Week 2 | Coming soon |
 
 <br>
 
@@ -116,15 +126,15 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 
 <br>
 
-| Day | Topic | Video | Difficulty |
-|:---:|-------|:-----:|:----------:|
-| 15 | JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER | Coming soon | Intermediate |
-| 16 | JOINs Part 2: CROSS & Self Joins | Coming soon | Intermediate |
-| 17 | UNION & UNION ALL | Coming soon | Intermediate |
-| 18 | Normalisation & Denormalisation | Coming soon | Intermediate |
-| 19 | Recursive CTEs | Coming soon | Advanced |
-| 20 | Data Modelling (Star Schema) | Coming soon | Advanced |
-| 21 | **Project:** SaaS Trial-to-Paid Conversion | Coming soon | Advanced |
+| Day | Topic | What You'll Do | Video |
+|:---:|-------|----------------|:-----:|
+| 15 | JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER | Connect tables together and understand what each JOIN type keeps and drops | Coming soon |
+| 16 | JOINs Part 2: CROSS & Self Joins | Generate combinations and compare rows within the same table | Coming soon |
+| 17 | UNION & UNION ALL | Stack result sets on top of each other and know when to deduplicate | Coming soon |
+| 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it | Coming soon |
+| 19 | Recursive CTEs | Query hierarchical data like org charts and category trees | Coming soon |
+| 20 | Data Modelling (Star Schema) | Design fact and dimension tables the way analytics teams actually do it | Coming soon |
+| 21 | **Project:** SaaS Trial-to-Paid Conversion | Analyse a real SaaS funnel - which trials convert and why | Coming soon |
 
 <br>
 
@@ -132,25 +142,25 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 
 <br>
 
-| Day | Topic | Video | Difficulty |
-|:---:|-------|:-----:|:----------:|
-| 22 | Window Functions Part 1: ROW_NUMBER, RANK, DENSE_RANK | Coming soon | Advanced |
-| 23 | Window Functions Part 2: LAG, LEAD, QUALIFY | Coming soon | Advanced |
-| 24 | SCD Types & MERGE | Coming soon | Advanced |
-| 25 | Views & Materialised Views | Coming soon | Advanced |
-| 26 | Information Schema & Metadata | Coming soon | Advanced |
-| 27 | CREATE FUNCTION (UDFs) | Coming soon | Advanced |
-| 28 | EXPLAIN & Indexing | Coming soon | Advanced |
-| 29 | PostgreSQL Pro Tips & Shortcuts | Coming soon | Advanced |
-| 30 | **Capstone:** FinTech Lending Analytics Platform | Coming soon | Advanced |
+| Day | Topic | What You'll Do | Video |
+|:---:|-------|----------------|:-----:|
+| 22 | Window Functions Part 1 | Rank rows, number them, and calculate running totals without GROUP BY | Coming soon |
+| 23 | Window Functions Part 2 | Compare current rows to previous ones with LAG, LEAD, and QUALIFY | Coming soon |
+| 24 | SCD Types & MERGE | Track how data changes over time and upsert rows in one statement | Coming soon |
+| 25 | Views & Materialised Views | Save queries as reusable objects and pre-compute expensive results | Coming soon |
+| 26 | Information Schema & Metadata | Query the database about itself - table sizes, column types, constraints | Coming soon |
+| 27 | CREATE FUNCTION (UDFs) | Build your own reusable SQL functions for logic you use repeatedly | Coming soon |
+| 28 | EXPLAIN & Indexing | Read query plans, spot bottlenecks, and make your queries faster | Coming soon |
+| 29 | PostgreSQL Pro Tips | Shortcuts, settings, and techniques that save time every day | Coming soon |
+| 30 | **Capstone:** FinTech Lending Analytics | Build a full analytics platform - schema, pipelines, segmentation, tuning | Coming soon |
 
 ---
 
 ## Quick Start
 
-**You need:** A computer + internet. That's it.
+**All you need is a computer and an internet connection.** Seriously, that's it.
 
-**Step 1** - Install PostgreSQL & pgAdmin ([watch guide](https://youtu.be/g8GwhsVPaOg))
+**Step 1** - Install PostgreSQL & pgAdmin ([watch the setup guide](https://youtu.be/g8GwhsVPaOg) - takes about 10 minutes)
 
 **Step 2** - Clone this repo
 ```bash
@@ -162,24 +172,33 @@ git clone https://github.com/sdw-online/30-Day-SQL-Challenge.git
 CREATE DATABASE sql_challenge;
 ```
 
-**Step 4** - Open [`day-01/`](day-01/) and start learning
+**Step 4** - Open [`day-01/`](day-01/) and you're off
 
 ---
 
 ## What People Are Saying
 
 <p align="center">
-  <img src="../../assets/social-proof/lizadeka-day30-complete.jpg" width="350" alt="Completed all 30 days">&nbsp;&nbsp;
-  <img src="../../assets/social-proof/philip-best-channel.jpg" width="350" alt="Best SQL channel">
+  <img src="../../assets/social-proof/lizadeka-day30-complete.jpg" width="400" alt="Day 30 completed - practical and structured challenge">
 </p>
 <p align="center">
-  <img src="../../assets/social-proof/biggoucho-day1.jpg" width="350" alt="Starting day 1">&nbsp;&nbsp;
-  <img src="../../assets/social-proof/travelagent-day10.jpg" width="350" alt="Day 10 progress">
+  <img src="../../assets/social-proof/davethadrummer-day1.jpg" width="400" alt="LETS GO IM LOCKED IN">
+  &nbsp;&nbsp;
+  <img src="../../assets/social-proof/verohmueni-day1.jpg" width="400" alt="Just finished 30 day Excel challenge, lets go SQL">
 </p>
+<p align="center">
+  <img src="../../assets/social-proof/philip-best-channel.jpg" width="400" alt="Best channel">
+  &nbsp;&nbsp;
+  <img src="../../assets/social-proof/biggoucho-day1.jpg" width="400" alt="Starting day 1">
+</p>
+
+<!-- TODO: Add more SQL-specific testimonials from YouTube comments (Day 5+, Day 10+, Day 30 completions) -->
 
 ---
 
 ## Other Installation Guides
+
+Need to set up other tools? These walk you through each one step by step:
 
 | Tool | Guide |
 |------|:-----:|
@@ -194,7 +213,9 @@ CREATE DATABASE sql_challenge;
 
 ## About
 
-I'm Stephen - a Senior Data Engineer who's worked across consulting, startups, and enterprise (BDO, TCS, easyJet, C. Hoare & Co., Veolia UK/US). I created this challenge because the best way to learn SQL is to write it every single day with real data and real questions.
+I'm Stephen - a Senior Data Engineer who's worked across consulting, startups, and enterprise (BDO, TCS, easyJet, C. Hoare & Co., Veolia UK/US).
+
+I created this challenge because most SQL courses have the same problem: you watch, you nod along, and two weeks later you can't remember any of it. The fix is daily practice with real data and real questions - not just watching someone else do it. That's what this is.
 
 **YouTube:** [Stephen | Data](https://www.youtube.com/@sdw-online)
 
