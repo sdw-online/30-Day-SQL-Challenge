@@ -1,9 +1,10 @@
 <p align="center">
-  <a href="https://www.youtube.com/@sdw-online"><img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge"></a>
+  <a href="https://www.youtube.com/playlist?list=PL92LwdfbhlXF4qeI8P4bMKepuEPGtKFWx"><img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge"></a>
 </p>
 
 <p align="center">
-  <a href="https://www.youtube.com/@sdw-online"><img src="https://img.shields.io/badge/YouTube-Stephen_|_Data-red?logo=youtube" alt="YouTube"></a>
+  <a href="https://www.youtube.com/playlist?list=PL92LwdfbhlXF4qeI8P4bMKepuEPGtKFWx"><img src="https://img.shields.io/badge/Playlist-Watch_on_YouTube-red?logo=youtube" alt="Watch Playlist"></a>
+  <a href="https://www.youtube.com/@sdw-online"><img src="https://img.shields.io/badge/Channel-Stephen_|_Data-red?logo=youtube" alt="YouTube Channel"></a>
   <img src="https://img.shields.io/badge/PostgreSQL-15+-blue?logo=postgresql" alt="PostgreSQL">
   <img src="https://img.shields.io/badge/Lessons-30-brightgreen" alt="30 Lessons">
   <img src="https://img.shields.io/badge/License-Educational-lightgrey" alt="License">
