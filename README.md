@@ -34,7 +34,7 @@ Each day gives you:
 ## Why This Challenge?
 
 <p align="center">
-  <img src="assets/banners/why-this-challenge.svg" width="800" alt="Why This Challenge">
+  <a href="guides/why-this-challenge.md"><img src="assets/banners/why-this-challenge.svg" width="800" alt="Why This Challenge"></a>
 </p>
 
 **You don't get good at SQL by watching someone else write it.** You get good by writing it yourself, every day, with data you can actually see and query. That's what this challenge is built around - not theory, not slides, just you and a database.
@@ -48,7 +48,7 @@ Each day gives you:
 ## "But can't AI write SQL for me?"
 
 <p align="center">
-  <img src="assets/banners/sql-in-the-ai-era.svg" width="800" alt="SQL in the AI Era">
+  <a href="guides/sql-in-the-ai-era.md"><img src="assets/banners/sql-in-the-ai-era.svg" width="800" alt="SQL in the AI Era"></a>
 </p>
 
 Sure, AI can generate SQL. But here's what it can't do: guarantee the output is correct, performant, or even answering the right question. And when it gets it wrong - which it regularly does - someone needs to spot the mistake, understand why it happened, and fix it. That someone needs SQL fluency.
@@ -68,7 +68,7 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 Not everyone is starting from scratch - and that's fine. This challenge is designed so you can jump in wherever makes sense for you.
 
 <p align="center">
-  <img src="assets/banners/decision-tree-start.svg" width="800" alt="Where Should I Start?">
+  <a href="guides/where-to-start.md"><img src="assets/banners/decision-tree-start.svg" width="800" alt="Where Should I Start?"></a>
 </p>
 
 **Never written SQL before?** Start at **Day 1**. You'll install PostgreSQL, set up your first database, and write your first query. No prerequisites, no assumptions - just follow along.
