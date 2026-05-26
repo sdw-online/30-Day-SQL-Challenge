@@ -178,21 +178,27 @@ CREATE DATABASE sql_challenge;
 
 ## What People Are Saying
 
+Real comments from people doing the challenge right now.
+
 <p align="center">
-  <img src="../../assets/social-proof/lizadeka-day30-complete.jpg" width="400" alt="Day 30 completed - practical and structured challenge">
-</p>
-<p align="center">
-  <img src="../../assets/social-proof/davethadrummer-day1.jpg" width="400" alt="LETS GO IM LOCKED IN">
-  &nbsp;&nbsp;
-  <img src="../../assets/social-proof/verohmueni-day1.jpg" width="400" alt="Just finished 30 day Excel challenge, lets go SQL">
-</p>
-<p align="center">
-  <img src="../../assets/social-proof/philip-best-channel.jpg" width="400" alt="Best channel">
-  &nbsp;&nbsp;
-  <img src="../../assets/social-proof/biggoucho-day1.jpg" width="400" alt="Starting day 1">
+  <img src="../../assets/social-proof/biggoucho-day1.jpg" width="420" alt="You could be sitting on that couch watching TV, but instead you're doing this. Thank you.">
 </p>
 
-<!-- TODO: Add more SQL-specific testimonials from YouTube comments (Day 5+, Day 10+, Day 30 completions) -->
+<p align="center">
+  <img src="../../assets/social-proof/ceejay-day2-best-sql.jpg" width="420" alt="This is the best SQL videos clearly explanation">
+  &nbsp;&nbsp;
+  <img src="../../assets/social-proof/kgomotso-day4-great-structure.jpg" width="420" alt="Just finished day 4, great structure. I have notes on the side writing queries before you reveal answers">
+</p>
+
+<p align="center">
+  <img src="../../assets/social-proof/neels-day5-clearly-break-down.jpg" width="420" alt="Really enjoying how clearly you break down SQL concepts">
+  &nbsp;&nbsp;
+  <img src="../../assets/social-proof/travelagent-day10-shining-at-work.jpg" width="420" alt="Working on exercises while shining at the work place as a data analyst">
+</p>
+
+<p align="center">
+  <img src="../../assets/social-proof/lizadeka-day30-complete.jpg" width="420" alt="Day 30 completed! Practical and structured challenge. Pushed me to practice consistently.">
+</p>
 
 ---
 
