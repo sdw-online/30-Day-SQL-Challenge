@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="800" y2="200" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a0a0e"/>
+      <stop offset="100%" stop-color="#2a1015"/>
+    </linearGradient>
+    <linearGradient id="outer" x1="0" y1="0" x2="340" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#ef4444"/>
+    </linearGradient>
+    <linearGradient id="inner" x1="0" y1="0" x2="200" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" rx="12" fill="url(#bg)"/>
+
+  <!-- Day badge -->
+  <rect x="24" y="20" width="56" height="28" rx="6" fill="#dc2626"/>
+  <text x="52" y="39" font-family="Segoe UI, system-ui, sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">DAY 12</text>
+
+  <!-- Title -->
+  <text x="92" y="40" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Subqueries &amp; Temp Tables</text>
+
+  <!-- Concept diagram: nested query boxes -->
+  <!-- Outer query -->
+  <rect x="60" y="64" width="340" height="120" rx="8" fill="none" stroke="url(#outer)" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="76" y="86" font-family="Courier New, monospace" font-size="12" fill="#fca5a5">SELECT name, score</text>
+  <text x="76" y="104" font-family="Courier New, monospace" font-size="12" fill="#fca5a5">FROM students</text>
+  <text x="76" y="122" font-family="Courier New, monospace" font-size="12" fill="#fca5a5">WHERE score &gt;</text>
+
+  <!-- Inner query (subquery) -->
+  <rect x="100" y="132" width="260" height="40" rx="6" fill="none" stroke="url(#inner)" stroke-width="2"/>
+  <text x="116" y="157" font-family="Courier New, monospace" font-size="12" fill="#fdba74">(SELECT AVG(score) FROM students)</text>
+
+  <!-- Labels -->
+  <text x="420" y="100" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#fca5a5">outer query</text>
+  <line x1="400" y1="96" x2="415" y2="96" stroke="#fca5a5" stroke-width="1"/>
+  <text x="420" y="155" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#fdba74">subquery</text>
+  <line x1="360" y1="152" x2="415" y2="152" stroke="#fdba74" stroke-width="1"/>
+
+  <!-- Right side: concept list -->
+  <text x="520" y="86" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#c4a0a6">What you'll learn:</text>
+  <circle cx="528" cy="108" r="3" fill="#ef4444"/>
+  <text x="540" y="112" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">WHERE subqueries</text>
+  <circle cx="528" cy="130" r="3" fill="#ef4444"/>
+  <text x="540" y="134" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Scalar subqueries in SELECT</text>
+  <circle cx="528" cy="152" r="3" fill="#ef4444"/>
+  <text x="540" y="156" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Correlated subqueries</text>
+  <circle cx="528" cy="174" r="3" fill="#ef4444"/>
+  <text x="540" y="178" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Temp tables</text>
+
+  <!-- Difficulty -->
+  <rect x="700" y="20" width="80" height="24" rx="12" fill="#dc2626" opacity="0.2"/>
+  <text x="740" y="37" font-family="Segoe UI, system-ui, sans-serif" font-size="11" font-weight="600" fill="#ef4444" text-anchor="middle">Intermediate</text>
+</svg>

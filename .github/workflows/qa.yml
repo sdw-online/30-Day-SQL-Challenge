@@ -1,0 +1,51 @@
+name: QA Checks
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  structure:
+    name: Folder Structure
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check day folder structure
+        run: node scripts/check-structure.js
+
+  markdown:
+    name: Markdown Quality
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check README template compliance
+        run: node scripts/check-readme-template.js
+      - name: Check for inline SQL dumps
+        run: node scripts/check-no-inline-sql.js
+
+  links:
+    name: Link Checker
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check relative links
+        run: node scripts/check-links.js
+
+  sql:
+    name: SQL Validation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Validate SQL files
+        run: node scripts/check-sql.js

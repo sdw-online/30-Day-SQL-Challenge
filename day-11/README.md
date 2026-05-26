@@ -1,18 +1,22 @@
+<p align="center">
+  <a href="https://youtu.be/eZ5iTTsKGkI"><img src="../assets/banners/day-11-case-when.svg" width="800" alt="Day 11 - CASE WHEN"></a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/eZ5iTTsKGkI"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
+  <img src="https://img.shields.io/badge/Day-11_of_30-blue" alt="Day 11">
+  <img src="https://img.shields.io/badge/Week-2-purple" alt="Week 2">
+  <img src="https://img.shields.io/badge/Difficulty-Intermediate-orange" alt="Intermediate">
+</p>
+
 # Day 11 - CASE WHEN
 
-[Watch the video](https://youtu.be/eZ5iTTsKGkI) | [← Day 10: Date Functions & CAST](../day-10/) | [Day 12: Subqueries & Temp Tables →](../day-12/)
-
----
-
-### Contents
-- [What You'll Learn](#what-youll-learn)
-- [Dataset](#dataset)
-- [Exercises](#exercises)
-- [Key Concepts Covered](#key-concepts-covered)
+[<< Day 10: Date Functions & CAST](../day-10/) | [Day 12: Subqueries & Temp Tables >>](../day-12/)
 
 ---
 
 ## What You'll Learn
+
 - Simple CASE - matching a single column against fixed values to produce labels
 - Searched CASE WHEN - evaluating flexible conditions with full boolean expressions
 - CASE WHEN in SELECT - adding classification columns to any query
@@ -20,54 +24,28 @@
 - Nested CASE - building multi-level decision logic
 - How ELSE and NULL interact when no condition is matched
 
-## Prerequisites
+---
 
-> **First time here?** You need PostgreSQL and pgAdmin installed.
-> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
-
-- Complete Days 1-10
-- Comfortable with SELECT, WHERE, GROUP BY, NULL handling, string/numeric functions, date functions, and CAST
-
-## Dataset
-
-Today uses two tables:
-
-**Teaching table:** Meal plan data - 45 rows with fitness goals, calorie targets, and dietary preferences.
-
-**Exercise table:** Insurance claims data - 387 rows for a claims triage classification exercise.
-
-Run the SQL in [setup.sql](setup.sql) to create the teaching table, or run [exercise.sql](exercise.sql) for just the exercise table.
-
-<details>
-<summary>Click to expand setup SQL (CREATE TABLE only - run setup.sql for full data)</summary>
+## Quick Setup
 
 ```sql
-DROP TABLE IF EXISTS meal_plans;
+-- Run in pgAdmin (takes a few seconds)
+\i setup.sql
+```
 
-CREATE TABLE meal_plans (
-    plan_id         SERIAL PRIMARY KEY,
-    person_name     VARCHAR(50),
-    fitness_goal    VARCHAR(20),
-    age             INTEGER,
-    weight_kg       NUMERIC(4,1),
-    daily_calories  INTEGER,
-    preferred_diet  VARCHAR(20),
-    activity_level  VARCHAR(20)
-);
--- 45 rows inserted - see setup.sql for full INSERT
+Or open [`setup.sql`](setup.sql) and run the full script manually.
+
+<details>
+<summary>Verify your setup</summary>
+
+```sql
+-- Check your tables loaded correctly
+SELECT COUNT(*) FROM your_table;
 ```
 
 </details>
 
-### Verify Your Setup
-
-```sql
-SELECT COUNT(*) FROM meal_plans;
--- Expected: 45 rows
-
-SELECT COUNT(*) FROM insurance_claims;
--- Expected: 387 rows
-```
+---
 
 ## Exercises
 
@@ -112,14 +90,26 @@ Using CASE WHEN inside COUNT, produce a single summary row showing how many clai
 
 Combine Tasks 1, 2, and 3 into a single query. Show claim_id, claimant_name, the readable incident type, claim_amount, priority, and SLA status. Sort by priority (High first, then Medium, then Low), and within each group by claim_amount descending.
 
-## Key Concepts Covered
-- **Simple CASE:** Matches a single column against a list of values - cleaner than multiple OR conditions
-- **Searched CASE WHEN:** Evaluates any boolean condition - handles ranges, NULL checks, and combined logic
-- **CASE in SELECT:** Adds a derived classification column without changing the underlying data
-- **CASE in aggregates:** COUNT(CASE WHEN condition THEN 1 END) counts only matching rows - pivot-style summaries
-- **ELSE clause:** Always include ELSE when there could be unmatched rows - omitting it returns NULL silently
-- **Nested CASE:** Use sparingly - one level deep is usually the limit before a lookup table is cleaner
+### Solutions
+
+Finished? Check your answers: [`solutions.sql`](solutions.sql)
 
 ---
 
-[← Day 10: Date Functions & CAST](../day-10/) | [Day 12: Subqueries & Temp Tables →](../day-12/)
+## Key Concepts
+
+- **Simple CASE:** Matches a single column against a list of values - cleaner than multiple OR conditions
+
+---
+
+## Where To Next?
+
+<p align="center">
+  <img src="../assets/banners/day-11-where-next.svg" width="900" alt="Where To Next?">
+</p>
+
+---
+
+<p align="center">
+  <a href="../day-10/">&#9664; Day 10: Date Functions & CAST</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-12/">Day 12: Subqueries & Temp Tables &#9654;</a>
+</p>
