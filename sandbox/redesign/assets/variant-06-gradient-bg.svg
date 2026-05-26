@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" fill="none">
+  <!-- V6: Subtle diagonal red gradient background -->
+  <defs>
+    <linearGradient id="v6bg" x1="0" y1="0" x2="800" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#1a0a0e"/>
+      <stop offset="100%" stop-color="#3b0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="120" rx="12" fill="url(#v6bg)"/>
+  <text x="40" y="44" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ef4444" letter-spacing="2">WEEK 1</text>
+  <text x="40" y="76" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="700" fill="#ffffff">SQL Fundamentals</text>
+  <text x="40" y="100" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#c4a0a6">Days 1-7  |  SELECT, WHERE, ORDER BY, GROUP BY, INSERT/UPDATE/DELETE, Keys, Project</text>
+</svg>

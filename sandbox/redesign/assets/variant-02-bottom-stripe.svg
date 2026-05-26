@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 120" fill="none">
+  <!-- V2: Bottom red gradient stripe -->
+  <defs>
+    <linearGradient id="v2stripe" x1="0" y1="0" x2="800" y2="0" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="50%" stop-color="#ef4444"/>
+      <stop offset="100%" stop-color="#dc2626"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="120" rx="12" fill="#1a0a0e"/>
+  <rect y="114" width="800" height="6" rx="0 0 12 12" fill="url(#v2stripe)"/>
+  <text x="40" y="40" font-family="Segoe UI, system-ui, sans-serif" font-size="14" font-weight="600" fill="#ef4444" letter-spacing="2">WEEK 1</text>
+  <text x="40" y="72" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="700" fill="#ffffff">SQL Fundamentals</text>
+  <text x="40" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="13" fill="#c4a0a6">Days 1-7  |  SELECT, WHERE, ORDER BY, GROUP BY, INSERT/UPDATE/DELETE, Keys, Project</text>
+</svg>
