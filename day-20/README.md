@@ -23,6 +23,12 @@
 
 ---
 
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
 ## Where To Next?
 
 <p align="center">

@@ -48,6 +48,12 @@ SELECT COUNT(*) FROM your_table;
 
 ---
 
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
 ## Exercises
 
 You are a data analyst at a health organisation. The operations lead needs a board report on referral-to-appointment wait times before the quarterly review.

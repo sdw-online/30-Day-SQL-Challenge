@@ -157,3 +157,11 @@ You can't get lost. Every page tells you where to go next.
   &nbsp;&nbsp;
   <a href="../day-22/"><img src="https://img.shields.io/badge/Start-Day_22-dc2626?style=for-the-badge" alt="Start Day 22"></a>
 </p>
+
+---
+
+One more thing - this entire challenge is free. Every video, every dataset, every solution. If it helps you get where you want to go, [subscribe on YouTube](https://www.youtube.com/@sdw-online?sub_confirmation=1) so Stephen can keep making these. It takes one click and it means more free challenges for everyone.
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>

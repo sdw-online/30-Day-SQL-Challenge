@@ -46,6 +46,12 @@ SELECT COUNT(*) FROM your_table;
 
 ---
 
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
 ## Exercises
 
 You're a data engineer at CloudMetrics, a SaaS company that tracks website performance for small businesses. The Head of Customer Support, Tobias, sends you a message on Monday morning: "We've got a backlog situation in the ticket system. Before the team standup, I need a few things sorted."

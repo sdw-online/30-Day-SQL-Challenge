@@ -177,6 +177,12 @@ function generateReadme(d, existingContent) {
     md += `## Key Concepts\n\n${concepts}\n\n---\n\n`;
   }
 
+  // Subscribe prompt (only on project days + every 5th day to avoid fatigue)
+  if (d.day % 5 === 0 || d.day === 7 || d.day === 14 || d.day === 21 || d.day === 30) {
+    md += `---\n\n`;
+    md += `<p align="center">\n  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>\n</p>\n\n`;
+  }
+
   // Where To Next? navigation tree
   md += `## Where To Next?\n\n`;
   md += `<p align="center">\n  <img src="../assets/banners/day-${dd}-where-next.svg" width="900" alt="Where To Next?">\n</p>\n\n`;

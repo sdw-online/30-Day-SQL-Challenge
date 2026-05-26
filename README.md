@@ -212,13 +212,25 @@ Need to set up other tools? These walk you through each one step by step:
 
 ---
 
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
+This whole challenge - 30 lessons, real datasets, exercises, solutions, this entire repo - is free. No paywall, no email gate, no "buy the premium version." It took hundreds of hours to build.
+
+If it helped you learn SQL, the best way to pay it back is a [subscribe on YouTube](https://www.youtube.com/@sdw-online?sub_confirmation=1). That's it. One click. It tells the algorithm to show this to more people who need it, and it means Stephen can keep making free challenges and projects like this one.
+
+More subscribers = more free content = more people learning data skills that actually land them jobs. Everyone wins.
+
+---
+
 ## About
 
 I'm Stephen - a Senior Data Engineer who's worked across consulting, startups, and enterprise (BDO, TCS, easyJet, C. Hoare & Co., Veolia UK/US).
 
-I created this challenge because most SQL courses have the same problem: you watch, you nod along, and two weeks later you can't remember any of it. The fix is daily practice with real data and real questions - not just watching someone else do it. That's what this is.
+I've spent years doing this work professionally, and I created this challenge to pass on what I've learnt - the practical stuff, not the theory. The kind of SQL you actually write on the job. Thousands of people have gone through the Excel and SQL challenges already, and watching people message me saying they got their first data role because of these videos is genuinely why I keep doing it.
 
-**YouTube:** [Stephen | Data](https://www.youtube.com/@sdw-online)
+**YouTube:** [Stephen | Data](https://www.youtube.com/@sdw-online?sub_confirmation=1)
 
 ---
 

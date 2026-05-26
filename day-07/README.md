@@ -45,6 +45,12 @@ SELECT COUNT(*) FROM your_table;
 
 ---
 
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
 ## Exercises
 
 You are a data analyst at **Orion Freight**, a UK-based logistics company with six regional depots. Your operations director has a board meeting next week. He is presenting Q1 2025 performance - January through March - and he needs answers. But the warehouse team has warned that there are dodgy records in the system: shipments marked as delivered with no delivery date, shipments marked as in transit that have already been delivered, and duplicate entries from a system migration in February.

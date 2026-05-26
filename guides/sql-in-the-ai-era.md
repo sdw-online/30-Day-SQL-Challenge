@@ -105,7 +105,13 @@ AI makes SQL faster to write. It doesn't make SQL knowledge optional.
 
 The people who thrive with AI tools are the ones who understand what the AI is doing - and can catch it when it's wrong. That requires knowing SQL properly, not just knowing how to prompt for it.
 
-This challenge teaches you that.
+This challenge teaches you that. And it's completely free.
+
+Stephen put hundreds of hours into building these lessons, datasets, and exercises because he believes everyone should have access to proper SQL training - not just people who can afford expensive bootcamps. If this challenge changes how you think about data, the best way to pay it forward is to [subscribe on YouTube](https://www.youtube.com/@sdw-online?sub_confirmation=1). It costs nothing and it helps more people find this.
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
 
 ---
 
