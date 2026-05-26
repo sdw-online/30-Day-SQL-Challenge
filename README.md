@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/social-proof/sql-challenge-cover.jpg" width="700" alt="30 Day SQL Challenge">
+  <img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge">
 </p>
 
 <h1 align="center">30 Day SQL Challenge</h1>
