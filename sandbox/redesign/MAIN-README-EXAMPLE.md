@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/social-proof/sql-challenge-cover.jpg" width="700" alt="30 Day SQL Challenge">
+  <img src="../../assets/social-proof/sql-challenge-cover.jpg" width="700" alt="30 Day SQL Challenge">
 </p>
 
 <h1 align="center">30 Day SQL Challenge</h1>
@@ -42,13 +42,29 @@ Each day gives you:
   <img src="assets/banners/why-this-challenge.svg" width="800" alt="Why This Challenge">
 </p>
 
-<br>
+**Daily practice beats binge learning.** 30 minutes a day, every day, builds permanent skill. A weekend bootcamp gives you exposure. This challenge gives you fluency. By Day 30 you won't just recognise SQL - you'll think in it.
+
+**Every dataset is real.** No fake `employees` table with 5 rows. You'll query grocery purchases, school exam results, logistics shipments, SaaS metrics, and lending portfolios - the kind of data you'll actually see in a job.
+
+**The exercises are modelled on real work.** Each day puts you in a role - data analyst at an education authority, analytics engineer at a logistics company, senior engineer at a fintech. You're not just learning syntax, you're learning how to solve business problems with data.
+
+---
 
 ## "But can't AI write SQL for me?"
 
 <p align="center">
   <img src="assets/banners/sql-in-the-ai-era.svg" width="800" alt="SQL in the AI Era">
 </p>
+
+AI can generate SQL. It can't guarantee the SQL is correct, performant, or answering the right question. And when it's wrong - which it regularly is - you need to spot the mistake, understand why it happened, and fix it. That requires SQL fluency.
+
+But there's a deeper reason to learn SQL properly:
+
+- **SQL teaches you to decompose problems.** Every complex query starts as a vague question. You learn to break it into smaller, solvable pieces - filter this, group that, join these, aggregate those. That's not a SQL skill. That's a thinking skill.
+- **SQL teaches you to be precise.** Databases don't guess what you mean. You learn to specify exactly what you want, handle edge cases, and think about what could go wrong. That precision transfers to everything.
+- **SQL gives you direct access to truth.** When someone says "revenue is up 20%", you can check. When a dashboard looks wrong, you can query the source. SQL removes the middleman between you and the data.
+
+AI makes SQL faster to write. This challenge makes you someone who knows what to write - and when AI gets it wrong.
 
 ---
 
@@ -153,12 +169,12 @@ CREATE DATABASE sql_challenge;
 ## What People Are Saying
 
 <p align="center">
-  <img src="assets/social-proof/lizadeka-day30-complete.jpg" width="350" alt="Completed all 30 days">&nbsp;&nbsp;
-  <img src="assets/social-proof/philip-best-channel.jpg" width="350" alt="Best SQL channel">
+  <img src="../../assets/social-proof/lizadeka-day30-complete.jpg" width="350" alt="Completed all 30 days">&nbsp;&nbsp;
+  <img src="../../assets/social-proof/philip-best-channel.jpg" width="350" alt="Best SQL channel">
 </p>
 <p align="center">
-  <img src="assets/social-proof/biggoucho-day1.jpg" width="350" alt="Starting day 1">&nbsp;&nbsp;
-  <img src="assets/social-proof/travelagent-day10.jpg" width="350" alt="Day 10 progress">
+  <img src="../../assets/social-proof/biggoucho-day1.jpg" width="350" alt="Starting day 1">&nbsp;&nbsp;
+  <img src="../../assets/social-proof/travelagent-day10.jpg" width="350" alt="Day 10 progress">
 </p>
 
 ---

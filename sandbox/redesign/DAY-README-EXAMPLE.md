@@ -123,7 +123,7 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 ## Where To Next?
 
 <p align="center">
-  <img src="../assets/banners/day-12-where-next.svg" width="900" alt="Where To Next?">
+  <img src="assets/banners/day-12-where-next.svg" width="900" alt="Where To Next?">
 </p>
 
 ---
