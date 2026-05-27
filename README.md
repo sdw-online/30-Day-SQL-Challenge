@@ -113,7 +113,7 @@ Not everyone is starting from scratch - and that's fine. This challenge is desig
 | 11 | CASE WHEN | Add conditional logic to your queries - like if/else but inside SQL | [Watch](https://youtu.be/eZ5iTTsKGkI) |
 | 12 | Subqueries & Temp Tables | Nest queries inside each other and store intermediate results for reuse | [Watch](https://youtu.be/SOt5jUrzKOU) |
 | 13 | CTEs (Part 1) | Write cleaner, more readable queries using Common Table Expressions | [Watch](https://youtu.be/IijQJAfqcJc) |
-| 14 | **Project:** Fleet Intelligence Pipeline | Build a multi-step data pipeline using everything from Week 2 | Coming soon |
+| 14 | **Project:** Fleet Intelligence Pipeline | Build a multi-step data pipeline using everything from Week 2 | [Watch](https://youtu.be/afIJ4VsQYSo) |
 
 <br>
 
@@ -216,11 +216,9 @@ Need to set up other tools? These walk you through each one step by step:
   <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
 </p>
 
-This whole challenge - 30 lessons, real datasets, exercises, solutions, this entire repo - is free. No paywall, no email gate, no "buy the premium version." It took hundreds of hours to build.
+You just mass-gained a skill most people spend months fumbling through. Stephen drops new challenges, projects, and deep dives regularly - [subscribe on YouTube](https://www.youtube.com/@sdw-online?sub_confirmation=1) so you don't miss the next one.
 
-If it helped you learn SQL, the best way to pay it back is a [subscribe on YouTube](https://www.youtube.com/@sdw-online?sub_confirmation=1). That's it. One click. It tells the algorithm to show this to more people who need it, and it means Stephen can keep making free challenges and projects like this one.
-
-More subscribers = more free content = more people learning data skills that actually land them jobs. Everyone wins.
+That's how people go from "learning SQL" to being the SQL person on the team.
 
 ---
 

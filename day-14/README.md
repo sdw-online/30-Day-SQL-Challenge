@@ -3,6 +3,7 @@
 </p>
 
 <p align="center">
+  <a href="https://youtu.be/afIJ4VsQYSo"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
   <img src="https://img.shields.io/badge/Day-14_of_30-blue" alt="Day 14">
   <img src="https://img.shields.io/badge/Week-2-purple" alt="Week 2">
   <img src="https://img.shields.io/badge/Difficulty-Intermediate-orange" alt="Intermediate">
