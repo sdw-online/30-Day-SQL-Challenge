@@ -1,0 +1,4 @@
+# Hide internal tooling from GitHub language stats and default view
+scripts/** linguist-vendored
+sandbox/** linguist-vendored
+.github/** linguist-vendored
