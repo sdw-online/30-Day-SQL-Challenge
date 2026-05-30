@@ -212,6 +212,15 @@ Need to set up other tools? These walk you through each one step by step:
 
 ---
 
+## Join the community
+
+<p align="center">
+  <a href="https://data100x.carrd.co/"><strong>Join the free data community →</strong></a><br/>
+  <sub>Weekly drops, member projects, no spam, 100% free.</sub>
+</p>
+
+---
+
 <p align="center">
   <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
 </p>
