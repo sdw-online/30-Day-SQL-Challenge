@@ -297,6 +297,10 @@ Need to set up other tools? These walk you through each one step by step:
   <sub>Weekly drops, member projects, no spam, 100% free.</sub>
 </p>
 
+<p align="center"><sub>
+  Want the deeper material? <a href="https://davidwilliams2.gumroad.com/l/cxypl"><b>SQL Made Easy</b></a> on Gumroad.
+</sub></p>
+
 ---
 
 <p align="center">
