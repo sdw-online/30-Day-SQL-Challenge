@@ -212,6 +212,84 @@ Need to set up other tools? These walk you through each one step by step:
 
 ---
 
+<!-- BROWSE-ALL-VIDEOS -->
+## Browse all videos
+
+<sub>Click any thumbnail to jump straight to that day's video on YouTube. Sorted by day number.</sub>
+
+<table>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=mFIMPhiO-N0"><img src="https://img.youtube.com/vi/mFIMPhiO-N0/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 01 - Introduction to SQL &amp; Databases</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=-0uVBtXCZ_s"><img src="https://img.youtube.com/vi/-0uVBtXCZ_s/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 02 - SELECT &amp; WHERE</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=s86nI9dPZqY"><img src="https://img.youtube.com/vi/s86nI9dPZqY/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 03 - ORDER BY &amp; LIMIT</b></sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=7IWrvTIrIkg"><img src="https://img.youtube.com/vi/7IWrvTIrIkg/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 04 - Aggregate Functions &amp; GROUP BY</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=NJ4ujmOZt60"><img src="https://img.youtube.com/vi/NJ4ujmOZt60/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 05 - INSERT, UPDATE &amp; DELETE</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=1AdFU8Vdq-0"><img src="https://img.youtube.com/vi/1AdFU8Vdq-0/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 06 - Primary &amp; Foreign Keys</b></sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=fiBYAziNtGI"><img src="https://img.youtube.com/vi/fiBYAziNtGI/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 07 - Project: Freight &amp; Logistics Report</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=0nH464EoZ9w"><img src="https://img.youtube.com/vi/0nH464EoZ9w/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 08 - NULL Handling</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=h6J7AajBD6w"><img src="https://img.youtube.com/vi/h6J7AajBD6w/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 09 - String &amp; Numeric Functions</b></sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=Iturx2kgs1A"><img src="https://img.youtube.com/vi/Iturx2kgs1A/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 10 - Date Functions &amp; CAST</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=eZ5iTTsKGkI"><img src="https://img.youtube.com/vi/eZ5iTTsKGkI/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 11 - CASE WHEN</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=SOt5jUrzKOU"><img src="https://img.youtube.com/vi/SOt5jUrzKOU/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 12 - Subqueries &amp; Temp Tables</b></sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=IijQJAfqcJc"><img src="https://img.youtube.com/vi/IijQJAfqcJc/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 13 - CTEs (Part 1)</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=afIJ4VsQYSo"><img src="https://img.youtube.com/vi/afIJ4VsQYSo/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 14 - Project: Fleet Intelligence Pipeline</b></sub>
+</td>
+</tr>
+</table>
+
+<!-- BROWSE-ALL-VIDEOS -->
+
+---
+
 ## Join the community
 
 <p align="center">
