@@ -95,3 +95,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-01/">&#9664; Day 1: Introduction to SQL & Databases</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-03/">Day 3: ORDER BY & LIMIT &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=s86nI9dPZqY"><img src="https://img.youtube.com/vi/s86nI9dPZqY/maxresdefault.jpg" width="480" alt="Day 3 - ORDER BY & LIMIT"/></a></p>
+<p align="center"><b>Day 3 &nbsp;&middot;&nbsp; ORDER BY & LIMIT</b></p>
+<p align="center"><i>Sorting is easy. Sorting NULLs the right way is not.</i></p>
+<!-- /CLIFFHANGER -->

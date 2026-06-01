@@ -107,3 +107,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-09/">&#9664; Day 9: String & Numeric Functions</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-11/">Day 11: CASE WHEN &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://youtu.be/eZ5iTTsKGkI"><img src="https://img.youtube.com/vi/eZ5iTTsKGkI/maxresdefault.jpg" width="480" alt="Day 11 - CASE WHEN"/></a></p>
+<p align="center"><b>Day 11 &nbsp;&middot;&nbsp; CASE WHEN</b></p>
+<p align="center"><i>Most people overuse CASE WHEN. There is a cleaner way.</i></p>
+<!-- /CLIFFHANGER -->

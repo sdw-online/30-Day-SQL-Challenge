@@ -103,3 +103,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-05/">&#9664; Day 5: INSERT, UPDATE & DELETE</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-07/">Day 7: Project: Freight & Logistics Report &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://youtu.be/fiBYAziNtGI"><img src="https://img.youtube.com/vi/fiBYAziNtGI/maxresdefault.jpg" width="480" alt="Day 7 - Project: Freight & Logistics Report"/></a></p>
+<p align="center"><b>Day 7 &nbsp;&middot;&nbsp; Project: Freight & Logistics Report</b></p>
+<p align="center"><i>The day you stop learning and start building.</i></p>
+<!-- /CLIFFHANGER -->

@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-25/">&#9664; Day 25: Views & Materialised Views</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-27/">Day 27: CREATE FUNCTION (UDFs) &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 27 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 27 &nbsp;&middot;&nbsp; CREATE FUNCTION (UDFs)</b></p>
+<p align="center"><i>CREATE FUNCTION (UDFs) - the thing most people get wrong.</i></p>
+<!-- /CLIFFHANGER -->

@@ -113,3 +113,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-10/">&#9664; Day 10: Date Functions & CAST</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-12/">Day 12: Subqueries & Temp Tables &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://youtu.be/SOt5jUrzKOU"><img src="https://img.youtube.com/vi/SOt5jUrzKOU/maxresdefault.jpg" width="480" alt="Day 12 - Subqueries & Temp Tables"/></a></p>
+<p align="center"><b>Day 12 &nbsp;&middot;&nbsp; Subqueries & Temp Tables</b></p>
+<p align="center"><i>Subqueries & Temp Tables - the thing most people get wrong.</i></p>
+<!-- /CLIFFHANGER -->

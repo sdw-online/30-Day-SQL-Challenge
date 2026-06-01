@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-16/">&#9664; Day 16: CROSS JOIN & Self Joins</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-18/">Day 18: Normalisation & Denormalisation &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 18 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 18 &nbsp;&middot;&nbsp; Normalisation & Denormalisation</b></p>
+<p align="center"><i>The rule that decides whether your schema scales or rots.</i></p>
+<!-- /CLIFFHANGER -->

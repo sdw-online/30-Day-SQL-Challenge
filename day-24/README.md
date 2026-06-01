@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-23/">&#9664; Day 23: Window Functions Part 2</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-25/">Day 25: Views & Materialised Views &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 25 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 25 &nbsp;&middot;&nbsp; Views & Materialised Views</b></p>
+<p align="center"><i>Views & Materialised Views - the thing most people get wrong.</i></p>
+<!-- /CLIFFHANGER -->

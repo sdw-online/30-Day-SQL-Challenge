@@ -92,3 +92,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-07/">&#9664; Day 7: Project: Freight & Logistics Report</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-09/">Day 9: String & Numeric Functions &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=h6J7AajBD6w"><img src="https://img.youtube.com/vi/h6J7AajBD6w/maxresdefault.jpg" width="480" alt="Day 9 - String & Numeric Functions"/></a></p>
+<p align="center"><b>Day 9 &nbsp;&middot;&nbsp; String & Numeric Functions</b></p>
+<p align="center"><i>Messy text is everywhere. The fix is one chapter away.</i></p>
+<!-- /CLIFFHANGER -->

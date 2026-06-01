@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-15/">&#9664; Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-17/">Day 17: UNION & UNION ALL &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 17 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 17 &nbsp;&middot;&nbsp; UNION & UNION ALL</b></p>
+<p align="center"><i>UNION & UNION ALL - the thing most people get wrong.</i></p>
+<!-- /CLIFFHANGER -->

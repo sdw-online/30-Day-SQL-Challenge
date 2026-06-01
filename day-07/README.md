@@ -112,3 +112,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-06/">&#9664; Day 6: Primary & Foreign Keys</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-08/">Day 8: NULL Handling &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=0nH464EoZ9w"><img src="https://img.youtube.com/vi/0nH464EoZ9w/maxresdefault.jpg" width="480" alt="Day 8 - NULL Handling"/></a></p>
+<p align="center"><b>Day 8 &nbsp;&middot;&nbsp; NULL Handling</b></p>
+<p align="center"><i>NULL is not zero. Get this wrong and your aggregates lie.</i></p>
+<!-- /CLIFFHANGER -->

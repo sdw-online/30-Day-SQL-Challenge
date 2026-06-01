@@ -126,3 +126,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-03/">&#9664; Day 3: ORDER BY & LIMIT</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-05/">Day 5: INSERT, UPDATE & DELETE &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=NJ4ujmOZt60"><img src="https://img.youtube.com/vi/NJ4ujmOZt60/maxresdefault.jpg" width="480" alt="Day 5 - INSERT, UPDATE & DELETE"/></a></p>
+<p align="center"><b>Day 5 &nbsp;&middot;&nbsp; INSERT, UPDATE & DELETE</b></p>
+<p align="center"><i>The day your habits decide whether prod survives the week.</i></p>
+<!-- /CLIFFHANGER -->

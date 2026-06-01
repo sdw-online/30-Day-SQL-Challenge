@@ -92,3 +92,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-08/">&#9664; Day 8: NULL Handling</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-10/">Day 10: Date Functions & CAST &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://youtu.be/Iturx2kgs1A"><img src="https://img.youtube.com/vi/Iturx2kgs1A/maxresdefault.jpg" width="480" alt="Day 10 - Date Functions & CAST"/></a></p>
+<p align="center"><b>Day 10 &nbsp;&middot;&nbsp; Date Functions & CAST</b></p>
+<p align="center"><i>Dates have more traps than any other type. Spot them before they spot you.</i></p>
+<!-- /CLIFFHANGER -->

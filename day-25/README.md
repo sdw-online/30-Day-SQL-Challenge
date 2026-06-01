@@ -40,3 +40,12 @@
 <p align="center">
   <a href="../day-24/">&#9664; Day 24: SCD Types & MERGE</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-26/">Day 26: Information Schema & Metadata &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 26 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 26 &nbsp;&middot;&nbsp; Information Schema & Metadata</b></p>
+<p align="center"><i>Bad charts hide insight. Good ones force it.</i></p>
+<!-- /CLIFFHANGER -->

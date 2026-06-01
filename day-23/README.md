@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-22/">&#9664; Day 22: Window Functions Part 1</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-24/">Day 24: SCD Types & MERGE &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 24 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 24 &nbsp;&middot;&nbsp; SCD Types & MERGE</b></p>
+<p align="center"><i>SCD Types & MERGE - the thing most people get wrong.</i></p>
+<!-- /CLIFFHANGER -->

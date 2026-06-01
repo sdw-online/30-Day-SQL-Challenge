@@ -91,3 +91,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-12/">&#9664; Day 12: Subqueries & Temp Tables</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-14/">Day 14: Project: Fleet Intelligence Pipeline &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://youtu.be/afIJ4VsQYSo"><img src="https://img.youtube.com/vi/afIJ4VsQYSo/maxresdefault.jpg" width="480" alt="Day 14 - Project: Fleet Intelligence Pipeline"/></a></p>
+<p align="center"><b>Day 14 &nbsp;&middot;&nbsp; Project: Fleet Intelligence Pipeline</b></p>
+<p align="center"><i>The day you stop learning and start building.</i></p>
+<!-- /CLIFFHANGER -->

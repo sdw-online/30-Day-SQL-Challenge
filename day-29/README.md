@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-28/">&#9664; Day 28: EXPLAIN & Indexing</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-30/">Day 30: Capstone: FinTech Lending Analytics &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 30 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 30 &nbsp;&middot;&nbsp; Capstone: FinTech Lending Analytics</b></p>
+<p align="center"><i>Capstone: FinTech Lending Analytics - the thing most people get wrong.</i></p>
+<!-- /CLIFFHANGER -->

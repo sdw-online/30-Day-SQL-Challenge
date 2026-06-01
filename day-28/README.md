@@ -35,3 +35,12 @@
 <p align="center">
   <a href="../day-27/">&#9664; Day 27: CREATE FUNCTION (UDFs)</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-29/">Day 29: PostgreSQL Pro Tips &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 29 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 29 &nbsp;&middot;&nbsp; PostgreSQL Pro Tips</b></p>
+<p align="center"><i>The small habits separating slow from fast.</i></p>
+<!-- /CLIFFHANGER -->

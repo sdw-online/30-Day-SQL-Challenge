@@ -92,3 +92,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-11/">&#9664; Day 11: CASE WHEN</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-13/">Day 13: CTEs (Part 1) &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://youtu.be/IijQJAfqcJc"><img src="https://img.youtube.com/vi/IijQJAfqcJc/maxresdefault.jpg" width="480" alt="Day 13 - CTEs (Part 1)"/></a></p>
+<p align="center"><b>Day 13 &nbsp;&middot;&nbsp; CTEs (Part 1)</b></p>
+<p align="center"><i>CTEs are why your seniors read SQL faster than you. Yet.</i></p>
+<!-- /CLIFFHANGER -->

@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-17/">&#9664; Day 17: UNION & UNION ALL</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-19/">Day 19: Recursive CTEs &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 19 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 19 &nbsp;&middot;&nbsp; Recursive CTEs</b></p>
+<p align="center"><i>CTEs are why your seniors read SQL faster than you. Yet.</i></p>
+<!-- /CLIFFHANGER -->

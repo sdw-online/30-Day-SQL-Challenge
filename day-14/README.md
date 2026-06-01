@@ -43,3 +43,12 @@
 <p align="center">
   <a href="../day-13/">&#9664; Day 13: CTEs (Part 1)</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-15/">Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 15 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 15 &nbsp;&middot;&nbsp; JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER</b></p>
+<p align="center"><i>JOINs look easy until they silently drop your data.</i></p>
+<!-- /CLIFFHANGER -->

@@ -35,3 +35,12 @@
 <p align="center">
   <a href="../day-26/">&#9664; Day 26: Information Schema & Metadata</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-28/">Day 28: EXPLAIN & Indexing &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 28 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 28 &nbsp;&middot;&nbsp; EXPLAIN & Indexing</b></p>
+<p align="center"><i>Lookups separate the spreadsheet person from everyone else.</i></p>
+<!-- /CLIFFHANGER -->

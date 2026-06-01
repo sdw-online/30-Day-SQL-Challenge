@@ -34,3 +34,12 @@
 <p align="center">
   <a href="../day-18/">&#9664; Day 18: Normalisation & Denormalisation</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-20/">Day 20: Data Modelling (Star Schema) &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="../README.md#curriculum"><b>Day 20 coming soon &raquo;</b></a></p>
+<p align="center"><b>Day 20 &nbsp;&middot;&nbsp; Data Modelling (Star Schema)</b></p>
+<p align="center"><i>How analytics teams actually structure data. Not how textbooks teach it.</i></p>
+<!-- /CLIFFHANGER -->

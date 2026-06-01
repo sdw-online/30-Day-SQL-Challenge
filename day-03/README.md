@@ -95,3 +95,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-02/">&#9664; Day 2: SELECT & WHERE</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-04/">Day 4: Aggregate Functions & GROUP BY &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=7IWrvTIrIkg"><img src="https://img.youtube.com/vi/7IWrvTIrIkg/maxresdefault.jpg" width="480" alt="Day 4 - Aggregate Functions & GROUP BY"/></a></p>
+<p align="center"><b>Day 4 &nbsp;&middot;&nbsp; Aggregate Functions & GROUP BY</b></p>
+<p align="center"><i>Aggregates have one trap that turns reports into lies.</i></p>
+<!-- /CLIFFHANGER -->

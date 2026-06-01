@@ -95,3 +95,12 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 <p align="center">
   <a href="../day-02/">Day 2: SELECT & WHERE &#9654;</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=-0uVBtXCZ_s"><img src="https://img.youtube.com/vi/-0uVBtXCZ_s/maxresdefault.jpg" width="480" alt="Day 2 - SELECT & WHERE"/></a></p>
+<p align="center"><b>Day 2 &nbsp;&middot;&nbsp; SELECT & WHERE</b></p>
+<p align="center"><i>The single most-used SQL clause. Get it wrong, get nothing.</i></p>
+<!-- /CLIFFHANGER -->

@@ -40,3 +40,12 @@
 <p align="center">
   <a href="../day-29/">&#9664; Day 29: PostgreSQL Pro Tips</a>
 </p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>YOU DID IT</b></sub></p>
+<p align="center"><b>All 30 days.</b> That's the challenge done.</p>
+<p align="center"><i>Now build something with it.</i></p>
+<p align="center"><a href="../README.md">&larr; Back to the curriculum</a></p>
+<!-- /CLIFFHANGER -->
