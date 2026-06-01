@@ -17,16 +17,28 @@
 
 ---
 
-## How It Works
+## How it works
 
-```
-Fork this repo  -->  Watch the video  -->  Run the SQL  -->  Solve the exercises  -->  Check solutions
+Five steps. Every day. Thirty days.
+
+```mermaid
+flowchart LR
+    A([Fork the repo]) --> B([Watch the<br/>day's video])
+    B --> C([Run the SQL<br/>in pgAdmin])
+    C --> D([Solve the<br/>exercises])
+    D --> E([Check your work<br/>against solutions])
+
+    style A fill:#312e81,stroke:#a5b4fc,stroke-width:2px,color:#ffffff
+    style B fill:#4338ca,stroke:#a5b4fc,stroke-width:2px,color:#ffffff
+    style C fill:#4f46e5,stroke:#a5b4fc,stroke-width:2px,color:#ffffff
+    style D fill:#6366f1,stroke:#a5b4fc,stroke-width:2px,color:#ffffff
+    style E fill:#f59e0b,stroke:#fbbf24,stroke-width:2px,color:#1f2937
 ```
 
 Each day gives you:
-- A **video lesson** that walks you through the concept with real examples
-- A **dataset** you set up yourself in pgAdmin - you're building tables, not just reading about them
-- **Exercises** that put you in a real role solving a real problem with what you just learnt
+- A **video lesson** walking through the concept with real examples
+- A **dataset** you set up yourself in pgAdmin - you build the tables, not just read about them
+- **Exercises** that drop you into a real role solving a real problem
 - **Solutions** so you can check your work and see how you did
 
 ---
@@ -63,21 +75,38 @@ AI makes SQL faster to write. This challenge makes you someone who knows what to
 
 ---
 
-## Where Should I Start?
+## Where should I start?
 
-Not everyone is starting from scratch - and that's fine. This challenge is designed so you can jump in wherever makes sense for you.
+Not everyone's starting from scratch - and that's fine. Pick the door that matches where you are.
 
-<p align="center">
-  <a href="guides/where-to-start.md"><img src="assets/banners/decision-tree-start.svg" width="800" alt="Where Should I Start?"></a>
-</p>
+```mermaid
+flowchart TD
+    Q{What's your<br/>SQL level?}
 
-**Never written SQL before?** Start at **Day 1**. You'll install PostgreSQL, set up your first database, and write your first query. No prerequisites, no assumptions - just follow along.
+    Q -->|Never written<br/>SQL| D1[Day 1<br/>Install PostgreSQL<br/>Write your first query]
+    Q -->|Basics rusty,<br/>need a refresher| D8[Day 8<br/>NULLs, strings,<br/>CASE WHEN]
+    Q -->|Comfortable<br/>but no JOINs| D15[Day 15<br/>All JOIN types<br/>with visuals]
+    Q -->|Production-ready<br/>want advanced| D22[Day 22<br/>Window functions<br/>capstone project]
 
-**Know the basics but it's been a while?** Jump to **Day 8**. Week 2 covers the stuff most people forget first - NULL handling, string functions, CASE WHEN. It's a great refresher that fills in the gaps.
+    click D1 "https://github.com/sdw-online/30-Day-SQL-Challenge/tree/main/day-01" _blank
+    click D8 "https://github.com/sdw-online/30-Day-SQL-Challenge/tree/main/day-08" _blank
+    click D15 "https://github.com/sdw-online/30-Day-SQL-Challenge/tree/main/day-15" _blank
+    click D22 "https://github.com/sdw-online/30-Day-SQL-Challenge/tree/main/day-22" _blank
 
-**Comfortable with queries but never learnt JOINs properly?** Start at **Day 15**. This is where most people in data jobs realise they've been winging it. We cover all the JOIN types with clear visual explanations.
+    classDef start fill:#1e1b4b,stroke:#a5b4fc,stroke-width:2px,color:#ffffff
+    classDef day fill:#4338ca,stroke:#818cf8,stroke-width:2px,color:#ffffff
+    class Q start
+    class D1,D8,D15,D22 day
+```
 
-**Already use SQL at work and want the advanced stuff?** Go straight to **Day 22**. Window functions, MERGE statements, query optimisation, and a full capstone project. This is production-grade SQL.
+<sub><i>Click any node to jump straight to that day's folder.</i></sub>
+
+If diagrams don't render in your client, here's the short version:
+
+- **Never written SQL?** → [Day 1](./day-01) - PostgreSQL setup + your first query
+- **Basics rusty?** → [Day 8](./day-08) - Week 2 covers what most people forget first
+- **Comfortable but no JOINs?** → [Day 15](./day-15) - where most people in data jobs realise they've been winging it
+- **Already use SQL at work?** → [Day 22](./day-22) - window functions, MERGE, query optimisation, capstone
 
 ---
 
