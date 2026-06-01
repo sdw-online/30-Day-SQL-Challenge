@@ -11,8 +11,13 @@
 </p>
 
 <p align="center">
-  Master SQL from scratch with daily video lessons, hands-on datasets, and real-world exercises.<br>
-  Whether you're aiming for your first data role or levelling up your skills - this is the structure to get you there.
+  <b>By Day 30, you'll be the SQL person on your team.</b><br>
+  The one others ask. The one who reads queries fast. The one who debugs the reports nobody else can fix.<br>
+  This is the 30-day structure that gets you there - daily lessons, real datasets, real exercises.
+</p>
+
+<p align="center">
+  <img src="assets/banners/progress-stamp.svg" width="100%" alt="Challenge progress"/>
 </p>
 
 ---
@@ -120,13 +125,13 @@ If diagrams don't render in your client, here's the short version:
 
 | Day | Topic | What You'll Do | Video |
 |:---:|-------|----------------|:-----:|
-| 01 | Introduction to SQL & Databases | Set up PostgreSQL, create your first database, and run your first query | [Watch](https://www.youtube.com/watch?v=mFIMPhiO-N0) |
-| 02 | SELECT & WHERE | Pull specific data from a table and filter rows using conditions | [Watch](https://www.youtube.com/watch?v=-0uVBtXCZ_s) |
-| 03 | ORDER BY & LIMIT | Sort your results and control how many rows come back | [Watch](https://www.youtube.com/watch?v=s86nI9dPZqY) |
-| 04 | Aggregate Functions & GROUP BY | Count, sum, and average your data - then group it to find patterns | [Watch](https://www.youtube.com/watch?v=7IWrvTIrIkg) |
-| 05 | INSERT, UPDATE & DELETE | Add new rows, change existing ones, and remove what you don't need | [Watch](https://www.youtube.com/watch?v=NJ4ujmOZt60) |
-| 06 | Primary & Foreign Keys | Understand how tables relate to each other and why constraints matter | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) |
-| 07 | **Project:** Freight & Logistics Report | Put it all together - build a performance report from real shipping data | [Watch](https://youtu.be/fiBYAziNtGI) |
+| 01 | Introduction to SQL & Databases | Set up PostgreSQL, create your first database, and run your first query<br><sub><i>Introduction to SQL & Databases - the thing most people get wrong.</i></sub> | [Watch](https://www.youtube.com/watch?v=mFIMPhiO-N0) |
+| 02 | SELECT & WHERE | Pull specific data from a table and filter rows using conditions<br><sub><i>The single most-used SQL clause. Get it wrong, get nothing.</i></sub> | [Watch](https://www.youtube.com/watch?v=-0uVBtXCZ_s) |
+| 03 | ORDER BY & LIMIT | Sort your results and control how many rows come back<br><sub><i>Sorting is easy. Sorting NULLs the right way is not.</i></sub> | [Watch](https://www.youtube.com/watch?v=s86nI9dPZqY) |
+| 04 | Aggregate Functions & GROUP BY | Count, sum, and average your data - then group it to find patterns<br><sub><i>Aggregates have one trap that turns reports into lies.</i></sub> | [Watch](https://www.youtube.com/watch?v=7IWrvTIrIkg) |
+| 05 | INSERT, UPDATE & DELETE | Add new rows, change existing ones, and remove what you don't need<br><sub><i>The day your habits decide whether prod survives the week.</i></sub> | [Watch](https://www.youtube.com/watch?v=NJ4ujmOZt60) |
+| 06 | Primary & Foreign Keys | Understand how tables relate to each other and why constraints matter<br><sub><i>Primary & Foreign Keys - the thing most people get wrong.</i></sub> | [Watch](https://www.youtube.com/watch?v=1AdFU8Vdq-0) |
+| 07 | **Project:** Freight & Logistics Report | Put it all together - build a performance report from real shipping data<br><sub><i>The day you stop learning and start building.</i></sub> | [Watch](https://youtu.be/fiBYAziNtGI) |
 
 <br>
 
@@ -136,13 +141,13 @@ If diagrams don't render in your client, here's the short version:
 
 | Day | Topic | What You'll Do | Video |
 |:---:|-------|----------------|:-----:|
-| 08 | NULL Handling | Deal with missing data without breaking your queries | [Watch](https://www.youtube.com/watch?v=0nH464EoZ9w) |
-| 09 | String & Numeric Functions | Clean messy text, extract parts of strings, and round numbers properly | [Watch](https://www.youtube.com/watch?v=h6J7AajBD6w) |
-| 10 | Date Functions & CAST | Work with dates, calculate time differences, and convert between types | [Watch](https://youtu.be/Iturx2kgs1A) |
-| 11 | CASE WHEN | Add conditional logic to your queries - like if/else but inside SQL | [Watch](https://youtu.be/eZ5iTTsKGkI) |
-| 12 | Subqueries & Temp Tables | Nest queries inside each other and store intermediate results for reuse | [Watch](https://youtu.be/SOt5jUrzKOU) |
-| 13 | CTEs (Part 1) | Write cleaner, more readable queries using Common Table Expressions | [Watch](https://youtu.be/IijQJAfqcJc) |
-| 14 | **Project:** Fleet Intelligence Pipeline | Build a multi-step data pipeline using everything from Week 2 | [Watch](https://youtu.be/afIJ4VsQYSo) |
+| 08 | NULL Handling | Deal with missing data without breaking your queries<br><sub><i>NULL is not zero. Get this wrong and your aggregates lie.</i></sub> | [Watch](https://www.youtube.com/watch?v=0nH464EoZ9w) |
+| 09 | String & Numeric Functions | Clean messy text, extract parts of strings, and round numbers properly<br><sub><i>Messy text is everywhere. The fix is one chapter away.</i></sub> | [Watch](https://www.youtube.com/watch?v=h6J7AajBD6w) |
+| 10 | Date Functions & CAST | Work with dates, calculate time differences, and convert between types<br><sub><i>Dates have more traps than any other type. Spot them before they spot you.</i></sub> | [Watch](https://youtu.be/Iturx2kgs1A) |
+| 11 | CASE WHEN | Add conditional logic to your queries - like if/else but inside SQL<br><sub><i>Most people overuse CASE WHEN. There is a cleaner way.</i></sub> | [Watch](https://youtu.be/eZ5iTTsKGkI) |
+| 12 | Subqueries & Temp Tables | Nest queries inside each other and store intermediate results for reuse<br><sub><i>Subqueries & Temp Tables - the thing most people get wrong.</i></sub> | [Watch](https://youtu.be/SOt5jUrzKOU) |
+| 13 | CTEs (Part 1) | Write cleaner, more readable queries using Common Table Expressions<br><sub><i>CTEs are why your seniors read SQL faster than you. Yet.</i></sub> | [Watch](https://youtu.be/IijQJAfqcJc) |
+| 14 | **Project:** Fleet Intelligence Pipeline | Build a multi-step data pipeline using everything from Week 2<br><sub><i>The day you stop learning and start building.</i></sub> | [Watch](https://youtu.be/afIJ4VsQYSo) |
 
 <br>
 
@@ -152,13 +157,13 @@ If diagrams don't render in your client, here's the short version:
 
 | Day | Topic | What You'll Do | Video |
 |:---:|-------|----------------|:-----:|
-| 15 | JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER | Connect tables together and understand what each JOIN type keeps and drops | Coming soon |
-| 16 | JOINs Part 2: CROSS & Self Joins | Generate combinations and compare rows within the same table | Coming soon |
-| 17 | UNION & UNION ALL | Stack result sets on top of each other and know when to deduplicate | Coming soon |
-| 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it | Coming soon |
-| 19 | Recursive CTEs | Query hierarchical data like org charts and category trees | Coming soon |
-| 20 | Data Modelling (Star Schema) | Design fact and dimension tables the way analytics teams actually do it | Coming soon |
-| 21 | **Project:** SaaS Trial-to-Paid Conversion | Analyse a real SaaS funnel - which trials convert and why | Coming soon |
+| 15 | JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER | Connect tables together and understand what each JOIN type keeps and drops<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | Coming soon |
+| 16 | JOINs Part 2: CROSS & Self Joins | Generate combinations and compare rows within the same table<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | Coming soon |
+| 17 | UNION & UNION ALL | Stack result sets on top of each other and know when to deduplicate<br><sub><i>UNION & UNION ALL - the thing most people get wrong.</i></sub> | Coming soon |
+| 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it<br><sub><i>The rule that decides whether your schema scales or rots.</i></sub> | Coming soon |
+| 19 | Recursive CTEs | Query hierarchical data like org charts and category trees<br><sub><i>CTEs are why your seniors read SQL faster than you. Yet.</i></sub> | Coming soon |
+| 20 | Data Modelling (Star Schema) | Design fact and dimension tables the way analytics teams actually do it<br><sub><i>How analytics teams actually structure data. Not how textbooks teach it.</i></sub> | Coming soon |
+| 21 | **Project:** SaaS Trial-to-Paid Conversion | Analyse a real SaaS funnel - which trials convert and why<br><sub><i>The day you stop learning and start building.</i></sub> | Coming soon |
 
 <br>
 
@@ -168,15 +173,15 @@ If diagrams don't render in your client, here's the short version:
 
 | Day | Topic | What You'll Do | Video |
 |:---:|-------|----------------|:-----:|
-| 22 | Window Functions Part 1 | Rank rows, number them, and calculate running totals without GROUP BY | Coming soon |
-| 23 | Window Functions Part 2 | Compare current rows to previous ones with LAG, LEAD, and QUALIFY | Coming soon |
-| 24 | SCD Types & MERGE | Track how data changes over time and upsert rows in one statement | Coming soon |
-| 25 | Views & Materialised Views | Save queries as reusable objects and pre-compute expensive results | Coming soon |
-| 26 | Information Schema & Metadata | Query the database about itself - table sizes, column types, constraints | Coming soon |
-| 27 | CREATE FUNCTION (UDFs) | Build your own reusable SQL functions for logic you use repeatedly | Coming soon |
-| 28 | EXPLAIN & Indexing | Read query plans, spot bottlenecks, and make your queries faster | Coming soon |
-| 29 | PostgreSQL Pro Tips | Shortcuts, settings, and techniques that save time every day | Coming soon |
-| 30 | **Capstone:** FinTech Lending Analytics | Build a full analytics platform - schema, pipelines, segmentation, tuning | Coming soon |
+| 22 | Window Functions Part 1 | Rank rows, number them, and calculate running totals without GROUP BY<br><sub><i>Window functions replace 80% of the SQL you used to write.</i></sub> | Coming soon |
+| 23 | Window Functions Part 2 | Compare current rows to previous ones with LAG, LEAD, and QUALIFY<br><sub><i>Window functions replace 80% of the SQL you used to write.</i></sub> | Coming soon |
+| 24 | SCD Types & MERGE | Track how data changes over time and upsert rows in one statement<br><sub><i>SCD Types & MERGE - the thing most people get wrong.</i></sub> | Coming soon |
+| 25 | Views & Materialised Views | Save queries as reusable objects and pre-compute expensive results<br><sub><i>Views & Materialised Views - the thing most people get wrong.</i></sub> | Coming soon |
+| 26 | Information Schema & Metadata | Query the database about itself - table sizes, column types, constraints<br><sub><i>Bad charts hide insight. Good ones force it.</i></sub> | Coming soon |
+| 27 | CREATE FUNCTION (UDFs) | Build your own reusable SQL functions for logic you use repeatedly<br><sub><i>CREATE FUNCTION (UDFs) - the thing most people get wrong.</i></sub> | Coming soon |
+| 28 | EXPLAIN & Indexing | Read query plans, spot bottlenecks, and make your queries faster<br><sub><i>Lookups separate the spreadsheet person from everyone else.</i></sub> | Coming soon |
+| 29 | PostgreSQL Pro Tips | Shortcuts, settings, and techniques that save time every day<br><sub><i>The small habits separating slow from fast.</i></sub> | Coming soon |
+| 30 | **Capstone:** FinTech Lending Analytics | Build a full analytics platform - schema, pipelines, segmentation, tuning<br><sub><i>Capstone: FinTech Lending Analytics - the thing most people get wrong.</i></sub> | Coming soon |
 
 ---
 
