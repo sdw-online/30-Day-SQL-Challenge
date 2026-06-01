@@ -16,9 +16,50 @@
   This is the 30-day structure that gets you there - daily lessons, real datasets, real exercises.
 </p>
 
-<p align="center">
-  <img src="assets/banners/progress-stamp.svg" width="100%" alt="Challenge progress"/>
-</p>
+<!-- PROGRESS-GRID -->
+<p align="center"><sub><b>14 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
+
+<table align="center" cellpadding="3" cellspacing="0" border="0">
+  <tr>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=mFIMPhiO-N0" title="Day 1: Introduction to SQL & Databases"><img src="assets/banners/progress/day-01.svg" width="48" height="48" alt="Day 1"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=-0uVBtXCZ_s" title="Day 2: SELECT & WHERE"><img src="assets/banners/progress/day-02.svg" width="48" height="48" alt="Day 2"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=s86nI9dPZqY" title="Day 3: ORDER BY & LIMIT"><img src="assets/banners/progress/day-03.svg" width="48" height="48" alt="Day 3"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=7IWrvTIrIkg" title="Day 4: Aggregate Functions & GROUP BY"><img src="assets/banners/progress/day-04.svg" width="48" height="48" alt="Day 4"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=NJ4ujmOZt60" title="Day 5: INSERT, UPDATE & DELETE"><img src="assets/banners/progress/day-05.svg" width="48" height="48" alt="Day 5"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=1AdFU8Vdq-0" title="Day 6: Primary & Foreign Keys"><img src="assets/banners/progress/day-06.svg" width="48" height="48" alt="Day 6"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/fiBYAziNtGI" title="Day 7: Project: Freight & Logistics Report"><img src="assets/banners/progress/day-07.svg" width="48" height="48" alt="Day 7"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=0nH464EoZ9w" title="Day 8: NULL Handling"><img src="assets/banners/progress/day-08.svg" width="48" height="48" alt="Day 8"/></a></td>
+    <td align="center" valign="middle"><a href="https://www.youtube.com/watch?v=h6J7AajBD6w" title="Day 9: String & Numeric Functions"><img src="assets/banners/progress/day-09.svg" width="48" height="48" alt="Day 9"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/Iturx2kgs1A" title="Day 10: Date Functions & CAST"><img src="assets/banners/progress/day-10.svg" width="48" height="48" alt="Day 10"/></a></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle"><a href="https://youtu.be/eZ5iTTsKGkI" title="Day 11: CASE WHEN"><img src="assets/banners/progress/day-11.svg" width="48" height="48" alt="Day 11"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/SOt5jUrzKOU" title="Day 12: Subqueries & Temp Tables"><img src="assets/banners/progress/day-12.svg" width="48" height="48" alt="Day 12"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/IijQJAfqcJc" title="Day 13: CTEs (Part 1)"><img src="assets/banners/progress/day-13.svg" width="48" height="48" alt="Day 13"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/afIJ4VsQYSo" title="Day 14: Project: Fleet Intelligence Pipeline"><img src="assets/banners/progress/day-14.svg" width="48" height="48" alt="Day 14"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER"><img src="assets/banners/progress/day-15.svg" width="48" height="48" alt="Day 15"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 16: JOINs Part 2: CROSS & Self Joins"><img src="assets/banners/progress/day-16.svg" width="48" height="48" alt="Day 16"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 17: UNION & UNION ALL"><img src="assets/banners/progress/day-17.svg" width="48" height="48" alt="Day 17"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 18: Normalisation & Denormalisation"><img src="assets/banners/progress/day-18.svg" width="48" height="48" alt="Day 18"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 19: Recursive CTEs"><img src="assets/banners/progress/day-19.svg" width="48" height="48" alt="Day 19"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 20: Data Modelling (Star Schema)"><img src="assets/banners/progress/day-20.svg" width="48" height="48" alt="Day 20"/></a></td>
+  </tr>
+  <tr>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 21: Project: SaaS Trial-to-Paid Conversion"><img src="assets/banners/progress/day-21.svg" width="48" height="48" alt="Day 21"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 22: Window Functions Part 1"><img src="assets/banners/progress/day-22.svg" width="48" height="48" alt="Day 22"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 23: Window Functions Part 2"><img src="assets/banners/progress/day-23.svg" width="48" height="48" alt="Day 23"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 24: SCD Types & MERGE"><img src="assets/banners/progress/day-24.svg" width="48" height="48" alt="Day 24"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 25: Views & Materialised Views"><img src="assets/banners/progress/day-25.svg" width="48" height="48" alt="Day 25"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 26: Information Schema & Metadata"><img src="assets/banners/progress/day-26.svg" width="48" height="48" alt="Day 26"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 27: CREATE FUNCTION (UDFs)"><img src="assets/banners/progress/day-27.svg" width="48" height="48" alt="Day 27"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 28: EXPLAIN & Indexing"><img src="assets/banners/progress/day-28.svg" width="48" height="48" alt="Day 28"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 29: PostgreSQL Pro Tips"><img src="assets/banners/progress/day-29.svg" width="48" height="48" alt="Day 29"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 30: Capstone: FinTech Lending Analytics"><img src="assets/banners/progress/day-30.svg" width="48" height="48" alt="Day 30"/></a></td>
+  </tr>
+</table>
+
+<p align="center"><sub><i>Tap any unlit tile to see what is coming.</i></sub></p>
+<!-- /PROGRESS-GRID -->
 
 ---
 
