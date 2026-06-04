@@ -156,6 +156,12 @@ If diagrams don't render in your client, here's the short version:
 
 ---
 
+<p align="center">
+  <a href="https://data100x.carrd.co/"><img src="./assets/banners/community-cta.svg" alt="Join the free data community" width="100%"/></a>
+</p>
+
+---
+
 ## Curriculum
 
 <br>
