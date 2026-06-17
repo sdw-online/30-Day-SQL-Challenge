@@ -1,4 +1,4 @@
-<p align="center">
+﻿<p align="center">
   <a href="https://www.youtube.com/playlist?list=PL92LwdfbhlXF4qeI8P4bMKepuEPGtKFWx"><img src="assets/banners/cover.svg" width="800" alt="30 Day SQL Challenge"></a>
 </p>
 
@@ -17,7 +17,7 @@
 </p>
 
 <!-- PROGRESS-GRID -->
-<p align="center"><sub><b>14 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
+<p align="center"><sub><b>16 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
 
 <table align="center" cellpadding="3" cellspacing="0" border="0">
   <tr>
@@ -38,7 +38,7 @@
     <td align="center" valign="middle"><a href="https://youtu.be/IijQJAfqcJc" title="Day 13: CTEs (Part 1)"><img src="assets/banners/progress/day-13.svg" width="48" height="48" alt="Day 13"/></a></td>
     <td align="center" valign="middle"><a href="https://youtu.be/afIJ4VsQYSo" title="Day 14: Project: Fleet Intelligence Pipeline"><img src="assets/banners/progress/day-14.svg" width="48" height="48" alt="Day 14"/></a></td>
     <td align="center" valign="middle"><a href="https://youtu.be/wtBxs_iDLo4" title="Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER"><img src="assets/banners/progress/day-15.svg" width="48" height="48" alt="Day 15"/></a></td>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 16: JOINs Part 2: CROSS & Self Joins"><img src="assets/banners/progress/day-16.svg" width="48" height="48" alt="Day 16"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/ZYwPGw4ghkI" title="Day 16: JOINs Part 2: CROSS & Self Joins"><img src="assets/banners/progress/day-16.svg" width="48" height="48" alt="Day 16"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 17: UNION & UNION ALL"><img src="assets/banners/progress/day-17.svg" width="48" height="48" alt="Day 17"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 18: Normalisation & Denormalisation"><img src="assets/banners/progress/day-18.svg" width="48" height="48" alt="Day 18"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 19: Recursive CTEs"><img src="assets/banners/progress/day-19.svg" width="48" height="48" alt="Day 19"/></a></td>
@@ -205,7 +205,7 @@ If diagrams don't render in your client, here's the short version:
 | Day | Topic | What You'll Do | Video |
 |:---:|-------|----------------|:-----:|
 | 15 | JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER | Connect tables together and understand what each JOIN type keeps and drops<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | [Watch](https://youtu.be/wtBxs_iDLo4) |
-| 16 | JOINs Part 2: CROSS & Self Joins | Generate combinations and compare rows within the same table<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | Coming soon |
+| 16 | JOINs Part 2: CROSS & Self Joins | Generate combinations and compare rows within the same table<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | [Watch](https://youtu.be/ZYwPGw4ghkI) |
 | 17 | UNION & UNION ALL | Stack result sets on top of each other and know when to deduplicate<br><sub><i>UNION & UNION ALL - the thing most people get wrong.</i></sub> | Coming soon |
 | 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it<br><sub><i>The rule that decides whether your schema scales or rots.</i></sub> | Coming soon |
 | 19 | Recursive CTEs | Query hierarchical data like org charts and category trees<br><sub><i>CTEs are why your seniors read SQL faster than you. Yet.</i></sub> | Coming soon |
@@ -407,3 +407,5 @@ I've spent years doing this work professionally, and I created this challenge to
 ## License
 
 For educational purposes. Fork it, clone it, learn from it. If you share it, a link back is appreciated.
+
+
