@@ -116,7 +116,7 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 
 <!-- CLIFFHANGER -->
 <p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="../README.md#curriculum"><b>Day 17 coming soon &raquo;</b></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=wlohArgOSd4"><img src="https://img.youtube.com/vi/wlohArgOSd4/maxresdefault.jpg" width="480" alt="Day 17 - UNION & UNION ALL"/></a></p>
 <p align="center"><b>Day 17 &nbsp;&middot;&nbsp; UNION & UNION ALL</b></p>
 <p align="center"><i>UNION & UNION ALL - the thing most people get wrong.</i></p>
 <!-- /CLIFFHANGER -->
