@@ -17,7 +17,7 @@
 </p>
 
 <!-- PROGRESS-GRID -->
-<p align="center"><sub><b>16 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
+<p align="center"><sub><b>17 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
 
 <table align="center" cellpadding="3" cellspacing="0" border="0">
   <tr>
