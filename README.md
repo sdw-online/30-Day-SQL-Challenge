@@ -364,6 +364,20 @@ Need to set up other tools? These walk you through each one step by step:
   <a href="https://www.youtube.com/watch?v=afIJ4VsQYSo"><img src="https://img.youtube.com/vi/afIJ4VsQYSo/hqdefault.jpg" width="220"/></a><br/>
   <sub><b>Day 14 - Project: Fleet Intelligence Pipeline</b></sub>
 </td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=wtBxs_iDLo4"><img src="https://img.youtube.com/vi/wtBxs_iDLo4/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 15 - JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER</b></sub>
+</td>
+</tr>
+<tr>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=ZYwPGw4ghkI"><img src="https://img.youtube.com/vi/ZYwPGw4ghkI/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 16 - JOINs Part 2: CROSS &amp; Self Joins</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=wlohArgOSd4"><img src="https://img.youtube.com/vi/wlohArgOSd4/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 17 - UNION &amp; UNION ALL</b></sub>
+</td>
 </tr>
 </table>
 
