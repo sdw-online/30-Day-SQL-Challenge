@@ -49,3 +49,5 @@ jobs:
           node-version: '20'
       - name: Validate SQL files
         run: node scripts/check-sql.js
+      - name: Check setup/solutions table consistency
+        run: node scripts/check-sql-consistency.js
