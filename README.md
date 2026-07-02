@@ -87,6 +87,16 @@ Each day gives you:
 - **Exercises** that drop you into a real role solving a real problem
 - **Solutions** so you can check your work and see how you did
 
+### Getting the files (new to GitHub?)
+
+Every day's `setup.sql`, `exercise.sql`, and `solutions.sql` live in that day's folder (for example [`day-01/`](day-01/)). If the repo page looks like "just a list of folders", that is the right place - open a `day-XX` folder to see its files. To get them onto your machine, pick one:
+
+- **Download (easiest):** click the green **Code** button near the top of this page, then **Download ZIP**. Unzip it and open the `day-XX` folder for the day you are on.
+- **Clone (if you have Git):** run `git clone https://github.com/sdw-online/30-Day-SQL-Challenge.git` in your terminal.
+- **Read one file online:** click into any `day-XX` folder, click the `.sql` file, then click **Raw** to copy the contents straight into pgAdmin.
+
+Then open the day's `setup.sql` in pgAdmin and run it to create the tables before you start the exercises.
+
 ---
 
 ## Why This Challenge?

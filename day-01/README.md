@@ -39,7 +39,7 @@ Or open [`setup.sql`](setup.sql) and run the full script manually.
 
 ```sql
 -- Check your tables loaded correctly
-SELECT COUNT(*) FROM your_table;
+SELECT COUNT(*) FROM employees;
 ```
 
 </details>
@@ -62,9 +62,9 @@ Using the instructions below, complete these tasks:
 
 ### 🟡 Practice
 
-**Q3:** Create the `employees` table using the dataset above, then run `SELECT * FROM employees;`. How many rows and columns does the table have?
+**Q3:** Run [`setup.sql`](setup.sql) to create and populate the `employees` table, then run `SELECT * FROM employees;`. How many rows and columns does the table have?
 
-**Q4:** Run `SELECT COUNT(*) FROM employees;` to verify the row count. Now run `SELECT * FROM employees;` and look at the column headers. List every column name and identify its data type (e.g. VARCHAR, INTEGER, DATE, BOOLEAN) based on the CREATE TABLE statement above.
+**Q4:** Run `SELECT COUNT(*) FROM employees;` to verify the row count. Now run `SELECT * FROM employees;` and look at the column headers. List every column name and identify its data type (e.g. VARCHAR, INTEGER, DATE, BOOLEAN) based on the `CREATE TABLE` statement in [`setup.sql`](setup.sql).
 
 ### 🔴 Challenge
 

@@ -50,7 +50,7 @@ SELECT COUNT(*) FROM your_table;
 
 You're a sales analyst at ShopStream, a UK-based e-commerce company. The Head of Sales, Marcus, has sent you a message. He needs a quick analysis for tomorrow's regional review meeting. The board wants to understand Q1 2025 order patterns, and he's got questions he needs answered by end of day.
 
-Using the `online_orders` table above, answer these questions:
+Using the `online_orders` table (created by [`setup.sql`](setup.sql)), answer these questions:
 
 ### 🟢 Warm-Up
 
