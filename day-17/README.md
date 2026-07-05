@@ -108,7 +108,7 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 
 <!-- CLIFFHANGER -->
 <p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="../README.md#curriculum"><b>Day 18 coming soon &raquo;</b></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=dhdWwX8DAEg"><img src="https://img.youtube.com/vi/dhdWwX8DAEg/maxresdefault.jpg" width="480" alt="Day 18 - Normalisation and Denormalisation"/></a></p>
 <p align="center"><b>Day 18 &nbsp;&middot;&nbsp; Normalisation & Denormalisation</b></p>
 <p align="center"><i>The rule that decides whether your schema scales or rots.</i></p>
 <!-- /CLIFFHANGER -->
