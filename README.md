@@ -17,7 +17,7 @@
 </p>
 
 <!-- PROGRESS-GRID -->
-<p align="center"><sub><b>17 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
+<p align="center"><sub><b>18 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
 
 <table align="center" cellpadding="3" cellspacing="0" border="0">
   <tr>
@@ -40,7 +40,7 @@
     <td align="center" valign="middle"><a href="https://youtu.be/wtBxs_iDLo4" title="Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER"><img src="assets/banners/progress/day-15.svg" width="48" height="48" alt="Day 15"/></a></td>
     <td align="center" valign="middle"><a href="https://youtu.be/ZYwPGw4ghkI" title="Day 16: JOINs Part 2: CROSS & Self Joins"><img src="assets/banners/progress/day-16.svg" width="48" height="48" alt="Day 16"/></a></td>
     <td align="center" valign="middle"><a href="https://youtu.be/wlohArgOSd4" title="Day 17: UNION & UNION ALL"><img src="assets/banners/progress/day-17.svg" width="48" height="48" alt="Day 17"/></a></td>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 18: Normalisation & Denormalisation"><img src="assets/banners/progress/day-18.svg" width="48" height="48" alt="Day 18"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/dhdWwX8DAEg" title="Day 18: Normalisation & Denormalisation"><img src="assets/banners/progress/day-18.svg" width="48" height="48" alt="Day 18"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 19: Recursive CTEs"><img src="assets/banners/progress/day-19.svg" width="48" height="48" alt="Day 19"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 20: Data Modelling (Star Schema)"><img src="assets/banners/progress/day-20.svg" width="48" height="48" alt="Day 20"/></a></td>
   </tr>
@@ -217,7 +217,7 @@ If diagrams don't render in your client, here's the short version:
 | 15 | JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER | Connect tables together and understand what each JOIN type keeps and drops<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | [Watch](https://youtu.be/wtBxs_iDLo4) |
 | 16 | JOINs Part 2: CROSS & Self Joins | Generate combinations and compare rows within the same table<br><sub><i>JOINs look easy until they silently drop your data.</i></sub> | [Watch](https://youtu.be/ZYwPGw4ghkI) |
 | 17 | UNION & UNION ALL | Stack result sets on top of each other and know when to deduplicate<br><sub><i>UNION & UNION ALL - the thing most people get wrong.</i></sub> |[Watch](https://youtu.be/wlohArgOSd4)|
-| 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it<br><sub><i>The rule that decides whether your schema scales or rots.</i></sub> | Coming soon |
+| 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it<br><sub><i>The rule that decides whether your schema scales or rots.</i></sub> |[Watch](https://youtu.be/dhdWwX8DAEg)|
 | 19 | Recursive CTEs | Query hierarchical data like org charts and category trees<br><sub><i>CTEs are why your seniors read SQL faster than you. Yet.</i></sub> | Coming soon |
 | 20 | Data Modelling (Star Schema) | Design fact and dimension tables the way analytics teams actually do it<br><sub><i>How analytics teams actually structure data. Not how textbooks teach it.</i></sub> | Coming soon |
 | 21 | **Project:** SaaS Trial-to-Paid Conversion | Analyse a real SaaS funnel - which trials convert and why<br><sub><i>The day you stop learning and start building.</i></sub> | Coming soon |
@@ -387,6 +387,10 @@ Need to set up other tools? These walk you through each one step by step:
 <td align="center" width="33%">
   <a href="https://www.youtube.com/watch?v=wlohArgOSd4"><img src="https://img.youtube.com/vi/wlohArgOSd4/hqdefault.jpg" width="220"/></a><br/>
   <sub><b>Day 17 - UNION &amp; UNION ALL</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=dhdWwX8DAEg"><img src="https://img.youtube.com/vi/dhdWwX8DAEg/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 18 - Normalisation and Denormalisation</b></sub>
 </td>
 </tr>
 </table>
