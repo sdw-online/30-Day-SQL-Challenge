@@ -29,7 +29,9 @@ function strip(sql) {
 }
 function created(sql) {
   const s = new Set();
-  for (const m of strip(sql).matchAll(/CREATE\s+(?:TEMP(?:ORARY)?\s+)?TABLE\s+(?:IF\s+NOT\s+EXISTS\s+)?([a-z_][a-z0-9_]*)/ig)) s.add(m[1].toLowerCase());
+  // TABLE (with optional TEMP) and VIEW (with optional MATERIALIZED / OR REPLACE)
+  // both hand back a queryable relation - either can satisfy a later FROM/JOIN.
+  for (const m of strip(sql).matchAll(/CREATE\s+(?:OR\s+REPLACE\s+)?(?:TEMP(?:ORARY)?\s+)?(?:MATERIALIZED\s+)?(?:TABLE|VIEW)\s+(?:IF\s+NOT\s+EXISTS\s+)?([a-z_][a-z0-9_]*)/ig)) s.add(m[1].toLowerCase());
   return s;
 }
 function ctes(sql) {
