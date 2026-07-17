@@ -127,7 +127,9 @@ But honestly, the AI argument misses the bigger picture. SQL isn't just a langua
 - **It teaches you to be precise.** A database won't guess what you meant. If your logic is wrong, your results are wrong - silently. You learn to think about edge cases, NULLs, duplicates, and assumptions. That kind of rigour makes you a better analyst, engineer, and thinker.
 - **It gives you direct access to the truth.** When someone says "revenue is up 20%", you can check. When a dashboard looks wrong, you can query the source yourself. SQL removes the middleman between you and the data - and that's powerful in any role.
 
-AI makes SQL faster to write. This challenge makes you someone who knows what to write - and when AI gets it wrong.
+So the goal of this challenge isn't to memorise syntax. In the AI age, the syntax is the one part a machine can hand you on demand - and it usually will. The goal is **judgement**: knowing what to ask, reading a query and telling whether it's actually right, and catching the AI when it's confidently wrong. Writing the syntax yourself as you go builds that judgement, which is exactly why it's worth doing - but memorising it was never the point.
+
+AI makes SQL faster to write. This challenge makes you someone who knows what to write - and can tell when the AI has got it wrong.
 
 ---
 
