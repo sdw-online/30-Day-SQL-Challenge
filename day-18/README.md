@@ -103,7 +103,7 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 
 <!-- CLIFFHANGER -->
 <p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="../README.md#curriculum"><b>Day 19 coming soon &raquo;</b></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=DI1swwiKxUc"><img src="https://img.youtube.com/vi/DI1swwiKxUc/maxresdefault.jpg" width="480" alt="Day 19 - Recursive CTEs"/></a></p>
 <p align="center"><b>Day 19 &nbsp;&middot;&nbsp; Recursive CTEs</b></p>
 <p align="center"><i>CTEs are why your seniors read SQL faster than you. Yet.</i></p>
 <!-- /CLIFFHANGER -->
