@@ -36,7 +36,7 @@ function created(sql) {
 }
 function ctes(sql) {
   const s = new Set();
-  for (const m of strip(sql).matchAll(/(?:\bWITH\b|,)\s+([a-z_][a-z0-9_]*)\s+AS\s*\(/ig)) s.add(m[1].toLowerCase());
+  for (const m of strip(sql).matchAll(/(?:\bWITH\b|,)\s+(?:RECURSIVE\s+)?([a-z_][a-z0-9_]*)\s+AS\s*\(/ig)) s.add(m[1].toLowerCase());
   return s;
 }
 function refs(sql) {
