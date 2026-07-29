@@ -1,120 +1,73 @@
-<p align="center">
-  <a href="https://youtu.be/wtBxs_iDLo4"><img src="../assets/banners/day-15-joins.svg" width="800" alt="Day 15 - JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER"></a>
-</p>
+# Day 15 - JOINs Part 1
 
-<p align="center">
-  <a href="https://youtu.be/wtBxs_iDLo4"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
-  <img src="https://img.shields.io/badge/Day-15_of_30-blue" alt="Day 15">
-  <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
-  <img src="https://img.shields.io/badge/Difficulty-Intermediate-orange" alt="Intermediate">
-</p>
+[Watch the video](https://youtu.be/wtBxs_iDLo4) | [← Day 14: Project: Fleet Intelligence Pipeline](../day-14/) | [Day 16: JOINs Part 2: CROSS and Self →](../day-16/)
 
-# Day 15 - JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER
+---
 
-[<< Day 14: Project: Fleet Intelligence Pipeline](../day-14/) | [Day 16: CROSS JOIN & Self Joins >>](../day-16/)
+### Contents
+- [What You'll Learn](#what-youll-learn)
+- [Dataset](#dataset)
+- [Exercises](#exercises)
+- [Key Concepts Covered](#key-concepts-covered)
 
 ---
 
 ## What You'll Learn
+- What is a JOIN?
+- INNER JOIN
+- LEFT JOIN
+- RIGHT JOIN
+- FULL OUTER JOIN
+- Anti-Join Pattern
+- Multi-Table JOINs
+- Homework
+- What You Learned Today
 
-- Why real databases split data across multiple tables (normalisation)
-- INNER JOIN - returns only rows that match in both tables
-- LEFT JOIN - keeps all rows from the left table, fills NULLs where no match
-- RIGHT JOIN - the mirror image of LEFT JOIN (and why most people just use LEFT JOIN)
-- FULL OUTER JOIN - returns all rows from both tables, NULLs on either side
-- The anti-join pattern (LEFT JOIN + WHERE IS NULL) for finding missing relationships
-- How to join three or more tables and choose the right JOIN type at each step
+## Prerequisites
 
----
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
 
-## Quick Setup
+- Complete Days 1-14
+
+## Dataset
+
+Today uses one table. Run the SQL in [setup.sql](setup.sql) to create the teaching table, or run [exercise.sql](exercise.sql) for just the exercise table.
+
+
+
+### Setup
+
+Run [setup.sql](setup.sql) to create and populate the teaching table.
+
+### Verification
+
+After running the setup, verify your table:
 
 ```sql
--- Run in pgAdmin (takes a few seconds)
-\i setup.sql
-\i exercise.sql
+-- No tables found
 ```
-
-Or open [`setup.sql`](setup.sql) and [`exercise.sql`](exercise.sql) and run each script manually.
-
-<details>
-<summary>Verify your setup</summary>
-
-```sql
--- Check your tables loaded correctly
-SELECT 'users'            AS table_name, COUNT(*) AS row_count FROM users
-UNION ALL
-SELECT 'songs',           COUNT(*) FROM songs
-UNION ALL
-SELECT 'playlist_tracks', COUNT(*) FROM playlist_tracks
-UNION ALL
-SELECT 'incidents',       COUNT(*) FROM incidents
-UNION ALL
-SELECT 'responder_units', COUNT(*) FROM responder_units
-UNION ALL
-SELECT 'dispatches',      COUNT(*) FROM dispatches
-UNION ALL
-SELECT 'hospital_capacity', COUNT(*) FROM hospital_capacity;
-```
-
-</details>
-
----
 
 ## Exercises
 
-You are a data analyst supporting the dispatch coordinator, **Katja**. She is preparing the weekly board report and needs your help across four emergency response tables: `incidents`, `responder_units`, `dispatches`, and `hospital_capacity`.
+See video for the full exercise walkthrough.
 
-### Task 1: Match Incidents to Responders
+### Exercise Setup
 
-Write a query that shows which units responded to which incidents. Use INNER JOINs to connect `incidents` to `dispatches` on `incident_id`, and `dispatches` to `responder_units` on `unit_id`. Show the incident ID, type, severity, unit name, unit type, dispatched time, and arrived time, ordered by `reported_at`.
+Run [exercise.sql](exercise.sql) to create the exercise table.
 
-### Task 2: Find Unassigned Incidents
+## Key Concepts Covered
 
-**Part A:** Write a LEFT JOIN query across all three tables (`incidents`, `dispatches`, `responder_units`) that shows all 12 incidents, including the 4 with no dispatch record. Add `dispatch_id` and `unit_name` to your SELECT so the NULLs are visible.
-
-**Part B:** Extend Part A with an anti-join. Add a WHERE clause to isolate only the incidents with no dispatch record. Show the incident ID, type, location, severity, reported time, and status.
-
-### Task 3: Hospital Capacity Check
-
-Write a query that joins `incidents`, `dispatches`, `responder_units`, and `hospital_capacity` together. The link between incidents and hospitals is the district name - use `SPLIT_PART(i.location, ', ', 2)` to extract it from the location string and match it against `h.nearest_district`. Show the incident ID, type, severity, location, unit name, hospital name, available beds, and whether the hospital accepts emergencies.
-
-### Solutions
-
-Finished? Check your answers: [`solutions.sql`](solutions.sql)
+- What is a JOIN?
+- INNER JOIN
+- LEFT JOIN
+- RIGHT JOIN
+- FULL OUTER JOIN
+- Anti-Join Pattern
+- Multi-Table JOINs
+- Exercise - Emergency Response Coordination
+- Homework
 
 ---
 
-## Key Concepts
-
-- **INNER JOIN:** Returns only rows where a match exists in both tables - unmatched rows on either side are dropped
-- **LEFT JOIN:** Keeps every row from the left table; fills NULLs for columns from the right table where no match exists
-- **Anti-join pattern:** LEFT JOIN + WHERE right_table.id IS NULL - isolates rows from the left table with no match on the right
-- **Multi-table JOIN:** Chain multiple JOINs in sequence; each JOIN adds a new table's columns to the result set
-
----
-
-<p align="center">
-  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
-</p>
-
-## Where To Next?
-
-<p align="center">
-  <img src="../assets/banners/day-15-where-next.svg" width="900" alt="Where To Next?">
-</p>
-
----
-
-<p align="center">
-  <a href="../day-14/">&#9664; Day 14: Project: Fleet Intelligence Pipeline</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-16/">Day 16: CROSS JOIN & Self Joins &#9654;</a>
-</p>
-
----
-
-<!-- CLIFFHANGER -->
-<p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="https://www.youtube.com/watch?v=ZYwPGw4ghkI"><img src="https://img.youtube.com/vi/ZYwPGw4ghkI/maxresdefault.jpg" width="480" alt="Day 16 - JOINs Part 2: CROSS & Self Joins"/></a></p>
-<p align="center"><b>Day 16 &nbsp;&middot;&nbsp; JOINs Part 2: CROSS & Self Joins</b></p>
-<p align="center"><i>JOINs look easy until they silently drop your data.</i></p>
-<!-- /CLIFFHANGER -->
+[Watch the video](https://youtu.be/wtBxs_iDLo4) | [← Day 14: Project: Fleet Intelligence Pipeline](../day-14/) | [Day 16: JOINs Part 2: CROSS and Self →](../day-16/)

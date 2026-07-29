@@ -1,11 +1,11 @@
 -- Day 17: UNION and UNION ALL - Exercise Script
--- Exercise tables: invoices_sent (15 rows) + payments_received (12 rows)
+-- 30 Day SQL Challenge | Stephen | Data
 
-DROP TABLE IF EXISTS payments_received;
-DROP TABLE IF EXISTS invoices_sent;
+-- ============================================
+-- TABLE 3: invoices_sent
+-- ============================================
+-- Invoices the company has sent to clients
 
--- TABLE 1: invoices_sent
--- Every invoice the firm has sent to a client.
 CREATE TABLE invoices_sent (
     invoice_id     VARCHAR(10)    NOT NULL,
     client_name    VARCHAR(100)   NOT NULL,
@@ -14,8 +14,11 @@ CREATE TABLE invoices_sent (
     category       VARCHAR(50)    NOT NULL
 );
 
--- TABLE 2: payments_received
--- Every payment received from a client.
+-- ============================================
+-- TABLE 4: payments_received
+-- ============================================
+-- Payments received from clients
+
 CREATE TABLE payments_received (
     payment_id     VARCHAR(10)    NOT NULL,
     client_name    VARCHAR(100)   NOT NULL,
@@ -27,6 +30,8 @@ CREATE TABLE payments_received (
 -- ============================================
 -- INSERT: 15 invoices sent
 -- ============================================
+-- Some invoices have matching payments, some do not (overdue)
+-- Some have matching amounts but different dates (late payments)
 
 INSERT INTO invoices_sent
     (invoice_id, client_name, amount, invoice_date, category)
@@ -50,6 +55,9 @@ VALUES
 -- ============================================
 -- INSERT: 12 payments received
 -- ============================================
+-- Most payments match invoices by client + amount
+-- 2 payments have NO matching invoice (overpayments / duplicates)
+-- 3 invoices have NO matching payment (overdue)
 
 INSERT INTO payments_received
     (payment_id, client_name, amount, payment_date, category)
@@ -67,68 +75,22 @@ VALUES
     ('PAY-011', 'Ishan Mehta',       2500.00, '2025-03-28', 'Consulting'),
     ('PAY-012', 'Samir Hadid',       4200.00, '2025-03-30', 'Development');
 
--- ============================================
--- EXERCISES
--- ============================================
--- You are supporting Rachel, Head of Finance at a consulting firm.
--- Every time the firm finishes a job, it sends an invoice.
--- When the client pays, that payment gets recorded separately.
--- So you have two tables:
---   invoices_sent     - 15 invoices the firm has sent out
---   payments_received - 12 payments that have come back in
---
--- Rachel needs a reconciliation report:
--- which invoices have been paid, which are still outstanding,
--- and how much each client owes overall.
+SELECT 'spotify_songs' AS table_name, COUNT(*) AS row_count FROM spotify_songs
+UNION ALL
+SELECT 'youtube_songs', COUNT(*) FROM youtube_songs;
 
--- Task 1: Combine All Transactions With Source Labels
---
--- Stack every invoice and every payment into one combined view.
--- Rename the columns so both sides line up:
---   invoice_id   -> ref_id
---   invoice_date -> trans_date
---   payment_id   -> ref_id
---   payment_date -> trans_date
--- Add a 'type' column labelled 'Invoice' or 'Payment' for each row.
--- Use UNION ALL (not UNION) - financial transactions must never be dropped.
--- Order by client_name, then trans_date.
--- Expected: 27 rows.
+-- Songs that appear in BOTH platforms with identical details
+SELECT s.song_title, s.artist
+FROM spotify_songs s
+INNER JOIN youtube_songs y
+    ON s.song_title = y.song_title
+    AND s.artist = y.artist
+    AND s.genre = y.genre
+    AND s.duration_secs = y.duration_secs
+    AND s.added_date = y.added_date;
 
--- Write your query here:
+SELECT 'invoices_sent' AS table_name, COUNT(*) AS row_count FROM invoices_sent
+UNION ALL
+SELECT 'payments_received', COUNT(*) FROM payments_received;
 
-
--- Task 2: Find the Unpaid Invoices (and the Paid Ones)
---
--- Part A: Use EXCEPT to find invoices with no matching payment.
--- Match on client_name, amount, and category only
--- (leave out the IDs and dates - they will never match between the two tables).
--- Expected: 5 rows.
-
--- Write your query here:
-
-
--- Part B: Swap EXCEPT for INTERSECT to find invoices that DO have a matching payment.
--- Same three columns: client_name, amount, category.
--- Expected: 9 rows.
-
--- Write your query here:
-
-
--- Task 3: Per-Client Reconciliation Summary (Capstone)
---
--- Build a CTE called all_transactions that uses UNION ALL to combine
--- client_name, amount, and a 'type' label ('Invoice' or 'Payment')
--- from both tables (27 rows total).
---
--- Then write an outer query that reads from that CTE and produces
--- one row per client showing:
---   total_invoiced  - sum of all Invoice amounts for that client
---   total_paid      - sum of all Payment amounts for that client
---   balance_owed    - total_invoiced minus total_paid
---
--- Use SUM(CASE WHEN type = 'Invoice' THEN amount ELSE 0 END) for total_invoiced,
--- and the same pattern for total_paid.
--- Order by balance_owed DESC.
--- Expected: 5 rows, total balance owed across all clients = $6,600.
-
--- Write your query here:
+SELECT * FROM invoices_sent LIMIT 5;

@@ -1,11 +1,8 @@
 -- Day 18: Normalisation and Denormalisation - Exercise Script
--- Exercise table: census_raw (20 rows)
+-- 30 Day SQL Challenge | Stephen | Data
 
 DROP TABLE IF EXISTS census_raw;
 
--- TABLE: census_raw
--- National census data - one row per person, with household, address,
--- region, language and enumerator details all flattened onto every row.
 CREATE TABLE census_raw (
     record_id         SERIAL PRIMARY KEY,
     household_ref     VARCHAR(20)  NOT NULL,
@@ -24,10 +21,6 @@ CREATE TABLE census_raw (
     enumerator_name   VARCHAR(100),
     enumerator_phone  VARCHAR(100)
 );
-
--- ============================================
--- INSERT: 20 census records across 9 households
--- ============================================
 
 INSERT INTO census_raw
     (household_ref, address_line, district, region, region_type, person_name, relationship, date_of_birth, gender, occupation, languages_spoken, ethnicity, census_date, enumerator_name, enumerator_phone)
@@ -53,78 +46,27 @@ VALUES
     ('HH-1008', '55 Orchard Way',    'Portside',    'East Region',    'Coastal', 'Bonnie Shaw',     'Daughter',  '2013-11-03', 'Female', 'Student',            'English',                  'White British','2025-03-15', 'Nadia Okoro',    '+44 7700 900300'),
     ('HH-1009', '10 Meadow Drive',   'Greendale',   'South Region',   'Rural',   'Yusuf Diallo',    'Head',      '1988-05-20', 'Male',   'Bus Driver',         'English, French, Wolof',   'Black African','2025-03-15', 'James Hartley',  '+44 7700 900200');
 
--- ============================================
--- EXERCISES
--- ============================================
--- You work on the data team at a national statistics office.
--- Amira, the Operations Lead for the census, needs the raw census data
--- restructured before the reporting deadline. Her brief:
---
---   "We need the census data restructured before the reporting deadline.
---    First - preview the raw data and tell me how bad the redundancy is.
---    Then split it into properly structured tables, prove the structure
---    works with a JOIN, and finally build a denormalised view for the
---    reporting dashboard so the team can see the difference in query
---    complexity."
---
--- You have one table: census_raw - 20 records across 9 households.
+SELECT * FROM census_raw LIMIT 5;
 
--- Explore: measure the redundancy
---
--- Before touching anything, measure how bad the redundancy is.
--- Compare the total row count against the count of DISTINCT households,
--- people, districts, regions and enumerators.
--- Expected: 20 rows, 9 households, 20 people, 5 districts, 4 regions, 4 enumerators.
+SELECT COUNT(*) AS total_rows FROM song_plays;
 
--- Write your query here:
+SELECT
+    COUNT(DISTINCT song_title)   AS unique_songs,
+    COUNT(DISTINCT artist)       AS unique_artists,
+    COUNT(DISTINCT album)        AS unique_albums,
+    COUNT(DISTINCT release_year) AS unique_years
+FROM song_plays;
 
+SELECT COUNT(*) AS total_records FROM census_raw;
 
--- Task 1: Split Into Normalised Tables
---
--- Split census_raw into six focused tables, in an order that respects
--- foreign keys (parents before children):
---   census_regions            - one row per region, with its region_type
---                                (the 3NF fix - region_type depends on the
---                                region, not the person)
---   census_households          - one row per household, with its address,
---                                district and region
---   census_persons             - one row per person, linked to their
---                                household (the 2NF fix)
---   census_languages           - one row per language, split out of the
---                                comma-separated languages_spoken column
---                                (a 1NF fix)
---   census_enumerators         - one row per enumerator
---   census_enumerator_phones   - one row per phone number, split out of the
---                                comma-separated enumerator_phone column
---                                (another 1NF fix)
---
--- Use string_to_array() + unnest() to split the comma-separated columns.
--- Use DISTINCT when migrating facts that should land once (regions,
--- households, enumerators); skip DISTINCT for census_persons - all 20
--- people are real, separate rows.
--- Expected: 4 regions, 9 households, 20 persons, 34 languages,
--- 4 enumerators, 5 phone numbers.
+SELECT
+    household_ref,
+    COUNT(*) AS people_count
+FROM census_raw
+GROUP BY household_ref
+ORDER BY household_ref;
 
--- Write your queries here:
-
-
--- Task 2: Reconstruct With a JOIN
---
--- Prove the normalised structure works. JOIN census_persons,
--- census_households and census_regions back together to reassemble the
--- full picture - person, household and region details pulled from three
--- separate tables.
--- Expected: 20 rows.
-
--- Write your query here:
-
-
--- Task 3: Denormalise for Reporting (Capstone)
---
--- Build a view called v_census_report that joins census_persons,
--- census_households and census_regions, so the reporting team can query
--- one view instead of writing the JOIN themselves every time.
--- Then use the view to find the population per region.
--- Expected: 4 rows - East 7, North 6, South 4, West 3.
-
--- Write your queries here:
+SELECT playlist_name, song_title, artist, album, release_year
+FROM song_plays
+WHERE album = 'Thriller'
+ORDER BY playlist_name, position;

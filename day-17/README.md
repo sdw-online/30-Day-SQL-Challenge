@@ -1,114 +1,90 @@
-<p align="center">
-  <a href="https://youtu.be/wlohArgOSd4"><img src="../assets/banners/day-17-union.svg" width="800" alt="Day 17 - UNION & UNION ALL"></a>
-</p>
+# Day 17 - UNION and UNION ALL
 
-<p align="center">
-  <a href="https://youtu.be/wlohArgOSd4"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
-  <img src="https://img.shields.io/badge/Day-17_of_30-blue" alt="Day 17">
-  <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
-  <img src="https://img.shields.io/badge/Difficulty-Intermediate-orange" alt="Intermediate">
-</p>
+[Watch the video](https://youtu.be/wlohArgOSd4) | [← Day 16: JOINs Part 2: CROSS and Self](../day-16/) | [Day 18: Normalisation and Denormalisation →](../day-18/)
 
-# Day 17 - UNION & UNION ALL
+---
 
-[<< Day 16: CROSS JOIN & Self Joins](../day-16/) | [Day 18: Normalisation & Denormalisation >>](../day-18/)
+### Contents
+- [What You'll Learn](#what-youll-learn)
+- [Dataset](#dataset)
+- [Exercises](#exercises)
+- [Key Concepts Covered](#key-concepts-covered)
 
 ---
 
 ## What You'll Learn
+- What is UNION?
+- UNION ALL - Keep Everything
+- Source Tagging - Label Where Each Row Came From
+- INTERSECT and EXCEPT - The Rest of the Family
+- Homework
+- What You Learned Today
 
-- How UNION stacks rows from two queries into one result and removes exact duplicates
-- How UNION ALL stacks rows and keeps everything - faster, and why it should be your default
-- The strict column rules both queries must follow (same count, compatible types)
-- How source tagging labels where each row came from, and how INTERSECT and EXCEPT compare two result sets
+## Prerequisites
 
----
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
 
-## Quick Setup
+- Complete Days 1-16
+
+## Dataset
+
+Today uses 2 tables. Run the SQL in [setup.sql](setup.sql) to create the teaching tables, or run [exercise.sql](exercise.sql) for just the exercise tables.
+
+- **spotify_songs**: 14 rows
+- **youtube_songs**: 12 rows
+
+### Setup
+
+Run [setup.sql](setup.sql) to create and populate the teaching tables.
+
+### Verification
+
+After running the setup, verify your tables:
 
 ```sql
--- Run in pgAdmin (takes a few seconds)
-\i setup.sql
-\i exercise.sql
+SELECT COUNT(*) FROM spotify_songs; -- expected: 14 rows
+SELECT COUNT(*) FROM youtube_songs; -- expected: 12 rows
 ```
-
-Or open [`setup.sql`](setup.sql) and [`exercise.sql`](exercise.sql) and run each script manually.
-
-<details>
-<summary>Verify your setup</summary>
-
-```sql
--- Check your tables loaded correctly
-SELECT 'spotify_songs'      AS table_name, COUNT(*) AS row_count FROM spotify_songs
-UNION ALL
-SELECT 'youtube_songs',     COUNT(*) FROM youtube_songs
-UNION ALL
-SELECT 'invoices_sent',     COUNT(*) FROM invoices_sent
-UNION ALL
-SELECT 'payments_received', COUNT(*) FROM payments_received;
-```
-
-Expected: `spotify_songs` 12, `youtube_songs` 10, `invoices_sent` 15, `payments_received` 12.
-
-</details>
-
----
 
 ## Exercises
 
-You work on the data team at a consulting firm. **Rachel**, the Head of Finance, needs a reconciliation report. Every job the firm finishes sends an **invoice**; when the client pays, that **payment** is recorded in a separate table. She needs the full picture: what was invoiced, what was paid, and what is still owed.
+The Head of Finance is called **Rachel**.
 
-You have two tables: `invoices_sent` (15 rows) and `payments_received` (12 rows).
+Her job is to make sure every invoice gets paid, and **no money slips through the cracks**.
 
-### Task 1: Combine All Transactions With Source Labels
+She's asking us to build her a **reconciliation report **-
+> ▶ **NEXT** - the goal (money out vs money in)
+In short, she wants us to 
+- calculate the money that went **out **against 
+- the money that came **in**, and 
+- check they agree with each other.
 
-Stack every invoice and every payment into one unified view, each row tagged with its source. Rename the columns so the two tables line up (`invoice_id` -> `ref_id`, `invoice_date` -> `trans_date`), add a `type` label (`'Invoice'` / `'Payment'`), and stack with UNION ALL. Expected: 27 rows.
+Here's what Rachel is asking for, broken into steps.
 
-### Task 2: Find the Unpaid Invoices
+- First, **explore** the two tables.
+> ▶ **NEXT** - Task 1 card
+- Task 1 - **combine** every invoice and every payment into one labelled view.
+> ▶ **NEXT** - Task 2 card
+- Task 2 - find the invoices that have **no matching payment** - the overdue ones.
+> ▶ **NEXT** - Task 3 card
+- Task 3 - pull it all together into a **per-client summary**: invoiced, paid, and the difference.
 
-Use EXCEPT to find the invoices with no matching payment - compare on `client_name`, `amount`, and `category` only (leave out the IDs and dates, which never match between the two tables). Expected: 5 rows. Then flip EXCEPT for INTERSECT to see the invoices that HAVE been paid. Expected: 9 rows.
+Let's start.
 
-### Task 3: Per-Client Reconciliation Summary
+### Exercise Setup
 
-The capstone. Use a UNION ALL inside a CTE to gather all 27 transactions, then `SUM(CASE WHEN ...)` in the outer query to produce, per client: total invoiced, total paid, and the balance owed. Expected: 5 rows, totalling $6,600 owed across all clients.
+Run [exercise.sql](exercise.sql) to create the exercise tables.
 
-### Solutions
+## Key Concepts Covered
 
-Finished? Check your answers: [`solutions.sql`](solutions.sql)
-
----
-
-## Key Concepts
-
-- **UNION:** Stacks the rows of two queries into one result and removes exact duplicate rows (like DISTINCT on the combined set). Both queries must return the same number of columns with compatible types.
-- **UNION ALL:** Stacks every row and keeps the duplicates. It skips the de-duplication scan, so it is faster - make it your default and only reach for UNION when you genuinely need to drop duplicates.
-- **Source tagging:** Adding a fixed text label column (`'Spotify'` / `'YouTube'`, or `'Invoice'` / `'Payment'`) so you can trace every row back to where it came from after stacking. A source tag quietly switches off UNION's de-duplication, since the tag makes otherwise-identical rows different.
-- **INTERSECT:** Keeps only the rows that appear in BOTH query results (the overlap).
-- **EXCEPT:** Keeps the rows in the first query that are NOT in the second. It is directional - flipping the two queries gives a different answer.
-
----
-
-<p align="center">
-  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
-</p>
-
-## Where To Next?
-
-<p align="center">
-  <img src="../assets/banners/day-17-where-next.svg" width="900" alt="Where To Next?">
-</p>
+- What is UNION?
+- UNION ALL - Keep Everything
+- Source Tagging - Label Where Each Row Came From
+- INTERSECT and EXCEPT - The Rest of the Family
+- Exercise - Invoice and Payment Reconciliation
+- Homework
 
 ---
 
-<p align="center">
-  <a href="../day-16/">&#9664; Day 16: CROSS JOIN & Self Joins</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-18/">Day 18: Normalisation & Denormalisation &#9654;</a>
-</p>
-
----
-
-<!-- CLIFFHANGER -->
-<p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="https://www.youtube.com/watch?v=dhdWwX8DAEg"><img src="https://img.youtube.com/vi/dhdWwX8DAEg/maxresdefault.jpg" width="480" alt="Day 18 - Normalisation and Denormalisation"/></a></p>
-<p align="center"><b>Day 18 &nbsp;&middot;&nbsp; Normalisation & Denormalisation</b></p>
-<p align="center"><i>The rule that decides whether your schema scales or rots.</i></p>
-<!-- /CLIFFHANGER -->
+[Watch the video](https://youtu.be/wlohArgOSd4) | [← Day 16: JOINs Part 2: CROSS and Self](../day-16/) | [Day 18: Normalisation and Denormalisation →](../day-18/)

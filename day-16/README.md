@@ -1,122 +1,103 @@
-<p align="center">
-  <a href="https://youtu.be/ZYwPGw4ghkI"><img src="../assets/banners/day-16-cross-self-join.svg" width="800" alt="Day 16 - CROSS JOIN & Self Joins"></a>
-</p>
+# Day 16 - JOINs Part 2: CROSS and Self
 
-<p align="center">
-  <a href="https://youtu.be/ZYwPGw4ghkI"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
-  <img src="https://img.shields.io/badge/Day-16_of_30-blue" alt="Day 16">
-  <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
-  <img src="https://img.shields.io/badge/Difficulty-Intermediate-orange" alt="Intermediate">
-</p>
+[Watch the video](https://www.youtube.com/watch?v=ZYwPGw4ghkI) | [← Day 15: JOINs Part 1](../day-15/) | [Day 17: UNION and UNION ALL →](../day-17/)
 
-# Day 16 - CROSS JOIN & Self Joins
+---
 
-[<< Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER](../day-15/) | [Day 17: UNION & UNION ALL >>](../day-17/)
+### Contents
+- [What You'll Learn](#what-youll-learn)
+- [Dataset](#dataset)
+- [Exercises](#exercises)
+- [Key Concepts Covered](#key-concepts-covered)
 
 ---
 
 ## What You'll Learn
+- What is a CROSS JOIN?
+- CROSS JOIN in Action
+- CROSS JOIN - Watch the Row Count
+- What is a Self Join?
+- Self Join for Comparisons
+- Homework
+- What You Learned Today
 
-- How CROSS JOIN generates every possible combination of two tables - and when you'd actually want that
-- How self joins let you join a table to itself to query hierarchies, compare rows, and find colleague pairs
-- How non-equi joins match values to ranges using BETWEEN instead of equals
-- The `<` trick for producing unique pairs without duplicates
+## Prerequisites
 
----
+> **First time here?** You need PostgreSQL and pgAdmin installed.
+> [Watch the setup guide](https://youtu.be/g8GwhsVPaOg) | [Start from Day 1](../day-01/)
 
-## Quick Setup
+- Complete Days 1-15
+
+## Dataset
+
+Today uses 2 tables. Run the SQL in [setup.sql](setup.sql) to create the teaching tables, or run [exercise.sql](exercise.sql) for just the exercise tables.
+
+- **airports**: 6 rows
+- **flights**: 13 rows
+
+### Setup
+
+Run [setup.sql](setup.sql) to create and populate the teaching tables.
+
+### Verification
+
+After running the setup, verify your tables:
 
 ```sql
--- Run in pgAdmin (takes a few seconds)
-\i setup.sql
-\i exercise.sql
+SELECT COUNT(*) FROM airports; -- expected: 6 rows
+SELECT COUNT(*) FROM flights; -- expected: 13 rows
 ```
-
-Or open [`setup.sql`](setup.sql) and [`exercise.sql`](exercise.sql) and run each script manually.
-
-<details>
-<summary>Verify your setup</summary>
-
-```sql
--- Check your tables loaded correctly
-SELECT 'airports'             AS table_name, COUNT(*) AS row_count FROM airports
-UNION ALL
-SELECT 'flights',             COUNT(*) FROM flights
-UNION ALL
-SELECT 'medications',         COUNT(*) FROM medications
-UNION ALL
-SELECT 'interactions',        COUNT(*) FROM interactions
-UNION ALL
-SELECT 'patient_prescriptions', COUNT(*) FROM patient_prescriptions;
-```
-
-</details>
-
----
 
 ## Exercises
 
-You are supporting **Nneka**, Head of Pharmacy Compliance at a hospital. She asks: "I need to know which of our patients are currently on two drugs that interact badly. Flag the dangerous combinations and tell me what to do."
+- **Moderate** gets "MONITOR - schedule follow-up".
+- **Low **gets "NOTE - document in records".
 
-You have three tables: `medications`, `interactions`, and `patient_prescriptions`.
+And that's the deliverable done.
 
-### Task 1: Generate All Drug Pairs
+The report now shows 
+- every dangerous combination, 
+- every affected patient, 
+- both prescribing doctors, and 
+- a clear action for each one. 
 
-**Part A:** Use a CROSS JOIN on `medications` to produce every unique pair of drugs. Use the less-than trick (`m1.med_id < m2.med_id`) to remove self-pairs and duplicates. Show `drug_1`, `class_1`, `drug_2`, `class_2`. Expected: 45 rows.
+Nneka can hand this straight to the clinical board.
 
-**Part B:** Extend Part A by adding an INNER JOIN to `interactions` to keep only the 8 known dangerous pairs. Add `severity` and `effect` columns. Order by severity (High first, then Moderate, then Low).
+You pulled that together using both of today's new patterns - 
+- a CROSS JOIN to generate the pairs, and 
+- a self join to line up each patient's medicines.
 
-### Task 2: Find Patients on Multiple Medications
+Now let's clean up.
 
-Self join `patient_prescriptions` to find every patient prescribed more than one drug. Show `patient_name`, `medication_1`, `medication_2`, `doctor_1`, and `doctor_2` (the prescribing doctors for each drug). Use `pp1.med_id < pp2.med_id` to avoid duplicate pairs. Expected: 30 rows.
+> 📋 **PASTE THIS** - drop all Day 16 tables
 
-### Task 3: Flag Dangerous Combinations
+```sql
+DROP TABLE IF EXISTS patient_prescriptions;
+DROP TABLE IF EXISTS interactions;
+DROP TABLE IF EXISTS medications;
+DROP TABLE IF EXISTS flights;
+DROP TABLE IF EXISTS airports; 
+```
 
-**Part A:** Extend Task 2 by adding an INNER JOIN to `interactions` to keep only patient-drug pairs where a known dangerous interaction exists. Add `severity` and `effect` columns. Order by severity (High first), then `patient_name`. Expected: 6 rows.
+All clean.
 
-**Part B:** Extend Part A by adding a `recommended_action` column using CASE:
-- `'High'` -> `'STOP - immediate review'`
-- `'Moderate'` -> `'MONITOR - schedule follow-up'`
-- `'Low'` -> `'NOTE - document in records'`
-
-Also add `class_1` and `class_2` columns.
-
-### Solutions
-
-Finished? Check your answers: [`solutions.sql`](solutions.sql)
-
----
-
-## Key Concepts
-
-- **CROSS JOIN:** Produces the Cartesian product - every row from the left table paired with every row from the right table; no ON clause required
-- **Less-than trick:** Adding `WHERE m1.id < m2.id` to a CROSS JOIN removes self-pairs and duplicate reverse-order pairs, leaving only unique combinations
-- **Self join:** A table joined to itself using two aliases; used for comparing rows within the same table (patient-drug pairs, hierarchy lookups, same-route comparisons)
-- **Non-equi join:** A join using BETWEEN instead of equals; matches a value to a range rather than an exact key
 
 ---
 
-<p align="center">
-  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
-</p>
+### Exercise Setup
 
-## Where To Next?
+Run [exercise.sql](exercise.sql) to create the exercise tables.
 
-<p align="center">
-  <img src="../assets/banners/day-16-where-next.svg" width="900" alt="Where To Next?">
-</p>
+## Key Concepts Covered
 
----
-
-<p align="center">
-  <a href="../day-15/">&#9664; Day 15: JOINs Part 1: INNER, LEFT, RIGHT, FULL OUTER</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-17/">Day 17: UNION & UNION ALL &#9654;</a>
-</p>
+- What is a CROSS JOIN?
+- CROSS JOIN in Action
+- CROSS JOIN - Watch the Row Count
+- What is a Self Join?
+- Self Join for Comparisons
+- Exercise - Drug Interaction Safety Report
+- Homework
 
 ---
 
-<!-- CLIFFHANGER -->
-<p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="https://www.youtube.com/watch?v=wlohArgOSd4"><img src="https://img.youtube.com/vi/wlohArgOSd4/maxresdefault.jpg" width="480" alt="Day 17 - UNION & UNION ALL"/></a></p>
-<p align="center"><b>Day 17 &nbsp;&middot;&nbsp; UNION & UNION ALL</b></p>
-<p align="center"><i>UNION & UNION ALL - the thing most people get wrong.</i></p>
-<!-- /CLIFFHANGER -->
+[Watch the video](https://www.youtube.com/watch?v=ZYwPGw4ghkI) | [← Day 15: JOINs Part 1](../day-15/) | [Day 17: UNION and UNION ALL →](../day-17/)

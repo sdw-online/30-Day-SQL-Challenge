@@ -1,9 +1,9 @@
--- Day 16: CROSS JOIN & Self Joins - Exercise Script
--- Exercise tables: medications (10 rows) + interactions (8 rows) + patient_prescriptions (20 rows)
+-- Day 16: JOINs Part 2: CROSS and Self - Exercise Script
+-- 30 Day SQL Challenge | Stephen | Data
 
-DROP TABLE IF EXISTS patient_prescriptions;
-DROP TABLE IF EXISTS interactions;
-DROP TABLE IF EXISTS medications;
+-- ============================================
+-- EXERCISE TABLES: Pharmaceutical drug interactions
+-- ============================================
 
 -- TABLE 1: medications
 CREATE TABLE medications (
@@ -14,8 +14,6 @@ CREATE TABLE medications (
 );
 
 -- TABLE 2: interactions
--- Each row records one known dangerous combination between two medications.
--- med_id_1 is always the lower ID (enforced by CHECK constraint).
 CREATE TABLE interactions (
     interaction_id  SERIAL PRIMARY KEY,
     med_id_1        INTEGER NOT NULL REFERENCES medications(med_id),
@@ -26,12 +24,11 @@ CREATE TABLE interactions (
 );
 
 -- TABLE 3: patient_prescriptions
--- One row per patient per medication. A patient on three drugs has three rows.
 CREATE TABLE patient_prescriptions (
-    prescription_id    SERIAL PRIMARY KEY,
-    patient_name       VARCHAR(80)  NOT NULL,
-    med_id             INTEGER NOT NULL REFERENCES medications(med_id),
-    prescribed_date    DATE    NOT NULL,
+    prescription_id  SERIAL PRIMARY KEY,
+    patient_name     VARCHAR(80)  NOT NULL,
+    med_id           INTEGER NOT NULL REFERENCES medications(med_id),
+    prescribed_date  DATE    NOT NULL,
     prescribing_doctor VARCHAR(80) NOT NULL
 );
 
@@ -112,62 +109,16 @@ VALUES
     ('Hana Eriksen',     5, '2025-03-25', 'Dr Singh'),
     ('Zahra Haddad',     4, '2025-05-10', 'Dr Aziz');
 
--- ============================================
--- EXERCISES
--- ============================================
--- You are supporting Nneka, Head of Pharmacy Compliance at a hospital.
--- She asks: "I need to know which of our patients are currently on two drugs
--- that interact badly. Flag the dangerous combinations and tell me what to do."
---
--- You have three tables:
---   medications          - 10 drugs with their class and form
---   interactions         - 8 known dangerous drug pairs with severity and effect
---   patient_prescriptions - 20 prescriptions (one row per patient per drug)
+SELECT COUNT(*) AS total_airports FROM airports;
 
--- Task 1: Generate All Drug Pairs
---
--- Part A: Use a CROSS JOIN on medications to produce every unique pair of
--- drugs (no self-pairs, no duplicates). Use the less-than trick (m1.med_id < m2.med_id)
--- to keep unique pairs only. Show drug_1, class_1, drug_2, class_2.
--- Expected: 45 rows.
+SELECT COUNT(*) AS total_flights FROM flights;
 
--- Write your query here:
+SELECT COUNT(*) AS route_grid
+FROM airports o
+CROSS JOIN airports d;
 
+SELECT COUNT(*) AS total_meds FROM medications;
 
--- Part B: Extend Part A by adding an INNER JOIN to interactions to filter
--- to only the 8 known dangerous pairs. Add severity and effect columns.
--- Order by severity (High first, then Moderate, then Low).
--- Expected: 8 rows.
+SELECT COUNT(*) AS total_interactions FROM interactions;
 
--- Write your query here:
-
-
--- Task 2: Find Patients on Multiple Medications
---
--- Self join patient_prescriptions to find every patient who is currently
--- prescribed more than one drug. Show patient_name, medication_1, medication_2,
--- doctor_1, and doctor_2 (the prescribing doctors for each drug).
--- Use pp1.med_id < pp2.med_id to avoid duplicate pairs.
--- Expected: 30 rows.
-
--- Write your query here:
-
-
--- Task 3: Flag Dangerous Combinations
---
--- Part A: Extend Task 2 by adding an INNER JOIN to interactions to keep
--- only patient-drug pairs where a known dangerous interaction exists.
--- Add severity and effect columns. Order by severity (High first), then patient_name.
--- Expected: 6 rows.
-
--- Write your query here:
-
-
--- Part B: Extend Part A by adding a recommended_action column using CASE:
---   'High'     -> 'STOP - immediate review'
---   'Moderate' -> 'MONITOR - schedule follow-up'
---   'Low'      -> 'NOTE - document in records'
--- Also add class_1 and class_2 columns.
--- Expected: 6 rows (same patients, one extra column).
-
--- Write your query here:
+SELECT COUNT(*) AS total_prescriptions FROM patient_prescriptions;
