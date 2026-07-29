@@ -88,6 +88,11 @@ All clean.
 
 Run [exercise.sql](exercise.sql) to create the exercise tables.
 
+- **medications**
+- **interactions**
+- **patient_prescriptions**
+
+
 ## Key Concepts Covered
 
 - What is a CROSS JOIN?

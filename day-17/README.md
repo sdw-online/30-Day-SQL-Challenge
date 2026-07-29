@@ -76,6 +76,10 @@ Let's start.
 
 Run [exercise.sql](exercise.sql) to create the exercise tables.
 
+- **invoices_sent**
+- **payments_received**
+
+
 ## Key Concepts Covered
 
 - What is UNION?

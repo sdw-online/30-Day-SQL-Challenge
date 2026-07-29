@@ -70,6 +70,7 @@ Let's start.
 
 Run [exercise.sql](exercise.sql) to create the exercise tables.
 
+
 ## Key Concepts Covered
 
 - What Is a Recursive CTE?

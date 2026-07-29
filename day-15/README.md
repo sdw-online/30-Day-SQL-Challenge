@@ -32,20 +32,24 @@
 
 ## Dataset
 
-Today uses one table. Run the SQL in [setup.sql](setup.sql) to create the teaching table, or run [exercise.sql](exercise.sql) for just the exercise table.
+Today uses 3 tables. Run the SQL in [setup.sql](setup.sql) to create the teaching tables, or run [exercise.sql](exercise.sql) for just the exercise tables.
 
-
+- **users**: 8 rows
+- **songs**: 12 rows
+- **playlist_tracks**: 17 rows
 
 ### Setup
 
-Run [setup.sql](setup.sql) to create and populate the teaching table.
+Run [setup.sql](setup.sql) to create and populate the teaching tables.
 
 ### Verification
 
-After running the setup, verify your table:
+After running the setup, verify your tables:
 
 ```sql
--- No tables found
+SELECT COUNT(*) FROM users; -- expected: 8 rows
+SELECT COUNT(*) FROM songs; -- expected: 12 rows
+SELECT COUNT(*) FROM playlist_tracks; -- expected: 17 rows
 ```
 
 ## Exercises
@@ -54,7 +58,13 @@ See video for the full exercise walkthrough.
 
 ### Exercise Setup
 
-Run [exercise.sql](exercise.sql) to create the exercise table.
+Run [exercise.sql](exercise.sql) to create the exercise tables.
+
+- **incidents**
+- **responder_units**
+- **dispatches**
+- **hospital_capacity**
+
 
 ## Key Concepts Covered
 
