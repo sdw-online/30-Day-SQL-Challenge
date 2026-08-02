@@ -23,17 +23,17 @@
   <text x="60" y="52" font-family="Segoe UI, system-ui, sans-serif" font-size="12" font-weight="600" fill="#fca5a5" text-anchor="middle">DAY</text>
   <text x="60" y="78" font-family="Segoe UI, system-ui, sans-serif" font-size="28" font-weight="800" fill="#ffffff" text-anchor="middle">21</text>
   <!-- Title -->
-  <text x="118" y="46" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Project: SaaS Trial-to-Paid Conversion</text>
+  <text x="118" y="46" font-family="Segoe UI, system-ui, sans-serif" font-size="18" font-weight="700" fill="#ffffff">Project: Recruitment Analytics</text>
   <!-- Difficulty pill -->
   <text x="118" y="70" font-family="Segoe UI, system-ui, sans-serif" font-size="11" fill="#ef4444">Advanced</text>
   <!-- Bullet list - left aligned under badge -->
   <text x="118" y="96" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#c4a0a6">What you'll learn:</text>
   <circle cx="126" cy="108" r="3" fill="#ef4444"/>
-  <text x="138" y="112" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">SaaS metrics</text>
+  <text x="138" y="112" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">ATS data modelling</text>
   <circle cx="126" cy="130" r="3" fill="#ef4444"/>
-  <text x="138" y="134" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Trial-to-paid funnel</text>
+  <text x="138" y="134" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Bridge tables</text>
   <circle cx="126" cy="152" r="3" fill="#ef4444"/>
-  <text x="138" y="156" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Conversion analysis</text>
+  <text x="138" y="156" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Hiring funnel analysis</text>
   <circle cx="126" cy="174" r="3" fill="#ef4444"/>
   <text x="138" y="178" font-family="Segoe UI, system-ui, sans-serif" font-size="12" fill="#fce4ec">Week 3 synthesis</text>
 </svg>

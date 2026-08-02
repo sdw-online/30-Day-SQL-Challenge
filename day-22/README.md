@@ -10,7 +10,7 @@
 
 # Day 22 - Window Functions Part 1
 
-[<< Day 21: Project: SaaS Trial-to-Paid Conversion](../day-21/) | [Day 23: Window Functions Part 2 >>](../day-23/)
+[<< Day 21: Project: Recruitment Analytics](../day-21/) | [Day 23: Window Functions Part 2 >>](../day-23/)
 
 ---
 
@@ -32,7 +32,7 @@
 ---
 
 <p align="center">
-  <a href="../day-21/">&#9664; Day 21: Project: SaaS Trial-to-Paid Conversion</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-23/">Day 23: Window Functions Part 2 &#9654;</a>
+  <a href="../day-21/">&#9664; Day 21: Project: Recruitment Analytics</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-23/">Day 23: Window Functions Part 2 &#9654;</a>
 </p>
 
 ---

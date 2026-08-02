@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../day-21/"><img src="../assets/banners/day-21-project-saas.svg" width="800" alt="Day 21 - Project: SaaS Trial-to-Paid Conversion"></a>
+  <a href="../day-21/"><img src="../assets/banners/day-21-project-recruitment.svg" width="800" alt="Day 21 - Project: Recruitment Analytics"></a>
 </p>
 
 <p align="center">
@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
 </p>
 
-# Day 21 - Project: SaaS Trial-to-Paid Conversion
+# Day 21 - Project: Recruitment Analytics
 
 [<< Day 20: Data Modelling (Star Schema)](../day-20/) | [Day 22: Window Functions Part 1 >>](../day-22/)
 
@@ -16,7 +16,7 @@
 
 ## What You'll Learn
 
-- How to build a complete SaaS conversion funnel analysis using JOINs, anti-joins, UNION ALL, and CTEs
+- How to turn a messy applicant tracking system into a star schema using JOINs, a bridge table, and CTEs
 - How to segment users by engagement level and correlate engagement with conversion rates
 - How to calculate conversion timing, revenue analysis, and produce board-ready recommendations with SQL
 

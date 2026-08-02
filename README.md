@@ -45,7 +45,7 @@
     <td align="center" valign="middle"><a href="https://youtu.be/bZjfSWOIsBI" title="Day 20: Data Modelling (Star Schema)"><img src="assets/banners/progress/day-20.svg" width="48" height="48" alt="Day 20"/></a></td>
   </tr>
   <tr>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 21: Project: SaaS Trial-to-Paid Conversion"><img src="assets/banners/progress/day-21.svg" width="48" height="48" alt="Day 21"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 21: Project: Recruitment Analytics"><img src="assets/banners/progress/day-21.svg" width="48" height="48" alt="Day 21"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 22: Window Functions Part 1"><img src="assets/banners/progress/day-22.svg" width="48" height="48" alt="Day 22"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 23: Window Functions Part 2"><img src="assets/banners/progress/day-23.svg" width="48" height="48" alt="Day 23"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 24: SCD Types & MERGE"><img src="assets/banners/progress/day-24.svg" width="48" height="48" alt="Day 24"/></a></td>
@@ -222,7 +222,7 @@ If diagrams don't render in your client, here's the short version:
 | 18 | Normalisation & Denormalisation | Understand why databases split data across tables - and when to flatten it<br><sub><i>The rule that decides whether your schema scales or rots.</i></sub> |[Watch](https://youtu.be/dhdWwX8DAEg)|
 | 19 | Recursive CTEs | Query hierarchical data like org charts and category trees<br><sub><i>CTEs are why your seniors read SQL faster than you. Yet.</i></sub> |[Watch](https://youtu.be/DI1swwiKxUc)|
 | 20 | Data Modelling (Star Schema) | Design fact and dimension tables the way analytics teams actually do it<br><sub><i>How analytics teams actually structure data. Not how textbooks teach it.</i></sub> |[Watch](https://youtu.be/bZjfSWOIsBI)|
-| 21 | **Project:** SaaS Trial-to-Paid Conversion | Analyse a real SaaS funnel - which trials convert and why<br><sub><i>The day you stop learning and start building.</i></sub> | Coming soon |
+| 21 | **Project:** Recruitment Analytics | Model a messy applicant tracking system and find what actually predicts a hire<br><sub><i>The day you stop learning and start building.</i></sub> | Coming soon |
 
 <br>
 
