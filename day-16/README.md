@@ -1,6 +1,17 @@
+<p align="center">
+  <a href="https://youtu.be/ZYwPGw4ghkI"><img src="../assets/banners/day-16-cross-self-join.svg" width="800" alt="Day 16 - JOINs Part 2: CROSS and Self"></a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/ZYwPGw4ghkI"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
+  <img src="https://img.shields.io/badge/Day-16_of_30-blue" alt="Day 16">
+  <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
+  <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
+</p>
+
 # Day 16 - JOINs Part 2: CROSS and Self
 
-[Watch the video](https://www.youtube.com/watch?v=ZYwPGw4ghkI) | [← Day 15: JOINs Part 1](../day-15/) | [Day 17: UNION and UNION ALL →](../day-17/)
+[<< Day 15: JOINs Part 1](../day-15/) | [Day 17: UNION and UNION ALL >>](../day-17/)
 
 ---
 
@@ -106,3 +117,30 @@ Run [exercise.sql](exercise.sql) to create the exercise tables.
 ---
 
 [Watch the video](https://www.youtube.com/watch?v=ZYwPGw4ghkI) | [← Day 15: JOINs Part 1](../day-15/) | [Day 17: UNION and UNION ALL →](../day-17/)
+
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
+## Where To Next?
+
+<p align="center">
+  <img src="../assets/banners/day-16-where-next.svg" width="900" alt="Where To Next?">
+</p>
+
+---
+
+<p align="center">
+  <a href="../day-15/">&#9664; Day 15: JOINs Part 1</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-17/">Day 17: UNION and UNION ALL &#9654;</a>
+</p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=wlohArgOSd4"><img src="https://img.youtube.com/vi/wlohArgOSd4/maxresdefault.jpg" width="480" alt="Day 17 - UNION and UNION ALL"/></a></p>
+<p align="center"><b>Day 17 &nbsp;&middot;&nbsp; UNION and UNION ALL</b></p>
+<p align="center"><i>Stacking results is easy. Knowing which one to use is not.</i></p>
+<!-- /CLIFFHANGER -->

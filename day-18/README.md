@@ -1,6 +1,17 @@
+<p align="center">
+  <a href="https://youtu.be/dhdWwX8DAEg"><img src="../assets/banners/day-18-normalisation.svg" width="800" alt="Day 18 - Normalisation and Denormalisation"></a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/dhdWwX8DAEg"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
+  <img src="https://img.shields.io/badge/Day-18_of_30-blue" alt="Day 18">
+  <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
+  <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
+</p>
+
 # Day 18 - Normalisation and Denormalisation
 
-[Watch the video](https://youtu.be/dhdWwX8DAEg) | [← Day 17: UNION and UNION ALL](../day-17/) | [Day 19: Recursive CTEs →](../day-19/)
+[<< Day 17: UNION and UNION ALL](../day-17/) | [Day 19: Recursive CTEs >>](../day-19/)
 
 ---
 
@@ -74,3 +85,30 @@ Run [exercise.sql](exercise.sql) to create the exercise table.
 ---
 
 [Watch the video](https://youtu.be/dhdWwX8DAEg) | [← Day 17: UNION and UNION ALL](../day-17/) | [Day 19: Recursive CTEs →](../day-19/)
+
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
+## Where To Next?
+
+<p align="center">
+  <img src="../assets/banners/day-18-where-next.svg" width="900" alt="Where To Next?">
+</p>
+
+---
+
+<p align="center">
+  <a href="../day-17/">&#9664; Day 17: UNION and UNION ALL</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-19/">Day 19: Recursive CTEs &#9654;</a>
+</p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=DI1swwiKxUc"><img src="https://img.youtube.com/vi/DI1swwiKxUc/maxresdefault.jpg" width="480" alt="Day 19 - Recursive CTEs"/></a></p>
+<p align="center"><b>Day 19 &nbsp;&middot;&nbsp; Recursive CTEs</b></p>
+<p align="center"><i>The query that calls itself until the answer runs out.</i></p>
+<!-- /CLIFFHANGER -->

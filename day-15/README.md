@@ -1,6 +1,17 @@
+<p align="center">
+  <a href="https://youtu.be/wtBxs_iDLo4"><img src="../assets/banners/day-15-joins.svg" width="800" alt="Day 15 - JOINs Part 1"></a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/wtBxs_iDLo4"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
+  <img src="https://img.shields.io/badge/Day-15_of_30-blue" alt="Day 15">
+  <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
+  <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
+</p>
+
 # Day 15 - JOINs Part 1
 
-[Watch the video](https://youtu.be/wtBxs_iDLo4) | [← Day 14: Project: Fleet Intelligence Pipeline](../day-14/) | [Day 16: JOINs Part 2: CROSS and Self →](../day-16/)
+[<< Day 14: Project: Fleet Intelligence Pipeline](../day-14/) | [Day 16: JOINs Part 2: CROSS and Self >>](../day-16/)
 
 ---
 
@@ -81,3 +92,30 @@ Run [exercise.sql](exercise.sql) to create the exercise tables.
 ---
 
 [Watch the video](https://youtu.be/wtBxs_iDLo4) | [← Day 14: Project: Fleet Intelligence Pipeline](../day-14/) | [Day 16: JOINs Part 2: CROSS and Self →](../day-16/)
+
+---
+
+<p align="center">
+  <a href="https://www.youtube.com/@sdw-online?sub_confirmation=1"><img src="../assets/banners/support-creator.svg" width="800" alt="Subscribe on YouTube"></a>
+</p>
+
+## Where To Next?
+
+<p align="center">
+  <img src="../assets/banners/day-15-where-next.svg" width="900" alt="Where To Next?">
+</p>
+
+---
+
+<p align="center">
+  <a href="../day-14/">&#9664; Day 14: Project: Fleet Intelligence Pipeline</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-16/">Day 16: JOINs Part 2: CROSS and Self &#9654;</a>
+</p>
+
+---
+
+<!-- CLIFFHANGER -->
+<p align="center"><sub><b>UP NEXT</b></sub></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=ZYwPGw4ghkI"><img src="https://img.youtube.com/vi/ZYwPGw4ghkI/maxresdefault.jpg" width="480" alt="Day 16 - JOINs Part 2: CROSS and Self"/></a></p>
+<p align="center"><b>Day 16 &nbsp;&middot;&nbsp; JOINs Part 2: CROSS and Self</b></p>
+<p align="center"><i>The two JOINs nobody explains properly.</i></p>
+<!-- /CLIFFHANGER -->

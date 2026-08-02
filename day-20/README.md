@@ -1,8 +1,9 @@
 <p align="center">
-  <a href="../day-20/"><img src="../assets/banners/day-20-star-schema.svg" width="800" alt="Day 20 - Data Modelling (Star Schema)"></a>
+  <a href="https://youtu.be/bZjfSWOIsBI"><img src="../assets/banners/day-20-star-schema.svg" width="800" alt="Day 20 - Data Modelling (Star Schema)"></a>
 </p>
 
 <p align="center">
+  <a href="https://youtu.be/bZjfSWOIsBI"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
   <img src="https://img.shields.io/badge/Day-20_of_30-blue" alt="Day 20">
   <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
