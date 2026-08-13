@@ -174,6 +174,33 @@ If diagrams don't render in your client, here's the short version:
 
 ---
 
+## Already know SQL? Start with the questions
+
+If the syntax is not your problem and you just want **real questions to answer**, skip the
+lessons. Every day below has a `questions.md`: the exercise written as a question to solve, with
+what to return and a way to check yourself. **The technique is not named** - working out which
+tool the question needs is most of the skill - and there are no solutions on the page.
+
+| Day | Topic | Questions |
+|---|---|:---:|
+| [08](day-08/questions.md) | NULL handling | 4 |
+| [09](day-09/questions.md) | String and numeric functions | 4 |
+| [10](day-10/questions.md) | Date functions and CAST | 6 |
+| [11](day-11/questions.md) | CASE WHEN | 5 |
+| [12](day-12/questions.md) | Subqueries and temp tables | 4 |
+| [13](day-13/questions.md) | CTEs | 4 |
+| [15](day-15/questions.md) | JOINs part 1 | 4 |
+| [16](day-16/questions.md) | CROSS and self joins | 5 |
+| [17](day-17/questions.md) | UNION and UNION ALL | 4 |
+| [18](day-18/questions.md) | Normalisation | 3 |
+| [19](day-19/questions.md) | Recursive CTEs | 4 |
+| [20](day-20/questions.md) | Star schema | 3 |
+
+**50 questions across 12 days.** Run that day's `exercise.sql` first to create the tables, then
+answer without opening `solutions.sql`. The remaining days are being written up the same way.
+
+---
+
 ## Curriculum
 
 <br>

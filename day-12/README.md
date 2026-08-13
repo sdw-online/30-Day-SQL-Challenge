@@ -49,6 +49,9 @@ SELECT COUNT(*) FROM your_table;
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You work at a regional education authority. The Head of School Performance needs a benchmarking report that compares student scores against school and national averages.
 
 Using the `school_results` table, complete the tasks below.

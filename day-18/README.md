@@ -61,6 +61,9 @@ SELECT COUNT(*) FROM song_plays; -- expected: 17 rows
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 See video for the full exercise walkthrough.
 
 ### Exercise Setup

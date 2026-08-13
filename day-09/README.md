@@ -49,6 +49,9 @@ SELECT COUNT(*) FROM your_table;
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You are a data analyst supporting a city council infrastructure team. The data manager has flagged that the road repair records imported from four district offices are inconsistent and cannot be used for reporting until cleaned.
 
 Using the `raw_road_repairs` table, complete the tasks below.

@@ -60,6 +60,9 @@ SELECT COUNT(*) FROM youtube_songs; -- expected: 12 rows
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 The Head of Finance is called **Rachel**.
 
 Her job is to make sure every invoice gets paid, and **no money slips through the cracks**.

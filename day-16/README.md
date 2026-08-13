@@ -61,6 +61,9 @@ SELECT COUNT(*) FROM flights; -- expected: 13 rows
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 - **Moderate** gets "MONITOR - schedule follow-up".
 - **Low **gets "NOTE - document in records".
 

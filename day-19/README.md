@@ -61,6 +61,9 @@ SELECT COUNT(*) FROM suppliers; -- expected: 20 rows
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 The Supply Chain Director is **Ifeoma**, and she’s sent us a message:
 
 > 💬 I need the full supplier network mapped for the quarterly review. Preview the data first. Show me all my Tier 1 suppliers. Trace the full chain from Tier 1 down to Tier 3. Tell me how deep each product line's chain goes. And give me a monthly timeline for my review schedule.

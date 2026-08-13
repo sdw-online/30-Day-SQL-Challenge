@@ -76,6 +76,9 @@ SELECT COUNT(*) FROM site_region_supply; -- expected: 19 rows
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You are the Energy Transition Analyst. You track how much electricity the country generates and how much of it is actually renewable, across sites, regions and months.
 
 The catch is in the model. There is no `region_id` on the fact table. Regions connect through `site_region_supply`, a bridge, because one site can supply several regions and one region can be fed by several sites. Getting to a region means going through the bridge, and knowing when NOT to go through it matters just as much.
