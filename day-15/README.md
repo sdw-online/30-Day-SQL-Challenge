@@ -65,7 +65,10 @@ SELECT COUNT(*) FROM playlist_tracks; -- expected: 17 rows
 
 ## Exercises
 
-See video for the full exercise walkthrough.
+**[Exercise questions](questions.md)** - the questions written out, with what to return and how to
+check yourself. No solutions on the page, and the technique is not named.
+
+Or see the video for the full walkthrough.
 
 ### Exercise Setup
 
