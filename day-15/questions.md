@@ -4,30 +4,78 @@
 
 <p align="center">
   <a href="https://youtu.be/wtBxs_iDLo4"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
-  <img src="https://img.shields.io/badge/Day-15_of_30-blue" alt="Day 15">
-  <img src="https://img.shields.io/badge/Questions-4-brightgreen" alt="4 questions">
+  <img src="https://img.shields.io/badge/Day-15_of_30-1f6feb" alt="Day 15">
+  <img src="https://img.shields.io/badge/Questions-4-2da44e" alt="4 questions">
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
+  <img src="https://img.shields.io/badge/Solutions-not_on_this_page-8250df" alt="No solutions">
 </p>
 
-# Day 15 - Exercise Questions
+<h1 align="center">Day 15 &middot; Exercise Questions</h1>
 
-[<< Back to Day 15](README.md) | [Exercise tables](exercise.sql) | [Solutions](solutions.sql)
+<p align="center">
+  <a href="README.md">&#8592; Back to Day 15</a> &nbsp;&middot;&nbsp;
+  <a href="exercise.sql">Exercise tables</a> &nbsp;&middot;&nbsp;
+  <a href="solutions.sql">Solutions</a>
+</p>
 
 ---
 
-**How to use this page.** Run [exercise.sql](exercise.sql) first to create the tables and load
-the data. Then answer the questions below **without opening the solutions**. Each one tells you
-what to return and gives you a way to check yourself. The technique is deliberately not named -
-working out which tool the question needs is most of the skill.
+> [!NOTE]
+> **How to use this page.** Run [`exercise.sql`](exercise.sql) first to create the tables and load the
+> data, then answer the questions below **without opening the solutions**. Each one tells you what to
+> return, and hides the expected result behind a toggle so you can check yourself once you have tried.
+>
+> The technique is deliberately not named. Working out which tool the question needs is most of the skill.
 
-Stuck? The video walks through every one of these.
+### Your run
+
+- [ ] [1. Who attended what](#q1)
+- [ ] [2. Every incident, attended or not](#q2)
+- [ ] [3. The ones nobody went to](#q3)
+- [ ] [4. Which hospitals could actually take them](#q4)
 
 ---
 
 ## The scenario
 
-An emergency response service logs **incidents**, dispatches **responder units** to them, and
-tracks which **hospitals** have capacity. Four tables:
+An emergency response service logs incidents, dispatches responder units to them, and tracks which hospitals have capacity.
+
+```mermaid
+erDiagram
+    incidents ||--o{ dispatches : ""
+    responder_units ||--o{ dispatches : ""
+    incidents {
+        int incident_id PK
+        text incident_type
+        text location
+        text severity
+        timestamp reported_at
+        text status
+    }
+    responder_units {
+        int unit_id PK
+        text unit_name
+        text unit_type
+        text base_location
+        text status
+    }
+    dispatches {
+        int dispatch_id PK
+        int incident_id FK
+        int unit_id FK
+        timestamp dispatched_at
+        timestamp arrived_at
+        text notes
+    }
+    hospital_capacity {
+        int hospital_id PK
+        text hospital_name
+        int total_beds
+        int available_beds
+        boolean accepts_emergency
+        text nearest_district
+    }
+```
 
 | Table | One row is |
 |---|---|
@@ -36,72 +84,99 @@ tracks which **hospitals** have capacity. Four tables:
 | `dispatches` | one unit being sent to one incident |
 | `hospital_capacity` | one hospital and its current capacity |
 
-Note the shape before you start: an incident can have **many** dispatches, and some incidents
-have **none**. That is the whole point of the day.
+> [!IMPORTANT]
+> Note the shape before you start: an incident can have many dispatches, and some incidents have none at all. That is the whole point of the day.
 
 ---
 
-## Question 1 - Who attended what
+<a id="q1"></a>
 
-Control wants a line for every incident that a unit was actually sent to, showing the incident
-type, its severity, which unit attended, when it was dispatched and when it arrived.
+### 1. Who attended what
 
-**Return:** incident id, incident type, severity, unit name, unit type, dispatched at, arrived at.
-**Order by:** when the incident was reported.
+Control wants a line for every incident a unit was actually sent to, showing the incident type, its severity, which unit attended, when it was dispatched and when it arrived.
 
-> **Check yourself:** incidents that nobody was sent to must not appear.
+**Return:** incident id, incident type, severity, unit name, unit type, dispatched at, arrived at, ordered by when the incident was reported.
 
----
+<details>
+<summary><b>Check yourself</b></summary>
 
-## Question 2a - Every incident, attended or not
+<br>
 
-Now the operations manager wants the opposite: **every** incident on the books, whether or not a
-unit was ever sent, with the dispatch details where they exist and blanks where they do not.
+Incidents that nobody was sent to must not appear.
 
-**Return:** incident id, incident type, severity, status, dispatch id, unit name.
-**Order by:** when the incident was reported.
-
-> **Check yourself:** this must return more rows than Question 1. If it returns the same number,
-> something in your query is quietly filtering the unattended incidents back out.
+</details>
 
 ---
 
-## Question 2b - The ones nobody went to
+<a id="q2"></a>
 
-From that same list, produce only the incidents that have **no** dispatch at all. This is the
-report that gets escalated, so it must not miss any.
+### 2. Every incident, attended or not
+
+Now the opposite: every incident on the books, whether or not a unit was ever sent, with the dispatch details where they exist and blanks where they do not.
+
+**Return:** incident id, incident type, severity, status, dispatch id, unit name, ordered by when the incident was reported.
+
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+This must return more rows than question 1. If it returns the same number, something in your query is quietly filtering the unattended incidents back out.
+
+</details>
+
+---
+
+<a id="q3"></a>
+
+### 3. The ones nobody went to
+
+From that same list, produce only the incidents with no dispatch at all. This is the report that gets escalated, so it must not miss any.
 
 **Return:** incident id, incident type, severity, status, when it was reported.
 
-> **Check yourself:** 4 rows. The exercise script's validation queries agree with that number.
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+4 rows. The exercise script's own validation queries agree with that number.
+
+</details>
 
 ---
 
-## Question 3 - Which hospitals could actually take them
+<a id="q4"></a>
 
-Each incident has a `location`. Each hospital in `hospital_capacity` serves an area, and you will
-need to pull the area out of the text rather than compare the whole string.
+### 4. Which hospitals could actually take them
 
-For every incident, show the hospitals in the matching area along with their available capacity,
-so a dispatcher can see at a glance where a casualty could go.
+Each incident has a location, and each hospital serves an area - you will need to pull the area out of the text rather than compare the whole string. For every incident, show the hospitals in the matching area with their available capacity.
 
-**Return:** incident id, incident type, location, hospital name, available beds.
-**Order by:** incident id, then hospital name.
+**Return:** incident id, incident type, location, hospital name, available beds, ordered by incident then hospital.
 
-> **Check yourself:** an incident in an area with no listed hospital should still tell you
-> something useful. Decide whether it belongs in your result and be ready to say why.
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+An incident in an area with no listed hospital should still tell you something useful. Decide whether it belongs in your result, and be ready to say why.
+
+</details>
 
 ---
 
 ## When you are done
 
-Compare against [solutions.sql](solutions.sql). If your query returns the right rows by a
-different route, that is not a mistake - two correct answers to a JOIN question are common. What
-matters is whether you can say **why you chose yours**, what it costs, and what would have to be
-true about the data for it to break.
+Compare against [`solutions.sql`](solutions.sql). If your query returns the right rows by a different
+route, that is not a mistake - there is usually more than one correct answer.
 
-That question - not the syntax - is the one interviews are actually testing.
+> [!TIP]
+> What matters is whether you can say **why you chose yours**, what it costs, and what would have to be
+> true about the data for it to break. That question, not the syntax, is the one interviews are
+> actually testing.
 
----
-
-[<< Day 14](../day-14/) | [Back to Day 15](README.md) | [Day 16 >>](../day-16/)
+<p align="center">
+  <a href="../day-14/">&#8592; Day 14</a> &nbsp;&middot;&nbsp;
+  <a href="README.md">Back to Day 15</a> &nbsp;&middot;&nbsp;
+  <a href="../day-16/">Day 16 &#8594;</a>
+</p>

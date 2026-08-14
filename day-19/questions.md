@@ -4,23 +4,35 @@
 
 <p align="center">
   <a href="https://youtu.be/DI1swwiKxUc"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
-  <img src="https://img.shields.io/badge/Day-19_of_30-blue" alt="Day 19">
-  <img src="https://img.shields.io/badge/Questions-4-brightgreen" alt="4 questions">
+  <img src="https://img.shields.io/badge/Day-19_of_30-1f6feb" alt="Day 19">
+  <img src="https://img.shields.io/badge/Questions-4-2da44e" alt="4 questions">
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
+  <img src="https://img.shields.io/badge/Solutions-not_on_this_page-8250df" alt="No solutions">
 </p>
 
-# Day 19 - Exercise Questions
+<h1 align="center">Day 19 &middot; Exercise Questions</h1>
 
-[<< Back to Day 19](README.md) | [Exercise tables](exercise.sql) | [Solutions](solutions.sql)
+<p align="center">
+  <a href="README.md">&#8592; Back to Day 19</a> &nbsp;&middot;&nbsp;
+  <a href="exercise.sql">Exercise tables</a> &nbsp;&middot;&nbsp;
+  <a href="solutions.sql">Solutions</a>
+</p>
 
 ---
 
-**How to use this page.** Run [exercise.sql](exercise.sql) first to create the tables and load the
-data. Then answer the questions below **without opening the solutions**. Each one tells you what to
-return and gives you a way to check yourself. The technique is deliberately not named - working out
-which tool the question needs is most of the skill.
+> [!NOTE]
+> **How to use this page.** Run [`exercise.sql`](exercise.sql) first to create the tables and load the
+> data, then answer the questions below **without opening the solutions**. Each one tells you what to
+> return, and hides the expected result behind a toggle so you can check yourself once you have tried.
+>
+> The technique is deliberately not named. Working out which tool the question needs is most of the skill.
 
-Stuck? The video walks through every one of these.
+### Your run
+
+- [ ] [1. Find the top of the tree](#q1)
+- [ ] [2. Walk the whole chain](#q2)
+- [ ] [3. How deep does each chain run](#q3)
+- [ ] [4. A monthly timeline with no table behind it](#q4)
 
 ---
 
@@ -28,63 +40,117 @@ Stuck? The video walks through every one of these.
 
 Ifeoma, the Supply Chain Director, needs the full supplier network mapped for the quarterly review. It is a hierarchy: Tier 1 suppliers buy from Tier 2, who buy from Tier 3, and each row points at its parent.
 
+```mermaid
+erDiagram
+    suppliers ||--o{ suppliers : ""
+    suppliers {
+        int supplier_id PK
+        text supplier_name
+        text product
+        int parent_supplier_id FK
+        text country
+        numeric annual_cost
+        int lead_time_days
+    }
+```
+
 | Table | One row is |
 |---|---|
 | `suppliers` | one supplier, with its product, country, annual cost and a pointer to its parent supplier |
 
-**A row pointing at another row in the same table is a tree. You cannot walk it with a fixed number of joins unless you already know how deep it goes.**
+> [!IMPORTANT]
+> A row pointing at another row in the same table is a tree. You cannot walk it with a fixed number of joins unless you already know how deep it goes.
 
 ---
 
-## Question 1 - Find the top of the tree
+<a id="q1"></a>
+
+### 1. Find the top of the tree
 
 List the direct suppliers - the ones that answer to nobody - most expensive first. No recursion needed yet.
 
 **Return:** supplier name, product, country, annual cost.
 
-> **Check yourself:** 4 rows. These are the starting points for everything that follows.
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+4 rows. These are the starting points for everything that follows.
+
+</details>
 
 ---
 
-## Question 2 - Walk the whole chain
+<a id="q2"></a>
+
+### 2. Walk the whole chain
 
 Now traverse the full network, labelling every supplier with the tier it sits at.
 
 **Return:** supplier name, product, country, annual cost, tier.
 
-> **Check yourself:** 20 rows: 4 at tier 1, 8 at tier 2, 8 at tier 3. If it never stops, your recursive step is not moving down the tree.
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+20 rows: 4 at tier 1, 8 at tier 2, 8 at tier 3. If it never stops, your recursive step is not moving down the tree.
+
+</details>
 
 ---
 
-## Question 3 - How deep does each chain run
+<a id="q3"></a>
+
+### 3. How deep does each chain run
 
 For each Tier 1 supplier, how many suppliers sit beneath it and how deep does its chain go? Every row needs to remember which Tier 1 supplier it ultimately traces back to.
 
 **Return:** root supplier, deepest tier, supplier count.
 
-> **Check yourself:** 4 rows, one per Tier 1 supplier.
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+4 rows, one per Tier 1 supplier.
+
+</details>
 
 ---
 
-## Question 4 - A monthly timeline with no table behind it
+<a id="q4"></a>
+
+### 4. A monthly timeline with no table behind it
 
 A different use of the same tool: generate the monthly timeline Ifeoma wants for her review schedule - one row per month for 2025, without a calendar table.
 
 **Return:** 12 dates, January to December 2025.
 
-> **Check yourself:** No source table at all. The first row is written by hand and each pass adds a month, stopping at December.
+<details>
+<summary><b>Check yourself</b></summary>
+
+<br>
+
+No source table at all. The first row is written by hand and each pass adds a month, stopping at December.
+
+</details>
 
 ---
 
 ## When you are done
 
-Compare against [solutions.sql](solutions.sql). If your query returns the right rows by a different
-route, that is not a mistake - there is usually more than one correct answer. What matters is
-whether you can say **why you chose yours**, what it costs, and what would have to be true about the
-data for it to break.
+Compare against [`solutions.sql`](solutions.sql). If your query returns the right rows by a different
+route, that is not a mistake - there is usually more than one correct answer.
 
-That question - not the syntax - is the one interviews are actually testing.
+> [!TIP]
+> What matters is whether you can say **why you chose yours**, what it costs, and what would have to be
+> true about the data for it to break. That question, not the syntax, is the one interviews are
+> actually testing.
 
----
-
-[<< Day 18](../day-18/) | [Back to Day 19](README.md) | [Day 20 >>](../day-20/)
+<p align="center">
+  <a href="../day-18/">&#8592; Day 18</a> &nbsp;&middot;&nbsp;
+  <a href="README.md">Back to Day 19</a> &nbsp;&middot;&nbsp;
+  <a href="../day-20/">Day 20 &#8594;</a>
+</p>
