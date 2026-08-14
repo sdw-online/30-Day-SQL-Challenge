@@ -56,6 +56,9 @@ SELECT COUNT(*) FROM your_table;
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You are a data analyst at a health organisation. The operations lead needs a board report on referral-to-appointment wait times before the quarterly review.
 
 Using the `patient_referrals` table, complete the tasks below.

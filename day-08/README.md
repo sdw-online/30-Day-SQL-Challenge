@@ -49,6 +49,9 @@ SELECT COUNT(*) FROM your_table;
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You are a data analyst at Bean & Leaf, a coffee shop chain. The operations manager, **Kwame**, needs an audit of missing data before the monthly supplier review.
 
 Using the `menu_items` table, complete the tasks below.

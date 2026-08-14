@@ -48,6 +48,9 @@ SELECT COUNT(*) FROM your_table;
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You are a data analyst working with the Head of Supply Chain Compliance, Claire Foster. She needs a traceability report that flags high-risk stages across your food supply chain.
 
 Using the `supply_chain_stages` table, complete the tasks below.

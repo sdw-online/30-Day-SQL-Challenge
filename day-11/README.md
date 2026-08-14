@@ -49,6 +49,9 @@ SELECT COUNT(*) FROM your_table;
 
 ## Exercises
 
+**[Exercise questions](questions.md)** - the same tasks written as questions to solve, without the
+technique named and with a way to check yourself. No solutions on the page.
+
 You are a data analyst at an insurance company. The operations manager, **Ingrid**, needs a triage report to help the claims team prioritise their workload.
 
 Using the `insurance_claims` table, complete the tasks below.
