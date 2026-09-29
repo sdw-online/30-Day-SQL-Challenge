@@ -7,7 +7,7 @@
   <a href="https://www.youtube.com/@sdw-online"><img src="https://img.shields.io/badge/Channel-Stephen_|_Data-red?logo=youtube" alt="YouTube Channel"></a>
   <img src="https://img.shields.io/badge/PostgreSQL-15+-blue?logo=postgresql" alt="PostgreSQL">
   <img src="https://img.shields.io/badge/Lessons-30-brightgreen" alt="30 Lessons">
-  <img src="https://img.shields.io/badge/License-Educational-lightgrey" alt="License">
+  <img src="https://img.shields.io/badge/License-All_rights_reserved-lightgrey" alt="License">
 </p>
 
 <p align="center">
@@ -473,6 +473,10 @@ I've spent years doing this work professionally, and I created this challenge to
 
 ## License
 
-For educational purposes. Fork it, clone it, learn from it. If you share it, a link back is appreciated.
+© 2026 Stephen David-Williams. All rights reserved.
+
+You're welcome to clone this repo and work through it for your own personal learning. You may not republish, redistribute, resell, or use this material (lessons, datasets, exercises, solutions, videos, or slides) in any paid or commercial product, course, or training without written permission.
+
+For licensing or team-training enquiries, get in touch via [Stephen | Data](https://www.youtube.com/@sdw-online). Full terms: [LICENSE](LICENSE).
 
 
