@@ -24,6 +24,19 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching tables.
+
+- **depots**: 6 rows
+- **drivers**: 12 rows
+- **vehicles**: 10 rows
+- **shipments**: 120 rows
+
+Today's exercises use the same tables, so there is no separate `exercise.sql`. The questions are in the Exercises section below and the answers are in [solutions.sql](solutions.sql).
+
+---
+
 ## Quick Setup
 
 **In pgAdmin:**

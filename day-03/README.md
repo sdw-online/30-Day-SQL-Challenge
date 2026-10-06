@@ -25,6 +25,16 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching table.
+
+- **online_orders**: 30 rows
+
+Today's exercises use the same table, so there is no separate `exercise.sql`. The questions are in the Exercises section below and the answers are in [solutions.sql](solutions.sql).
+
+---
+
 ## Quick Setup
 
 **In pgAdmin:**

@@ -27,6 +27,18 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching tables.
+
+- **fleet_vehicles**: 20 rows
+- **sensor_readings**: 501 rows
+- **maintenance_log**: 20 rows
+
+Today's exercises use the same tables, so there is no separate `exercise.sql`. The questions are in the Exercises section below and the answers are in [solutions.sql](solutions.sql).
+
+---
+
 ## Quick Setup
 
 **In pgAdmin:**

@@ -25,6 +25,16 @@ Start of challenge | [Day 2: SELECT & WHERE >>](../day-02/)
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching table.
+
+- **employees**: 10 rows
+
+Today's exercises use the same table, so there is no separate `exercise.sql`. The questions are in the Exercises section below and the answers are in [solutions.sql](solutions.sql).
+
+---
+
 ## Quick Setup
 
 **In pgAdmin:**
