@@ -25,6 +25,22 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching tables.
+
+- **recipes**: 5 rows
+- **apartments**: 5 rows
+- **parcels**: 10 rows
+- **products**: 30 rows
+- **support_tickets**: 250 rows
+- **staging_daily_metrics**: 7 rows
+- **staging_user_sessions**: 6 rows
+- **legacy_ticket_categories**: 5 rows
+- **legacy_pricing_v1**: 4 rows
+
+---
+
 ## Quick Setup
 
 ```sql

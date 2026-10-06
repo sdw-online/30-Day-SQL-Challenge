@@ -26,6 +26,15 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching table, or [exercise.sql](exercise.sql) for the exercise table.
+
+- **meal_plans**: 45 rows
+- **insurance_claims**: 387 rows (exercise only)
+
+---
+
 ## Quick Setup
 
 ```sql

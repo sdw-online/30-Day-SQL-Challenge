@@ -25,6 +25,16 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching tables, or [exercise.sql](exercise.sql) for the exercise table.
+
+- **ingredients**: 15 rows
+- **recipe_steps**: 24 rows
+- **supply_chain_stages**: 25 rows (exercise only)
+
+---
+
 ## Quick Setup
 
 ```sql

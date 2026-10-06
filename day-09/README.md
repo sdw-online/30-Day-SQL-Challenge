@@ -26,6 +26,15 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching table, or [exercise.sql](exercise.sql) for the exercise table.
+
+- **raw_customers**: 25 rows
+- **raw_road_repairs**: 25 rows (exercise only)
+
+---
+
 ## Quick Setup
 
 ```sql

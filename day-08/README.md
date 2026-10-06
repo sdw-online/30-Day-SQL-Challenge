@@ -26,6 +26,15 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching table, or [exercise.sql](exercise.sql) for the exercise table.
+
+- **library_books**: 20 rows
+- **menu_items**: 20 rows (exercise only)
+
+---
+
 ## Quick Setup
 
 ```sql

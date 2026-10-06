@@ -27,6 +27,15 @@
 
 ---
 
+## Dataset
+
+Run [setup.sql](setup.sql) to create and populate the teaching table, or [exercise.sql](exercise.sql) for the exercise table.
+
+- **hotel_bookings**: 30 rows
+- **patient_referrals**: 20 rows (exercise only)
+
+---
+
 ## Quick Setup
 
 ```sql
