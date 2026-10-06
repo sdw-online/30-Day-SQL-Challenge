@@ -25,6 +25,19 @@
 
 ---
 
+## Dataset
+
+Today uses a small gym booking schema - deliberately small, because this lesson is about constraints rather than volume. Run [setup.sql](setup.sql) to create and populate it, or [exercise.sql](exercise.sql) for the NovaPay exercise tables.
+
+- **trainers**: 3 rows
+- **members**: 5 rows
+- **classes**: 4 rows
+- **bookings**: 5 rows
+
+These are the tables used in the video, with the PRIMARY KEY, FOREIGN KEY, UNIQUE and CHECK constraints the lesson demonstrates.
+
+---
+
 ## Quick Setup
 
 ```sql
