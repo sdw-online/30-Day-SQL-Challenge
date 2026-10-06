@@ -85,6 +85,10 @@ Let's start.
 Run [exercise.sql](exercise.sql) to create the exercise tables.
 
 
+### Solutions
+
+Solutions are in [solutions.sql](solutions.sql). Try each task yourself first.
+
 ## Key Concepts Covered
 
 - What Is a Recursive CTE?

@@ -73,6 +73,10 @@ Run [exercise.sql](exercise.sql) to create the exercise table.
 - **census_raw**
 
 
+### Solutions
+
+Solutions are in [solutions.sql](solutions.sql). Try each task yourself first.
+
 ## Key Concepts Covered
 
 - Why Normalisation Exists - The Problem With Repeated Data

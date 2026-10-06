@@ -107,6 +107,10 @@ Run [exercise.sql](exercise.sql) to create the exercise tables.
 - **patient_prescriptions**
 
 
+### Solutions
+
+Solutions are in [solutions.sql](solutions.sql). Try each task yourself first.
+
 ## Key Concepts Covered
 
 - What is a CROSS JOIN?
