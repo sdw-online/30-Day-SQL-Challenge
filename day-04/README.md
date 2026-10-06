@@ -25,6 +25,17 @@
 
 ---
 
+## Dataset
+
+Today uses one teaching table. Run the SQL in [setup.sql](setup.sql) to create and populate it, or run [exercise.sql](exercise.sql) for just the exercise table.
+
+- **company_spending**: 150 rows (100 with a cost centre, 50 without)
+- **client_transactions**: 120 rows (exercise only)
+
+These are the same figures used in the video, so `COUNT(*)`, `SUM`, `AVG`, `MIN` and `MAX` will match what you see on screen.
+
+---
+
 ## Quick Setup
 
 ```sql
