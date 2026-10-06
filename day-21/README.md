@@ -1,8 +1,9 @@
 <p align="center">
-  <a href="../day-21/"><img src="../assets/banners/day-21-project-recruitment.svg" width="800" alt="Day 21 - Project: Recruitment Analytics"></a>
+  <a href="https://youtu.be/HgyMoGDOWuA"><img src="../assets/banners/day-21-project-recruitment.svg" width="800" alt="Day 21 - Project: Recruitment Analytics"></a>
 </p>
 
 <p align="center">
+  <a href="https://youtu.be/HgyMoGDOWuA"><img src="https://img.shields.io/badge/Watch_Lesson-YouTube-red?logo=youtube" alt="Watch on YouTube"></a>
   <img src="https://img.shields.io/badge/Day-21_of_30-blue" alt="Day 21">
   <img src="https://img.shields.io/badge/Week-3-purple" alt="Week 3">
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">

@@ -130,7 +130,7 @@ Solutions are in [solutions.sql](solutions.sql). Try each task yourself first.
 
 <!-- CLIFFHANGER -->
 <p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="../README.md#curriculum"><b>Day 21 coming soon &raquo;</b></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=HgyMoGDOWuA"><img src="https://img.youtube.com/vi/HgyMoGDOWuA/maxresdefault.jpg" width="480" alt="Day 21 - Project: Recruitment Analytics"/></a></p>
 <p align="center"><b>Day 21 &nbsp;&middot;&nbsp; Project: Recruitment Analytics</b></p>
 <p align="center"><i>The day you stop learning and start building.</i></p>
 <!-- /CLIFFHANGER -->
