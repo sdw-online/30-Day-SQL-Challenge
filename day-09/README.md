@@ -37,19 +37,34 @@ Run [setup.sql](setup.sql) to create and populate the teaching table, or [exerci
 
 ## Quick Setup
 
-```sql
--- Run in pgAdmin (takes a few seconds)
-\i setup.sql
+**In pgAdmin:**
+
+1. Download [`setup.sql`](setup.sql) - click the file above, then **Raw**, then save it
+2. Open **pgAdmin** and connect to your `sql_challenge` database
+3. Right-click the database and choose **Query Tool**
+4. Open the file with the folder icon, or paste the whole script in
+5. Press **Execute** (the play button, or `F5`)
+
+This is a plain SQL script, so you run it - there is nothing to "restore".
+There is no `.tar`, `.backup` or `.zip` to import.
+
+<details>
+<summary>Prefer the command line?</summary>
+
+```bash
+psql -U postgres -d sql_challenge -f setup.sql
 ```
 
-Or open [`setup.sql`](setup.sql) and run the full script manually.
+`\i setup.sql` also works in `psql`, but NOT in pgAdmin - pgAdmin does not
+understand backslash commands.
+
+</details>
 
 <details>
 <summary>Verify your setup</summary>
 
 ```sql
--- Check your tables loaded correctly
-SELECT COUNT(*) FROM your_table;
+SELECT COUNT(*) FROM raw_customers; -- expected: 25 rows
 ```
 
 </details>
