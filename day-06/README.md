@@ -27,7 +27,9 @@
 
 ## Dataset
 
-Today uses a small gym booking schema - deliberately small, because this lesson is about constraints rather than volume. Run [setup.sql](setup.sql) to create and populate it, or [exercise.sql](exercise.sql) for the NovaPay exercise tables.
+Today uses a small gym booking schema - deliberately small, because this lesson is about constraints rather than volume.
+
+Run BOTH scripts: [setup.sql](setup.sql) creates the gym tables used in the video, and [exercise.sql](exercise.sql) creates the separate NovaPay tables the exercises below are set against. They share no tables, so running only setup.sql will leave every exercise query failing with "relation does not exist".
 
 - **trainers**: 3 rows
 - **members**: 5 rows

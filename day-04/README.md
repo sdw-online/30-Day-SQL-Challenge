@@ -27,7 +27,7 @@
 
 ## Dataset
 
-Today uses one teaching table. Run the SQL in [setup.sql](setup.sql) to create and populate it, or run [exercise.sql](exercise.sql) for just the exercise table.
+Run BOTH scripts: [setup.sql](setup.sql) creates the teaching table used in the video, and [exercise.sql](exercise.sql) creates the separate table the exercises below are set against. They share no tables, so running only setup.sql will leave every exercise query failing with "relation does not exist".
 
 - **company_spending**: 150 rows (100 with a cost centre, 50 without)
 - **client_transactions**: 120 rows (exercise only)

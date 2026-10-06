@@ -28,7 +28,7 @@
 
 ## Dataset
 
-Run [setup.sql](setup.sql) to create and populate the teaching table, or [exercise.sql](exercise.sql) for the exercise table.
+Run BOTH scripts: [setup.sql](setup.sql) creates the teaching table used in the video, and [exercise.sql](exercise.sql) creates the separate table the exercises below are set against. They share no tables, so running only setup.sql will leave every exercise query failing with "relation does not exist".
 
 - **raw_customers**: 25 rows
 - **raw_road_repairs**: 25 rows (exercise only)
