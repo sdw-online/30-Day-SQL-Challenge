@@ -4769,13 +4769,510 @@ window.COURSE_DATA = {
     },
     {
       "day": 26,
-      "title": "Information Schema & Metadata",
-      "slug": "information-schema-and-metadata",
+      "title": "Functions & Stored Procedures",
+      "slug": "functions-and-stored-procedures",
       "week": 4,
       "weekLabel": "Advanced Analytics & Performance",
       "type": "concept",
       "youtubeId": null,
       "githubPath": "day-26",
+      "seedSQL": "CREATE TABLE IF NOT EXISTS transactions (\n  txn_id      INTEGER PRIMARY KEY,\n  account_id  INTEGER NOT NULL,\n  txn_type    TEXT    NOT NULL,\n  amount      REAL    NOT NULL,\n  txn_date    TEXT    NOT NULL,\n  description TEXT    NOT NULL\n);\n\nINSERT INTO transactions VALUES\n  (1,  101, 'credit', 2500.00, '2024-01-01', 'Salary'),\n  (2,  101, 'debit',   120.00, '2024-01-03', 'Grocery shop'),\n  (3,  101, 'debit',    45.50, '2024-01-05', 'Transport card top-up'),\n  (4,  101, 'credit',  300.00, '2024-01-08', 'Freelance payment'),\n  (5,  101, 'debit',   850.00, '2024-01-10', 'Rent'),\n  (6,  102, 'credit', 3100.00, '2024-01-01', 'Salary'),\n  (7,  102, 'debit',   200.00, '2024-01-04', 'Utility bills'),\n  (8,  102, 'debit',    60.00, '2024-01-06', 'Streaming subscriptions'),\n  (9,  102, 'credit',  150.00, '2024-01-09', 'Refund'),\n  (10, 102, 'debit',   900.00, '2024-01-11', 'Rent'),\n  (11, 103, 'credit', 1800.00, '2024-01-01', 'Salary'),\n  (12, 103, 'debit',    80.00, '2024-01-02', 'Coffee and lunch'),\n  (13, 103, 'debit',   250.00, '2024-01-07', 'Online shopping'),\n  (14, 103, 'credit',  500.00, '2024-01-10', 'Bonus'),\n  (15, 103, 'debit',   600.00, '2024-01-12', 'Rent'),\n  (16, 101, 'debit',    30.00, '2024-01-15', 'Mobile phone bill'),\n  (17, 101, 'credit', 2500.00, '2024-02-01', 'Salary'),\n  (18, 101, 'debit',   135.00, '2024-02-04', 'Grocery shop'),\n  (19, 102, 'debit',    75.00, '2024-02-03', 'Dining out'),\n  (20, 102, 'credit', 3100.00, '2024-02-01', 'Salary');",
+      "tables": [
+        {
+          "name": "transactions",
+          "columns": [
+            {
+              "name": "txn_id",
+              "type": "INTEGER",
+              "pk": true
+            },
+            {
+              "name": "account_id",
+              "type": "INTEGER",
+              "pk": false
+            },
+            {
+              "name": "txn_type",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "amount",
+              "type": "REAL",
+              "pk": false
+            },
+            {
+              "name": "txn_date",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "description",
+              "type": "TEXT",
+              "pk": false
+            }
+          ],
+          "rowCount": 20
+        }
+      ],
+      "quickInsert": [
+        "CREATE FUNCTION",
+        "CREATE PROCEDURE",
+        "CALL",
+        "CASE WHEN"
+      ],
+      "pgNotes": null,
+      "challenges": [
+        {
+          "id": "d26-c01",
+          "title": "Encapsulate Classification Logic",
+          "description": "A UDF called classify_transaction would accept txn_type and amount and return a category. Write that logic as a CASE expression in a SELECT. For each transaction return txn_id, txn_type, amount, and a category column: 'Large Credit' (credit >= 1000), 'Small Credit' (credit < 1000), 'Large Debit' (debit >= 500), 'Small Debit' (debit < 500).",
+          "tier": "starter",
+          "difficulty": "easy",
+          "hint": "Use a nested CASE: first check txn_type, then check amount thresholds within each branch.",
+          "solution": "SELECT\n  txn_id,\n  txn_type,\n  amount,\n  CASE\n    WHEN txn_type = 'credit' AND amount >= 1000 THEN 'Large Credit'\n    WHEN txn_type = 'credit' AND amount <  1000 THEN 'Small Credit'\n    WHEN txn_type = 'debit'  AND amount >= 500  THEN 'Large Debit'\n    WHEN txn_type = 'debit'  AND amount <  500  THEN 'Small Debit'\n  END AS category\nFROM transactions\nORDER BY txn_id;",
+          "resetBefore": false,
+          "validation": {
+            "type": "columns_match",
+            "expectedColumns": [
+              "txn_id",
+              "txn_type",
+              "amount",
+              "category"
+            ]
+          }
+        },
+        {
+          "id": "d26-c02",
+          "title": "Running Balance",
+          "description": "Calculate the running account balance for account_id 101. Credits add to the balance; debits subtract. Return txn_id, txn_date, description, amount, txn_type, and running_balance ordered by txn_date, txn_id.",
+          "tier": "starter",
+          "difficulty": "easy",
+          "hint": "Use SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END) OVER (ORDER BY txn_date, txn_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW).",
+          "solution": "SELECT\n  txn_id,\n  txn_date,\n  description,\n  amount,\n  txn_type,\n  SUM(\n    CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END\n  ) OVER (ORDER BY txn_date, txn_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_balance\nFROM transactions\nWHERE account_id = 101\nORDER BY txn_date, txn_id;",
+          "resetBefore": false,
+          "validation": {
+            "type": "columns_match",
+            "expectedColumns": [
+              "txn_id",
+              "txn_date",
+              "description",
+              "amount",
+              "txn_type",
+              "running_balance"
+            ]
+          }
+        },
+        {
+          "id": "d26-c03",
+          "title": "Tax Calculation Expression",
+          "description": "A UDF called calculate_tax would apply a 20% tax rate to credits only. Write this as a SELECT expression. Return txn_id, account_id, amount, txn_type, and tax_amount (0 for debits, ROUND((amount * 0.20)::numeric, 2) for credits). Order by account_id, txn_date.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "Use CASE WHEN txn_type = 'credit' THEN ROUND((amount * 0.20)::numeric, 2) ELSE 0 END AS tax_amount.",
+          "solution": "SELECT\n  txn_id,\n  account_id,\n  amount,\n  txn_type,\n  CASE\n    WHEN txn_type = 'credit' THEN ROUND((amount * 0.20)::numeric, 2)\n    ELSE 0\n  END AS tax_amount\nFROM transactions\nORDER BY account_id, txn_date;",
+          "resetBefore": false,
+          "validation": {
+            "type": "columns_match",
+            "expectedColumns": [
+              "txn_id",
+              "account_id",
+              "amount",
+              "txn_type",
+              "tax_amount"
+            ]
+          }
+        },
+        {
+          "id": "d26-c04",
+          "title": "Spend Categorisation by Description",
+          "description": "Write a query that categorises each debit transaction by its description keyword. Return txn_id, description, amount, and spend_category: 'Housing' if description contains 'Rent', 'Food' if it contains 'Grocery' or 'lunch' or 'Dining', 'Transport' if it contains 'Transport', 'Bills' if it contains 'bill' or 'subscriptions', 'Other' for anything else. Only include debit transactions.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "Use CASE with LIKE patterns: WHEN description LIKE '%Rent%' THEN 'Housing'. Order matters - put the most specific checks first.",
+          "solution": "SELECT\n  txn_id,\n  description,\n  amount,\n  CASE\n    WHEN description LIKE '%Rent%'           THEN 'Housing'\n    WHEN description LIKE '%Grocery%'\n      OR description LIKE '%lunch%'\n      OR description LIKE '%Dining%'         THEN 'Food'\n    WHEN description LIKE '%Transport%'      THEN 'Transport'\n    WHEN description LIKE '%bill%'\n      OR description LIKE '%subscriptions%'  THEN 'Bills'\n    ELSE 'Other'\n  END AS spend_category\nFROM transactions\nWHERE txn_type = 'debit'\nORDER BY txn_id;",
+          "resetBefore": false,
+          "validation": {
+            "type": "columns_match",
+            "expectedColumns": [
+              "txn_id",
+              "description",
+              "amount",
+              "spend_category"
+            ]
+          }
+        },
+        {
+          "id": "d26-c05",
+          "title": "Write and Call a Function",
+          "description": "Create a PostgreSQL function called net_position that takes one parameter, p_account_id (INT), and returns the account's credits minus its debits as NUMERIC. Then call it for account 102 with SELECT, and name the result column net_position.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "Cast the SUM to NUMERIC inside the function because amount is REAL. A function is called inside a query, so the call is a SELECT: SELECT net_position(102) AS net_position;",
+          "solution": "CREATE OR REPLACE FUNCTION net_position(p_account_id INT)\nRETURNS NUMERIC AS $$\n  SELECT SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END)::numeric\n  FROM transactions\n  WHERE account_id = p_account_id;\n$$ LANGUAGE sql;\n\nSELECT net_position(102) AS net_position;",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 1 && Math.abs(Number(rows[0].net_position) - 5115) < 0.01"
+          }
+        },
+        {
+          "id": "d26-c06",
+          "title": "Procedure vs Function: Write and CALL a Procedure",
+          "description": "A procedure is run with CALL, not inside a SELECT, and it returns no value. Create a procedure called add_transaction(p_account_id INT, p_type TEXT, p_amount REAL) that inserts a row into transactions with txn_id set to the current maximum txn_id plus 1, txn_date '2024-02-10' and description 'Manual entry'. Then CALL it for account 101 with type 'credit' and amount 100. Finish with a SELECT that counts the rows where description = 'Manual entry', named manual_entries.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "Use CREATE OR REPLACE PROCEDURE ... LANGUAGE plpgsql with BEGIN ... END. Run it with CALL add_transaction(101, 'credit', 100); not SELECT.",
+          "solution": "CREATE OR REPLACE PROCEDURE add_transaction(p_account_id INT, p_type TEXT, p_amount REAL)\nLANGUAGE plpgsql AS $$\nBEGIN\n  INSERT INTO transactions (txn_id, account_id, txn_type, amount, txn_date, description)\n  SELECT COALESCE(MAX(txn_id), 0) + 1, p_account_id, p_type, p_amount, '2024-02-10', 'Manual entry'\n  FROM transactions;\nEND;\n$$;\n\nCALL add_transaction(101, 'credit', 100);\n\nSELECT COUNT(*) AS manual_entries FROM transactions WHERE description = 'Manual entry';",
+          "resetBefore": true,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 1 && Number(rows[0].manual_entries) === 1"
+          }
+        },
+        {
+          "id": "d26-c07",
+          "title": "Function or Procedure?",
+          "description": "Procedures in PostgreSQL 11 and later can run COMMIT and ROLLBACK inside their body, and functions cannot. Query pg_proc to confirm which of your two objects is a procedure: return proname and prokind for add_transaction and net_position, ordered by proname. In prokind, 'f' means function and 'p' means procedure. (Run the previous two challenges first so both objects exist.)",
+          "tier": "stretch",
+          "difficulty": "hard",
+          "hint": "SELECT proname, prokind FROM pg_proc WHERE proname IN ('add_transaction', 'net_position') ORDER BY proname.",
+          "solution": "SELECT proname, prokind\nFROM pg_proc\nWHERE proname IN ('add_transaction', 'net_position')\nORDER BY proname;",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 2 && rows[0].proname === 'add_transaction' && rows[0].prokind === 'p' && rows[1].prokind === 'f'"
+          }
+        },
+        {
+          "id": "d26-c08",
+          "title": "What Does This PostgreSQL Function Return?",
+          "description": "Consider this PostgreSQL function (read it carefully):\n\nCREATE FUNCTION net_position(p_account_id INT) RETURNS NUMERIC AS $$\n  SELECT SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END)\n  FROM transactions\n  WHERE account_id = p_account_id;\n$$ LANGUAGE SQL;\n\nWrite the equivalent SELECT query for account_id 102 that returns what net_position(102) would return. Name the result net_position.",
+          "tier": "stretch",
+          "difficulty": "hard",
+          "hint": "The function sums credits and subtracts debits. Write SELECT SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END) AS net_position FROM transactions WHERE account_id = 102.",
+          "solution": "SELECT\n  SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END) AS net_position\nFROM transactions\nWHERE account_id = 102;",
+          "resetBefore": false,
+          "validation": {
+            "type": "columns_match",
+            "expectedColumns": [
+              "net_position"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "day": 27,
+      "title": "Triggers",
+      "slug": "triggers",
+      "week": 4,
+      "weekLabel": "Advanced Analytics & Performance",
+      "type": "concept",
+      "youtubeId": null,
+      "githubPath": "day-27",
+      "seedSQL": "\nCREATE TABLE IF NOT EXISTS accounts (\n  account_id  INTEGER PRIMARY KEY,\n  owner_name  TEXT           NOT NULL,\n  balance     NUMERIC(12,2)  NOT NULL,\n  updated_at  TIMESTAMP      NOT NULL DEFAULT '2024-01-01 00:00:00'\n);\n\nCREATE TABLE IF NOT EXISTS account_audit (\n  audit_id     SERIAL PRIMARY KEY,\n  account_id   INTEGER       NOT NULL,\n  operation    TEXT          NOT NULL,\n  old_balance  NUMERIC(12,2),\n  new_balance  NUMERIC(12,2),\n  changed_at   TIMESTAMP     NOT NULL DEFAULT now()\n);\n\nINSERT INTO accounts (account_id, owner_name, balance) VALUES\n  (1, 'Amara Okafor',  1000.00),\n  (2, 'Ben Hughes',     250.50),\n  (3, 'Chloe Martin',  4200.00),\n  (4, 'Dev Patel',        0.00),\n  (5, 'Esi Mensah',     780.25);\n",
+      "tables": [
+        {
+          "name": "accounts",
+          "columns": [
+            {
+              "name": "account_id",
+              "type": "INTEGER",
+              "pk": true
+            },
+            {
+              "name": "owner_name",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "balance",
+              "type": "NUMERIC",
+              "pk": false
+            },
+            {
+              "name": "updated_at",
+              "type": "TIMESTAMP",
+              "pk": false
+            }
+          ],
+          "rowCount": 5
+        },
+        {
+          "name": "account_audit",
+          "columns": [
+            {
+              "name": "audit_id",
+              "type": "SERIAL",
+              "pk": true
+            },
+            {
+              "name": "account_id",
+              "type": "INTEGER",
+              "pk": false
+            },
+            {
+              "name": "operation",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "old_balance",
+              "type": "NUMERIC",
+              "pk": false
+            },
+            {
+              "name": "new_balance",
+              "type": "NUMERIC",
+              "pk": false
+            },
+            {
+              "name": "changed_at",
+              "type": "TIMESTAMP",
+              "pk": false
+            }
+          ],
+          "rowCount": 0
+        }
+      ],
+      "quickInsert": [
+        "CREATE FUNCTION",
+        "RETURNS trigger",
+        "CREATE TRIGGER",
+        "TG_OP"
+      ],
+      "pgNotes": null,
+      "challenges": [
+        {
+          "id": "d27-c01",
+          "title": "Write a Trigger Function",
+          "description": "A trigger needs two parts: a trigger function, then the CREATE TRIGGER that attaches it. Start with the function. Create a PL/pgSQL function called set_updated_at that takes no arguments, RETURNS trigger, sets NEW.updated_at to now(), and returns NEW. Then query pg_proc to confirm it: return proname and the return type as return_type (use prorettype::regtype::text) for set_updated_at.",
+          "tier": "starter",
+          "difficulty": "easy",
+          "hint": "CREATE OR REPLACE FUNCTION set_updated_at() RETURNS trigger LANGUAGE plpgsql AS $$ BEGIN ... RETURN NEW; END; $$; then SELECT from pg_proc WHERE proname = 'set_updated_at'.",
+          "solution": "CREATE OR REPLACE FUNCTION set_updated_at()\nRETURNS trigger\nLANGUAGE plpgsql AS $$\nBEGIN\n  NEW.updated_at := now();\n  RETURN NEW;\nEND;\n$$;\n\nSELECT proname, prorettype::regtype::text AS return_type\nFROM pg_proc\nWHERE proname = 'set_updated_at';",
+          "resetBefore": true,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 1 && rows[0].return_type === 'trigger'"
+          }
+        },
+        {
+          "id": "d27-c02",
+          "title": "Automatic updated_at",
+          "description": "Attach set_updated_at to the accounts table as a BEFORE UPDATE trigger that fires FOR EACH ROW, named trg_accounts_updated_at. Then add 100 to the balance of account 1 and select account_id, balance and updated_at for that account. The trigger should have moved updated_at away from 2024-01-01. (Create the set_updated_at function again first if you reset the day.)",
+          "tier": "starter",
+          "difficulty": "easy",
+          "hint": "CREATE OR REPLACE TRIGGER trg_accounts_updated_at BEFORE UPDATE ON accounts FOR EACH ROW EXECUTE FUNCTION set_updated_at(); The EXECUTE FUNCTION form needs PostgreSQL 11 or later.",
+          "solution": "CREATE OR REPLACE FUNCTION set_updated_at()\nRETURNS trigger\nLANGUAGE plpgsql AS $$\nBEGIN\n  NEW.updated_at := now();\n  RETURN NEW;\nEND;\n$$;\n\nCREATE OR REPLACE TRIGGER trg_accounts_updated_at\n  BEFORE UPDATE ON accounts\n  FOR EACH ROW\n  EXECUTE FUNCTION set_updated_at();\n\nUPDATE accounts SET balance = balance + 100 WHERE account_id = 1;\n\nSELECT account_id, balance, updated_at\nFROM accounts\nWHERE account_id = 1;",
+          "resetBefore": true,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 1 && Number(rows[0].balance) === 1100 && new Date(rows[0].updated_at).getFullYear() > 2024"
+          }
+        },
+        {
+          "id": "d27-c03",
+          "title": "Audit Log with OLD and NEW",
+          "description": "Build an audit trail. Create a trigger function log_balance_change that inserts a row into account_audit with the account_id, TG_OP as the operation, OLD.balance as old_balance and NEW.balance as new_balance. Attach it as an AFTER UPDATE OF balance trigger FOR EACH ROW named trg_accounts_audit. Then set the balance of account 2 to 300.00 and select operation, old_balance and new_balance from account_audit.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "An AFTER trigger's return value is ignored, but a row-level trigger function must still return something: RETURN NEW. On an UPDATE both OLD and NEW exist.",
+          "solution": "CREATE OR REPLACE FUNCTION log_balance_change()\nRETURNS trigger\nLANGUAGE plpgsql AS $$\nBEGIN\n  INSERT INTO account_audit (account_id, operation, old_balance, new_balance)\n  VALUES (NEW.account_id, TG_OP, OLD.balance, NEW.balance);\n  RETURN NEW;\nEND;\n$$;\n\nCREATE OR REPLACE TRIGGER trg_accounts_audit\n  AFTER UPDATE OF balance ON accounts\n  FOR EACH ROW\n  EXECUTE FUNCTION log_balance_change();\n\nUPDATE accounts SET balance = 300.00 WHERE account_id = 2;\n\nSELECT operation, old_balance, new_balance\nFROM account_audit;",
+          "resetBefore": true,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 1 && rows[0].operation === 'UPDATE' && Number(rows[0].old_balance) === 250.5 && Number(rows[0].new_balance) === 300"
+          }
+        },
+        {
+          "id": "d27-c04",
+          "title": "Cancel a Change with RETURN NULL",
+          "description": "In a BEFORE row-level trigger, returning NULL silently skips the operation for that row. Create a function block_negative_balance that returns NULL when NEW.balance < 0 and NEW otherwise, and attach it as a BEFORE INSERT trigger FOR EACH ROW named trg_block_negative. Then run these two inserts: (6, 'Fola Adeyemi', 500.00) and (7, 'Gus Bell', -50.00). Finish with a SELECT that returns the number of accounts as total_accounts. Account 7 should never have been inserted.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "IF NEW.balance < 0 THEN RETURN NULL; END IF; RETURN NEW; The insert for account 7 reports no error - it just does nothing.",
+          "solution": "CREATE OR REPLACE FUNCTION block_negative_balance()\nRETURNS trigger\nLANGUAGE plpgsql AS $$\nBEGIN\n  IF NEW.balance < 0 THEN\n    RETURN NULL;\n  END IF;\n  RETURN NEW;\nEND;\n$$;\n\nCREATE OR REPLACE TRIGGER trg_block_negative\n  BEFORE INSERT ON accounts\n  FOR EACH ROW\n  EXECUTE FUNCTION block_negative_balance();\n\nINSERT INTO accounts (account_id, owner_name, balance) VALUES (6, 'Fola Adeyemi', 500.00);\nINSERT INTO accounts (account_id, owner_name, balance) VALUES (7, 'Gus Bell', -50.00);\n\nSELECT COUNT(*) AS total_accounts FROM accounts;",
+          "resetBefore": true,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 1 && Number(rows[0].total_accounts) === 6"
+          }
+        },
+        {
+          "id": "d27-c05",
+          "title": "One Function for INSERT, UPDATE and DELETE",
+          "description": "Use TG_OP so a single trigger function handles all three operations. Create log_account_change that writes to account_audit: on INSERT, old_balance is NULL and new_balance is NEW.balance; on UPDATE, both are set; on DELETE, new_balance is NULL and old_balance is OLD.balance. Attach it as an AFTER INSERT OR UPDATE OR DELETE trigger FOR EACH ROW named trg_accounts_changes. Then insert account 8 ('Hana Sato', 100.00), update its balance to 150.00, and delete it. Select operation from account_audit ordered by audit_id.",
+          "tier": "stretch",
+          "difficulty": "hard",
+          "hint": "Branch with IF TG_OP = 'INSERT' ... ELSIF TG_OP = 'UPDATE' ... ELSE. Never read NEW in a DELETE branch or OLD in an INSERT branch. For an AFTER row trigger, RETURN NULL is fine.",
+          "solution": "CREATE OR REPLACE FUNCTION log_account_change()\nRETURNS trigger\nLANGUAGE plpgsql AS $$\nBEGIN\n  IF TG_OP = 'INSERT' THEN\n    INSERT INTO account_audit (account_id, operation, old_balance, new_balance)\n    VALUES (NEW.account_id, TG_OP, NULL, NEW.balance);\n  ELSIF TG_OP = 'UPDATE' THEN\n    INSERT INTO account_audit (account_id, operation, old_balance, new_balance)\n    VALUES (NEW.account_id, TG_OP, OLD.balance, NEW.balance);\n  ELSE\n    INSERT INTO account_audit (account_id, operation, old_balance, new_balance)\n    VALUES (OLD.account_id, TG_OP, OLD.balance, NULL);\n  END IF;\n  RETURN NULL;\nEND;\n$$;\n\nCREATE OR REPLACE TRIGGER trg_accounts_changes\n  AFTER INSERT OR UPDATE OR DELETE ON accounts\n  FOR EACH ROW\n  EXECUTE FUNCTION log_account_change();\n\nINSERT INTO accounts (account_id, owner_name, balance) VALUES (8, 'Hana Sato', 100.00);\nUPDATE accounts SET balance = 150.00 WHERE account_id = 8;\nDELETE FROM accounts WHERE account_id = 8;\n\nSELECT operation FROM account_audit ORDER BY audit_id;",
+          "resetBefore": true,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length === 3 && rows.map(r => r.operation).join(',') === 'INSERT,UPDATE,DELETE'"
+          }
+        }
+      ]
+    },
+    {
+      "day": 28,
+      "title": "EXPLAIN & Indexing",
+      "slug": "explain-and-indexing",
+      "week": 4,
+      "weekLabel": "Advanced Analytics & Performance",
+      "type": "concept",
+      "youtubeId": null,
+      "githubPath": "day-28",
+      "seedSQL": "CREATE TABLE IF NOT EXISTS large_logs (\n  log_id      INTEGER PRIMARY KEY,\n  event_type  TEXT    NOT NULL,\n  user_id     INTEGER NOT NULL,\n  event_date  TEXT    NOT NULL,\n  duration_ms INTEGER NOT NULL,\n  ip_address  TEXT    NOT NULL,\n  status_code INTEGER NOT NULL\n);\n\nINSERT INTO large_logs VALUES\n  (1,   'page_view',    1001, '2024-01-01', 142,  '192.168.1.10',  200),\n  (2,   'click',        1002, '2024-01-01', 23,   '192.168.1.11',  200),\n  (3,   'form_submit',  1001, '2024-01-01', 880,  '192.168.1.10',  201),\n  (4,   'page_view',    1003, '2024-01-02', 110,  '10.0.0.1',      200),\n  (5,   'api_call',     1004, '2024-01-02', 1450, '10.0.0.2',      500),\n  (6,   'page_view',    1005, '2024-01-02', 95,   '10.0.0.3',      200),\n  (7,   'click',        1001, '2024-01-03', 18,   '192.168.1.10',  200),\n  (8,   'api_call',     1002, '2024-01-03', 2100, '192.168.1.11',  200),\n  (9,   'page_view',    1006, '2024-01-03', 130,  '10.0.1.1',      200),\n  (10,  'error',        1004, '2024-01-03', 5500, '10.0.0.2',      503),\n  (11,  'page_view',    1007, '2024-01-04', 105,  '10.0.1.2',      200),\n  (12,  'click',        1003, '2024-01-04', 30,   '10.0.0.1',      200),\n  (13,  'form_submit',  1005, '2024-01-04', 750,  '10.0.0.3',      201),\n  (14,  'api_call',     1008, '2024-01-04', 980,  '172.16.0.1',    200),\n  (15,  'error',        1001, '2024-01-05', 4200, '192.168.1.10',  500),\n  (16,  'page_view',    1009, '2024-01-05', 88,   '172.16.0.2',    200),\n  (17,  'click',        1010, '2024-01-05', 15,   '172.16.0.3',    200),\n  (18,  'api_call',     1001, '2024-01-05', 1800, '192.168.1.10',  200),\n  (19,  'page_view',    1002, '2024-01-06', 120,  '192.168.1.11',  200),\n  (20,  'form_submit',  1006, '2024-01-06', 640,  '10.0.1.1',      201),\n  (21,  'page_view',    1003, '2024-01-06', 99,   '10.0.0.1',      200),\n  (22,  'click',        1007, '2024-01-07', 25,   '10.0.1.2',      200),\n  (23,  'api_call',     1005, '2024-01-07', 3200, '10.0.0.3',      500),\n  (24,  'page_view',    1008, '2024-01-07', 115,  '172.16.0.1',    200),\n  (25,  'error',        1009, '2024-01-07', 8100, '172.16.0.2',    503),\n  (26,  'page_view',    1010, '2024-01-08', 90,   '172.16.0.3',    200),\n  (27,  'click',        1001, '2024-01-08', 22,   '192.168.1.10',  200),\n  (28,  'form_submit',  1002, '2024-01-08', 560,  '192.168.1.11',  201),\n  (29,  'api_call',     1003, '2024-01-08', 1200, '10.0.0.1',      200),\n  (30,  'page_view',    1004, '2024-01-08', 140,  '10.0.0.2',      200),\n  (31,  'error',        1005, '2024-01-09', 6700, '10.0.0.3',      500),\n  (32,  'page_view',    1006, '2024-01-09', 78,   '10.0.1.1',      200),\n  (33,  'click',        1007, '2024-01-09', 19,   '10.0.1.2',      200),\n  (34,  'api_call',     1008, '2024-01-09', 2400, '172.16.0.1',    200),\n  (35,  'page_view',    1009, '2024-01-09', 103,  '172.16.0.2',    200),\n  (36,  'form_submit',  1010, '2024-01-10', 820,  '172.16.0.3',    201),\n  (37,  'page_view',    1001, '2024-01-10', 135,  '192.168.1.10',  200),\n  (38,  'click',        1002, '2024-01-10', 28,   '192.168.1.11',  200),\n  (39,  'api_call',     1003, '2024-01-10', 910,  '10.0.0.1',      200),\n  (40,  'error',        1004, '2024-01-10', 7300, '10.0.0.2',      503),\n  (41,  'page_view',    1005, '2024-01-11', 88,   '10.0.0.3',      200),\n  (42,  'click',        1006, '2024-01-11', 14,   '10.0.1.1',      200),\n  (43,  'form_submit',  1007, '2024-01-11', 490,  '10.0.1.2',      201),\n  (44,  'api_call',     1008, '2024-01-11', 1650, '172.16.0.1',    200),\n  (45,  'page_view',    1009, '2024-01-11', 92,   '172.16.0.2',    200),\n  (46,  'error',        1010, '2024-01-12', 9200, '172.16.0.3',    500),\n  (47,  'page_view',    1001, '2024-01-12', 118,  '192.168.1.10',  200),\n  (48,  'click',        1002, '2024-01-12', 31,   '192.168.1.11',  200),\n  (49,  'api_call',     1003, '2024-01-12', 1100, '10.0.0.1',      200),\n  (50,  'form_submit',  1004, '2024-01-12', 700,  '10.0.0.2',      201),\n  (51,  'page_view',    1005, '2024-01-13', 97,   '10.0.0.3',      200),\n  (52,  'click',        1006, '2024-01-13', 21,   '10.0.1.1',      200),\n  (53,  'api_call',     1007, '2024-01-13', 2750, '10.0.1.2',      500),\n  (54,  'page_view',    1008, '2024-01-13', 111,  '172.16.0.1',    200),\n  (55,  'error',        1009, '2024-01-13', 5100, '172.16.0.2',    503),\n  (56,  'page_view',    1010, '2024-01-14', 86,   '172.16.0.3',    200),\n  (57,  'click',        1001, '2024-01-14', 17,   '192.168.1.10',  200),\n  (58,  'form_submit',  1002, '2024-01-14', 610,  '192.168.1.11',  201),\n  (59,  'api_call',     1003, '2024-01-14', 830,  '10.0.0.1',      200),\n  (60,  'page_view',    1004, '2024-01-14', 145,  '10.0.0.2',      200),\n  (61,  'error',        1005, '2024-01-15', 7800, '10.0.0.3',      500),\n  (62,  'page_view',    1006, '2024-01-15', 73,   '10.0.1.1',      200),\n  (63,  'click',        1007, '2024-01-15', 26,   '10.0.1.2',      200),\n  (64,  'api_call',     1008, '2024-01-15', 1950, '172.16.0.1',    200),\n  (65,  'page_view',    1009, '2024-01-15', 109,  '172.16.0.2',    200),\n  (66,  'form_submit',  1010, '2024-01-15', 540,  '172.16.0.3',    201),\n  (67,  'page_view',    1001, '2024-01-16', 128,  '192.168.1.10',  200),\n  (68,  'click',        1002, '2024-01-16', 24,   '192.168.1.11',  200),\n  (69,  'api_call',     1003, '2024-01-16', 1350, '10.0.0.1',      200),\n  (70,  'error',        1004, '2024-01-16', 6200, '10.0.0.2',      503),\n  (71,  'page_view',    1005, '2024-01-17', 81,   '10.0.0.3',      200),\n  (72,  'click',        1006, '2024-01-17', 20,   '10.0.1.1',      200),\n  (73,  'form_submit',  1007, '2024-01-17', 680,  '10.0.1.2',      201),\n  (74,  'api_call',     1008, '2024-01-17', 2200, '172.16.0.1',    200),\n  (75,  'page_view',    1009, '2024-01-17', 96,   '172.16.0.2',    200),\n  (76,  'error',        1010, '2024-01-17', 8800, '172.16.0.3',    500),\n  (77,  'page_view',    1001, '2024-01-18', 137,  '192.168.1.10',  200),\n  (78,  'click',        1002, '2024-01-18', 29,   '192.168.1.11',  200),\n  (79,  'api_call',     1003, '2024-01-18', 760,  '10.0.0.1',      200),\n  (80,  'form_submit',  1004, '2024-01-18', 920,  '10.0.0.2',      201),\n  (81,  'page_view',    1005, '2024-01-19', 84,   '10.0.0.3',      200),\n  (82,  'click',        1006, '2024-01-19', 16,   '10.0.1.1',      200),\n  (83,  'api_call',     1007, '2024-01-19', 3100, '10.0.1.2',      500),\n  (84,  'page_view',    1008, '2024-01-19', 122,  '172.16.0.1',    200),\n  (85,  'error',        1009, '2024-01-19', 4900, '172.16.0.2',    503),\n  (86,  'page_view',    1010, '2024-01-20', 90,   '172.16.0.3',    200),\n  (87,  'click',        1001, '2024-01-20', 13,   '192.168.1.10',  200),\n  (88,  'form_submit',  1002, '2024-01-20', 580,  '192.168.1.11',  201),\n  (89,  'api_call',     1003, '2024-01-20', 1070, '10.0.0.1',      200),\n  (90,  'page_view',    1004, '2024-01-20', 148,  '10.0.0.2',      200),\n  (91,  'error',        1005, '2024-01-21', 7100, '10.0.0.3',      500),\n  (92,  'page_view',    1006, '2024-01-21', 76,   '10.0.1.1',      200),\n  (93,  'click',        1007, '2024-01-21', 27,   '10.0.1.2',      200),\n  (94,  'api_call',     1008, '2024-01-21', 1780, '172.16.0.1',    200),\n  (95,  'page_view',    1009, '2024-01-21', 107,  '172.16.0.2',    200),\n  (96,  'form_submit',  1010, '2024-01-21', 460,  '172.16.0.3',    201),\n  (97,  'page_view',    1001, '2024-01-22', 131,  '192.168.1.10',  200),\n  (98,  'click',        1002, '2024-01-22', 23,   '192.168.1.11',  200),\n  (99,  'api_call',     1003, '2024-01-22', 1420, '10.0.0.1',      200),\n  (100, 'error',        1004, '2024-01-22', 6600, '10.0.0.2',      503),\n  (101, 'page_view',    1005, '2024-01-23', 85,   '10.0.0.3',      200),\n  (102, 'click',        1006, '2024-01-23', 18,   '10.0.1.1',      200),\n  (103, 'api_call',     1007, '2024-01-23', 2950, '10.0.1.2',      500),\n  (104, 'page_view',    1008, '2024-01-23', 113,  '172.16.0.1',    200),\n  (105, 'error',        1009, '2024-01-23', 5400, '172.16.0.2',    503),\n  (106, 'page_view',    1010, '2024-01-24', 89,   '172.16.0.3',    200),\n  (107, 'click',        1001, '2024-01-24', 20,   '192.168.1.10',  200),\n  (108, 'form_submit',  1002, '2024-01-24', 630,  '192.168.1.11',  201),\n  (109, 'api_call',     1003, '2024-01-24', 1180, '10.0.0.1',      200),\n  (110, 'page_view',    1004, '2024-01-24', 143,  '10.0.0.2',      200),\n  (111, 'error',        1005, '2024-01-25', 7500, '10.0.0.3',      500),\n  (112, 'page_view',    1006, '2024-01-25', 80,   '10.0.1.1',      200),\n  (113, 'click',        1007, '2024-01-25', 25,   '10.0.1.2',      200),\n  (114, 'api_call',     1008, '2024-01-25', 2050, '172.16.0.1',    200),\n  (115, 'page_view',    1009, '2024-01-25', 101,  '172.16.0.2',    200),\n  (116, 'form_submit',  1010, '2024-01-25', 510,  '172.16.0.3',    201),\n  (117, 'page_view',    1001, '2024-01-26', 126,  '192.168.1.10',  200),\n  (118, 'click',        1002, '2024-01-26', 22,   '192.168.1.11',  200),\n  (119, 'api_call',     1003, '2024-01-26', 990,  '10.0.0.1',      200),\n  (120, 'error',        1004, '2024-01-26', 8400, '10.0.0.2',      503),\n  (121, 'page_view',    1005, '2024-01-27', 82,   '10.0.0.3',      200),\n  (122, 'click',        1006, '2024-01-27', 19,   '10.0.1.1',      200),\n  (123, 'api_call',     1007, '2024-01-27', 2680, '10.0.1.2',      500),\n  (124, 'page_view',    1008, '2024-01-27', 116,  '172.16.0.1',    200),\n  (125, 'error',        1009, '2024-01-27', 5700, '172.16.0.2',    503),\n  (126, 'page_view',    1010, '2024-01-28', 93,   '172.16.0.3',    200),\n  (127, 'click',        1001, '2024-01-28', 16,   '192.168.1.10',  200),\n  (128, 'form_submit',  1002, '2024-01-28', 595,  '192.168.1.11',  201),\n  (129, 'api_call',     1003, '2024-01-28', 1040, '10.0.0.1',      200),\n  (130, 'page_view',    1004, '2024-01-28', 138,  '10.0.0.2',      200),\n  (131, 'error',        1005, '2024-01-29', 6900, '10.0.0.3',      500),\n  (132, 'page_view',    1006, '2024-01-29', 77,   '10.0.1.1',      200),\n  (133, 'click',        1007, '2024-01-29', 24,   '10.0.1.2',      200),\n  (134, 'api_call',     1008, '2024-01-29', 1860, '172.16.0.1',    200),\n  (135, 'page_view',    1009, '2024-01-29', 104,  '172.16.0.2',    200),\n  (136, 'form_submit',  1010, '2024-01-29', 475,  '172.16.0.3',    201),\n  (137, 'page_view',    1001, '2024-01-30', 133,  '192.168.1.10',  200),\n  (138, 'click',        1002, '2024-01-30', 28,   '192.168.1.11',  200),\n  (139, 'api_call',     1003, '2024-01-30', 1310, '10.0.0.1',      200),\n  (140, 'error',        1004, '2024-01-30', 7700, '10.0.0.2',      503),\n  (141, 'page_view',    1005, '2024-01-31', 87,   '10.0.0.3',      200),\n  (142, 'click',        1006, '2024-01-31', 21,   '10.0.1.1',      200),\n  (143, 'api_call',     1007, '2024-01-31', 2830, '10.0.1.2',      500),\n  (144, 'page_view',    1008, '2024-01-31', 119,  '172.16.0.1',    200),\n  (145, 'error',        1009, '2024-01-31', 5300, '172.16.0.2',    503),\n  (146, 'page_view',    1010, '2024-02-01', 91,   '172.16.0.3',    200),\n  (147, 'click',        1001, '2024-02-01', 17,   '192.168.1.10',  200),\n  (148, 'form_submit',  1002, '2024-02-01', 615,  '192.168.1.11',  201),\n  (149, 'api_call',     1003, '2024-02-01', 1090, '10.0.0.1',      200),\n  (150, 'page_view',    1004, '2024-02-01', 141,  '10.0.0.2',      200),\n  (151, 'error',        1005, '2024-02-02', 7200, '10.0.0.3',      500),\n  (152, 'page_view',    1006, '2024-02-02', 79,   '10.0.1.1',      200),\n  (153, 'click',        1007, '2024-02-02', 26,   '10.0.1.2',      200),\n  (154, 'api_call',     1008, '2024-02-02', 1970, '172.16.0.1',    200),\n  (155, 'page_view',    1009, '2024-02-02', 106,  '172.16.0.2',    200),\n  (156, 'form_submit',  1010, '2024-02-02', 525,  '172.16.0.3',    201),\n  (157, 'page_view',    1001, '2024-02-03', 129,  '192.168.1.10',  200),\n  (158, 'click',        1002, '2024-02-03', 23,   '192.168.1.11',  200),\n  (159, 'api_call',     1003, '2024-02-03', 870,  '10.0.0.1',      200),\n  (160, 'error',        1004, '2024-02-03', 8600, '10.0.0.2',      503),\n  (161, 'page_view',    1005, '2024-02-04', 83,   '10.0.0.3',      200),\n  (162, 'click',        1006, '2024-02-04', 18,   '10.0.1.1',      200),\n  (163, 'api_call',     1007, '2024-02-04', 2550, '10.0.1.2',      500),\n  (164, 'page_view',    1008, '2024-02-04', 114,  '172.16.0.1',    200),\n  (165, 'error',        1009, '2024-02-04', 5600, '172.16.0.2',    503),\n  (166, 'page_view',    1010, '2024-02-05', 88,   '172.16.0.3',    200),\n  (167, 'click',        1001, '2024-02-05', 15,   '192.168.1.10',  200),\n  (168, 'form_submit',  1002, '2024-02-05', 645,  '192.168.1.11',  201),\n  (169, 'api_call',     1003, '2024-02-05', 1230, '10.0.0.1',      200),\n  (170, 'page_view',    1004, '2024-02-05', 144,  '10.0.0.2',      200),\n  (171, 'error',        1005, '2024-02-06', 7400, '10.0.0.3',      500),\n  (172, 'page_view',    1006, '2024-02-06', 75,   '10.0.1.1',      200),\n  (173, 'click',        1007, '2024-02-06', 28,   '10.0.1.2',      200),\n  (174, 'api_call',     1008, '2024-02-06', 2120, '172.16.0.1',    200),\n  (175, 'page_view',    1009, '2024-02-06', 102,  '172.16.0.2',    200),\n  (176, 'form_submit',  1010, '2024-02-06', 490,  '172.16.0.3',    201),\n  (177, 'page_view',    1001, '2024-02-07', 134,  '192.168.1.10',  200),\n  (178, 'click',        1002, '2024-02-07', 22,   '192.168.1.11',  200),\n  (179, 'api_call',     1003, '2024-02-07', 1380, '10.0.0.1',      200),\n  (180, 'error',        1004, '2024-02-07', 6400, '10.0.0.2',      503),\n  (181, 'page_view',    1005, '2024-02-08', 86,   '10.0.0.3',      200),\n  (182, 'click',        1006, '2024-02-08', 20,   '10.0.1.1',      200),\n  (183, 'api_call',     1007, '2024-02-08', 2720, '10.0.1.2',      500),\n  (184, 'page_view',    1008, '2024-02-08', 117,  '172.16.0.1',    200),\n  (185, 'error',        1009, '2024-02-08', 5000, '172.16.0.2',    503),\n  (186, 'page_view',    1010, '2024-02-09', 92,   '172.16.0.3',    200),\n  (187, 'click',        1001, '2024-02-09', 14,   '192.168.1.10',  200),\n  (188, 'form_submit',  1002, '2024-02-09', 570,  '192.168.1.11',  201),\n  (189, 'api_call',     1003, '2024-02-09', 950,  '10.0.0.1',      200),\n  (190, 'page_view',    1004, '2024-02-09', 139,  '10.0.0.2',      200),\n  (191, 'error',        1005, '2024-02-10', 7000, '10.0.0.3',      500),\n  (192, 'page_view',    1006, '2024-02-10', 78,   '10.0.1.1',      200),\n  (193, 'click',        1007, '2024-02-10', 27,   '10.0.1.2',      200),\n  (194, 'api_call',     1008, '2024-02-10', 1840, '172.16.0.1',    200),\n  (195, 'page_view',    1009, '2024-02-10', 105,  '172.16.0.2',    200),\n  (196, 'form_submit',  1010, '2024-02-10', 545,  '172.16.0.3',    201),\n  (197, 'page_view',    1001, '2024-02-11', 127,  '192.168.1.10',  200),\n  (198, 'click',        1002, '2024-02-11', 24,   '192.168.1.11',  200),\n  (199, 'api_call',     1003, '2024-02-11', 1050, '10.0.0.1',      200),\n  (200, 'error',        1004, '2024-02-11', 8200, '10.0.0.2',      503);",
+      "tables": [
+        {
+          "name": "large_logs",
+          "columns": [
+            {
+              "name": "log_id",
+              "type": "INTEGER",
+              "pk": true
+            },
+            {
+              "name": "event_type",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "user_id",
+              "type": "INTEGER",
+              "pk": false
+            },
+            {
+              "name": "event_date",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "duration_ms",
+              "type": "INTEGER",
+              "pk": false
+            },
+            {
+              "name": "ip_address",
+              "type": "TEXT",
+              "pk": false
+            },
+            {
+              "name": "status_code",
+              "type": "INTEGER",
+              "pk": false
+            }
+          ],
+          "rowCount": 200
+        }
+      ],
+      "quickInsert": [
+        "EXPLAIN ANALYZE",
+        "CREATE INDEX",
+        "WHERE"
+      ],
+      "pgNotes": null,
+      "challenges": [
+        {
+          "id": "d28-c01",
+          "title": "Run EXPLAIN ANALYZE",
+          "description": "Use EXPLAIN ANALYZE to see how PostgreSQL executes a query that filters large_logs by event_type = 'error'. Run the EXPLAIN and observe whether it performs a full table scan.",
+          "tier": "starter",
+          "difficulty": "easy",
+          "hint": "Prefix your SELECT with EXPLAIN ANALYZE. The output shows the scan strategy PostgreSQL chooses.",
+          "solution": "EXPLAIN ANALYZE\nSELECT *\nFROM large_logs\nWHERE event_type = 'error';",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length > 0"
+          }
+        },
+        {
+          "id": "d28-c02",
+          "title": "Create an Index",
+          "description": "Create an index called idx_event_type on the large_logs table for the event_type column. Then run a SELECT to confirm logs with event_type = 'error' return results.",
+          "tier": "starter",
+          "difficulty": "easy",
+          "hint": "CREATE INDEX idx_event_type ON large_logs(event_type). Then SELECT to verify.",
+          "solution": "CREATE INDEX IF NOT EXISTS idx_event_type ON large_logs(event_type);\n\nSELECT log_id, event_type, event_date, duration_ms\nFROM large_logs\nWHERE event_type = 'error'\nORDER BY event_date\nLIMIT 10;",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length > 0 && rows.every(r => r.event_type === 'error')"
+          }
+        },
+        {
+          "id": "d28-c03",
+          "title": "Compare Before and After Index",
+          "description": "Run EXPLAIN ANALYZE for a query filtering by user_id = 1003 - first without any index, then create an index called idx_user_id on user_id, then run EXPLAIN ANALYZE again. For this challenge: just create the index and show the second EXPLAIN result.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "CREATE INDEX idx_user_id ON large_logs(user_id); then EXPLAIN ANALYZE SELECT * FROM large_logs WHERE user_id = 1003.",
+          "solution": "CREATE INDEX IF NOT EXISTS idx_user_id ON large_logs(user_id);\n\nEXPLAIN ANALYZE\nSELECT *\nFROM large_logs\nWHERE user_id = 1003;",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length > 0"
+          }
+        },
+        {
+          "id": "d28-c04",
+          "title": "Composite Index Scenario",
+          "description": "Queries frequently filter by both event_date and event_type together. Create a composite index called idx_date_event on large_logs for (event_date, event_type). Then run EXPLAIN ANALYZE on a query filtering WHERE event_date = '2024-01-10' AND event_type = 'click'.",
+          "tier": "core",
+          "difficulty": "medium",
+          "hint": "CREATE INDEX idx_date_event ON large_logs(event_date, event_type). The column order matters - the first column in the index is the leading column.",
+          "solution": "CREATE INDEX IF NOT EXISTS idx_date_event ON large_logs(event_date, event_type);\n\nEXPLAIN ANALYZE\nSELECT log_id, event_type, user_id, event_date, duration_ms\nFROM large_logs\nWHERE event_date = '2024-01-10'\n  AND event_type = 'click';",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length > 0"
+          }
+        },
+        {
+          "id": "d28-c05",
+          "title": "Find Slow Queries (Full Scans)",
+          "description": "Without any index on duration_ms, write a query that identifies the top 10 slowest log events (highest duration_ms). Return log_id, event_type, user_id, event_date, and duration_ms. Then prefix it with EXPLAIN ANALYZE to see that it must scan the full table.",
+          "tier": "stretch",
+          "difficulty": "hard",
+          "hint": "EXPLAIN ANALYZE SELECT ... FROM large_logs ORDER BY duration_ms DESC LIMIT 10. Without an index on duration_ms, PostgreSQL must scan every row.",
+          "solution": "EXPLAIN ANALYZE\nSELECT log_id, event_type, user_id, event_date, duration_ms\nFROM large_logs\nORDER BY duration_ms DESC\nLIMIT 10;",
+          "resetBefore": false,
+          "validation": {
+            "type": "custom",
+            "fn": "rows.length > 0"
+          }
+        },
+        {
+          "id": "d28-c06",
+          "title": "Index Strategy Decision",
+          "description": "You have three common query patterns on large_logs: (A) WHERE event_type = 'error', (B) WHERE event_date BETWEEN '2024-01-01' AND '2024-01-31', (C) WHERE user_id = 1005 AND status_code = 500. Create the most appropriate indexes for patterns B and C (pattern A already has idx_event_type). Name them idx_event_date and idx_user_status. Then SELECT COUNT(*) from large_logs where status_code = 500 and user_id = 1005 to verify idx_user_status works.",
+          "tier": "stretch",
+          "difficulty": "hard",
+          "hint": "For B: CREATE INDEX idx_event_date ON large_logs(event_date). For C: CREATE INDEX idx_user_status ON large_logs(user_id, status_code) - composite index on both filter columns.",
+          "solution": "CREATE INDEX IF NOT EXISTS idx_event_date ON large_logs(event_date);\nCREATE INDEX IF NOT EXISTS idx_user_status ON large_logs(user_id, status_code);\n\nSELECT COUNT(*) AS matching_logs\nFROM large_logs\nWHERE user_id = 1005\n  AND status_code = 500;",
+          "resetBefore": false,
+          "validation": {
+            "type": "columns_match",
+            "expectedColumns": [
+              "matching_logs"
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "day": 29,
+      "title": "Information Schema & Metadata",
+      "slug": "information-schema-and-metadata",
+      "week": 5,
+      "weekLabel": "Metadata & Capstone",
+      "type": "concept",
+      "youtubeId": null,
+      "githubPath": "day-29",
       "seedSQL": "CREATE TABLE IF NOT EXISTS customers (\n  customer_id   INTEGER PRIMARY KEY,\n  customer_name TEXT    NOT NULL,\n  email         TEXT    NOT NULL,\n  city          TEXT    NOT NULL,\n  signup_date   TEXT    NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS orders (\n  order_id      INTEGER PRIMARY KEY,\n  customer_id   INTEGER NOT NULL,\n  order_date    TEXT    NOT NULL,\n  total_amount  REAL    NOT NULL,\n  status        TEXT    NOT NULL,\n  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)\n);\n\nCREATE TABLE IF NOT EXISTS order_items (\n  item_id      INTEGER PRIMARY KEY,\n  order_id     INTEGER NOT NULL,\n  product_name TEXT    NOT NULL,\n  quantity     INTEGER NOT NULL,\n  unit_price   REAL    NOT NULL,\n  FOREIGN KEY (order_id) REFERENCES orders(order_id)\n);\n\nCREATE TABLE IF NOT EXISTS products (\n  product_id   INTEGER PRIMARY KEY,\n  product_name TEXT    NOT NULL,\n  category     TEXT    NOT NULL,\n  price        REAL    NOT NULL,\n  stock_qty    INTEGER NOT NULL\n);\n\nCREATE TABLE IF NOT EXISTS suppliers (\n  supplier_id   INTEGER PRIMARY KEY,\n  supplier_name TEXT    NOT NULL,\n  country       TEXT    NOT NULL,\n  contact_email TEXT    NOT NULL\n);\n\nINSERT INTO customers VALUES\n  (1, 'Alice Brown',    'alice@example.com',   'London',     '2022-03-10'),\n  (2, 'Ben Osei',       'ben@example.com',     'Manchester', '2022-07-22'),\n  (3, 'Clara Holt',     'clara@example.com',   'Bristol',    '2023-01-05'),\n  (4, 'Daniel Kim',     'daniel@example.com',  'Glasgow',    '2023-04-18'),\n  (5, 'Esi Mensah',     'esi@example.com',     'Cardiff',    '2021-11-30');\n\nINSERT INTO orders VALUES\n  (1, 1, '2024-01-05', 250.00, 'Completed'),\n  (2, 2, '2024-01-18',  85.50, 'Completed'),\n  (3, 3, '2024-01-22', 199.99, 'Completed');\n\nINSERT INTO order_items VALUES\n  (1, 1, 'Keyboard', 1, 120.00),\n  (2, 1, 'Mouse',    1,  45.00),\n  (3, 2, 'Webcam',   1,  85.50),\n  (4, 3, 'Headset',  1, 199.99);\n\nINSERT INTO products VALUES\n  (1, 'Keyboard',  'Peripherals', 120.00, 50),\n  (2, 'Mouse',     'Peripherals',  45.00, 80),\n  (3, 'Webcam',    'Peripherals',  85.50, 30),\n  (4, 'Headset',   'Audio',       199.99, 20),\n  (5, 'Monitor',   'Displays',    340.00, 15);\n\nINSERT INTO suppliers VALUES\n  (1, 'TechSource Ltd',   'UK',      'supply@techsource.co.uk'),\n  (2, 'Global Parts Inc', 'USA',     'info@globalparts.com'),\n  (3, 'Kemi Electronics', 'Nigeria', 'sales@kemi-elec.com');",
       "tables": [
         {
@@ -4937,7 +5434,7 @@ window.COURSE_DATA = {
       "pgNotes": null,
       "challenges": [
         {
-          "id": "d26-c01",
+          "id": "d29-c01",
           "title": "List All Tables",
           "description": "Query information_schema.tables to list all tables in the public schema. Return the table_name column only, ordered alphabetically.",
           "tier": "starter",
@@ -4951,7 +5448,7 @@ window.COURSE_DATA = {
           }
         },
         {
-          "id": "d26-c02",
+          "id": "d29-c02",
           "title": "Get Column Info for a Table",
           "description": "Query information_schema.columns to retrieve column details for the orders table. Return column_name, data_type, is_nullable, and column_default ordered by ordinal_position.",
           "tier": "starter",
@@ -4965,7 +5462,7 @@ window.COURSE_DATA = {
           }
         },
         {
-          "id": "d26-c03",
+          "id": "d29-c03",
           "title": "Find Primary Keys",
           "description": "Query information_schema.columns for the customers table. Use a subquery against pg_index to identify primary key columns. Return column_name and data_type.",
           "tier": "core",
@@ -4979,7 +5476,7 @@ window.COURSE_DATA = {
           }
         },
         {
-          "id": "d26-c04",
+          "id": "d29-c04",
           "title": "Count Tables in the Database",
           "description": "Query information_schema.tables to count all tables in the public schema. Return the result as table_count.",
           "tier": "core",
@@ -4993,7 +5490,7 @@ window.COURSE_DATA = {
           }
         },
         {
-          "id": "d26-c05",
+          "id": "d29-c05",
           "title": "Explore Foreign Keys",
           "description": "Query information_schema.table_constraints, key_column_usage, constraint_column_usage, and referential_constraints to find foreign key relationships on the order_items table.",
           "tier": "stretch",
@@ -5009,459 +5506,11 @@ window.COURSE_DATA = {
       ]
     },
     {
-      "day": 27,
-      "title": "CREATE FUNCTION (UDFs)",
-      "slug": "create-function-udfs",
-      "week": 4,
-      "weekLabel": "Advanced Analytics & Performance",
-      "type": "concept",
-      "youtubeId": null,
-      "githubPath": "day-27",
-      "seedSQL": "CREATE TABLE IF NOT EXISTS transactions (\n  txn_id      INTEGER PRIMARY KEY,\n  account_id  INTEGER NOT NULL,\n  txn_type    TEXT    NOT NULL,\n  amount      REAL    NOT NULL,\n  txn_date    TEXT    NOT NULL,\n  description TEXT    NOT NULL\n);\n\nINSERT INTO transactions VALUES\n  (1,  101, 'credit', 2500.00, '2024-01-01', 'Salary'),\n  (2,  101, 'debit',   120.00, '2024-01-03', 'Grocery shop'),\n  (3,  101, 'debit',    45.50, '2024-01-05', 'Transport card top-up'),\n  (4,  101, 'credit',  300.00, '2024-01-08', 'Freelance payment'),\n  (5,  101, 'debit',   850.00, '2024-01-10', 'Rent'),\n  (6,  102, 'credit', 3100.00, '2024-01-01', 'Salary'),\n  (7,  102, 'debit',   200.00, '2024-01-04', 'Utility bills'),\n  (8,  102, 'debit',    60.00, '2024-01-06', 'Streaming subscriptions'),\n  (9,  102, 'credit',  150.00, '2024-01-09', 'Refund'),\n  (10, 102, 'debit',   900.00, '2024-01-11', 'Rent'),\n  (11, 103, 'credit', 1800.00, '2024-01-01', 'Salary'),\n  (12, 103, 'debit',    80.00, '2024-01-02', 'Coffee and lunch'),\n  (13, 103, 'debit',   250.00, '2024-01-07', 'Online shopping'),\n  (14, 103, 'credit',  500.00, '2024-01-10', 'Bonus'),\n  (15, 103, 'debit',   600.00, '2024-01-12', 'Rent'),\n  (16, 101, 'debit',    30.00, '2024-01-15', 'Mobile phone bill'),\n  (17, 101, 'credit', 2500.00, '2024-02-01', 'Salary'),\n  (18, 101, 'debit',   135.00, '2024-02-04', 'Grocery shop'),\n  (19, 102, 'debit',    75.00, '2024-02-03', 'Dining out'),\n  (20, 102, 'credit', 3100.00, '2024-02-01', 'Salary');",
-      "tables": [
-        {
-          "name": "transactions",
-          "columns": [
-            {
-              "name": "txn_id",
-              "type": "INTEGER",
-              "pk": true
-            },
-            {
-              "name": "account_id",
-              "type": "INTEGER",
-              "pk": false
-            },
-            {
-              "name": "txn_type",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "amount",
-              "type": "REAL",
-              "pk": false
-            },
-            {
-              "name": "txn_date",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "description",
-              "type": "TEXT",
-              "pk": false
-            }
-          ],
-          "rowCount": 20
-        }
-      ],
-      "quickInsert": [
-        "SELECT",
-        "CASE WHEN",
-        "ROUND",
-        "ABS"
-      ],
-      "pgNotes": null,
-      "challenges": [
-        {
-          "id": "d27-c01",
-          "title": "Encapsulate Classification Logic",
-          "description": "A UDF called classify_transaction would accept txn_type and amount and return a category. Write that logic as a CASE expression in a SELECT. For each transaction return txn_id, txn_type, amount, and a category column: 'Large Credit' (credit >= 1000), 'Small Credit' (credit < 1000), 'Large Debit' (debit >= 500), 'Small Debit' (debit < 500).",
-          "tier": "starter",
-          "difficulty": "easy",
-          "hint": "Use a nested CASE: first check txn_type, then check amount thresholds within each branch.",
-          "solution": "SELECT\n  txn_id,\n  txn_type,\n  amount,\n  CASE\n    WHEN txn_type = 'credit' AND amount >= 1000 THEN 'Large Credit'\n    WHEN txn_type = 'credit' AND amount <  1000 THEN 'Small Credit'\n    WHEN txn_type = 'debit'  AND amount >= 500  THEN 'Large Debit'\n    WHEN txn_type = 'debit'  AND amount <  500  THEN 'Small Debit'\n  END AS category\nFROM transactions\nORDER BY txn_id;",
-          "resetBefore": false,
-          "validation": {
-            "type": "columns_match",
-            "expectedColumns": [
-              "txn_id",
-              "txn_type",
-              "amount",
-              "category"
-            ]
-          }
-        },
-        {
-          "id": "d27-c02",
-          "title": "Running Balance",
-          "description": "Calculate the running account balance for account_id 101. Credits add to the balance; debits subtract. Return txn_id, txn_date, description, amount, txn_type, and running_balance ordered by txn_date, txn_id.",
-          "tier": "starter",
-          "difficulty": "easy",
-          "hint": "Use SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END) OVER (ORDER BY txn_date, txn_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW).",
-          "solution": "SELECT\n  txn_id,\n  txn_date,\n  description,\n  amount,\n  txn_type,\n  SUM(\n    CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END\n  ) OVER (ORDER BY txn_date, txn_id ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW) AS running_balance\nFROM transactions\nWHERE account_id = 101\nORDER BY txn_date, txn_id;",
-          "resetBefore": false,
-          "validation": {
-            "type": "columns_match",
-            "expectedColumns": [
-              "txn_id",
-              "txn_date",
-              "description",
-              "amount",
-              "txn_type",
-              "running_balance"
-            ]
-          }
-        },
-        {
-          "id": "d27-c03",
-          "title": "Tax Calculation Expression",
-          "description": "A UDF called calculate_tax would apply a 20% tax rate to credits only. Write this as a SELECT expression. Return txn_id, account_id, amount, txn_type, and tax_amount (0 for debits, ROUND((amount * 0.20)::numeric, 2) for credits). Order by account_id, txn_date.",
-          "tier": "core",
-          "difficulty": "medium",
-          "hint": "Use CASE WHEN txn_type = 'credit' THEN ROUND((amount * 0.20)::numeric, 2) ELSE 0 END AS tax_amount.",
-          "solution": "SELECT\n  txn_id,\n  account_id,\n  amount,\n  txn_type,\n  CASE\n    WHEN txn_type = 'credit' THEN ROUND((amount * 0.20)::numeric, 2)\n    ELSE 0\n  END AS tax_amount\nFROM transactions\nORDER BY account_id, txn_date;",
-          "resetBefore": false,
-          "validation": {
-            "type": "columns_match",
-            "expectedColumns": [
-              "txn_id",
-              "account_id",
-              "amount",
-              "txn_type",
-              "tax_amount"
-            ]
-          }
-        },
-        {
-          "id": "d27-c04",
-          "title": "Spend Categorisation by Description",
-          "description": "Write a query that categorises each debit transaction by its description keyword. Return txn_id, description, amount, and spend_category: 'Housing' if description contains 'Rent', 'Food' if it contains 'Grocery' or 'lunch' or 'Dining', 'Transport' if it contains 'Transport', 'Bills' if it contains 'bill' or 'subscriptions', 'Other' for anything else. Only include debit transactions.",
-          "tier": "core",
-          "difficulty": "medium",
-          "hint": "Use CASE with LIKE patterns: WHEN description LIKE '%Rent%' THEN 'Housing'. Order matters - put the most specific checks first.",
-          "solution": "SELECT\n  txn_id,\n  description,\n  amount,\n  CASE\n    WHEN description LIKE '%Rent%'           THEN 'Housing'\n    WHEN description LIKE '%Grocery%'\n      OR description LIKE '%lunch%'\n      OR description LIKE '%Dining%'         THEN 'Food'\n    WHEN description LIKE '%Transport%'      THEN 'Transport'\n    WHEN description LIKE '%bill%'\n      OR description LIKE '%subscriptions%'  THEN 'Bills'\n    ELSE 'Other'\n  END AS spend_category\nFROM transactions\nWHERE txn_type = 'debit'\nORDER BY txn_id;",
-          "resetBefore": false,
-          "validation": {
-            "type": "columns_match",
-            "expectedColumns": [
-              "txn_id",
-              "description",
-              "amount",
-              "spend_category"
-            ]
-          }
-        },
-        {
-          "id": "d27-c05",
-          "title": "What Does This PostgreSQL Function Return?",
-          "description": "Consider this PostgreSQL function (read it carefully):\n\nCREATE FUNCTION net_position(p_account_id INT) RETURNS NUMERIC AS $$\n  SELECT SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END)\n  FROM transactions\n  WHERE account_id = p_account_id;\n$$ LANGUAGE SQL;\n\nWrite the equivalent SELECT query for account_id 102 that returns what net_position(102) would return. Name the result net_position.",
-          "tier": "stretch",
-          "difficulty": "hard",
-          "hint": "The function sums credits and subtracts debits. Write SELECT SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END) AS net_position FROM transactions WHERE account_id = 102.",
-          "solution": "SELECT\n  SUM(CASE WHEN txn_type = 'credit' THEN amount ELSE -amount END) AS net_position\nFROM transactions\nWHERE account_id = 102;",
-          "resetBefore": false,
-          "validation": {
-            "type": "columns_match",
-            "expectedColumns": [
-              "net_position"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "day": 28,
-      "title": "EXPLAIN & Indexing",
-      "slug": "explain-and-indexing",
-      "week": 4,
-      "weekLabel": "Advanced Analytics & Performance",
-      "type": "concept",
-      "youtubeId": null,
-      "githubPath": "day-28",
-      "seedSQL": "CREATE TABLE IF NOT EXISTS large_logs (\n  log_id      INTEGER PRIMARY KEY,\n  event_type  TEXT    NOT NULL,\n  user_id     INTEGER NOT NULL,\n  event_date  TEXT    NOT NULL,\n  duration_ms INTEGER NOT NULL,\n  ip_address  TEXT    NOT NULL,\n  status_code INTEGER NOT NULL\n);\n\nINSERT INTO large_logs VALUES\n  (1,   'page_view',    1001, '2024-01-01', 142,  '192.168.1.10',  200),\n  (2,   'click',        1002, '2024-01-01', 23,   '192.168.1.11',  200),\n  (3,   'form_submit',  1001, '2024-01-01', 880,  '192.168.1.10',  201),\n  (4,   'page_view',    1003, '2024-01-02', 110,  '10.0.0.1',      200),\n  (5,   'api_call',     1004, '2024-01-02', 1450, '10.0.0.2',      500),\n  (6,   'page_view',    1005, '2024-01-02', 95,   '10.0.0.3',      200),\n  (7,   'click',        1001, '2024-01-03', 18,   '192.168.1.10',  200),\n  (8,   'api_call',     1002, '2024-01-03', 2100, '192.168.1.11',  200),\n  (9,   'page_view',    1006, '2024-01-03', 130,  '10.0.1.1',      200),\n  (10,  'error',        1004, '2024-01-03', 5500, '10.0.0.2',      503),\n  (11,  'page_view',    1007, '2024-01-04', 105,  '10.0.1.2',      200),\n  (12,  'click',        1003, '2024-01-04', 30,   '10.0.0.1',      200),\n  (13,  'form_submit',  1005, '2024-01-04', 750,  '10.0.0.3',      201),\n  (14,  'api_call',     1008, '2024-01-04', 980,  '172.16.0.1',    200),\n  (15,  'error',        1001, '2024-01-05', 4200, '192.168.1.10',  500),\n  (16,  'page_view',    1009, '2024-01-05', 88,   '172.16.0.2',    200),\n  (17,  'click',        1010, '2024-01-05', 15,   '172.16.0.3',    200),\n  (18,  'api_call',     1001, '2024-01-05', 1800, '192.168.1.10',  200),\n  (19,  'page_view',    1002, '2024-01-06', 120,  '192.168.1.11',  200),\n  (20,  'form_submit',  1006, '2024-01-06', 640,  '10.0.1.1',      201),\n  (21,  'page_view',    1003, '2024-01-06', 99,   '10.0.0.1',      200),\n  (22,  'click',        1007, '2024-01-07', 25,   '10.0.1.2',      200),\n  (23,  'api_call',     1005, '2024-01-07', 3200, '10.0.0.3',      500),\n  (24,  'page_view',    1008, '2024-01-07', 115,  '172.16.0.1',    200),\n  (25,  'error',        1009, '2024-01-07', 8100, '172.16.0.2',    503),\n  (26,  'page_view',    1010, '2024-01-08', 90,   '172.16.0.3',    200),\n  (27,  'click',        1001, '2024-01-08', 22,   '192.168.1.10',  200),\n  (28,  'form_submit',  1002, '2024-01-08', 560,  '192.168.1.11',  201),\n  (29,  'api_call',     1003, '2024-01-08', 1200, '10.0.0.1',      200),\n  (30,  'page_view',    1004, '2024-01-08', 140,  '10.0.0.2',      200),\n  (31,  'error',        1005, '2024-01-09', 6700, '10.0.0.3',      500),\n  (32,  'page_view',    1006, '2024-01-09', 78,   '10.0.1.1',      200),\n  (33,  'click',        1007, '2024-01-09', 19,   '10.0.1.2',      200),\n  (34,  'api_call',     1008, '2024-01-09', 2400, '172.16.0.1',    200),\n  (35,  'page_view',    1009, '2024-01-09', 103,  '172.16.0.2',    200),\n  (36,  'form_submit',  1010, '2024-01-10', 820,  '172.16.0.3',    201),\n  (37,  'page_view',    1001, '2024-01-10', 135,  '192.168.1.10',  200),\n  (38,  'click',        1002, '2024-01-10', 28,   '192.168.1.11',  200),\n  (39,  'api_call',     1003, '2024-01-10', 910,  '10.0.0.1',      200),\n  (40,  'error',        1004, '2024-01-10', 7300, '10.0.0.2',      503),\n  (41,  'page_view',    1005, '2024-01-11', 88,   '10.0.0.3',      200),\n  (42,  'click',        1006, '2024-01-11', 14,   '10.0.1.1',      200),\n  (43,  'form_submit',  1007, '2024-01-11', 490,  '10.0.1.2',      201),\n  (44,  'api_call',     1008, '2024-01-11', 1650, '172.16.0.1',    200),\n  (45,  'page_view',    1009, '2024-01-11', 92,   '172.16.0.2',    200),\n  (46,  'error',        1010, '2024-01-12', 9200, '172.16.0.3',    500),\n  (47,  'page_view',    1001, '2024-01-12', 118,  '192.168.1.10',  200),\n  (48,  'click',        1002, '2024-01-12', 31,   '192.168.1.11',  200),\n  (49,  'api_call',     1003, '2024-01-12', 1100, '10.0.0.1',      200),\n  (50,  'form_submit',  1004, '2024-01-12', 700,  '10.0.0.2',      201),\n  (51,  'page_view',    1005, '2024-01-13', 97,   '10.0.0.3',      200),\n  (52,  'click',        1006, '2024-01-13', 21,   '10.0.1.1',      200),\n  (53,  'api_call',     1007, '2024-01-13', 2750, '10.0.1.2',      500),\n  (54,  'page_view',    1008, '2024-01-13', 111,  '172.16.0.1',    200),\n  (55,  'error',        1009, '2024-01-13', 5100, '172.16.0.2',    503),\n  (56,  'page_view',    1010, '2024-01-14', 86,   '172.16.0.3',    200),\n  (57,  'click',        1001, '2024-01-14', 17,   '192.168.1.10',  200),\n  (58,  'form_submit',  1002, '2024-01-14', 610,  '192.168.1.11',  201),\n  (59,  'api_call',     1003, '2024-01-14', 830,  '10.0.0.1',      200),\n  (60,  'page_view',    1004, '2024-01-14', 145,  '10.0.0.2',      200),\n  (61,  'error',        1005, '2024-01-15', 7800, '10.0.0.3',      500),\n  (62,  'page_view',    1006, '2024-01-15', 73,   '10.0.1.1',      200),\n  (63,  'click',        1007, '2024-01-15', 26,   '10.0.1.2',      200),\n  (64,  'api_call',     1008, '2024-01-15', 1950, '172.16.0.1',    200),\n  (65,  'page_view',    1009, '2024-01-15', 109,  '172.16.0.2',    200),\n  (66,  'form_submit',  1010, '2024-01-15', 540,  '172.16.0.3',    201),\n  (67,  'page_view',    1001, '2024-01-16', 128,  '192.168.1.10',  200),\n  (68,  'click',        1002, '2024-01-16', 24,   '192.168.1.11',  200),\n  (69,  'api_call',     1003, '2024-01-16', 1350, '10.0.0.1',      200),\n  (70,  'error',        1004, '2024-01-16', 6200, '10.0.0.2',      503),\n  (71,  'page_view',    1005, '2024-01-17', 81,   '10.0.0.3',      200),\n  (72,  'click',        1006, '2024-01-17', 20,   '10.0.1.1',      200),\n  (73,  'form_submit',  1007, '2024-01-17', 680,  '10.0.1.2',      201),\n  (74,  'api_call',     1008, '2024-01-17', 2200, '172.16.0.1',    200),\n  (75,  'page_view',    1009, '2024-01-17', 96,   '172.16.0.2',    200),\n  (76,  'error',        1010, '2024-01-17', 8800, '172.16.0.3',    500),\n  (77,  'page_view',    1001, '2024-01-18', 137,  '192.168.1.10',  200),\n  (78,  'click',        1002, '2024-01-18', 29,   '192.168.1.11',  200),\n  (79,  'api_call',     1003, '2024-01-18', 760,  '10.0.0.1',      200),\n  (80,  'form_submit',  1004, '2024-01-18', 920,  '10.0.0.2',      201),\n  (81,  'page_view',    1005, '2024-01-19', 84,   '10.0.0.3',      200),\n  (82,  'click',        1006, '2024-01-19', 16,   '10.0.1.1',      200),\n  (83,  'api_call',     1007, '2024-01-19', 3100, '10.0.1.2',      500),\n  (84,  'page_view',    1008, '2024-01-19', 122,  '172.16.0.1',    200),\n  (85,  'error',        1009, '2024-01-19', 4900, '172.16.0.2',    503),\n  (86,  'page_view',    1010, '2024-01-20', 90,   '172.16.0.3',    200),\n  (87,  'click',        1001, '2024-01-20', 13,   '192.168.1.10',  200),\n  (88,  'form_submit',  1002, '2024-01-20', 580,  '192.168.1.11',  201),\n  (89,  'api_call',     1003, '2024-01-20', 1070, '10.0.0.1',      200),\n  (90,  'page_view',    1004, '2024-01-20', 148,  '10.0.0.2',      200),\n  (91,  'error',        1005, '2024-01-21', 7100, '10.0.0.3',      500),\n  (92,  'page_view',    1006, '2024-01-21', 76,   '10.0.1.1',      200),\n  (93,  'click',        1007, '2024-01-21', 27,   '10.0.1.2',      200),\n  (94,  'api_call',     1008, '2024-01-21', 1780, '172.16.0.1',    200),\n  (95,  'page_view',    1009, '2024-01-21', 107,  '172.16.0.2',    200),\n  (96,  'form_submit',  1010, '2024-01-21', 460,  '172.16.0.3',    201),\n  (97,  'page_view',    1001, '2024-01-22', 131,  '192.168.1.10',  200),\n  (98,  'click',        1002, '2024-01-22', 23,   '192.168.1.11',  200),\n  (99,  'api_call',     1003, '2024-01-22', 1420, '10.0.0.1',      200),\n  (100, 'error',        1004, '2024-01-22', 6600, '10.0.0.2',      503),\n  (101, 'page_view',    1005, '2024-01-23', 85,   '10.0.0.3',      200),\n  (102, 'click',        1006, '2024-01-23', 18,   '10.0.1.1',      200),\n  (103, 'api_call',     1007, '2024-01-23', 2950, '10.0.1.2',      500),\n  (104, 'page_view',    1008, '2024-01-23', 113,  '172.16.0.1',    200),\n  (105, 'error',        1009, '2024-01-23', 5400, '172.16.0.2',    503),\n  (106, 'page_view',    1010, '2024-01-24', 89,   '172.16.0.3',    200),\n  (107, 'click',        1001, '2024-01-24', 20,   '192.168.1.10',  200),\n  (108, 'form_submit',  1002, '2024-01-24', 630,  '192.168.1.11',  201),\n  (109, 'api_call',     1003, '2024-01-24', 1180, '10.0.0.1',      200),\n  (110, 'page_view',    1004, '2024-01-24', 143,  '10.0.0.2',      200),\n  (111, 'error',        1005, '2024-01-25', 7500, '10.0.0.3',      500),\n  (112, 'page_view',    1006, '2024-01-25', 80,   '10.0.1.1',      200),\n  (113, 'click',        1007, '2024-01-25', 25,   '10.0.1.2',      200),\n  (114, 'api_call',     1008, '2024-01-25', 2050, '172.16.0.1',    200),\n  (115, 'page_view',    1009, '2024-01-25', 101,  '172.16.0.2',    200),\n  (116, 'form_submit',  1010, '2024-01-25', 510,  '172.16.0.3',    201),\n  (117, 'page_view',    1001, '2024-01-26', 126,  '192.168.1.10',  200),\n  (118, 'click',        1002, '2024-01-26', 22,   '192.168.1.11',  200),\n  (119, 'api_call',     1003, '2024-01-26', 990,  '10.0.0.1',      200),\n  (120, 'error',        1004, '2024-01-26', 8400, '10.0.0.2',      503),\n  (121, 'page_view',    1005, '2024-01-27', 82,   '10.0.0.3',      200),\n  (122, 'click',        1006, '2024-01-27', 19,   '10.0.1.1',      200),\n  (123, 'api_call',     1007, '2024-01-27', 2680, '10.0.1.2',      500),\n  (124, 'page_view',    1008, '2024-01-27', 116,  '172.16.0.1',    200),\n  (125, 'error',        1009, '2024-01-27', 5700, '172.16.0.2',    503),\n  (126, 'page_view',    1010, '2024-01-28', 93,   '172.16.0.3',    200),\n  (127, 'click',        1001, '2024-01-28', 16,   '192.168.1.10',  200),\n  (128, 'form_submit',  1002, '2024-01-28', 595,  '192.168.1.11',  201),\n  (129, 'api_call',     1003, '2024-01-28', 1040, '10.0.0.1',      200),\n  (130, 'page_view',    1004, '2024-01-28', 138,  '10.0.0.2',      200),\n  (131, 'error',        1005, '2024-01-29', 6900, '10.0.0.3',      500),\n  (132, 'page_view',    1006, '2024-01-29', 77,   '10.0.1.1',      200),\n  (133, 'click',        1007, '2024-01-29', 24,   '10.0.1.2',      200),\n  (134, 'api_call',     1008, '2024-01-29', 1860, '172.16.0.1',    200),\n  (135, 'page_view',    1009, '2024-01-29', 104,  '172.16.0.2',    200),\n  (136, 'form_submit',  1010, '2024-01-29', 475,  '172.16.0.3',    201),\n  (137, 'page_view',    1001, '2024-01-30', 133,  '192.168.1.10',  200),\n  (138, 'click',        1002, '2024-01-30', 28,   '192.168.1.11',  200),\n  (139, 'api_call',     1003, '2024-01-30', 1310, '10.0.0.1',      200),\n  (140, 'error',        1004, '2024-01-30', 7700, '10.0.0.2',      503),\n  (141, 'page_view',    1005, '2024-01-31', 87,   '10.0.0.3',      200),\n  (142, 'click',        1006, '2024-01-31', 21,   '10.0.1.1',      200),\n  (143, 'api_call',     1007, '2024-01-31', 2830, '10.0.1.2',      500),\n  (144, 'page_view',    1008, '2024-01-31', 119,  '172.16.0.1',    200),\n  (145, 'error',        1009, '2024-01-31', 5300, '172.16.0.2',    503),\n  (146, 'page_view',    1010, '2024-02-01', 91,   '172.16.0.3',    200),\n  (147, 'click',        1001, '2024-02-01', 17,   '192.168.1.10',  200),\n  (148, 'form_submit',  1002, '2024-02-01', 615,  '192.168.1.11',  201),\n  (149, 'api_call',     1003, '2024-02-01', 1090, '10.0.0.1',      200),\n  (150, 'page_view',    1004, '2024-02-01', 141,  '10.0.0.2',      200),\n  (151, 'error',        1005, '2024-02-02', 7200, '10.0.0.3',      500),\n  (152, 'page_view',    1006, '2024-02-02', 79,   '10.0.1.1',      200),\n  (153, 'click',        1007, '2024-02-02', 26,   '10.0.1.2',      200),\n  (154, 'api_call',     1008, '2024-02-02', 1970, '172.16.0.1',    200),\n  (155, 'page_view',    1009, '2024-02-02', 106,  '172.16.0.2',    200),\n  (156, 'form_submit',  1010, '2024-02-02', 525,  '172.16.0.3',    201),\n  (157, 'page_view',    1001, '2024-02-03', 129,  '192.168.1.10',  200),\n  (158, 'click',        1002, '2024-02-03', 23,   '192.168.1.11',  200),\n  (159, 'api_call',     1003, '2024-02-03', 870,  '10.0.0.1',      200),\n  (160, 'error',        1004, '2024-02-03', 8600, '10.0.0.2',      503),\n  (161, 'page_view',    1005, '2024-02-04', 83,   '10.0.0.3',      200),\n  (162, 'click',        1006, '2024-02-04', 18,   '10.0.1.1',      200),\n  (163, 'api_call',     1007, '2024-02-04', 2550, '10.0.1.2',      500),\n  (164, 'page_view',    1008, '2024-02-04', 114,  '172.16.0.1',    200),\n  (165, 'error',        1009, '2024-02-04', 5600, '172.16.0.2',    503),\n  (166, 'page_view',    1010, '2024-02-05', 88,   '172.16.0.3',    200),\n  (167, 'click',        1001, '2024-02-05', 15,   '192.168.1.10',  200),\n  (168, 'form_submit',  1002, '2024-02-05', 645,  '192.168.1.11',  201),\n  (169, 'api_call',     1003, '2024-02-05', 1230, '10.0.0.1',      200),\n  (170, 'page_view',    1004, '2024-02-05', 144,  '10.0.0.2',      200),\n  (171, 'error',        1005, '2024-02-06', 7400, '10.0.0.3',      500),\n  (172, 'page_view',    1006, '2024-02-06', 75,   '10.0.1.1',      200),\n  (173, 'click',        1007, '2024-02-06', 28,   '10.0.1.2',      200),\n  (174, 'api_call',     1008, '2024-02-06', 2120, '172.16.0.1',    200),\n  (175, 'page_view',    1009, '2024-02-06', 102,  '172.16.0.2',    200),\n  (176, 'form_submit',  1010, '2024-02-06', 490,  '172.16.0.3',    201),\n  (177, 'page_view',    1001, '2024-02-07', 134,  '192.168.1.10',  200),\n  (178, 'click',        1002, '2024-02-07', 22,   '192.168.1.11',  200),\n  (179, 'api_call',     1003, '2024-02-07', 1380, '10.0.0.1',      200),\n  (180, 'error',        1004, '2024-02-07', 6400, '10.0.0.2',      503),\n  (181, 'page_view',    1005, '2024-02-08', 86,   '10.0.0.3',      200),\n  (182, 'click',        1006, '2024-02-08', 20,   '10.0.1.1',      200),\n  (183, 'api_call',     1007, '2024-02-08', 2720, '10.0.1.2',      500),\n  (184, 'page_view',    1008, '2024-02-08', 117,  '172.16.0.1',    200),\n  (185, 'error',        1009, '2024-02-08', 5000, '172.16.0.2',    503),\n  (186, 'page_view',    1010, '2024-02-09', 92,   '172.16.0.3',    200),\n  (187, 'click',        1001, '2024-02-09', 14,   '192.168.1.10',  200),\n  (188, 'form_submit',  1002, '2024-02-09', 570,  '192.168.1.11',  201),\n  (189, 'api_call',     1003, '2024-02-09', 950,  '10.0.0.1',      200),\n  (190, 'page_view',    1004, '2024-02-09', 139,  '10.0.0.2',      200),\n  (191, 'error',        1005, '2024-02-10', 7000, '10.0.0.3',      500),\n  (192, 'page_view',    1006, '2024-02-10', 78,   '10.0.1.1',      200),\n  (193, 'click',        1007, '2024-02-10', 27,   '10.0.1.2',      200),\n  (194, 'api_call',     1008, '2024-02-10', 1840, '172.16.0.1',    200),\n  (195, 'page_view',    1009, '2024-02-10', 105,  '172.16.0.2',    200),\n  (196, 'form_submit',  1010, '2024-02-10', 545,  '172.16.0.3',    201),\n  (197, 'page_view',    1001, '2024-02-11', 127,  '192.168.1.10',  200),\n  (198, 'click',        1002, '2024-02-11', 24,   '192.168.1.11',  200),\n  (199, 'api_call',     1003, '2024-02-11', 1050, '10.0.0.1',      200),\n  (200, 'error',        1004, '2024-02-11', 8200, '10.0.0.2',      503);",
-      "tables": [
-        {
-          "name": "large_logs",
-          "columns": [
-            {
-              "name": "log_id",
-              "type": "INTEGER",
-              "pk": true
-            },
-            {
-              "name": "event_type",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "user_id",
-              "type": "INTEGER",
-              "pk": false
-            },
-            {
-              "name": "event_date",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "duration_ms",
-              "type": "INTEGER",
-              "pk": false
-            },
-            {
-              "name": "ip_address",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "status_code",
-              "type": "INTEGER",
-              "pk": false
-            }
-          ],
-          "rowCount": 200
-        }
-      ],
-      "quickInsert": [
-        "EXPLAIN ANALYZE",
-        "CREATE INDEX",
-        "WHERE"
-      ],
-      "pgNotes": null,
-      "challenges": [
-        {
-          "id": "d28-c01",
-          "title": "Run EXPLAIN ANALYZE",
-          "description": "Use EXPLAIN ANALYZE to see how PostgreSQL executes a query that filters large_logs by event_type = 'error'. Run the EXPLAIN and observe whether it performs a full table scan.",
-          "tier": "starter",
-          "difficulty": "easy",
-          "hint": "Prefix your SELECT with EXPLAIN ANALYZE. The output shows the scan strategy PostgreSQL chooses.",
-          "solution": "EXPLAIN ANALYZE\nSELECT *\nFROM large_logs\nWHERE event_type = 'error';",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length > 0"
-          }
-        },
-        {
-          "id": "d28-c02",
-          "title": "Create an Index",
-          "description": "Create an index called idx_event_type on the large_logs table for the event_type column. Then run a SELECT to confirm logs with event_type = 'error' return results.",
-          "tier": "starter",
-          "difficulty": "easy",
-          "hint": "CREATE INDEX idx_event_type ON large_logs(event_type). Then SELECT to verify.",
-          "solution": "CREATE INDEX IF NOT EXISTS idx_event_type ON large_logs(event_type);\n\nSELECT log_id, event_type, event_date, duration_ms\nFROM large_logs\nWHERE event_type = 'error'\nORDER BY event_date\nLIMIT 10;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length > 0 && rows.every(r => r.event_type === 'error')"
-          }
-        },
-        {
-          "id": "d28-c03",
-          "title": "Compare Before and After Index",
-          "description": "Run EXPLAIN ANALYZE for a query filtering by user_id = 1003 - first without any index, then create an index called idx_user_id on user_id, then run EXPLAIN ANALYZE again. For this challenge: just create the index and show the second EXPLAIN result.",
-          "tier": "core",
-          "difficulty": "medium",
-          "hint": "CREATE INDEX idx_user_id ON large_logs(user_id); then EXPLAIN ANALYZE SELECT * FROM large_logs WHERE user_id = 1003.",
-          "solution": "CREATE INDEX IF NOT EXISTS idx_user_id ON large_logs(user_id);\n\nEXPLAIN ANALYZE\nSELECT *\nFROM large_logs\nWHERE user_id = 1003;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length > 0"
-          }
-        },
-        {
-          "id": "d28-c04",
-          "title": "Composite Index Scenario",
-          "description": "Queries frequently filter by both event_date and event_type together. Create a composite index called idx_date_event on large_logs for (event_date, event_type). Then run EXPLAIN ANALYZE on a query filtering WHERE event_date = '2024-01-10' AND event_type = 'click'.",
-          "tier": "core",
-          "difficulty": "medium",
-          "hint": "CREATE INDEX idx_date_event ON large_logs(event_date, event_type). The column order matters - the first column in the index is the leading column.",
-          "solution": "CREATE INDEX IF NOT EXISTS idx_date_event ON large_logs(event_date, event_type);\n\nEXPLAIN ANALYZE\nSELECT log_id, event_type, user_id, event_date, duration_ms\nFROM large_logs\nWHERE event_date = '2024-01-10'\n  AND event_type = 'click';",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length > 0"
-          }
-        },
-        {
-          "id": "d28-c05",
-          "title": "Find Slow Queries (Full Scans)",
-          "description": "Without any index on duration_ms, write a query that identifies the top 10 slowest log events (highest duration_ms). Return log_id, event_type, user_id, event_date, and duration_ms. Then prefix it with EXPLAIN ANALYZE to see that it must scan the full table.",
-          "tier": "stretch",
-          "difficulty": "hard",
-          "hint": "EXPLAIN ANALYZE SELECT ... FROM large_logs ORDER BY duration_ms DESC LIMIT 10. Without an index on duration_ms, PostgreSQL must scan every row.",
-          "solution": "EXPLAIN ANALYZE\nSELECT log_id, event_type, user_id, event_date, duration_ms\nFROM large_logs\nORDER BY duration_ms DESC\nLIMIT 10;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length > 0"
-          }
-        },
-        {
-          "id": "d28-c06",
-          "title": "Index Strategy Decision",
-          "description": "You have three common query patterns on large_logs: (A) WHERE event_type = 'error', (B) WHERE event_date BETWEEN '2024-01-01' AND '2024-01-31', (C) WHERE user_id = 1005 AND status_code = 500. Create the most appropriate indexes for patterns B and C (pattern A already has idx_event_type). Name them idx_event_date and idx_user_status. Then SELECT COUNT(*) from large_logs where status_code = 500 and user_id = 1005 to verify idx_user_status works.",
-          "tier": "stretch",
-          "difficulty": "hard",
-          "hint": "For B: CREATE INDEX idx_event_date ON large_logs(event_date). For C: CREATE INDEX idx_user_status ON large_logs(user_id, status_code) - composite index on both filter columns.",
-          "solution": "CREATE INDEX IF NOT EXISTS idx_event_date ON large_logs(event_date);\nCREATE INDEX IF NOT EXISTS idx_user_status ON large_logs(user_id, status_code);\n\nSELECT COUNT(*) AS matching_logs\nFROM large_logs\nWHERE user_id = 1005\n  AND status_code = 500;",
-          "resetBefore": false,
-          "validation": {
-            "type": "columns_match",
-            "expectedColumns": [
-              "matching_logs"
-            ]
-          }
-        }
-      ]
-    },
-    {
-      "day": 29,
-      "title": "PostgreSQL Pro Tips & Shortcuts",
-      "slug": "postgresql-pro-tips-shortcuts",
-      "week": 5,
-      "weekLabel": "Performance & Capstone",
-      "type": "concept",
-      "youtubeId": null,
-      "githubPath": "day-29",
-      "seedSQL": "CREATE TABLE IF NOT EXISTS employee_sales (\n  emp_id    INTEGER PRIMARY KEY,\n  emp_name  TEXT NOT NULL,\n  department TEXT NOT NULL,\n  sale_date TEXT NOT NULL,\n  sale_amount REAL NOT NULL,\n  product   TEXT NOT NULL,\n  region    TEXT NOT NULL\n);\n\nDELETE FROM employee_sales;\n\nINSERT INTO employee_sales (emp_id, emp_name, department, sale_date, sale_amount, product, region) VALUES\n(1,  'Alice Hartley',    'Software',  '2024-01-05', 4200.00, 'Enterprise Suite',  'North'),\n(2,  'Ben Okafor',       'Software',  '2024-01-12', 3100.00, 'Starter Pack',      'South'),\n(3,  'Clara Mitchell',   'Hardware',  '2024-01-08', 5500.00, 'Server Bundle',     'East'),\n(4,  'David Lowe',       'Hardware',  '2024-01-15', 2800.00, 'Workstation',       'West'),\n(5,  'Evelyn Santos',    'Services',  '2024-01-03', 1900.00, 'Support Contract',  'North'),\n(6,  'Frank Adeyemi',    'Services',  '2024-01-20', 3400.00, 'Consulting Day',    'South'),\n(7,  'Grace Thornton',   'Software',  '2024-02-02', 2700.00, 'Starter Pack',      'East'),\n(8,  'Henry Liu',        'Hardware',  '2024-02-07', 6100.00, 'Enterprise Suite',  'West'),\n(9,  'Isla Fernandez',   'Services',  '2024-02-11', 2200.00, 'Support Contract',  'North'),\n(10, 'Jack Morris',      'Software',  '2024-02-18', 4800.00, 'Enterprise Suite',  'South'),\n(11, 'Karen Nakamura',   'Hardware',  '2024-02-22', 3300.00, 'Workstation',       'East'),\n(12, 'Leo Asante',       'Services',  '2024-02-28', 1700.00, 'Consulting Day',    'West'),\n(13, 'Maya Patel',       'Software',  '2024-03-04', 5200.00, 'Enterprise Suite',  'North'),\n(14, 'Noel Griffiths',   'Hardware',  '2024-03-09', 4100.00, 'Server Bundle',     'South'),\n(15, 'Olivia Bergstrom', 'Services',  '2024-03-14', 2600.00, 'Consulting Day',    'East'),\n(16, 'Peter Osei',       'Software',  '2024-03-19', 3700.00, 'Starter Pack',      'West'),\n(17, 'Quinn Taylor',     'Hardware',  '2024-03-25', 5900.00, 'Server Bundle',     'North'),\n(18, 'Rachel Kim',       'Services',  '2024-04-01', 2100.00, 'Support Contract',  'South'),\n(19, 'Sam Whitfield',    'Software',  '2024-04-06', 4400.00, 'Enterprise Suite',  'East'),\n(20, 'Tina Abubakar',    'Hardware',  '2024-04-11', 3600.00, 'Workstation',       'West'),\n(21, 'Uma Johansson',    'Services',  '2024-04-16', 1500.00, 'Support Contract',  'North'),\n(22, 'Victor Mensah',    'Software',  '2024-04-21', 2900.00, 'Starter Pack',      'South'),\n(23, 'Wendy Clarke',     'Hardware',  '2024-04-26', 4700.00, 'Server Bundle',     'East'),\n(24, 'Xander Howell',    'Services',  '2024-05-01', 3200.00, 'Consulting Day',    'West'),\n(25, 'Yemi Adewale',     'Software',  '2024-05-06', 5100.00, 'Enterprise Suite',  'North'),\n(26, 'Zoe Bancroft',     'Hardware',  '2024-05-11', 2400.00, 'Workstation',       'South'),\n(27, 'Aaron Nkemdirim',  'Services',  '2024-05-16', 1800.00, 'Support Contract',  'East'),\n(28, 'Beth Caldwell',    'Software',  '2024-05-21', 3900.00, 'Starter Pack',      'West'),\n(29, 'Carlos Reyes',     'Hardware',  '2024-05-26', 6400.00, 'Server Bundle',     'North'),\n(30, 'Diana Owusu',      'Services',  '2024-05-31', 2300.00, 'Consulting Day',    'South');",
-      "tables": [
-        {
-          "name": "employee_sales",
-          "columns": [
-            {
-              "name": "emp_id",
-              "type": "INTEGER",
-              "pk": true
-            },
-            {
-              "name": "emp_name",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "department",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "sale_date",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "sale_amount",
-              "type": "REAL",
-              "pk": false
-            },
-            {
-              "name": "product",
-              "type": "TEXT",
-              "pk": false
-            },
-            {
-              "name": "region",
-              "type": "TEXT",
-              "pk": false
-            }
-          ],
-          "rowCount": 30
-        }
-      ],
-      "quickInsert": [
-        "GROUP BY",
-        "ORDER BY",
-        "CASE WHEN",
-        "STRING_AGG"
-      ],
-      "pgNotes": null,
-      "challenges": [
-        {
-          "id": "d29-c01",
-          "title": "First Sale Per Employee (DISTINCT ON)",
-          "description": "Use PostgreSQL's DISTINCT ON (emp_name) to get each employee's earliest sale. Return emp_name, department, sale_date, and sale_amount, ordered by emp_name.",
-          "tier": "starter",
-          "difficulty": "Easy",
-          "hint": "SELECT DISTINCT ON (emp_name) emp_name, department, sale_date, sale_amount FROM employee_sales ORDER BY emp_name, sale_date ASC;",
-          "solution": "SELECT DISTINCT ON (emp_name)\n  emp_name,\n  department,\n  sale_date,\n  sale_amount\nFROM employee_sales\nORDER BY emp_name, sale_date ASC;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length === 30 && rows[0].hasOwnProperty('emp_name') && rows[0].hasOwnProperty('sale_date')"
-          }
-        },
-        {
-          "id": "d29-c02",
-          "title": "Conditional Aggregation (FILTER clause)",
-          "description": "Use PostgreSQL's SUM(sale_amount) FILTER (WHERE region = 'North') syntax to aggregate only a subset of rows. For each department, show: total_sales (all regions), north_sales (region = 'North' only), and south_sales (region = 'South' only).",
-          "tier": "starter",
-          "difficulty": "Easy",
-          "hint": "Use SUM(sale_amount) FILTER (WHERE region = 'North') for north_sales, and SUM(sale_amount) FILTER (WHERE region = 'South') for south_sales.",
-          "solution": "SELECT\n  department,\n  SUM(sale_amount) AS total_sales,\n  SUM(sale_amount) FILTER (WHERE region = 'North') AS north_sales,\n  SUM(sale_amount) FILTER (WHERE region = 'South') AS south_sales\nFROM employee_sales\nGROUP BY department\nORDER BY department;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length === 3 && rows[0].hasOwnProperty('total_sales') && rows[0].hasOwnProperty('north_sales')"
-          }
-        },
-        {
-          "id": "d29-c03",
-          "title": "Concatenate Products Sold (STRING_AGG)",
-          "description": "Use PostgreSQL's STRING_AGG(product, ', ') to concatenate values within a group. For each department, list the distinct products sold as a comma-separated string. Name the column products_sold. Order by department.",
-          "tier": "core",
-          "difficulty": "Medium",
-          "hint": "Use STRING_AGG(DISTINCT product, ',') to collapse multiple product values into one string per department.",
-          "solution": "SELECT\n  department,\n  STRING_AGG(DISTINCT product, ',') AS products_sold\nFROM employee_sales\nGROUP BY department\nORDER BY department;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length === 3 && rows[0].hasOwnProperty('products_sold') && rows[0].products_sold.includes(',')"
-          }
-        },
-        {
-          "id": "d29-c04",
-          "title": "Generate a Date Series (generate_series)",
-          "description": "Use PostgreSQL's generate_series() function to generate every month-start date from 2024-01-01 through 2024-06-01 (inclusive), one row per month. Return a single column called month_start.",
-          "tier": "core",
-          "difficulty": "Medium",
-          "hint": "SELECT generate_series::date AS month_start FROM generate_series(DATE '2024-01-01', DATE '2024-06-01', INTERVAL '1 month');",
-          "solution": "SELECT generate_series::date AS month_start\nFROM generate_series(\n  DATE '2024-01-01',\n  DATE '2024-06-01',\n  INTERVAL '1 month'\n);",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length === 6 && rows[0].hasOwnProperty('month_start') && JSON.stringify(rows[0].month_start).includes('2024-01-01')"
-          }
-        },
-        {
-          "id": "d29-c05",
-          "title": "Department Summary Report",
-          "description": "Build a department-level summary that shows: department, number of employees (emp_count), total revenue (total_revenue), average deal size rounded to 2 decimal places (avg_deal), the highest single sale (max_sale), and all regions the department sold into as a comma-separated list (regions_covered). Order by total_revenue descending.",
-          "tier": "stretch",
-          "difficulty": "Hard",
-          "hint": "Combine COUNT(DISTINCT emp_name), SUM, ROUND(AVG(...)::numeric, 2), MAX, and STRING_AGG(DISTINCT region, ',') in a single query grouped by department.",
-          "solution": "SELECT\n  department,\n  COUNT(DISTINCT emp_name)         AS emp_count,\n  SUM(sale_amount)                 AS total_revenue,\n  ROUND(AVG(sale_amount)::numeric, 2)       AS avg_deal,\n  MAX(sale_amount)                 AS max_sale,\n  STRING_AGG(DISTINCT region, ',')    AS regions_covered\nFROM employee_sales\nGROUP BY department\nORDER BY total_revenue DESC;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length === 3 && rows[0].hasOwnProperty('emp_count') && rows[0].hasOwnProperty('regions_covered')"
-          }
-        },
-        {
-          "id": "d29-c06",
-          "title": "Advanced Aggregation: Product Performance Bands",
-          "description": "Categorise each product by its total revenue into performance bands using CASE WHEN: 'Premium' if total revenue >= 15000, 'Standard' if >= 8000, otherwise 'Entry'. Return product, total_revenue, and performance_band. Order by total_revenue descending.",
-          "tier": "stretch",
-          "difficulty": "Hard",
-          "hint": "Group by product and compute SUM(sale_amount). Wrap the SUM in a CASE WHEN inside the SELECT to assign the band - or use a subquery/CTE and CASE on the pre-computed total.",
-          "solution": "SELECT\n  product,\n  SUM(sale_amount) AS total_revenue,\n  CASE\n    WHEN SUM(sale_amount) >= 15000 THEN 'Premium'\n    WHEN SUM(sale_amount) >= 8000  THEN 'Standard'\n    ELSE 'Entry'\n  END AS performance_band\nFROM employee_sales\nGROUP BY product\nORDER BY total_revenue DESC;",
-          "resetBefore": false,
-          "validation": {
-            "type": "custom",
-            "fn": "rows.length > 0 && rows[0].hasOwnProperty('performance_band') && ['Premium','Standard','Entry'].includes(rows[0].performance_band)"
-          }
-        }
-      ]
-    },
-    {
       "day": 30,
       "title": "Capstone: FinTech Lending Analytics Platform",
       "slug": "capstone-fintech-lending-analytics",
       "week": 5,
-      "weekLabel": "Performance & Capstone",
+      "weekLabel": "Metadata & Capstone",
       "type": "project",
       "youtubeId": null,
       "githubPath": "day-30",
