@@ -99,14 +99,14 @@ You can write single-table queries confidently, but the moment someone says "joi
 
 You write SQL daily. You can JOIN tables, write CTEs, handle NULLs. But window functions still confuse you, you've never used MERGE, and you don't know how to read a query plan. This is where you level up.
 
-**What you'll cover in Week 4 (Days 22-30):**
+**What you'll cover in Weeks 4 and 5 (Days 22-30):**
 - Window functions: ROW_NUMBER, RANK, DENSE_RANK, LAG, LEAD
 - Slowly Changing Dimensions and MERGE (upsert in one statement)
 - Views and materialised views for reusable query objects
-- Information schema - querying the database about itself
-- User-defined functions for reusable logic
+- Functions and stored procedures for reusable logic
+- Triggers that run automatically when a table changes
 - EXPLAIN ANALYSE and indexing for performance
-- PostgreSQL-specific pro tips
+- Information schema - querying the database about itself
 - A full capstone: FinTech lending analytics platform (6 tables, 14,000+ rows)
 
 **Why start here:** This is production-grade SQL. The stuff that gets you promoted from "writes queries" to "designs systems." Window functions alone are a game-changer - once you learn them, you'll wonder how you ever worked without them.

@@ -4,20 +4,20 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Day-30_of_30-blue" alt="Day 30">
-  <img src="https://img.shields.io/badge/Week-4-purple" alt="Week 4">
+  <img src="https://img.shields.io/badge/Week-5-purple" alt="Week 5">
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
 </p>
 
 # Day 30 - Capstone: FinTech Lending Analytics
 
-[<< Day 29: PostgreSQL Pro Tips](../day-29/) | Challenge complete!
+[<< Day 29: Information Schema & Metadata](../day-29/) | Challenge complete!
 
 ---
 
 ## What You'll Learn
 
 - How to combine everything from the past 29 days into a single production-grade analytics platform
-- Schema design with star schema thinking, data pipelines with CTEs and MERGE, business logic with UDFs
+- Schema design with star schema thinking, data pipelines with CTEs and MERGE, reusable logic with functions and procedures
 - Borrower segmentation with window functions, performance tuning with EXPLAIN ANALYSE and indexes
 - Self-documenting infrastructure with materialised views and column comments
 
@@ -38,7 +38,7 @@
 ---
 
 <p align="center">
-  <a href="../day-29/">&#9664; Day 29: PostgreSQL Pro Tips</a>
+  <a href="../day-29/">&#9664; Day 29: Information Schema & Metadata</a>
 </p>
 
 ---

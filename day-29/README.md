@@ -1,14 +1,14 @@
 <p align="center">
-  <a href="../day-29/"><img src="../assets/banners/day-29-pro-tips.svg" width="800" alt="Day 29 - PostgreSQL Pro Tips"></a>
+  <a href="../day-29/"><img src="../assets/banners/day-29-information-schema.svg" width="800" alt="Day 29 - Information Schema & Metadata"></a>
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Day-29_of_30-blue" alt="Day 29">
-  <img src="https://img.shields.io/badge/Week-4-purple" alt="Week 4">
+  <img src="https://img.shields.io/badge/Week-5-purple" alt="Week 5">
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
 </p>
 
-# Day 29 - PostgreSQL Pro Tips
+# Day 29 - Information Schema & Metadata
 
 [<< Day 28: EXPLAIN & Indexing](../day-28/) | [Day 30: Capstone: FinTech Lending Analytics >>](../day-30/)
 
@@ -16,10 +16,10 @@
 
 ## What You'll Learn
 
-- 10 PostgreSQL shortcuts that replace verbose multi-step workarounds with cleaner, faster alternatives
-- DISTINCT ON for first-row-per-group problems without window functions
-- FILTER for conditional aggregation without CASE WHEN
-- RETURNING, generate_series(), LATERAL joins, string_agg(), TABLESAMPLE, dollar-quoting, EXCLUDED, and partial indexes
+- How to query your database about itself using information_schema and pg_catalog
+- How to list all tables, inspect columns, and map foreign key relationships with SQL
+- How to use pg_catalog to find indexes, table owners, and column comments
+- How to auto-generate a complete data dictionary from database metadata
 
 ---
 

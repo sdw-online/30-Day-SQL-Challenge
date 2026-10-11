@@ -50,10 +50,10 @@
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 23: Window Functions Part 2"><img src="assets/banners/progress/day-23.svg" width="48" height="48" alt="Day 23"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 24: SCD Types & MERGE"><img src="assets/banners/progress/day-24.svg" width="48" height="48" alt="Day 24"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 25: Views & Materialised Views"><img src="assets/banners/progress/day-25.svg" width="48" height="48" alt="Day 25"/></a></td>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 26: Information Schema & Metadata"><img src="assets/banners/progress/day-26.svg" width="48" height="48" alt="Day 26"/></a></td>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 27: CREATE FUNCTION (UDFs)"><img src="assets/banners/progress/day-27.svg" width="48" height="48" alt="Day 27"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 26: Functions & Stored Procedures"><img src="assets/banners/progress/day-26.svg" width="48" height="48" alt="Day 26"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 27: Triggers"><img src="assets/banners/progress/day-27.svg" width="48" height="48" alt="Day 27"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 28: EXPLAIN & Indexing"><img src="assets/banners/progress/day-28.svg" width="48" height="48" alt="Day 28"/></a></td>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 29: PostgreSQL Pro Tips"><img src="assets/banners/progress/day-29.svg" width="48" height="48" alt="Day 29"/></a></td>
+    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 29: Information Schema & Metadata"><img src="assets/banners/progress/day-29.svg" width="48" height="48" alt="Day 29"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 30: Capstone: FinTech Lending Analytics"><img src="assets/banners/progress/day-30.svg" width="48" height="48" alt="Day 30"/></a></td>
   </tr>
 </table>
@@ -263,10 +263,19 @@ answer without opening `solutions.sql`. The remaining days are being written up 
 | 23 | Window Functions Part 2 | Compare current rows to previous ones with LAG, LEAD, and QUALIFY<br><sub><i>Window functions replace 80% of the SQL you used to write.</i></sub> | Coming soon |
 | 24 | SCD Types & MERGE | Track how data changes over time and upsert rows in one statement<br><sub><i>SCD Types & MERGE - the thing most people get wrong.</i></sub> | Coming soon |
 | 25 | Views & Materialised Views | Save queries as reusable objects and pre-compute expensive results<br><sub><i>Views & Materialised Views - the thing most people get wrong.</i></sub> | Coming soon |
-| 26 | Information Schema & Metadata | Query the database about itself - table sizes, column types, constraints<br><sub><i>Bad charts hide insight. Good ones force it.</i></sub> | Coming soon |
-| 27 | CREATE FUNCTION (UDFs) | Build your own reusable SQL functions for logic you use repeatedly<br><sub><i>CREATE FUNCTION (UDFs) - the thing most people get wrong.</i></sub> | Coming soon |
+| 26 | Functions & Stored Procedures | Write reusable functions, then reach for procedures when you need CALL, COMMIT and ROLLBACK<br><sub><i>Functions answer questions. Procedures do the work. Interviewers ask which is which.</i></sub> | Coming soon |
+| 27 | Triggers | Run code automatically when a row changes - audit logs and updated_at columns, the PostgreSQL way<br><sub><i>The code that runs when nobody asked it to. Handle with care.</i></sub> | Coming soon |
 | 28 | EXPLAIN & Indexing | Read query plans, spot bottlenecks, and make your queries faster<br><sub><i>Lookups separate the spreadsheet person from everyone else.</i></sub> | Coming soon |
-| 29 | PostgreSQL Pro Tips | Shortcuts, settings, and techniques that save time every day<br><sub><i>The small habits separating slow from fast.</i></sub> | Coming soon |
+
+<br>
+
+<a href="day-29/"><img src="assets/banners/week-5-banner.svg" width="800" alt="Week 5: Metadata & Capstone"></a>
+
+<br>
+
+| Day | Topic | What You'll Do | Video |
+|:---:|-------|----------------|:-----:|
+| 29 | Information Schema & Metadata | Query the database about itself - table sizes, column types, constraints<br><sub><i>Your database already documents itself. Most people never ask it.</i></sub> | Coming soon |
 | 30 | **Capstone:** FinTech Lending Analytics | Build a full analytics platform - schema, pipelines, segmentation, tuning<br><sub><i>Capstone: FinTech Lending Analytics - the thing most people get wrong.</i></sub> | Coming soon |
 
 ---
