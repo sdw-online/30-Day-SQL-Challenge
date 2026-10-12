@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../day-29/"><img src="../assets/banners/day-29-information-schema.svg" width="800" alt="Day 29 - Information Schema & Metadata"></a>
+  <a href="../day-29/"><img src="../assets/banners/day-29-information-schema.svg" width="800" alt="Day 29 - Information Schema"></a>
 </p>
 
 <p align="center">
@@ -8,9 +8,9 @@
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
 </p>
 
-# Day 29 - Information Schema & Metadata
+# Day 29 - Information Schema
 
-[<< Day 28: EXPLAIN & Indexing](../day-28/) | [Day 30: Capstone: FinTech Lending Analytics >>](../day-30/)
+[<< Day 28: Indexes](../day-28/) | [Day 30: Capstone: FinTech Lending Analytics >>](../day-30/)
 
 ---
 
@@ -32,7 +32,7 @@
 ---
 
 <p align="center">
-  <a href="../day-28/">&#9664; Day 28: EXPLAIN & Indexing</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-30/">Day 30: Capstone: FinTech Lending Analytics &#9654;</a>
+  <a href="../day-28/">&#9664; Day 28: Indexes</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-30/">Day 30: Capstone: FinTech Lending Analytics &#9654;</a>
 </p>
 
 ---

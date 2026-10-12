@@ -5118,7 +5118,7 @@ window.COURSE_DATA = {
     },
     {
       "day": 28,
-      "title": "EXPLAIN & Indexing",
+      "title": "Indexes",
       "slug": "explain-and-indexing",
       "week": 4,
       "weekLabel": "Advanced Analytics & Performance",
@@ -5266,7 +5266,7 @@ window.COURSE_DATA = {
     },
     {
       "day": 29,
-      "title": "Information Schema & Metadata",
+      "title": "Information Schema",
       "slug": "information-schema-and-metadata",
       "week": 5,
       "weekLabel": "Metadata & Capstone",

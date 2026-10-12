@@ -45,8 +45,8 @@ const days = [
   { day: 25, topic: 'Views & Materialised Views', slug: 'views', diff: 'Advanced', week: 4, video: 'COMING_SOON' },
   { day: 26, topic: 'Functions & Stored Procedures', slug: 'functions-procedures', diff: 'Advanced', week: 4, video: 'COMING_SOON' },
   { day: 27, topic: 'Triggers', slug: 'triggers', diff: 'Advanced', week: 4, video: 'COMING_SOON' },
-  { day: 28, topic: 'EXPLAIN & Indexing', slug: 'explain-indexing', diff: 'Advanced', week: 4, video: 'COMING_SOON' },
-  { day: 29, topic: 'Information Schema & Metadata', slug: 'information-schema', diff: 'Advanced', week: 5, video: 'COMING_SOON' },
+  { day: 28, topic: 'Indexes', slug: 'explain-indexing', diff: 'Advanced', week: 4, video: 'COMING_SOON' },
+  { day: 29, topic: 'Information Schema', slug: 'information-schema', diff: 'Advanced', week: 5, video: 'COMING_SOON' },
   { day: 30, topic: 'Capstone: FinTech Lending Analytics', slug: 'capstone', diff: 'Advanced', week: 5, video: 'COMING_SOON' },
 ];
 

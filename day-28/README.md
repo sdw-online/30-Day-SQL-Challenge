@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="../day-28/"><img src="../assets/banners/day-28-explain-indexing.svg" width="800" alt="Day 28 - EXPLAIN & Indexing"></a>
+  <a href="../day-28/"><img src="../assets/banners/day-28-explain-indexing.svg" width="800" alt="Day 28 - Indexes"></a>
 </p>
 
 <p align="center">
@@ -8,9 +8,9 @@
   <img src="https://img.shields.io/badge/Difficulty-Advanced-orange" alt="Advanced">
 </p>
 
-# Day 28 - EXPLAIN & Indexing
+# Day 28 - Indexes
 
-[<< Day 27: Triggers](../day-27/) | [Day 29: Information Schema & Metadata >>](../day-29/)
+[<< Day 27: Triggers](../day-27/) | [Day 29: Information Schema >>](../day-29/)
 
 ---
 
@@ -33,7 +33,7 @@
 ---
 
 <p align="center">
-  <a href="../day-27/">&#9664; Day 27: Triggers</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-29/">Day 29: Information Schema & Metadata &#9654;</a>
+  <a href="../day-27/">&#9664; Day 27: Triggers</a> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="../day-29/">Day 29: Information Schema &#9654;</a>
 </p>
 
 ---
@@ -41,6 +41,6 @@
 <!-- CLIFFHANGER -->
 <p align="center"><sub><b>UP NEXT</b></sub></p>
 <p align="center"><a href="../README.md#curriculum"><b>Day 29 coming soon &raquo;</b></a></p>
-<p align="center"><b>Day 29 &nbsp;&middot;&nbsp; Information Schema & Metadata</b></p>
+<p align="center"><b>Day 29 &nbsp;&middot;&nbsp; Information Schema</b></p>
 <p align="center"><i>Your database already documents itself. Most people never ask it.</i></p>
 <!-- /CLIFFHANGER -->

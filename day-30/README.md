@@ -10,7 +10,7 @@
 
 # Day 30 - Capstone: FinTech Lending Analytics
 
-[<< Day 29: Information Schema & Metadata](../day-29/) | Challenge complete!
+[<< Day 29: Information Schema](../day-29/) | Challenge complete!
 
 ---
 
@@ -38,7 +38,7 @@
 ---
 
 <p align="center">
-  <a href="../day-29/">&#9664; Day 29: Information Schema & Metadata</a>
+  <a href="../day-29/">&#9664; Day 29: Information Schema</a>
 </p>
 
 ---

@@ -38,8 +38,8 @@ const days = [
   { day: 25, slug: 'views', title: 'Views & Materialised Views', diff: 'Advanced', learn: ['CREATE VIEW', 'Materialised views', 'REFRESH', 'Performance'] },
   { day: 26, slug: 'functions-procedures', title: 'Functions & Stored Procedures', diff: 'Advanced', learn: ['CREATE FUNCTION', 'CREATE PROCEDURE', 'CALL vs SELECT', 'Function vs procedure'] },
   { day: 27, slug: 'triggers', title: 'Triggers', diff: 'Advanced', learn: ['Trigger functions', 'BEFORE vs AFTER', 'NEW, OLD and TG_OP', 'Audit logs'] },
-  { day: 28, slug: 'explain-indexing', title: 'EXPLAIN & Indexing', diff: 'Advanced', learn: ['EXPLAIN ANALYSE', 'Seq vs Index scan', 'CREATE INDEX', 'Cost reduction'] },
-  { day: 29, slug: 'information-schema', title: 'Information Schema & Metadata', diff: 'Advanced', learn: ['information_schema', 'Table metadata', 'Column types', 'Self-querying'] },
+  { day: 28, slug: 'explain-indexing', title: 'Indexes', diff: 'Advanced', learn: ['EXPLAIN ANALYSE', 'Seq vs Index scan', 'CREATE INDEX', 'Cost reduction'] },
+  { day: 29, slug: 'information-schema', title: 'Information Schema', diff: 'Advanced', learn: ['information_schema', 'Table metadata', 'Column types', 'Self-querying'] },
   { day: 30, slug: 'capstone', title: 'Capstone: FinTech Lending Analytics', diff: 'Advanced', learn: ['Full platform', 'Schema design', 'Pipelines', 'Performance tuning'] },
 ];
 
@@ -118,8 +118,8 @@ const navData = [
   { day: 24, topic: 'SCD Types & MERGE', cont: ['Day 25', 'Views'], apply: ['Day 24 exercises', ''], brush: ['Day 5 (INSERT/UPDATE/DELETE)', ''], skip: ['Day 30', 'Jump to Capstone'] },
   { day: 25, topic: 'Views & Materialised Views', cont: ['Day 26', 'Functions & Procedures'], apply: ['Day 25 exercises', ''], brush: ['Day 13 (CTEs)', ''], skip: ['Day 30', 'Jump to Capstone'] },
   { day: 26, topic: 'Functions & Procedures', cont: ['Day 27', 'Triggers'], apply: ['Day 26 exercises', ''], brush: ['Day 11 (CASE WHEN)', ''], skip: ['Day 30', 'Jump to Capstone'] },
-  { day: 27, topic: 'Triggers', cont: ['Day 28', 'EXPLAIN & Indexing'], apply: ['Day 27 exercises', ''], brush: ['Day 5 (INSERT/UPDATE/DELETE)', ''], skip: ['Day 30', 'Jump to Capstone'] },
-  { day: 28, topic: 'EXPLAIN & Indexing', cont: ['Day 29', 'Information Schema'], apply: ['Day 28 exercises', ''], brush: ['Day 12 (Subqueries)', ''], skip: ['Day 30', 'Jump to Capstone'] },
+  { day: 27, topic: 'Triggers', cont: ['Day 28', 'Indexes'], apply: ['Day 27 exercises', ''], brush: ['Day 5 (INSERT/UPDATE/DELETE)', ''], skip: ['Day 30', 'Jump to Capstone'] },
+  { day: 28, topic: 'Indexes', cont: ['Day 29', 'Information Schema'], apply: ['Day 28 exercises', ''], brush: ['Day 12 (Subqueries)', ''], skip: ['Day 30', 'Jump to Capstone'] },
   { day: 29, topic: 'Information Schema', cont: ['Day 30', 'Capstone Project'], apply: ['Day 29 exercises', ''], brush: ['Day 6 (Keys/Constraints)', ''], skip: ['Day 30', 'Start the Capstone'] },
   { day: 30, topic: 'Capstone: FinTech Lending', cont: ['Review weak areas', ''], apply: ['Redo projects (Day 7/14/21)', ''], brush: ['Star this repo', ''], skip: ['Next course coming soon', ''] },
 ];
