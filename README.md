@@ -17,7 +17,7 @@
 </p>
 
 <!-- PROGRESS-GRID -->
-<p align="center"><sub><b>22 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
+<p align="center"><sub><b>23 OF 30</b> &nbsp;&middot;&nbsp; <i>tap any tile to start watching</i></sub></p>
 
 <table align="center" cellpadding="3" cellspacing="0" border="0">
   <tr>
@@ -47,7 +47,7 @@
   <tr>
     <td align="center" valign="middle"><a href="https://youtu.be/HgyMoGDOWuA" title="Day 21: Project: Recruitment Analytics"><img src="assets/banners/progress/day-21.svg" width="48" height="48" alt="Day 21"/></a></td>
     <td align="center" valign="middle"><a href="https://youtu.be/vzSM-vDyZIM" title="Day 22: Window Functions Part 1"><img src="assets/banners/progress/day-22.svg" width="48" height="48" alt="Day 22"/></a></td>
-    <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 23: Window Functions Part 2"><img src="assets/banners/progress/day-23.svg" width="48" height="48" alt="Day 23"/></a></td>
+    <td align="center" valign="middle"><a href="https://youtu.be/Tz1VzkEzgZM" title="Day 23: Window Functions Part 2"><img src="assets/banners/progress/day-23.svg" width="48" height="48" alt="Day 23"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 24: SCD Types & MERGE"><img src="assets/banners/progress/day-24.svg" width="48" height="48" alt="Day 24"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 25: Views & Materialised Views"><img src="assets/banners/progress/day-25.svg" width="48" height="48" alt="Day 25"/></a></td>
     <td align="center" valign="middle"><a href="https://github.com/sdw-online/30-Day-SQL-Challenge#curriculum" title="Day 26: Functions & Stored Procedures"><img src="assets/banners/progress/day-26.svg" width="48" height="48" alt="Day 26"/></a></td>
@@ -260,7 +260,7 @@ answer without opening `solutions.sql`. The remaining days are being written up 
 | Day | Topic | What You'll Do | Video |
 |:---:|-------|----------------|:-----:|
 | 22 | Window Functions Part 1 | Rank rows, number them, and calculate running totals without GROUP BY<br><sub><i>Window functions replace 80% of the SQL you used to write.</i></sub> |[Watch](https://youtu.be/vzSM-vDyZIM)|
-| 23 | Window Functions Part 2 | Compare current rows to previous ones with LAG, LEAD, and QUALIFY<br><sub><i>Window functions replace 80% of the SQL you used to write.</i></sub> | Coming soon |
+| 23 | Window Functions Part 2 | Compare current rows to previous ones with LAG, LEAD, and QUALIFY<br><sub><i>Window functions replace 80% of the SQL you used to write.</i></sub> |[Watch](https://youtu.be/Tz1VzkEzgZM)|
 | 24 | SCD Types & MERGE | Track how data changes over time and upsert rows in one statement<br><sub><i>SCD Types & MERGE - the thing most people get wrong.</i></sub> | Coming soon |
 | 25 | Views & Materialised Views | Save queries as reusable objects and pre-compute expensive results<br><sub><i>Views & Materialised Views - the thing most people get wrong.</i></sub> | Coming soon |
 | 26 | Functions & Stored Procedures | Write reusable functions, then reach for procedures when you need CALL, COMMIT and ROLLBACK<br><sub><i>Functions answer questions. Procedures do the work. Interviewers ask which is which.</i></sub> | Coming soon |
@@ -449,6 +449,10 @@ Need to set up other tools? These walk you through each one step by step:
 <td align="center" width="33%">
   <a href="https://www.youtube.com/watch?v=vzSM-vDyZIM"><img src="https://img.youtube.com/vi/vzSM-vDyZIM/hqdefault.jpg" width="220"/></a><br/>
   <sub><b>Day 22 - Window Functions Part 1</b></sub>
+</td>
+<td align="center" width="33%">
+  <a href="https://www.youtube.com/watch?v=Tz1VzkEzgZM"><img src="https://img.youtube.com/vi/Tz1VzkEzgZM/hqdefault.jpg" width="220"/></a><br/>
+  <sub><b>Day 23 - Window Functions (Part 2)</b></sub>
 </td>
 </tr>
 </table>
