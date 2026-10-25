@@ -127,7 +127,7 @@ Finished? Check your answers: [`solutions.sql`](solutions.sql)
 
 <!-- CLIFFHANGER -->
 <p align="center"><sub><b>UP NEXT</b></sub></p>
-<p align="center"><a href="../README.md#curriculum"><b>Day 23 coming soon &raquo;</b></a></p>
+<p align="center"><a href="https://www.youtube.com/watch?v=Tz1VzkEzgZM"><img src="https://img.youtube.com/vi/Tz1VzkEzgZM/maxresdefault.jpg" width="480" alt="Day 23 - Window Functions (Part 2)"/></a></p>
 <p align="center"><b>Day 23 &nbsp;&middot;&nbsp; Window Functions Part 2</b></p>
 <p align="center"><i>Window functions replace 80% of the SQL you used to write.</i></p>
 <!-- /CLIFFHANGER -->
